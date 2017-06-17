@@ -39,5 +39,8 @@ public class Admin {
 		return this.id;
 	}
 	
+	public static long getNextID(){
+		return nextID;
+	}
 		
 }

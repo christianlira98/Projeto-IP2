@@ -11,7 +11,7 @@ public class AdminDAO {
 	private AdminDAO(){
 	}
 	
-	public AdminDAO getInstance(){
+	public static AdminDAO getInstance(){
 		if(instance == null){
 			instance = new AdminDAO();
 		}
