@@ -1,7 +1,7 @@
 package promsys.negocio.beans;
 
 public class Turma {
-	
+
 	private Professor profTurma;
 	private String idTurma;
 	private Disciplina disciplina;
