@@ -1,5 +1,6 @@
 package promsys.negocio.beans;
 
+
 public class Turma {
 
 	private Professor profTurma;
@@ -53,12 +54,54 @@ public class Turma {
 	}
 	
 	//MÉTODOS 
-	public String toString(){
-		return String.format("");
+	public void addProf(Object prof){
+		if(prof instanceof Professor ){
+			this.profTurma =(Professor) prof;
+		}
 	}
-	public boolean equals(){
+	public void removeProf(Object prof){
+		if(prof instanceof Professor){
+			this.profTurma = null;
+		}
+	}
+	public void addHorario(Object novoHorario){
+		if(novoHorario instanceof Horario){
+			this.horario = (Horario) novoHorario;
+		}
+	}
+	public void removeHorario(Object novoHorario){
+		if(novoHorario instanceof Horario){
+			this.horario = null;
+		}
+	}
+	public void addDisciplina(Object disc){
+		if(disc instanceof Disciplina){
+			this.disciplina = (Disciplina) disc;
+		}
+	}
+	public void removeDisciplina(Object disc){
+		if(disc instanceof Disciplina){
+			this.disciplina = null; 
+		}
+	}
+	
+	//EQUALS E TOSTRING
+	public String toString(){
+		return String.format("Turma: "+ getIdTurma() + 
+							"\n Professor responsável: " + getProfTurma() +
+							"\n Disciplina: "+ getDisciplina() +
+							"\n Horário: " + getHorario() +
+							"\n Alunos nesta turma: " + getQtdAlunos());
+	}
+	public boolean equals(Object other){
 		boolean verifica = false;
 		
+		if(other instanceof Turma){
+			Turma t = (Turma) other;
+			if(this.getIdTurma() == t.getIdTurma()){
+				verifica = true;
+			}
+		}
 		return verifica;
 	}
 }
