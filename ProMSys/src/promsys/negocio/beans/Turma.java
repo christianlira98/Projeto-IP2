@@ -1,6 +1,5 @@
 package promsys.negocio.beans;
 
-
 public class Turma {
 
 	private Professor profTurma;
@@ -85,7 +84,7 @@ public class Turma {
 		}
 	}
 	
-	//EQUALS E TOSTRING
+	//EQUALS E toSTRING
 	public String toString(){
 		return String.format("Turma: "+ getIdTurma() + 
 							"\n Professor responsável: " + getProfTurma() +
