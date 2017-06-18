@@ -3,7 +3,7 @@ package promsys.negocio.beans;
 import java.time.LocalDateTime;
 
 public class Horario {
-//
+	
 	private LocalDateTime hora;
 	
 	public Horario(int hora) {
@@ -27,5 +27,4 @@ public class Horario {
 		String hora = String.format("%d:%d", this.hora.getHour(), this.hora.getMinute() );
 		return hora;
 	}
-	
 }
