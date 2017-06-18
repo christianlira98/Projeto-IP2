@@ -9,9 +9,6 @@ public class Turma {
 	private byte qtdAlunos; 
 	
 	//CONSTRUTORES
-	public Turma(){
-		
-	}
 	public Turma(Professor p, String nome, Disciplina d, Horario h, byte qtdAlunos){
 		this.profTurma = p;
 		this.idTurma = nome;
