@@ -29,7 +29,20 @@ public class Professor {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+	public Turma getSingleTurma(long idTurma) {
+		Turma temp = null;
+		int cond = 0;
+		for(int i = 0; i< this.turma.size() && cond != -1;i++) {
+			if(this.turma.get(i).getIdTurma() == idTurma) {
+				cond = -1;
+				temp = this.turma.get(i);
+			}
+		}
+		return temp;
+	}
+	public Turma getSingleTurma(int idTurma) {
+		return this.turma.get(idTurma);
+	}
 	public ArrayList<Turma> getTurma() {
 		return turma;
 	}
