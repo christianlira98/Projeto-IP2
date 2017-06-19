@@ -20,6 +20,10 @@ public class Disciplina {
 		this.nome = novoNome;
 	}
 	
+	public long getId() {
+		return this.id;
+	}
+	
 	public boolean equals(Disciplina outra) {
 		
 		if(outra != null && outra instanceof Disciplina) {
@@ -37,7 +41,7 @@ public class Disciplina {
 	}
 	
 	public String toString() {
-		return String.format("Nome: %s", this.nome);
+		return String.format("Nome: %s\nID: %d", this.nome, this.id);
 	}
 	
 }
