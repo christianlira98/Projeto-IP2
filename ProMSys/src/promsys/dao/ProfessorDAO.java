@@ -75,13 +75,21 @@ public class ProfessorDAO{
 		String vari = null;
 		int cond = 0;
 		if(identificadorTurma >= 1 && identificadorProf >=1) {
+			
 			for(int i = 0;i < this.prof.size() && cond !=-1;i++) {
+				
 				if(this.prof.get(i).getId() == identificadorProf) {
+					
 					for(int j = 0; j < this.prof.get(i).getTurma().size(); j++) {
+						
 						if(this.prof.get(i).getSingleTurma(j).getIdTurma() == identificadorTurma) {
+							
 							cond = -1;
+							
 							this.prof.get(i).getSingleTurma(j).setQtdAlunos(novoQtd);
+							
 							this.prof.get(i).getSingleTurma(j).setHorario(novaHora);
+							
 							vari = this.prof.get(i).getSingleTurma(j).toString();
 						}
 					}
@@ -89,6 +97,26 @@ public class ProfessorDAO{
 			}
 		}
 		return vari;
+	}
+	
+	public String procurar(long id) {
+		String vari = null;
+		for(int i = 0; i < this.prof.size(); i++) {
+			if(this.prof.get(i).getId() == id) {
+				vari = this.prof.get(i).toString();
+			}
+		}
+		return vari;
+	}
+	
+	private long retornaIndice(long id) {
+		long tempIndice = -1;
+		for(int i = 0; i < this.prof.size(); i++) {
+			if(this.prof.get(i).getId() == id) {
+				tempIndice = i;
+			}
+		}
+		return tempIndice;
 	}
 	
 	public boolean verificaExistencia(long id) {
