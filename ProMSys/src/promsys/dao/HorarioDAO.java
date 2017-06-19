@@ -2,7 +2,7 @@ package promsys.dao;
 
 import java.util.ArrayList;
 import promsys.negocio.beans.Horario;
-
+//
 public class HorarioDAO {
 	
 	private static HorarioDAO instance;

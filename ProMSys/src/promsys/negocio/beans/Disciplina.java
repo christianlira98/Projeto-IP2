@@ -1,7 +1,7 @@
 package promsys.negocio.beans;
 
 public class Disciplina {
-
+//
 	private long id;
 	private static long nextId = 1;
 	private String nome;

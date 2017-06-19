@@ -2,7 +2,7 @@ package promsys.dao;
 
 import java.util.ArrayList;
 import promsys.negocio.beans.*;
-
+//
 public class DisciplinaDAO {
 	
 	private static DisciplinaDAO instance;
