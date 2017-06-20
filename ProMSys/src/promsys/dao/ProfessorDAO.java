@@ -11,14 +11,14 @@ public class ProfessorDAO{
 	}
 	
 	
-	public ProfessorDAO getInstance() {
+	public static ProfessorDAO getInstance() {
 		if(instance == null) {
 			instance = new ProfessorDAO();
 		}
 		return instance;
 	}
 	
-	public boolean cadastrar(Professor prof) {
+	public boolean cadastrarProfessor(Professor prof) {
 		 boolean vari = false;
 		if(prof != null ) {
 			this.prof.add(prof);
@@ -27,7 +27,7 @@ public class ProfessorDAO{
 		return vari;
 	}
 	
-	public boolean remover(long id) {
+	public boolean removerProfessor(long id) {
 		boolean vari = false;
 		int cond = 0;
 		if(id >=1) {
@@ -42,7 +42,7 @@ public class ProfessorDAO{
 		return vari;
 	}
 	
-	public String ler (long id) {
+	public String lerProfessor (long id) {
 		String vari = null;
 		int cond = 0;
 		if(id>=1) {
@@ -71,43 +71,62 @@ public class ProfessorDAO{
 		return vari;
 	}
 	
-	public String updateDisciplina (long identificadorProf, long identificadorTurma, byte novoQtd, Horario novaHora) {
-		String vari = null;
+	public boolean addPossiveisDisciplinas(long idprof, Disciplina disciplina) {
+		boolean vari = false;
 		int cond = 0;
-		if(identificadorTurma >= 1 && identificadorProf >=1) {
-			
-			for(int i = 0;i < this.prof.size() && cond !=-1;i++) {
-				
-				if(this.prof.get(i).getId() == identificadorProf) {
-					
-					for(int j = 0; j < this.prof.get(i).getTurma().size(); j++) {
-						
-						if(this.prof.get(i).getSingleTurma(j).getIdTurma() == identificadorTurma) {
-							
-							cond = -1;
-							
-							this.prof.get(i).getSingleTurma(j).setQtdAlunos(novoQtd);
-							
-							this.prof.get(i).getSingleTurma(j).setHorario(novaHora);
-							
-							vari = this.prof.get(i).getSingleTurma(j).toString();
-						}
-					}
+		if(idprof >= 0 && disciplina != null) {
+			for( int i = 0; i < this.prof.size() && cond != -1; i++) {
+				if(this.prof.get(i).getId() == idprof) {
+					this.prof.get(i).addDisciplinasPossiveis(disciplina);
+					cond = -1;
 				}
 			}
 		}
 		return vari;
 	}
 	
-	public String procurar(long id) {
-		String vari = null;
-		for(int i = 0; i < this.prof.size(); i++) {
-			if(this.prof.get(i).getId() == id) {
-				vari = this.prof.get(i).toString();
+	public boolean addMinistradaDisciplinas(long idprof, Disciplina disciplina) {
+		boolean vari = false;
+		int cond = 0;
+		if(idprof >= 0 && disciplina != null) {
+			for( int i = 0; i < this.prof.size() && cond != -1; i++) {
+				if(this.prof.get(i).getId() == idprof) {
+					this.prof.get(i).addDisciplina(disciplina);
+					cond = -1;
+				}
 			}
 		}
 		return vari;
 	}
+	
+	public boolean removePossiveisDisciplinas(long idProf, long idDisciplina) {
+		boolean vari = false;
+		int cond = 0;
+		if(idProf >= 1 && idDisciplina >= 1) {
+			for(int i = 0; i < this.prof.size() && cond !=-1; i++) {
+				if(this.prof.get(i).getId() == idProf) {
+					this.prof.get(i).removeDisciplinaPossivel(idDisciplina);
+					vari = true;
+				}
+			}
+		}
+		return vari;
+	}
+	
+	public boolean removeMinistradaDisciplina(long idProf, long idDisciplina) {
+		boolean vari = false;
+		int cond = 0;
+		if(idProf >= 1 && idDisciplina >= 1) {
+			for(int i = 0; i < this.prof.size() && cond !=-1; i++) {
+				if(this.prof.get(i).getId() == idProf) {
+					this.prof.get(i).removeDisciplinaMinistrada(idDisciplina);
+					vari = true;
+				}
+			}
+		}
+		return vari;
+	}
+	
 	
 	private long retornaIndice(long id) {
 		long tempIndice = -1;
@@ -118,6 +137,7 @@ public class ProfessorDAO{
 		}
 		return tempIndice;
 	}
+	
 	
 	public boolean verificaExistencia(long id) {
 		boolean vari = false;

@@ -4,19 +4,62 @@ public class Professor {
 	private static long nextID=1;
 	private long id;
 	private String nome;
-	private ArrayList<Turma> turma;
+	private ArrayList<Disciplina> disciplinasPossiveis;
+	private ArrayList<Disciplina> disciplinaMinistrada;
 	
 	public Professor(String nome) {
 		this.nome = nome;
 		this.id = nextID++;
-		turma = new ArrayList<Turma>();
+		disciplinasPossiveis = new ArrayList<Disciplina>();
+		disciplinaMinistrada = new ArrayList<Disciplina>();
 	}
 	
 
 	public long getNextID() {
 		return nextID;
 	}
-
+	
+	public ArrayList<Disciplina> getDisciplinasPossiveis() {
+		return this.disciplinasPossiveis;
+	}
+	
+	public boolean addDisciplinasPossiveis(Disciplina disciplina) {
+		boolean vari = false;
+		if(disciplina !=null) {
+			this.disciplinasPossiveis.add(disciplina);
+			vari = true;
+		}
+		return vari;
+	}
+	
+	public boolean removeDisciplinaPossivel(long id) {
+		boolean vari = false;
+		int cond = 0;
+		if(id>=0){
+			for(int i = 0; i < this.disciplinasPossiveis.size() && cond != -1; i++) {
+				if(this.disciplinasPossiveis.get(i).getId() == id) {
+					this.disciplinasPossiveis.remove(i);
+					cond = -1;
+				}
+			}
+		}
+		return vari;
+	}
+	
+	public boolean removeDisciplinaMinistrada(long id) {
+		boolean vari = false;
+		int cond = 0;
+		if(id>=0){
+			for(int i = 0; i < this.disciplinaMinistrada.size() && cond != -1; i++) {
+				if(this.disciplinaMinistrada.get(i).getId() == id) {
+					this.disciplinaMinistrada.remove(i);
+					cond = -1;
+				}
+			}
+		}
+		return vari;
+	}
+	
 
 	public long getId() {
 		return id;
@@ -29,32 +72,28 @@ public class Professor {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Turma getSingleTurma(long idTurma) {
-		Turma temp = null;
-		int cond = 0;
-		for(int i = 0; i< this.turma.size() && cond != -1;i++) {
-			if(this.turma.get(i).getIdTurma() == idTurma) {
-				cond = -1;
-				temp = this.turma.get(i);
-			}
-		}
-		return temp;
-	}
-	public Turma getSingleTurma(int idTurma) {
-		return this.turma.get(idTurma);
-	}
-	public ArrayList<Turma> getTurma() {
-		return turma;
+	
+	public ArrayList<Disciplina> getDisciplina() {
+		return this.disciplinaMinistrada;
 	}
 
-	public void setTurma(ArrayList<Turma> turma) {
-		this.turma = turma;
+	public void setTurma(ArrayList<Disciplina> disciplina) {
+		this.disciplinaMinistrada = disciplina;
 	}
 	
-	public void addTurma(Turma turma) {
-		if(turma != null) {
-			this.turma.add(turma);
+	public boolean addDisciplina(Disciplina dis) {
+		boolean vari = false;
+		int cond = 0;
+		if(dis != null) {
+			for(int i = 0; i < this.disciplinasPossiveis.size() && cond != -1; i++) {
+				if(this.disciplinasPossiveis.get(i).getId() == dis.getId()) {
+					this.disciplinaMinistrada.add(dis);
+					vari = true;
+					cond = -1;
+				}
+			}
 		}
+		return vari;
 	}
 	
 	public boolean equals(Object prof) {
@@ -69,7 +108,7 @@ public class Professor {
 	}
 	
 	public String toString() {
-		return " Nome: "+getNome()+ "\n ID: "+getId()+ " Turmas: "+getTurma();
+		return " Nome: "+getNome()+ "\n ID: "+getId()+ " Disciplinas ministradas: "+getDisciplina();
 	}
 	
 }

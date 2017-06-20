@@ -7,7 +7,6 @@ public class Horario {
 	private LocalDateTime hora;
 	
 	public Horario(int hora) {
-		
 		this.hora = LocalDateTime.now().withHour(hora);
 	}
 
