@@ -34,12 +34,11 @@ public class Professor {
 	
 	public boolean removeDisciplinaPossivel(long id) {
 		boolean vari = false;
-		int cond = 0;
 		if(id>=0){
-			for(int i = 0; i < this.disciplinasPossiveis.size() && cond != -1; i++) {
+			for(int i = 0; i < this.disciplinasPossiveis.size() && !vari; i++) {
 				if(this.disciplinasPossiveis.get(i).getId() == id) {
 					this.disciplinasPossiveis.remove(i);
-					cond = -1;
+					vari = true;
 				}
 			}
 		}
@@ -48,12 +47,11 @@ public class Professor {
 	
 	public boolean removeDisciplinaMinistrada(long id) {
 		boolean vari = false;
-		int cond = 0;
 		if(id>=0){
-			for(int i = 0; i < this.disciplinaMinistrada.size() && cond != -1; i++) {
+			for(int i = 0; i < this.disciplinaMinistrada.size() && !vari; i++) {
 				if(this.disciplinaMinistrada.get(i).getId() == id) {
 					this.disciplinaMinistrada.remove(i);
-					cond = -1;
+					vari = true;
 				}
 			}
 		}
@@ -83,13 +81,11 @@ public class Professor {
 	
 	public boolean addDisciplina(Disciplina dis) {
 		boolean vari = false;
-		int cond = 0;
 		if(dis != null) {
-			for(int i = 0; i < this.disciplinasPossiveis.size() && cond != -1; i++) {
+			for(int i = 0; i < this.disciplinasPossiveis.size() && !vari; i++) {
 				if(this.disciplinasPossiveis.get(i).getId() == dis.getId()) {
 					this.disciplinaMinistrada.add(dis);
 					vari = true;
-					cond = -1;
 				}
 			}
 		}
