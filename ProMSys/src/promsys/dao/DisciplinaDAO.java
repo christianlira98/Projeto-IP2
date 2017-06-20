@@ -2,7 +2,7 @@ package promsys.dao;
 
 import java.util.ArrayList;
 import promsys.negocio.beans.*;
-//
+
 public class DisciplinaDAO {
 	
 	private static DisciplinaDAO instance;
@@ -12,14 +12,12 @@ public class DisciplinaDAO {
 		this.disciplinas = new ArrayList<Disciplina>();
 	}
 	
-	public DisciplinaDAO getInstance() {
+	public static DisciplinaDAO getInstance() {
 		if(instance == null) {
 			instance = new DisciplinaDAO();
 		}
 		return instance;
 	}
-	
-	//CRUD
 	
 	public void criarDisciplina(String nome) {
 		
@@ -52,13 +50,39 @@ public class DisciplinaDAO {
 		return this.disciplinas.get(j);
 	}
 	
-	public void deletarDisciplina(Disciplina d) {
+	public boolean atualizarNomeDisciplina(long id, String novoNome) {
 		
-		for (int i = 0; i < disciplinas.size(); i++) {
-			if(d.equals(this.disciplinas.get(i)) ) {
-				this.disciplinas.remove(i);
-			}
+		boolean atualizado = false;
+		
+		if (this.procurarDisciplina(id) != null) {
+			this.procurarDisciplina(id).setNome(novoNome);
+			atualizado = true;
 		}
+		
+		return atualizado;
 	}
-
+	
+	public boolean deletarDisciplina(long id) {
+		
+		boolean deletado = false;
+		
+		if (this.procurarDisciplina(id) != null) {
+			Disciplina d = this.procurarDisciplina(id);
+			this.disciplinas.remove(d);
+			deletado = true;
+		}
+		
+		return deletado;
+	}
+	
+	public String listarDisciplinas() {
+		
+		String lista = "";
+		
+		for (int i = 0; i < this.disciplinas.size(); i++) {
+			lista += this.disciplinas.get(i).toString();
+		}
+		
+		return lista;
+	}
 }
