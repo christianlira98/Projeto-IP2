@@ -5,7 +5,7 @@ public class Professor {
 	private long id;
 	private String nome;
 	private ArrayList<Disciplina> disciplinasPossiveis;
-	private ArrayList<Disciplina> disciplinaMinistrada;
+	private ArrayList<Disciplina> disciplinaMinistrada; // NESTE PERÍODO LETIVO !
 	
 	public Professor(String nome) {
 		this.nome = nome;
