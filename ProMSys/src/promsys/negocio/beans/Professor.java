@@ -1,11 +1,12 @@
 package promsys.negocio.beans;
 import java.util.ArrayList;
 public class Professor {
+	//
 	private static long nextID=1;
 	private long id;
 	private String nome;
 	private ArrayList<Disciplina> disciplinasPossiveis;
-	private ArrayList<Disciplina> disciplinaMinistrada; // NESTE PERÕODO LETIVO !
+	private ArrayList<Disciplina> disciplinaMinistrada; // NESTE PER√çODO LETIVO !
 	
 	public Professor(String nome) {
 		this.nome = nome;
