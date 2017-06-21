@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import promsys.negocio.beans.Horario;
 //
 public class HorarioDAO {
-	
+	//
 	private static HorarioDAO instance;
 	private ArrayList<Horario> horarios;
 	
