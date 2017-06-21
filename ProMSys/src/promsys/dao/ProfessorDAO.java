@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ProfessorDAO{
 	private static ProfessorDAO instance;
 	private ArrayList<Professor> prof = new ArrayList<>(); 
-	private String [] temp = null;
+	private String [] tempo = null;
 	
 	private ProfessorDAO() {
 		
@@ -24,12 +24,12 @@ public class ProfessorDAO{
 		if(nome != null) {
 			for(int i = 0; i < this.prof.size(); i++) {
 				if(this.prof.get(i).getNome() == nome) {
-					temp = new String[++z];
-					temp[z] = this.prof.get(i).toString();
+					tempo = new String[++z];
+					tempo[z] = this.prof.get(i).toString();
 				}
 			}
 		}
-		return temp;
+		return tempo;
 	}
 	
 	public boolean cadastrarProfessor(Professor prof) {
