@@ -8,7 +8,7 @@ public class HorarioDAO {
 	private static HorarioDAO instance;
 	private ArrayList<Horario> horarios;
 	
-	public HorarioDAO getInstance() {
+	public static HorarioDAO getInstance() {
 		if(instance == null){
 			instance = new HorarioDAO();
 		}
@@ -62,5 +62,13 @@ public class HorarioDAO {
 			}
 		}
 		return this.horarios.get(j);
+	}
+	
+	public String listaHorarios() {
+		String listaH = null;
+		for(int i = 0; i < this.horarios.size(); i++) {
+			listaH += this.horarios.get(i) + "\n";
+		}
+		return listaH;
 	}
 }
