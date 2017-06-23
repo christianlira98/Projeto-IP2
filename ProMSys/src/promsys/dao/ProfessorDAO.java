@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class ProfessorDAO{
 	private static ProfessorDAO instance;
 	private ArrayList<Professor> prof = new ArrayList<>(); 
-	private String [] tempo = null;
+	private ArrayList<String> temp = null;
 	
 	private ProfessorDAO() {
 		
@@ -20,23 +20,39 @@ public class ProfessorDAO{
 	}
 	
 	public String[] procuraPorNome(String nome) {
-		int z = 0;
+		String[] aux = null;
+		if(temp != null) {
+			temp = null;
+		}
 		if(nome != null) {
 			for(int i = 0; i < this.prof.size(); i++) {
 				if(this.prof.get(i).getNome() == nome) {
-					tempo = new String[++z];
-					tempo[z] = this.prof.get(i).toString();
+					temp.add(this.prof.get(i).toString());
 				}
 			}
 		}
-		return tempo;
+		if(temp!=null) {
+			aux = new String[this.temp.size()];
+			for(int i = 0; i < this.temp.size();i++) {
+				aux[i] = this.temp.get(i);
+			}
+		}
+		return aux;
 	}
 	
-	public boolean cadastrarProfessor(Professor prof) {
-		 boolean vari = false;
-		if(prof != null ) {
+	public boolean cadastrarProfessor(Object obj) {
+		 boolean vari = false, variTemp = false;
+		if(obj instanceof Professor ) {
+			Professor prof = (Professor) obj;
+			for(int i = 0; i < this.prof.size() && !variTemp; i++) {
+				if(prof.getId() == this.prof.get(i).getId()) {
+					variTemp = true;
+				}
+			}
+			if(variTemp == false) {
 			this.prof.add(prof);
 			vari = true;
+			}
 		}
 		return vari;
 	}
@@ -92,18 +108,6 @@ public class ProfessorDAO{
 		return vari;
 	}
 	
-	public boolean addMinistradaDisciplinas(long idprof, Disciplina disciplina) {
-		boolean vari = false;
-		if(idprof >= 0 && disciplina != null) {
-			for( int i = 0; i < this.prof.size() && !vari; i++) {
-				if(this.prof.get(i).getId() == idprof) {
-					this.prof.get(i).addDisciplina(disciplina);
-					vari = true;
-				}
-			}
-		}
-		return vari;
-	}
 	
 	public boolean removePossiveisDisciplinas(long idProf, long idDisciplina) {
 		boolean vari = false;
@@ -117,20 +121,6 @@ public class ProfessorDAO{
 		}
 		return vari;
 	}
-	
-	public boolean removeMinistradaDisciplina(long idProf, long idDisciplina) {
-		boolean vari = false;
-		if(idProf >= 1 && idDisciplina >= 1) {
-			for(int i = 0; i < this.prof.size() && !vari; i++) {
-				if(this.prof.get(i).getId() == idProf) {
-					this.prof.get(i).removeDisciplinaMinistrada(idDisciplina);
-					vari = true;
-				}
-			}
-		}
-		return vari;
-	}
-	
 	
 	private long retornaIndice(long id) {
 		long tempIndice = -1;

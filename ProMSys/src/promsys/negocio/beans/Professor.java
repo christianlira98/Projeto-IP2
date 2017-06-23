@@ -6,13 +6,12 @@ public class Professor {
 	private long id;
 	private String nome;
 	private ArrayList<Disciplina> disciplinasPossiveis;
-	private ArrayList<Disciplina> disciplinaMinistrada; // NESTE PER√çODO LETIVO !
 	
 	public Professor(String nome) {
 		this.nome = nome;
-		this.id = nextID++;
+		this.id = nextID;
+		nextID++;
 		disciplinasPossiveis = new ArrayList<Disciplina>();
-		disciplinaMinistrada = new ArrayList<Disciplina>();
 	}
 	
 
@@ -46,20 +45,6 @@ public class Professor {
 		return vari;
 	}
 	
-	public boolean removeDisciplinaMinistrada(long id) {
-		boolean vari = false;
-		if(id>=0){
-			for(int i = 0; i < this.disciplinaMinistrada.size() && !vari; i++) {
-				if(this.disciplinaMinistrada.get(i).getId() == id) {
-					this.disciplinaMinistrada.remove(i);
-					vari = true;
-				}
-			}
-		}
-		return vari;
-	}
-	
-
 	public long getId() {
 		return id;
 	}
@@ -70,27 +55,6 @@ public class Professor {
 
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
-	
-	public ArrayList<Disciplina> getDisciplina() {
-		return this.disciplinaMinistrada;
-	}
-
-	public void setTurma(ArrayList<Disciplina> disciplina) {
-		this.disciplinaMinistrada = disciplina;
-	}
-	
-	public boolean addDisciplina(Disciplina dis) {
-		boolean vari = false;
-		if(dis != null) {
-			for(int i = 0; i < this.disciplinasPossiveis.size() && !vari; i++) {
-				if(this.disciplinasPossiveis.get(i).getId() == dis.getId()) {
-					this.disciplinaMinistrada.add(dis);
-					vari = true;
-				}
-			}
-		}
-		return vari;
 	}
 	
 	public boolean equals(Object prof) {
@@ -105,7 +69,7 @@ public class Professor {
 	}
 	
 	public String toString() {
-		return " Nome: "+getNome()+ "\n ID: "+getId()+ " Disciplinas ministradas: "+getDisciplina();
+		return " Nome: "+getNome()+ "\n ID: "+getId()+ " Disciplinas possÌveis: "+getDisciplinasPossiveis();
 	}
 	
 }

@@ -24,10 +24,6 @@ public class ProfessorController {
 		return this.professorRepository.addPossiveisDisciplinas(idprof, disciplina);
 	}
 	
-	public boolean addDisciplinaMinistrada(long idprof, Disciplina disciplina) {
-		return this.professorRepository.addMinistradaDisciplinas(idprof, disciplina);
-	}
-	
 	public String procurarProf(long id) {
 		return this.professorRepository.lerProfessor(id);
 	}
@@ -43,10 +39,6 @@ public class ProfessorController {
 	
 	public boolean removeProf(long id) {
 		return this.professorRepository.removerProfessor(id);
-	}
-	
-	public boolean removeDisciplinaMinistrada(long idProf, long idDisciplina) {
-		return this.professorRepository.removeMinistradaDisciplina(idProf, idDisciplina);
 	}
 	
 	public boolean removeDisciplinaPossivel(long idProf, long idDisciplina) {
