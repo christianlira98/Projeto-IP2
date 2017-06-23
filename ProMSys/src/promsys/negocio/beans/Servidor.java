@@ -21,5 +21,18 @@ public class Servidor extends Usuario {
 	public static long getNextID(){
 		return nextID;
 	}
+	
+	public boolean equals(Object object){
+		boolean equal = false;
+		if(object instanceof Servidor && ((Servidor) object).getID() == this.id){
+			equal = true;
+		}
+		return equal;
+	}
+	
+	public String toString(){
+		String str = this.getNome() + " - " + this.getLogin();
+		return str;
+	}
 		
 }
