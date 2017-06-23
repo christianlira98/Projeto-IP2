@@ -5,25 +5,33 @@ public class Disciplina {
 	private long id;
 	private static long nextId = 1;
 	private String nome;
+	private double cargaHoraria;
 	
+	//CONSTRUTOR
 	public Disciplina(String nome) {
 		this.nome = nome;
 		this.id = nextId;
 		nextId++;
 	}
 	
+	//GETTERS AND SETTERS
 	public String getNome() {
 		return this.nome;
 	}
-	
 	public void setNome(String novoNome) {
 		this.nome = novoNome;
 	}
-	
 	public long getId() {
 		return this.id;
 	}
+	public void setCargaHoraria(double cargaHoraria){
+		this.cargaHoraria=cargaHoraria;
+	}
+	public double getCargaHoraria(){
+		return this.cargaHoraria;
+	}
 	
+	//EQUALS E TOSTRING
 	public boolean equals(Disciplina outra) {
 		
 		if(outra != null && outra instanceof Disciplina) {
@@ -39,9 +47,8 @@ public class Disciplina {
 			return false;
 		}
 	}
-	
 	public String toString() {
-		return String.format("Nome: %s\nID: %d", this.nome, this.id);
+		return String.format("Nome: %s\nID: %d\nCarga Horaria: %d", this.getNome(), this.getId(), this.getCargaHoraria());
 	}
 	
 }

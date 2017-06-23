@@ -9,9 +9,7 @@ public class ProfessorDAO{
 	
 	private ProfessorDAO() {
 		
-	}
-	
-	
+	}	
 	public static ProfessorDAO getInstance() {
 		if(instance == null) {
 			instance = new ProfessorDAO();
@@ -70,16 +68,16 @@ public class ProfessorDAO{
 		return vari;
 	}
 	
-	public String lerProfessor (long id) {
-		String vari = null;
+	public Professor lerProfessor (long id) {
+		Professor novo = null;
 		if(id>=1) {
-			for (int i = 0; i  < this.prof.size() && vari==null;i++) {
+			for (int i = 0; i  < this.prof.size() && novo == null;i++) {
 				if(this.prof.get(i).getId() == id) {
-					vari = this.prof.get(i).toString();
+					novo = this.prof.get(i);
 				}
 			}
 		}
-		return vari;
+		return novo;
 	}
 	
 	public String updateNome (String nome, long id) {
@@ -122,6 +120,7 @@ public class ProfessorDAO{
 		return vari;
 	}
 	
+	/*
 	private long retornaIndice(long id) {
 		long tempIndice = -1;
 		for(int i = 0; i < this.prof.size(); i++) {
@@ -131,7 +130,7 @@ public class ProfessorDAO{
 		}
 		return tempIndice;
 	}
-	
+	*/
 	
 	public boolean verificaExistencia(long id) {
 		boolean vari = false;

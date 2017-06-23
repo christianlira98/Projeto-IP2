@@ -80,9 +80,9 @@ public class DisciplinaDAO {
 		String lista = "";
 		
 		for (int i = 0; i < this.disciplinas.size(); i++) {
-			lista += this.disciplinas.get(i).toString();
+			lista += "**************************************\n" + this.disciplinas.get(i).toString();
 		}
 		
-		return lista;
+		return lista.toString();
 	}
 }
