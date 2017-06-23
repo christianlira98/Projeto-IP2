@@ -8,7 +8,7 @@ public class DisciplinaController {
 	private DisciplinaDAO disciplinaRepository;
 	private static DisciplinaController instance;
 	
-	public DisciplinaController getInstance() {
+	public static DisciplinaController getInstance() {
 		if(instance == null){
 			instance = new DisciplinaController();
 		}

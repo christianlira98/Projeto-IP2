@@ -10,7 +10,7 @@ public class AlocacaoController {
 		this.alocacaoRepository = AlocacaoDAO.getInstance();
 	}
 	
-	public AlocacaoController getInstance() {
+	public static AlocacaoController getInstance() {
 		if(instance == null) {
 			instance = new AlocacaoController();
 		}

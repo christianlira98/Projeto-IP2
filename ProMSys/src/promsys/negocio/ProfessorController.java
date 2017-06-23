@@ -9,7 +9,7 @@ public class ProfessorController {
 		this.professorRepository = ProfessorDAO.getInstance();
 	}
 	
-	public ProfessorController getInstance() {
+	public static ProfessorController getInstance() {
 		if(instance == null) {
 			instance = new ProfessorController();
 		}
