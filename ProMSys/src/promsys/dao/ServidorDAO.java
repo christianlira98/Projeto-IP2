@@ -1,34 +1,34 @@
 package promsys.dao;
 
-import promsys.negocio.beans.Admin;
+import promsys.negocio.beans.Servidor;
 import java.util.ArrayList;
 
-public class AdminDAO {
+public class ServidorDAO {
 	
-	private static AdminDAO instance;
-	private static ArrayList<Admin> admins = new ArrayList<>();
+	private static ServidorDAO instance;
+	private static ArrayList<Servidor> admins = new ArrayList<>();
 	
-	private AdminDAO(){
+	private ServidorDAO(){
 	}
 	
-	public static AdminDAO getInstance(){
+	public static ServidorDAO getInstance(){
 		if(instance == null){
-			instance = new AdminDAO();
+			instance = new ServidorDAO();
 		}
 		return instance;
 	}
 	
-	public void saveAdmin(Admin admin){
+	public void saveServidor(Servidor admin){
 		admins.add(admin);
 	}
 	
-	public boolean removeAdmin(Admin admin){
+	public boolean removeServidor(Servidor admin){
 		return admins.remove(admin);
 	}
 	
-	public boolean updateAdmin(Admin admin){
+	public boolean updateServidor(Servidor admin){
 		boolean result = false;
-		Admin old = null;
+		Servidor old = null;
 		for(int i = 0; i < admins.size(); i++){
 			if(admin.getID() == admins.get(i).getID()){
 				old = admins.remove(i);
@@ -41,8 +41,8 @@ public class AdminDAO {
 		return result;
 	}
 	
-	public Admin findAdmin(long id){
-		Admin result = null;
+	public Servidor findServidor(long id){
+		Servidor result = null;
 		for(int i = 0; i < admins.size() && result == null; i++){
 			if(admins.get(i).getID() == id){
 				result = admins.get(i);
