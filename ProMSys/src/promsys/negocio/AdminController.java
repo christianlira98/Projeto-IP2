@@ -16,8 +16,8 @@ public class AdminController {
 		return instance;
 	}
 	
-	public boolean cadastroAdmin(String login, String senha){
-		Admin admin = new Admin(login, senha);
+	public boolean cadastroAdmin(String nome, String login, String senha){
+		Admin admin = new Admin(nome, login, senha);
 		if(AdminDAO.getInstance().findAdmin(admin.getID()).equals(null)){
 			AdminDAO.getInstance().saveAdmin(admin);
 			return true;

@@ -1,6 +1,6 @@
 package promsys.negocio.beans;
 
-public class Admin {
+public class Admin extends Usuario {
 	
 	private static long nextID;
 	
@@ -8,14 +8,11 @@ public class Admin {
 	private String senha;
 	private long id;
 	
-	public Admin(String l, String s){
-		this.login = l;
-		this.senha = s;
+	public Admin(String n, String l, String s){
+		super(n, l, s);
 		this.id = nextID;
 		nextID++;
 	}
-	
-	
 	
 	//getters e setters
 
