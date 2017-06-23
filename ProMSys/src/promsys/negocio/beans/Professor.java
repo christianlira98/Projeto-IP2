@@ -7,6 +7,7 @@ public class Professor extends Usuario {
 	private long id;
 	private ArrayList<Disciplina> disciplinasPossiveis;
 	
+	//CONSTRUTOR
 	public Professor(String nome, String login ,String senha) {
 		super(nome, login, senha);
 		this.id = nextID;
@@ -14,15 +15,18 @@ public class Professor extends Usuario {
 		disciplinasPossiveis = new ArrayList<Disciplina>();
 	}
 	
-
+	//GETTERS AND SETTERS
 	public long getNextID() {
 		return nextID;
 	}
-	
+	public long getId() {
+		return id;
+	}	
 	public ArrayList<Disciplina> getDisciplinasPossiveis() {
 		return this.disciplinasPossiveis;
 	}
 	
+	//MÉTODOS
 	public boolean addDisciplinasPossiveis(Disciplina disciplina) {
 		boolean vari = false;
 		if(disciplina !=null) {
@@ -31,7 +35,6 @@ public class Professor extends Usuario {
 		}
 		return vari;
 	}
-	
 	public boolean removeDisciplinaPossivel(long id) {
 		boolean vari = false;
 		if(id>=0){
@@ -45,11 +48,7 @@ public class Professor extends Usuario {
 		return vari;
 	}
 	
-	public long getId() {
-		return id;
-	}
-
-	
+	//EQUALS E TOSTRING
 	public boolean equals(Object prof) {
 		boolean vari = false;
 		if(prof instanceof Professor) {
@@ -60,9 +59,10 @@ public class Professor extends Usuario {
 		}
 		return vari;
 	}
-	
 	public String toString() {
-		return " Nome: "+getNome()+ "\n ID: "+getId()+ " Disciplinas possíveis: "+getDisciplinasPossiveis();
+		return String.format( " Nome: "+getNome()+ 
+							"\n ID: "+getId()+
+							"\n Disciplinas possíveis: "+getDisciplinasPossiveis());
 	}
 	
 }
