@@ -35,12 +35,4 @@ public class Usuario {
 		this.nome = nome;
 	}
 	
-	public boolean equals(Object object){
-		boolean equal = false;
-		if(object instanceof Usuario && ((Usuario) object).getNome().equals(this.getNome())){
-			equal = true;
-		}
-		return equal;
-	}
-
 }
