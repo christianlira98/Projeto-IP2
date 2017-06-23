@@ -1,14 +1,14 @@
 package promsys.negocio.beans;
 import java.util.ArrayList;
-public class Professor {
+
+public class Professor extends Usuario {
 	//
 	private static long nextID=1;
 	private long id;
-	private String nome;
 	private ArrayList<Disciplina> disciplinasPossiveis;
 	
-	public Professor(String nome) {
-		this.nome = nome;
+	public Professor(String nome, String login ,String senha) {
+		super(nome, login, senha);
 		this.id = nextID;
 		nextID++;
 		disciplinasPossiveis = new ArrayList<Disciplina>();
@@ -49,19 +49,12 @@ public class Professor {
 		return id;
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
 	
 	public boolean equals(Object prof) {
 		boolean vari = false;
 		if(prof instanceof Professor) {
 			Professor compara = (Professor) prof;
-			if (compara.getId() == this.id && compara.getNome() == this.nome) {
+			if (compara.getId() == this.id && compara.getNome() == this.getNome()) {
 				vari = true;
 			}
 		}

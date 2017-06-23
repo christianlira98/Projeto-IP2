@@ -76,8 +76,11 @@ public class Alocacao {
 	}
 	
 	public String toString() {
-		String vari = "Professor: "+getProfessor()+" Disciplina: "+getDisciplina()+" Período: "+getPeriodo()+" Horario "+getHorario()+" Carga Horária: "+getCargaHoraria(); 
-		return vari;
+		return String.format("Professor: "+ getProfessor() + 
+							"\n Disciplina: "+ getDisciplina() +
+							"\n Período: " + getPeriodo() +
+							"\n Horário: " + getHorario() +
+							"\n Carga Horária: " + getCargaHoraria());
 	}
 	
 	public boolean equals(Object aloc) {
