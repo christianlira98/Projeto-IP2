@@ -4,12 +4,12 @@ import promsys.negocio.beans.Servidor;
 
 public class ServidorController {
 	
-	private ServidorController instance;
+	private static ServidorController instance;
 	
 	private ServidorController(){
 	}
 	
-	public ServidorController getInstance(){
+	public static ServidorController getInstance(){
 		if(instance == null){
 			instance = new ServidorController();
 		}

@@ -16,7 +16,7 @@ public class Professor extends Usuario {
 	}
 	
 	//GETTERS AND SETTERS
-	public long getNextID() {
+	public static long getNextID() {
 		return nextID;
 	}
 	public long getId() {

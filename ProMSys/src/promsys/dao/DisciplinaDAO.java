@@ -31,6 +31,19 @@ public class DisciplinaDAO {
 		this.disciplinas.add(d);
 	}
 	
+	public Disciplina procurarNomeDisciplina(String nome) {
+		boolean encontrou = false;
+		Disciplina encontrada = null;
+		
+		for(int i = 0; i<this.disciplinas.size() && !encontrou; i++) {
+			if(nome == this.disciplinas.get(i).getNome() ) {
+				encontrou = true;
+				encontrada = this.disciplinas.get(i);
+			}
+		}
+		return encontrada;
+	}
+	
 	public Disciplina procurarDisciplina(long id) {
 		
 		boolean encontrou = false;

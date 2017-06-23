@@ -32,6 +32,10 @@ public class DisciplinaController {
 		return this.disciplinaRepository.procurarDisciplina(id);
 	}
 	
+	public Disciplina procurarNomeDisciplina(String nome) {
+		return this.disciplinaRepository.procurarNomeDisciplina(nome);
+	}
+	
 	public boolean atualizarDisciplina(long id, String novoNome) {
 		return this.disciplinaRepository.atualizarNomeDisciplina(id, novoNome);
 	}

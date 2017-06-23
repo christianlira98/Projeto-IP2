@@ -1,6 +1,8 @@
 package promsys.negocio;
+
 import promsys.dao.ProfessorDAO;
 import promsys.negocio.beans.*;
+
 public class ProfessorController {
 	
 	private ProfessorDAO professorRepository;
@@ -36,5 +38,16 @@ public class ProfessorController {
 	}
 	public boolean removeDisciplinaPossivel(long idProf, long idDisciplina) {
 		return this.professorRepository.removePossiveisDisciplinas(idProf, idDisciplina);
+	}
+	public boolean fazLogin(String login, String senha) {
+		boolean logged = false;
+		
+		for(int i = 0; i<Professor.getNextID(); i++) {
+			Professor p = procurarProf(i);
+			if (login == p.getLogin() && senha == p.getSenha() ) {
+				logged = true;
+			}
+		}
+		return logged;
 	}
 }
