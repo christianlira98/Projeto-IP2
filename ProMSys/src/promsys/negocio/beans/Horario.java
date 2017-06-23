@@ -1,15 +1,18 @@
 package promsys.negocio.beans;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Horario {
 	
 	private LocalTime horarioInicio;
 	private LocalTime horarioFim;
+	private ArrayList<String> diasDaSemana;
 	
-	public Horario(int hora_inicio, int hora_fim) {
+	public Horario(int hora_inicio, int hora_fim, String diaSemana) {
 		this.horarioInicio = LocalTime.of(hora_inicio, 0);
 		this.horarioFim = LocalTime.of(hora_fim, 0);
+		this.diasDaSemana.add(diaSemana);
 	}
 
 	public LocalTime getHorarioInicio() {
@@ -19,6 +22,10 @@ public class Horario {
 	public LocalTime getHorarioFim() {
 		return this.horarioFim;
 	}
+	
+	public ArrayList<String> getDiaDaSemana() {
+		return this.diasDaSemana;
+	}
 
 	public void setHorarioInicio(int hora, int minutos) {
 		this.horarioInicio = LocalTime.of(hora, minutos);
@@ -26,6 +33,14 @@ public class Horario {
 	
 	public void setHorarioFim(int hora, int minutos) {
 		this.horarioFim = LocalTime.of(hora, minutos);
+	}
+	
+	public void addDiaDaSemana(String novoDia) {
+		this.diasDaSemana.add(novoDia);
+	}
+	
+	public void limparDias() {
+		this.diasDaSemana.clear();
 	}
 	
 	public boolean equals(Horario outro) {
@@ -41,7 +56,9 @@ public class Horario {
 	}
 	
 	public String toString() {
-		String horario = String.format("Início: %s\nFim: %s", this.horarioInicio.toString(), this.horarioFim.toString() );
+		String horario = String.format("Início: %s\n"
+				+ "Fim: %s\n"
+				+ "Dias da semana: %s", this.horarioInicio.toString(), this.horarioFim.toString(), this.diasDaSemana.toString() );
 		return horario;
 	}
 }
