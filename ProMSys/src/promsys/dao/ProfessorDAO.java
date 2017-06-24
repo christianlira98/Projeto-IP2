@@ -142,5 +142,16 @@ public class ProfessorDAO{
 		return vari;
 	}
 	
+	public String listarProfessores() {
+		
+		String lista = "";
+		
+		for (int i = 0; i < this.prof.size(); i++) {
+			lista += "**************************************\n" + this.prof.get(i).toString();
+		}
+		
+		return lista.toString();
+	}
+	
 	
 }

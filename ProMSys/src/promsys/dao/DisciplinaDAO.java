@@ -34,13 +34,22 @@ public class DisciplinaDAO {
 	public Disciplina procurarNomeDisciplina(String nome) {
 		boolean encontrou = false;
 		Disciplina encontrada = null;
+		int count = 0;
 		
-		for(int i = 0; i<this.disciplinas.size() && !encontrou; i++) {
+		for(int i = 1; i<this.disciplinas.size() && !encontrou; i++) {
 			if(nome == this.disciplinas.get(i).getNome() ) {
 				encontrou = true;
 				encontrada = this.disciplinas.get(i);
 			}
+			else{
+				count++;
+			}
 		}
+		
+		if(count == this.disciplinas.size()) {
+			encontrada = null;
+		}
+		
 		return encontrada;
 	}
 	

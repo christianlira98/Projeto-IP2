@@ -128,6 +128,10 @@ public class Fachada {
 		return professores.fazLogin(login, senha);
 	}
 	
+	public String listaProfessores() {
+		return professores.listaProfessores();
+	}
+	
 	//Servidor
 
 	public boolean cadastroServidor(String nome, String login, String senha) {

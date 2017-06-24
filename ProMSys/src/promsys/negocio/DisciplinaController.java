@@ -47,4 +47,5 @@ public class DisciplinaController {
 	public String listarDisciplinas() {
 		return this.listarDisciplinas();
 	}
+
 }

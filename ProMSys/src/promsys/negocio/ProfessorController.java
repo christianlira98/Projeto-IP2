@@ -50,4 +50,7 @@ public class ProfessorController {
 		}
 		return logged;
 	}
+	public String listaProfessores() {
+		return this.professorRepository.listarProfessores();
+	}
 }

@@ -3,9 +3,7 @@ package promsys.gui;
 import promsys.fachada.*;
 import promsys.negocio.*;
 import promsys.negocio.beans.*;
-
 import java.util.Scanner;
-import java.util.Scanner.*;
 
 public class TUI {
 
@@ -113,7 +111,7 @@ public class TUI {
 		return ans;
 	}
 	
-	private void ProfessoresUI() {
+	private void professoresUI() {
 		Scanner input = new Scanner(System.in);
 		int resposta = 0;
 		
@@ -121,7 +119,8 @@ public class TUI {
 			System.out.println("1. Criar novo professor;");
 			System.out.println("2. Remover um professor;");
 			System.out.println("3. Atualizar um professor;");
-			System.out.println("4. Ver professores cadastrados.");
+			System.out.println("4. Ver professores cadastrados;");
+			System.out.println("5. Sair.");
 		}while(resposta != 1 && resposta != 2 && resposta != 3 && resposta != 4);
 		
 		switch(resposta){
@@ -159,11 +158,95 @@ public class TUI {
 				break;				
 			}
 			case 3:{
+				boolean a = true;
+				do{
 				clearConsole();
 				System.out.println("Entre com o ID do professor:");
+				int id = input.nextInt();
+				int ans = 0;
+				Professor p = fachada.procurarProf(id);
+				if (p != null && p instanceof Professor) {
+					clearConsole();
+					do{
+						
+						do{
+							System.out.println("1. Atualizar nome;");
+							System.out.println("2. Adcionar Disciplinas aptas;");
+							System.out.println("3. Sair.");						
+							System.out.println();
+							ans = input.nextInt();
+						}while(ans != 1 && ans != 2 && ans != 3);
+						
+						switch(ans){
+							case 1:{
+								clearConsole();
+								System.out.print("Entre com o novo nome: ");
+								String novoNome = input.nextLine();
+								clearConsole();
+								System.out.printf("Confirma troca de %s para %s?", p.getNome(), novoNome);
+								boolean b = simOuNao();
+								if(b == true) {
+									fachada.updateNomeProfessor(novoNome, p.getId());
+									System.out.println("Nome atualizado.");
+									input.nextLine();
+									clearConsole();
+								}
+								else{
+									System.out.println("Nome não atualizado.");
+									input.nextLine();
+									clearConsole();
+								}
+								break;
+							}
+							case 2:{
+								clearConsole();
+								System.out.println("Escolha uma entre as disciplinas, para ser adcionada:");
+								System.out.println(fachada.listarDisciplinas());
+								String disciplina = input.nextLine();
+								if(fachada.procurarNomeDisciplina(disciplina) != null) {
+									fachada.addPossivelDisciplina(p.getId(), fachada.procurarNomeDisciplina(disciplina));
+									System.out.println("Disciplina adcionada.");
+									input.nextLine();
+									clearConsole();
+								}
+								else{
+									System.out.println("Disciplina digitada não existe.");
+									clearConsole();
+								}
+							}
+							case 3:{
+								System.out.println("Voltando para a tela inicial...");
+								input.nextLine();
+								break;
+							}
+						}
+					}while(ans != 3);
+				}
 				
+				else{
+					clearConsole();
+					System.out.println("Professor não encontrado. Entrar com ID novamente?");
+					a = simOuNao();
+				}
+				}while(a != false);
+				break;
+			}
+			
+			case 4:{
+				clearConsole();
+				fachada.listaProfessores();
+				input.nextLine();
+				break;
+			}
+			
+			case 5:{
+				clearConsole();
+				System.out.println("Voltando...");
+				input.nextLine();
+				break;
 			}
 		}
+		input.close();
 	}
 	
 	private void UI() {
@@ -188,11 +271,17 @@ public class TUI {
 		}while(resposta != 1 && resposta != 2 && resposta != 3 && resposta != 4);
 		
 		switch(resposta){
-		
-		case 1:{
-			
+			case 1:{
+				
+			}
+			case 2:{
+				professoresUI();
+				break;
+			}
+			case 3:{
+				
+			}
 		}
-		
 	}
 		
 	public void showUserInterface() {
