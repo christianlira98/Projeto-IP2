@@ -19,11 +19,6 @@ public class DisciplinaController {
 		this.disciplinaRepository = DisciplinaDAO.getInstance(); 
 	}
 	
-	
-	public void criarDisciplina(String nome) {
-		this.disciplinaRepository.criarDisciplina(nome);
-	}
-	
 	public void salvarDisciplina(Disciplina d) {
 		this.disciplinaRepository.salvarDisciplina(d);
 	}
@@ -38,6 +33,10 @@ public class DisciplinaController {
 	
 	public boolean atualizarDisciplina(long id, String novoNome) {
 		return this.disciplinaRepository.atualizarNomeDisciplina(id, novoNome);
+	}
+	
+	public boolean atualizarCargaHoraria(long id, double cargaHoraria) {
+		return this.atualizarCargaHoraria(id, cargaHoraria);
 	}
 	
 	public boolean deletarDisciplina(long id) {

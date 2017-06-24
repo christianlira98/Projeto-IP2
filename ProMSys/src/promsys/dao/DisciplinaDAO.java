@@ -19,14 +19,6 @@ public class DisciplinaDAO {
 		return instance;
 	}
 	
-	public void criarDisciplina(String nome) {
-		
-		if(nome.length() > 0){
-			Disciplina d = new Disciplina(nome);
-			salvarDisciplina(d);
-		}
-	}
-	
 	public void salvarDisciplina(Disciplina  d) {
 		this.disciplinas.add(d);
 	}
@@ -94,6 +86,16 @@ public class DisciplinaDAO {
 			deletado = true;
 		}
 		
+		return deletado;
+	}
+	
+	public boolean atualizarCargaHoraria(long id,double novaCargaHoraria) {
+		boolean deletado = false;
+		if(this.procurarDisciplina(id) != null){
+			Disciplina d = this.procurarDisciplina(id);
+			d.setCargaHoraria(novaCargaHoraria);
+			deletado = true;
+		}
 		return deletado;
 	}
 	

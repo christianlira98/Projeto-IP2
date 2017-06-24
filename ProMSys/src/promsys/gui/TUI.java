@@ -249,7 +249,124 @@ public class TUI {
 		input.close();
 	}
 	
-	private void UI() {
+	private void disciplinasUI() {
+		
+		Scanner input = new Scanner(System.in);
+		int opcao = 0;
+		do{
+			do{
+				clearConsole();
+				System.out.println("1. Adcionar nova disciplina;");
+				System.out.println("2. Procurar uma disciplina;");
+				System.out.println("3. Atualizar nome de uma disciplina;");
+				System.out.println("4. Atualizar carga horaria de uma disciplina");
+				System.out.println("5. Remover uma disciplina;");
+				System.out.println("6. Ver todas as disciplinas cadastradas;");
+				System.out.println("7. Sair.");
+				opcao = input.nextInt();
+			}while(opcao != 1 && opcao != 2 && opcao != 3 && opcao != 4 && opcao != 5 && opcao != 6);
+			
+			switch(opcao){
+			case 1:{
+				System.out.print("Entre com o nome da discplina: ");
+				String nome = input.nextLine();
+				
+				System.out.print("Entre com a carga horária da disciplina");
+				double carga = input.nextDouble();
+				
+				Disciplina d = new Disciplina(nome, carga);
+				fachada.salvarDisciplina(d);
+				break;
+			}
+			case 2:{
+				clearConsole();
+				System.out.println("Entre com o id da Disciplina:");
+				int id = input.nextInt();
+				System.out.println(fachada.procurarDisciplina(id));
+				input.nextLine();
+				break;
+			}
+			case 3:{
+				boolean a = false;
+				do{
+					clearConsole();
+					System.out.println("Entre com o id da Disciplina:");
+					int id = input.nextInt();
+					if(fachada.procurarDisciplina(id) != null){
+						clearConsole();
+						System.out.println("Entre com o novo nome");
+						String novoNome = input.nextLine();
+						fachada.atualizarDisciplina(id, novoNome);
+					}
+					else{
+						System.out.println("Id não encontrado. Digitar novamente?");
+						a = simOuNao();
+					}
+				}while(a != false);
+				break;
+			}
+			case 4:{
+				boolean a = false;
+				do{
+					clearConsole();
+					System.out.println("Entre com o id da Disciplina:");
+					int id = input.nextInt();
+					if(fachada.procurarDisciplina(id) != null){
+						clearConsole();
+						System.out.println("Entre com a nova carga horaria");
+						double novaCargaHoraria = input.nextDouble();
+						fachada.atualizarCargaHoraria(id, novaCargaHoraria);
+					}
+					else{
+						System.out.println("Id não encontrado. Digitar novamente?");
+						a = simOuNao();
+					}
+				}while(a != false);
+				break;
+			}
+			case 5:{
+				boolean a = false;
+				do{
+					clearConsole();
+					System.out.println("Entre com o id da Disciplina:");
+					int id = input.nextInt();
+					if(fachada.procurarDisciplina(id) != null){
+						clearConsole();
+						Disciplina d = fachada.procurarDisciplina(id);
+						System.out.println("Remover disciplina?");
+						a = simOuNao();
+						if(a == true){
+							fachada.deletarDisciplina(d.getId());
+							a = false;
+						}
+						else{
+							System.out.println("Disciplina não deletada");
+						}
+					}
+					else{
+						System.out.println("Id não encontrado. Digitar novamente?");
+						a = simOuNao();
+					}
+				}while(a != false);
+				break;
+			}
+			case 6:{
+				clearConsole();
+				fachada.listarDisciplinas();
+				input.nextLine();
+				break;
+			}
+			case 7:{
+				clearConsole();
+				System.out.println("Voltando...");
+				break;
+			}
+			}
+		}while(opcao != 7);
+		clearConsole();
+	}
+	
+	private void servidorUI() {
 		Scanner input = new Scanner(System.in);
 		int resposta = 0;
 		
@@ -279,7 +396,13 @@ public class TUI {
 				break;
 			}
 			case 3:{
-				
+				disciplinasUI();
+				break;
+			}
+			case 4:{
+				clearConsole();
+				System.out.println("Saindo...");
+				break;
 			}
 		}
 	}

@@ -8,8 +8,9 @@ public class Disciplina {
 	private double cargaHoraria;
 	
 	//CONSTRUTOR
-	public Disciplina(String nome) {
+	public Disciplina(String nome, double cargaHoraria) {
 		this.nome = nome;
+		this.cargaHoraria = cargaHoraria;
 		this.id = nextId;
 		nextId++;
 	}

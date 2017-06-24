@@ -85,7 +85,11 @@ public class Fachada {
 	public boolean atualizarDisciplina(long id, String novoNome) {
 		return disciplinas.atualizarDisciplina(id, novoNome);
 	}
-
+	
+	public boolean atualizarCargaHoraria(long id, double novaCargaHoraria) {
+		return disciplinas.atualizarCargaHoraria(id, novaCargaHoraria);
+	}
+	
 	public boolean deletarDisciplina(long id) {
 		return disciplinas.deletarDisciplina(id);
 	}
