@@ -80,13 +80,13 @@ public class TUI {
 		
 		Scanner input = new Scanner(System.in);
 		
-		System.out.print("Nome: ");
+		System.out.print("\nNome: ");
 		String nome = input.nextLine();
 		
-		System.out.print("Crie seu Login: ");
+		System.out.print("\nCrie seu Login: ");
 		String login = input.nextLine();
 		
-		System.out.print("Crie sua senha: ");
+		System.out.print("\nCrie sua senha: ");
 		String senha = input.nextLine();
 		
 		this.fachada.cadastroServidor(nome, login, senha);
@@ -389,7 +389,8 @@ public class TUI {
 		
 		switch(resposta){
 			case 1:{
-				
+				//
+				break;
 			}
 			case 2:{
 				professoresUI();
@@ -406,7 +407,52 @@ public class TUI {
 			}
 		}
 	}
+	
+	private void professorUserI() {
+		Scanner input = new Scanner(System.in);
+		int resposta = 0;
+		
+		System.out.print("*************************");
+		System.out.print("*ALOCAÇÃO DE PROFESSORES*");
+		System.out.print("*************************");
+		
+		login();
+		
+		do{		
+			System.out.println(" Escolha sua operação:");
+			System.out.println("1. Ver alocações;");
+			System.out.println("2. Ver professores cadastrados;");
+			System.out.println("3. Ver disciplinas");
+			System.out.println("4. Sair");
+			System.out.println();
+			resposta = input.nextInt();
+		}while(resposta != 1 && resposta != 2 && resposta != 3 && resposta != 4);
+		
+		switch(resposta){
+			case 1:{
+				clearConsole();
+				//System.out.println(fachada.listaAlocacoes);
+			}
+			case 2:{
+				clearConsole();
+				System.out.println(fachada.listaProfessores());
+				break;
+			}
+			case 3:{
+				clearConsole();
+				System.out.println(fachada.listarDisciplinas());
+				break;
+			}
+			case 4:{
+				clearConsole();
+				System.out.println("Saindo...");
+				break;
+			}
+		}
+		
+	}
 		
 	public void showUserInterface() {
+		servidorUI();
 	}
 }
