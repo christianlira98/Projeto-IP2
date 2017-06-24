@@ -389,7 +389,7 @@ public class TUI {
 		
 		switch(resposta){
 			case 1:{
-				//
+				alocacaoUI();
 				break;
 			}
 			case 2:{
@@ -408,7 +408,7 @@ public class TUI {
 		}
 	}
 	
-	private void AlocacaoUI() {
+	private void alocacaoUI() {
 		Scanner input = new Scanner(System.in);
 		int resposta = 0;
 		do {
