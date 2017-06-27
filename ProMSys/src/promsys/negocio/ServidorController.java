@@ -16,14 +16,9 @@ public class ServidorController {
 		return instance;
 	}
 	
-	public boolean cadastroServidor(String nome, String login, String senha){
+	public void cadastroServidor(String nome, String login, String senha){
 		Servidor admin = new Servidor(nome, login, senha);
-		if(ServidorDAO.getInstance().findServidor(admin.getID()).equals(null)){
-			ServidorDAO.getInstance().saveServidor(admin);
-			return true;
-		} else {
-			return false;
-		}
+		ServidorDAO.getInstance().saveServidor(admin);
 	}
 	
 	public boolean excluiServidor(long id){

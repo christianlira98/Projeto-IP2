@@ -26,7 +26,7 @@ public class Fachada {
 		return instance;
 	}
 	
-	// Alocações
+	// Alocaï¿½ï¿½es
 	
 	public boolean salvaAlocacao(Object obj) {
 		return alocacoes.salvaAloc(obj);
@@ -138,8 +138,8 @@ public class Fachada {
 	
 	//Servidor
 
-	public boolean cadastroServidor(String nome, String login, String senha) {
-		return servidores.cadastroServidor(nome, login, senha);
+	public void cadastroServidor(String nome, String login, String senha) {
+		servidores.cadastroServidor(nome, login, senha);
 	}
 
 	public boolean excluiServidor(long id) {
