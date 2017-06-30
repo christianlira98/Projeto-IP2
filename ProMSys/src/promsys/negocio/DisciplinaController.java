@@ -36,7 +36,7 @@ public class DisciplinaController {
 	}
 	
 	public boolean atualizarCargaHoraria(long id, double cargaHoraria) {
-		return this.atualizarCargaHoraria(id, cargaHoraria);
+		return this.disciplinaRepository.atualizarCargaHoraria(id, cargaHoraria);
 	}
 	
 	public boolean deletarDisciplina(long id) {
