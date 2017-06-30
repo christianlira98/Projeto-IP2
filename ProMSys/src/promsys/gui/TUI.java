@@ -83,6 +83,7 @@ public class TUI {
 		
 		do{
 			resposta = input.nextInt();
+			input.nextLine();
 		}while(resposta >=1  && resposta <= 2);
 		System.out.print("IA");
 		if (resposta == 1) {
