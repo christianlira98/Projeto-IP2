@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class AlocacaoDAO {
 	private static AlocacaoDAO instance;
 	private ArrayList<Alocacao> aloc = new ArrayList<Alocacao>();
-	private ArrayList<String> temp = null;
+	private ArrayList<Alocacao> temporario = null;
 	private AlocacaoDAO() {
 		
 	}
@@ -47,33 +47,34 @@ public class AlocacaoDAO {
 		return vari;
 	}
 	
-	public String lerAlocID(long id) {
-		String vari = null;
+	public Alocacao lerAlocID(long id) {
+		Alocacao vari = null;
 		if(id>=1) {
 			for (int i = 0; i  < this.aloc.size() && vari==null;i++) {
 				if(this.aloc.get(i).getId() == id) {
-					vari = this.aloc.get(i).toString();
+					vari = this.aloc.get(i);
 				}
 			}
 		}
 	return vari;
 	}
-	public String[] lerAlocPeriodo(String periodo) {
-		String[] aux = null;
-		if(temp != null) {
-			temp = null;
+	
+	public Alocacao[] lerAlocPeriodo(String periodo) {
+		Alocacao[] aux = null;
+		if(temporario != null) {
+			temporario = null;
 		}
 		if(periodo != null) {
 			for(int i = 0; i < this.aloc.size(); i++) {
 				if(this.aloc.get(i).getPeriodo() == periodo ) {
-					temp.add(this.aloc.get(i).toString());
+					temporario.add(this.aloc.get(i));
 				}
 			}
 		}
-		if(temp!=null) {
-			aux = new String[this.temp.size()];
-			for(int i = 0; i < this.temp.size();i++) {
-				aux[i] = this.temp.get(i);
+		if(temporario!=null) {
+			aux = new Alocacao[this.temporario.size()];
+			for(int i = 0; i < this.temporario.size();i++) {
+				aux[i] = this.temporario.get(i);
 			}
 		}
 		return aux;

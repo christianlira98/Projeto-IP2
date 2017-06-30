@@ -25,11 +25,11 @@ public class AlocacaoController {
 		return this.alocacaoRepository.removeAloc(id);
 	}
 	
-	public String lerPorID(long id) {
+	public Alocacao lerPorID(long id) {
 		return this.alocacaoRepository.lerAlocID(id);
 	}
 	
-	public String[] lerPorPeriodo(String periodo) {
+	public Alocacao[] lerPorPeriodo(String periodo) {
 		return this.alocacaoRepository.lerAlocPeriodo(periodo);
 	}
 	
