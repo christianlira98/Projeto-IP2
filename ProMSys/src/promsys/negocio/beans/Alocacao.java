@@ -8,15 +8,13 @@ public class Alocacao {
 	private Disciplina disciplina;
 	private String periodo;
 	private Horario horario;
-	private double cargaHoraria;
 	
 	//CONSTRUTOR
-	public Alocacao (Professor prof, Disciplina dis, String periodo, Horario hora, double carga) {
+	public Alocacao (Professor prof, Disciplina dis, String periodo, Horario hora) {
 		
 		this.professor = prof;
 		this.disciplina = dis;
 		this.horario = hora;
-		this.cargaHoraria = carga;
 		this.id = nextID;
 		nextID++;
 	}
@@ -46,12 +44,6 @@ public class Alocacao {
 	public void setHorario(Horario horario) {
 		this.horario = horario;
 	}
-	public double getCargaHoraria() {
-		return cargaHoraria;
-	}
-	public void setCargaHoraria(double cargaHoraria) {
-		this.cargaHoraria = cargaHoraria;
-	}
 	public long getId() {
 		return id;
 	}
@@ -61,8 +53,7 @@ public class Alocacao {
 		return String.format("Professor: "+ getProfessor() + 
 							"\n Disciplina: "+ getDisciplina() +
 							"\n Período: " + getPeriodo() +
-							"\n Horário: " + getHorario() +
-							"\n Carga Horária: " + getCargaHoraria());
+							"\n Horário: " + getHorario() );
 	}
 	public boolean equals(Object aloc) {
 		boolean vari = false;

@@ -3,6 +3,8 @@ package promsys.gui;
 import promsys.fachada.*;
 import promsys.negocio.*;
 import promsys.negocio.beans.*;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TUI {
@@ -98,13 +100,17 @@ public class TUI {
 		Scanner input = new Scanner(System.in);
 		int resposta = 0;
 		
+		System.out.println("1. Criar novo professor;");
+		System.out.println("2. Remover um professor;");
+		System.out.println("3. Atualizar um professor;");
+		System.out.println("4. Ver professores cadastrados;");
+		System.out.println("5. Sair.");
+		
+		
 		do{
-			System.out.println("1. Criar novo professor;");
-			System.out.println("2. Remover um professor;");
-			System.out.println("3. Atualizar um professor;");
-			System.out.println("4. Ver professores cadastrados;");
-			System.out.println("5. Sair.");
-		}while(resposta != 1 && resposta != 2 && resposta != 3 && resposta != 4);
+			resposta = input.nextInt();
+			input.nextLine();
+		}while(resposta >= 1 && resposta <= 5);
 		
 		switch(resposta){
 			case 1:{
@@ -119,7 +125,7 @@ public class TUI {
 			case 2:{
 				clearConsole();
 				System.out.print("Entre com o ID do professor:");
-				int id = input.nextInt();
+				long id = input.nextInt();
 				Professor p = fachada.procurarProf(id);
 				clearConsole();
 				System.out.println("Remover: ");
@@ -145,7 +151,7 @@ public class TUI {
 				do{
 				clearConsole();
 				System.out.println("Entre com o ID do professor:");
-				int id = input.nextInt();
+				long id = input.nextInt();
 				int ans = 0;
 				Professor p = fachada.procurarProf(id);
 				if (p != null && p instanceof Professor) {
@@ -238,6 +244,7 @@ public class TUI {
 		do{
 			do{
 				clearConsole();
+				
 				System.out.println("1. Adcionar nova disciplina;");
 				System.out.println("2. Procurar uma disciplina;");
 				System.out.println("3. Atualizar nome de uma disciplina;");
@@ -265,7 +272,7 @@ public class TUI {
 			case 2:{
 				clearConsole();
 				System.out.print("Entre com o id da Disciplina:");
-				int id = input.nextInt();
+				long id = input.nextInt();
 				input.nextLine();
 				
 				System.out.println();
@@ -281,7 +288,7 @@ public class TUI {
 				do{
 					
 					System.out.print("Entre com o id da Disciplina:");
-					int id = input.nextInt();
+					long id = input.nextInt();
 					input.nextLine();
 					
 					if(fachada.procurarDisciplina(id) != null){
@@ -313,7 +320,7 @@ public class TUI {
 				do{
 					clearConsole();
 					System.out.print("Entre com o id da Disciplina:");
-					int id = input.nextInt();
+					long id = input.nextInt();
 					input.nextLine();
 					
 					if(fachada.procurarDisciplina(id) != null){
@@ -346,7 +353,7 @@ public class TUI {
 				do{
 					clearConsole();
 					System.out.print("Entre com o id da Disciplina: ");
-					int id = input.nextInt();
+					long id = input.nextInt();
 					input.nextLine();
 					
 					if(fachada.procurarDisciplina(id) != null){
@@ -442,7 +449,7 @@ public class TUI {
 		int resposta = 0;
 		do {
 		do{
-			System.out.println("1. Salvar nova Alocação;");
+			System.out.println("1. Realizar nova Alocação;");
 			System.out.println("2. Remover uma Alocação;");
 			System.out.println("3. Atualizar alocado;");
 			System.out.println("4. Ver alocado;");
@@ -454,28 +461,50 @@ public class TUI {
 		switch(resposta) {
 			case 1:
 				clearConsole();
-				System.out.print("Nome do professor a ser alocado: ");
-				String nome = input.nextLine();
-				Professor prof = new Professor(nome, nome, nome);
+				System.out.println("Escolha um entre os professores para ser alocado e entre com seu id: ");
+				System.out.println(fachada.listaProfessores());
 				
-				System.out.print("Disciplina a ser alocada: ");
-				String disci = input.nextLine();			
-				Disciplina dis = new Disciplina(disci, 40.5);
+				long idProf = input.nextLong();
+				Professor prof = fachada.procurarProf(idProf);		
+				
+				System.out.print("Escolha uma entre as disciplinas para ser alocada e entre com o seu id: ");
+				System.out.println(fachada.listarDisciplinas());
+				
+				long idDis = input.nextLong();
+				Disciplina dis = fachada.procurarDisciplina(idDis);			
 				
 				System.out.print("Perído: ");
 				String periodo = input.nextLine();
 				
-				System.out.print("Carga Horária: ");
-				double carga = input.nextDouble();
+				System.out.print("Entre com o horario de início: ");
+				int horaIncio = input.nextInt();
+				System.out.print("Entre com o horario de fim: ");
+				int horaFim = input.nextInt();
+				System.out.print("Entre com a quantidade de dias por semana(máx. 2): ");
+				int qtdDias;
+				do{
+					 qtdDias = input.nextInt();
+				}while(qtdDias > 2);
 				
-				Horario hora = new Horario(2, 4, "Quarta-feira");
-				Alocacao novo = new Alocacao(prof, dis, periodo, hora, carga);
+				ArrayList<String> dias = new ArrayList<String>();
 				
-				boolean c = fachada.salvaAlocacao(novo);
+				for(int i = 0; i < qtdDias; i++) {
+					System.out.print("Entre com o dia da semana: ");
+					dias.add(input.nextLine());
+				}
+				
+				Horario hora = new Horario(horaIncio, horaFim, dias.get(0));
+				hora.addDiaDaSemana(dias.get(1));
+				
+				Alocacao nova = new Alocacao(prof, dis, periodo, hora);
+				
+				boolean c = fachada.salvaAlocacao(nova);
 				if(c == true) {
 					System.out.println("Salvo com sucesso");
+					input.nextLine();
 				}else {
 					System.out.println("Erro ao tentar salvar");
+					input.nextLine();
 				}
 				break;
 			
@@ -486,7 +515,7 @@ public class TUI {
 			String periodo1 = "2010.2";
 			double carga1 = 40.4;
 			Horario hora1 = new Horario(2, 4, "Quarta-feira");
-			Alocacao novo1 = new Alocacao(prof1, dis1, periodo1, hora1, carga1);
+			Alocacao novo1 = new Alocacao(prof1, dis1, periodo1, hora1);
 			fachada.salvaAlocacao(novo1);
 			long id = novo1.getId();
 			System.out.print("Removendo Alocado de id: "+id);

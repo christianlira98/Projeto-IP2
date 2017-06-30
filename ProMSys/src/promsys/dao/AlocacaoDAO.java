@@ -130,21 +130,7 @@ public class AlocacaoDAO {
 			}
 		}
 		return vari;
-	}
-	
-	public boolean updateCargaHoraria(Long id, double nova) {
-		boolean vari = false;
-		if(id >=1 && nova> 0) {
-			for(int i = 0; i < this.aloc.size() && !vari; i++) {
-				if(this.aloc.get(i).getId() == id) {
-					this.aloc.get(i).setCargaHoraria(nova);
-					vari = true;
-				}
-			}
-		}
-		return vari;
-	}
-	
+	}	
 	
 	public boolean verificaExistencia(long id) {
 		boolean vari = false;

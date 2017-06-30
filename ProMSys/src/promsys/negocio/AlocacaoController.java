@@ -52,8 +52,4 @@ public class AlocacaoController {
 	public boolean updateDisciplina(long id, Disciplina nova) {
 		return this.alocacaoRepository.updateDisciplina(id, nova);
 	}
-	
-	public boolean updateCargaHoraria(long id, double nova) {
-		return this.alocacaoRepository.updateCargaHoraria(id, nova);
-	}
 }
