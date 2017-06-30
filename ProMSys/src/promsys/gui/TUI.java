@@ -413,36 +413,38 @@ public class TUI {
 		System.out.print("*************************");
 	
 		clearConsole();
+		do{
+			do{		
+				System.out.println(" Escolha sua operação:");
+				System.out.println("1. Alocação;");
+				System.out.println("2. Professores;");
+				System.out.println("3. Disciplinas");
+				System.out.println("4. Sair");
+				System.out.println();
+				resposta = input.nextInt();
+			}while(resposta != 1 && resposta != 2 && resposta != 3 && resposta != 4);
+			
+			switch(resposta){
+				case 1:{
+					alocacaoUI();
+					break;
+				}
+				case 2:{
+					professoresUI();
+					break;
+				}
+				case 3:{
+					disciplinasUI();
+					break;
+				}
+				case 4:{
+					clearConsole();
+					System.out.println("Saindo...");
+					break;
+				}
+			}
+		}while(resposta!=4);
 		
-		do{		
-			System.out.println(" Escolha sua operação:");
-			System.out.println("1. Alocação;");
-			System.out.println("2. Professores;");
-			System.out.println("3. Disciplinas");
-			System.out.println("4. Sair");
-			System.out.println();
-			resposta = input.nextInt();
-		}while(resposta != 1 && resposta != 2 && resposta != 3 && resposta != 4);
-		
-		switch(resposta){
-			case 1:{
-				alocacaoUI();
-				break;
-			}
-			case 2:{
-				professoresUI();
-				break;
-			}
-			case 3:{
-				disciplinasUI();
-				break;
-			}
-			case 4:{
-				clearConsole();
-				System.out.println("Saindo...");
-				break;
-			}
-		}
 	}
 	
 	private void alocacaoUI() {
