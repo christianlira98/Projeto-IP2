@@ -28,10 +28,11 @@ public class TUI {
 		boolean falhou = false;
 		int tipoLogin = -1;
 			
-		do{			
-			System.out.println("Entre com seu login e senha: ");
+		do{	
+			clearConsole();
+			System.out.print("\nEntre com seu login e senha: ");
 			
-			System.out.print("Login: ");
+			System.out.print("\nLogin: ");
 			String login = input.nextLine();
 					
 			System.out.print("Senha: ");
@@ -81,7 +82,7 @@ public class TUI {
 	
 	private boolean simOuNao() {
 		Scanner input = new Scanner(System.in);
-		System.out.print("1 - SIM	|	2 - NÃO");
+		System.out.print("\n1 - SIM	|	2 - NÃO");
 		int resposta = 0;
 		boolean ans = false;
 		
@@ -98,19 +99,18 @@ public class TUI {
 	
 	private void professoresUI() {
 		Scanner input = new Scanner(System.in);
-		int resposta = 0;
-		
-		System.out.println("1. Criar novo professor;");
-		System.out.println("2. Remover um professor;");
-		System.out.println("3. Atualizar um professor;");
-		System.out.println("4. Ver professores cadastrados;");
-		System.out.println("5. Sair.");
-		
+		int resposta = 0;	
 		
 		do{
+			clearConsole();
+			System.out.println("1. Criar novo professor;");
+			System.out.println("2. Remover um professor;");
+			System.out.println("3. Atualizar um professor;");
+			System.out.println("4. Ver professores cadastrados;");
+			System.out.print("5. Sair.");
 			resposta = input.nextInt();
 			input.nextLine();
-		}while(resposta >= 1 && resposta <= 5);
+		}while(resposta < 1 && resposta > 5);
 		
 		switch(resposta){
 			case 1:{
@@ -128,7 +128,7 @@ public class TUI {
 				long id = input.nextInt();
 				Professor p = fachada.procurarProf(id);
 				clearConsole();
-				System.out.println("Remover: ");
+				System.out.println("Confirma remoção de: ");
 				System.out.println(p);
 				System.out.println();
 				boolean ans = simOuNao();
@@ -159,10 +159,10 @@ public class TUI {
 					do{
 						
 						do{
+							clearConsole();
 							System.out.println("1. Atualizar nome;");
 							System.out.println("2. Adcionar Disciplinas aptas;");
 							System.out.println("3. Sair.");						
-							System.out.println();
 							ans = input.nextInt();
 						}while(ans != 1 && ans != 2 && ans != 3);
 						
@@ -172,7 +172,7 @@ public class TUI {
 								System.out.print("Entre com o novo nome: ");
 								String novoNome = input.nextLine();
 								clearConsole();
-								System.out.printf("Confirma troca de %s para %s?", p.getNome(), novoNome);
+								System.out.printf("Confirma Atualização de nome %s para %s?", p.getNome(), novoNome);
 								boolean b = simOuNao();
 								if(b == true) {
 									fachada.updateNomeProfessor(novoNome, p.getId());
@@ -181,7 +181,7 @@ public class TUI {
 									clearConsole();
 								}
 								else{
-									System.out.println("Nome não atualizado.");
+									System.out.print("Nome não atualizado.");
 									input.nextLine();
 									clearConsole();
 								}
@@ -190,10 +190,11 @@ public class TUI {
 							case 2:{
 								clearConsole();
 								System.out.println("Escolha uma entre as disciplinas, para ser adcionada:");
-								System.out.println(fachada.listarDisciplinas());
-								String disciplina = input.nextLine();
-								if(fachada.procurarNomeDisciplina(disciplina) != null) {
-									fachada.addPossivelDisciplina(p.getId(), fachada.procurarNomeDisciplina(disciplina));
+								System.out.print(fachada.listarDisciplinas());
+								input.nextLine();
+								long idDis = input.nextLong();
+								if(fachada.procurarDisciplina(idDis) != null) {
+									fachada.addPossivelDisciplina(p.getId(), fachada.procurarDisciplina(idDis));
 									System.out.println("Disciplina adcionada.");
 									input.nextLine();
 									clearConsole();
@@ -449,6 +450,7 @@ public class TUI {
 		int resposta = 0;
 		do {
 		do{
+			clearConsole();
 			System.out.println("1. Realizar nova Alocação;");
 			System.out.println("2. Remover uma Alocação;");
 			System.out.println("3. Atualizar alocado;");
@@ -551,10 +553,11 @@ public class TUI {
 						System.out.print("\nDigite o ID do alocado que deseja atualizar Professor: ");
 						id5 = input.nextLong();
 						e5 = fachada.verificaExistenciaAlocacao(id5);
-						if(!e5) {
-							System.out.println("esse ID não existe.");
+						if(e5 == false) {
+							System.out.print("Esse ID não existe.");
+							System.out.print("Digitar ID do");
 						}
-					}while(!e5);
+					}while(e5 == false);
 					System.out.println(fachada.lerAlocacoPorID(id5));
 					
 					System.out.print("\nDigite o nome do novo Professor: ");
@@ -654,7 +657,6 @@ public class TUI {
 					
 					System.out.print("\nDigite a nova Carga horária: ");
 					double novaCarga = input.nextDouble();
-					fachada.updateCargaHoraria(id7, novaCarga);
 					
 					System.out.println(fachada.lerAlocacoPorID(id7));
 					break;
@@ -728,6 +730,8 @@ public class TUI {
 	
 		
 	public void showUserInterface() {
+		System.out.println("------Entre com as Informações requeridas e crie seu Usuário------");
+		System.out.println();
 		criaServidor();
 		int tipoUsuario = login();
 		

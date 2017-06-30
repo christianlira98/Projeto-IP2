@@ -36,11 +36,11 @@ public class Fachada {
 		return alocacoes.removeAloc(id);
 	}
 
-	public String lerAlocacoPorID(long id) {
+	public Alocacao lerAlocacoPorID(long id) {
 		return alocacoes.lerPorID(id);
 	}
 
-	public String[] lerAlocacaoPorPeriodo(String periodo) {
+	public Alocacao[] lerAlocacaoPorPeriodo(String periodo) {
 		return alocacoes.lerPorPeriodo(periodo);
 	}
 
