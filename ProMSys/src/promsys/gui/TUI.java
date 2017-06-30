@@ -52,7 +52,7 @@ public class TUI {
 			}
 			
 			else {
-				System.out.print("Usu·rio ou senha incorretos.\nDigitar novamente?");
+				System.out.print("Usu√°rio ou senha incorretos.\nDigitar novamente?");
 								
 				if (simOuNao() == false){
 					fezLogin = false;
@@ -81,7 +81,7 @@ public class TUI {
 	}
 	private boolean simOuNao() {
 		Scanner input = new Scanner(System.in);
-		System.out.print("\n1 - SIM	|	2 - N√O");
+		System.out.print("\n1 - SIM	|	2 - N√ÉO");
 		int resposta = 0;
 		boolean ans = false;
 		
@@ -131,7 +131,7 @@ public class TUI {
 				long id = input.nextInt();
 				Professor p = fachada.procurarProf(id);
 				clearConsole();
-				System.out.println("Confirma remoÁ„o de: ");
+				System.out.println("Confirma remo√ß√£o de: ");
 				System.out.println(p);
 				System.out.println();
 				boolean ans = simOuNao();
@@ -143,7 +143,7 @@ public class TUI {
 					clearConsole();
 				}
 				else{
-					System.out.println("Professor n„o removido");
+					System.out.println("Professor n√£o removido");
 					input.nextLine();
 					clearConsole();
 				}
@@ -176,7 +176,7 @@ public class TUI {
 								System.out.print("Entre com o novo nome: ");
 								String novoNome = input.nextLine();
 								clearConsole();
-								System.out.printf("Confirma AtualizaÁ„o de nome %s para %s?", p.getNome(), novoNome);
+								System.out.printf("Confirma Atualiza√ß√£o de nome %s para %s?", p.getNome(), novoNome);
 								boolean b = simOuNao();
 								if(b == true) {
 									fachada.updateNomeProfessor(novoNome, p.getId());
@@ -185,7 +185,7 @@ public class TUI {
 									clearConsole();
 								}
 								else{
-									System.out.print("Nome n„o atualizado.");
+									System.out.print("Nome n√£o atualizado.");
 									input.nextLine();
 									clearConsole();
 								}
@@ -204,7 +204,7 @@ public class TUI {
 									clearConsole();
 								}
 								else{
-									System.out.println("Disciplina digitada n„o existe.");
+									System.out.println("Disciplina digitada n√£o existe.");
 									clearConsole();
 								}
 							}
@@ -221,7 +221,7 @@ public class TUI {
 				
 				else{
 					clearConsole();
-					System.out.println("Professor n„o encontrado. Entrar com ID novamente?");
+					System.out.println("Professor n√£o encontrado. Entrar com ID novamente?");
 					a = simOuNao();
 				}
 				}while(a != false);
@@ -231,7 +231,7 @@ public class TUI {
 			case 4:{
 				clearConsole();
 				if(fachada.listaProfessores() == "") {
-					System.out.print("Ainda n„o existem professores cadastrados.");
+					System.out.print("Ainda n√£o existem professores cadastrados.");
 					input.nextLine();
 				}
 				else{
@@ -276,7 +276,7 @@ public class TUI {
 				System.out.print("Entre com o nome da discplina: ");
 				String nome = input.nextLine();
 				
-				System.out.print("Entre com a carga hor·ria da disciplina: ");
+				System.out.print("Entre com a carga hor√°ria da disciplina: ");
 				double carga = input.nextDouble();
 				
 				Disciplina d = new Disciplina(nome, carga);
@@ -292,7 +292,7 @@ public class TUI {
 				System.out.println();
 				System.out.print(fachada.procurarDisciplina(id));
 				if(fachada.procurarDisciplina(id) == null) {
-					System.out.print("Disciplina n„o encontrada.");
+					System.out.print("Disciplina n√£o encontrada.");
 				}
 				input.nextLine();
 				break;
@@ -310,19 +310,19 @@ public class TUI {
 						System.out.print("Entre com o novo nome: ");
 						String novoNome = input.nextLine();
 						
-						System.out.printf("Confirma AtualizaÁ„o do nome %s para %s? ", fachada.procurarDisciplina(id).getNome(), novoNome);
+						System.out.printf("Confirma Atualiza√ß√£o do nome %s para %s? ", fachada.procurarDisciplina(id).getNome(), novoNome);
 						if(simOuNao() == true) {
 							fachada.atualizarDisciplina(id, novoNome);
 							System.out.print("Nome atualizado.");
 							input.nextLine();
 						}
 						else{
-							System.out.print("Nome n„o atualizado.");
+							System.out.print("Nome n√£o atualizado.");
 							input.nextLine();
 						}
 					}
 					else{
-						System.out.print("Id n„o encontrado. Digitar novamente? ");
+						System.out.print("Id n√£o encontrado. Digitar novamente? ");
 						a = simOuNao();
 					}
 				}while(a != false);
@@ -343,20 +343,20 @@ public class TUI {
 						double novaCargaHorariaT = input.nextDouble();
 						input.nextLine();
 						
-						System.out.printf("Confirma atualizaÁ„o da carga hor·ria %.2f para %.2f? ", fachada.procurarDisciplina(id).getCargaHoraria(), novaCargaHorariaT);
+						System.out.printf("Confirma atualiza√ß√£o da carga hor√°ria %.2f para %.2f? ", fachada.procurarDisciplina(id).getCargaHoraria(), novaCargaHorariaT);
 						if(simOuNao() == true) {
 							fachada.atualizarCargaHoraria(id, novaCargaHorariaT);
 							System.out.print("Carga horaria atualizada.");
 							input.nextLine();
 						}
 						else{
-							System.out.print("Carga horaria n„o atualizada.");
+							System.out.print("Carga horaria n√£o atualizada.");
 							input.nextLine();
 						}
 						
 					}
 					else{
-						System.out.println("Id n„o encontrado. Digitar novamente?");
+						System.out.println("Id n√£o encontrado. Digitar novamente?");
 						a = simOuNao();
 					}
 				}while(a != false);
@@ -382,12 +382,12 @@ public class TUI {
 							input.nextLine();
 						}
 						else{
-							System.out.print("Disciplina n„o deletada");
+							System.out.print("Disciplina n√£o deletada");
 							input.nextLine();
 						}
 					}
 					else{
-						System.out.print("Id n„o encontrado. Digitar novamente?");
+						System.out.print("Id n√£o encontrado. Digitar novamente?");
 						a = simOuNao();
 					}
 				}while(a != false);
@@ -396,7 +396,7 @@ public class TUI {
 			case 6:{
 				clearConsole();
 				if(fachada.listarDisciplinas() == "") {
-					System.out.print("Ainda n„o existem disciplinas cadastradas.");
+					System.out.print("Ainda n√£o existem disciplinas cadastradas.");
 					input.nextLine();
 				}
 				else{
@@ -422,14 +422,14 @@ public class TUI {
 		int resposta = 0;
 		
 		System.out.print("*************************");
-		System.out.print("*ALOCA«√O DE PROFESSORES*");
+		System.out.print("*ALOCA√á√ÉO DE PROFESSORES*");
 		System.out.print("*************************");
 	
 		clearConsole();
 		do{
 			do{		
-				System.out.println(" Escolha sua operaÁ„o:");
-				System.out.println("1. AlocaÁ„o;");
+				System.out.println(" Escolha sua opera√ß√£o:");
+				System.out.println("1. Aloca√ß√£o;");
 				System.out.println("2. Professores;");
 				System.out.println("3. Disciplinas");
 				System.out.println("4. Sair");
@@ -466,8 +466,8 @@ public class TUI {
 		do {
 		do{
 			clearConsole();
-			System.out.println("1. Realizar nova AlocaÁ„o;");
-			System.out.println("2. Remover uma AlocaÁ„o;");
+			System.out.println("1. Realizar nova Aloca√ß√£o;");
+			System.out.println("2. Remover uma Aloca√ß√£o;");
 			System.out.println("3. Atualizar alocado;");
 			System.out.println("4. Ver alocado;");
 			System.out.println("5. Listar Alocados;");
@@ -492,14 +492,14 @@ public class TUI {
 				long idDis = input.nextLong();
 				Disciplina dis = fachada.procurarDisciplina(idDis);			
 				input.nextLine();
-				System.out.print("PerÌodo: ");
+				System.out.print("Per√≠odo: ");
 				String periodo = input.nextLine();
 				
-				System.out.print("Entre com o horario de inÌcio: ");
+				System.out.print("Entre com o horario de in√≠cio: ");
 				int horaIncio = input.nextInt();
 				System.out.print("Entre com o horario de fim: ");
 				int horaFim = input.nextInt();
-				System.out.print("Entre com a quantidade de dias por semana(m·x. 2): ");
+				System.out.print("Entre com a quantidade de dias por semana(m√°x. 2): ");
 				int qtdDias;
 				do{
 					 qtdDias = input.nextInt();
@@ -544,13 +544,13 @@ public class TUI {
 			System.out.println("Digite o ID do professor a ser removido: ");
 			long id = input.nextLong();
 			input.nextLine();
-			System.out.println("Confirma essa operaÁ„o?");
+			System.out.println("Confirma essa opera√ß√£o?");
 			boolean ans6 = simOuNao();
 			boolean b = false;
 			if(ans6 == true) {
 				b = fachada.removeAlocacao(id);
 			} else {
-				System.out.println("OperaÁ„o cancelada...");
+				System.out.println("Opera√ß√£o cancelada...");
 			}
 			
 			if(b == true && ans6 == false) {
@@ -567,8 +567,8 @@ public class TUI {
 			do {
 				System.out.println("1.Atualiza professor;");
 				System.out.println("2.Atualiza Disciplina;");
-				System.out.println("3.Atualiza Hor·rio");
-				System.out.println("4.Atualiza PerÌodo");
+				System.out.println("3.Atualiza Hor√°rio");
+				System.out.println("4.Atualiza Per√≠odo");
 				System.out.println("5.Sair;");
 				op = input.nextInt();
 				input.nextLine();
@@ -584,7 +584,7 @@ public class TUI {
 						input.nextLine();
 						e5 = fachada.verificaExistenciaAlocacao(id5);
 						if(e5 == false) {
-							System.out.print("Este ID n„o existe.");
+							System.out.print("Este ID n√£o existe.");
 						}
 					}while(e5 == false);
 					System.out.println(fachada.lerAlocacoPorID(id5).toString());
@@ -593,16 +593,16 @@ public class TUI {
 					Long novaProf = input.nextLong();
 					input.nextLine();
 				
-					System.out.println("Confirma essa operaÁ„o?");
+					System.out.println("Confirma essa opera√ß√£o?");
 					boolean ans0 = simOuNao();
 					clearConsole();
 					if(ans0 == true) {
 						fachada.updateProfessorAlocacao(id5, fachada.procurarProf(novaProf));
 						
-						System.out.println("OperaÁ„o realizada com sucesso");
+						System.out.println("Opera√ß√£o realizada com sucesso");
 					
 					}else {
-						System.out.println("OperaÁ„o Cancelada...");
+						System.out.println("Opera√ß√£o Cancelada...");
 					}
 					clearConsole();
 					break;
@@ -616,7 +616,7 @@ public class TUI {
 						input.nextLine();
 						e3 = fachada.verificaExistenciaAlocacao(id3);
 						if(!e3) {
-							System.out.println("Este ID n„o existe.");
+							System.out.println("Este ID n√£o existe.");
 						}
 					}while(!e3);
 					
@@ -625,13 +625,13 @@ public class TUI {
 					System.out.print("\nDigite o ID da nova disciplina: ");
 					long novaDis = input.nextLong();
 					input.nextLine();
-					System.out.println("Confirma essa operaÁ„o?");
+					System.out.println("Confirma essa opera√ß√£o?");
 					boolean ans5 = simOuNao();
 					if(ans5 == true ) {
 						fachada.updateDisciplinaAlocacao(id3, fachada.procurarDisciplina(novaDis));
-						System.out.println("OperaÁ„o realizada com sucesso");
+						System.out.println("Opera√ß√£o realizada com sucesso");
 					}else {
-						System.out.println("OperaÁ„o Cancelada...");
+						System.out.println("Opera√ß√£o Cancelada...");
 					}
 					
 					break;
@@ -645,7 +645,7 @@ public class TUI {
 						input.nextLine();
 						e4 = fachada.verificaExistenciaAlocacao(id4);
 						if(!e4) {
-							System.out.println("Este ID n„o existe.");
+							System.out.println("Este ID n√£o existe.");
 						}
 					}while(!e4);
 					
@@ -660,14 +660,14 @@ public class TUI {
 					System.out.print("\nDigite o novo Dia da semana: ");
 					String novoDia = input.nextLine();
 					Horario hora4 = new Horario(novaHora, novaHoraf, novoDia);
-					System.out.println("Confirma essa operaÁ„o?");
+					System.out.println("Confirma essa opera√ß√£o?");
 					boolean ans = simOuNao();
 					if(ans==true){
 						fachada.updateHorarioAlocacao(id4, hora4);
-						System.out.println("OperaÁ„o realizada com sucesso");
+						System.out.println("Opera√ß√£o realizada com sucesso");
 					
 					}else {
-						System.out.println("OperaÁ„o Cancelada...");
+						System.out.println("Opera√ß√£o Cancelada...");
 					}
 					break;
 					
@@ -681,22 +681,22 @@ public class TUI {
 						input.nextLine();
 						e6 = fachada.verificaExistenciaAlocacao(id6);
 						if(!e6) {
-							System.out.println("Este ID n„o existe.");
+							System.out.println("Este ID n√£o existe.");
 						}
 					}while(!e6);
 					
 					System.out.println(fachada.lerAlocacoPorID(id6).toString());
 					
-					System.out.print("\nDigite o novo PerÌodo: ");
+					System.out.print("\nDigite o novo Per√≠odo: ");
 					String novaPeriodo = input.nextLine();
-					System.out.println("Confirma essa operaÁ„o?");
+					System.out.println("Confirma essa opera√ß√£o?");
 					boolean ans2 = simOuNao();
 					if(ans2==true){
 						fachada.updatePeriodo(id6, novaPeriodo);
 						System.out.println(fachada.lerAlocacoPorID(id6).toString());
 					
 					}else {
-						System.out.println("OperaÁ„o Cancelada...");
+						System.out.println("Opera√ß√£o Cancelada...");
 					}
 					break;
 					
@@ -720,14 +720,14 @@ public class TUI {
 			System.out.println();
 			System.out.print(fachada.lerAlocacoPorID(id1));
 			if(fachada.lerAlocacoPorID(id1) == null) {
-				System.out.print("Alocado n„o encontrado.");
+				System.out.print("Alocado n√£o encontrado.");
 			}
 			input.nextLine();
 			break;
 		case 5:
 			clearConsole();
 			if(fachada.listaAlocacao() == "") {
-				System.out.print("Ainda n„o existem professores alocados.");
+				System.out.print("Ainda n√£o existem professores alocados.");
 				input.nextLine();
 			}
 			else{
@@ -753,12 +753,12 @@ public class TUI {
 		int resposta = 0;
 		
 		System.out.print("*************************");
-		System.out.print("*ALOCA«√O DE PROFESSORES*");
+		System.out.print("*ALOCA√á√ÉO DE PROFESSORES*");
 		System.out.print("*************************");
 		
 		do{		
-			System.out.println(" Escolha sua operaÁ„o:");
-			System.out.println("1. Ver alocaÁıes;");
+			System.out.println(" Escolha sua opera√ß√£o:");
+			System.out.println("1. Ver aloca√ß√µes;");
 			System.out.println("2. Ver professores cadastrados;");
 			System.out.println("3. Ver disciplinas");
 			System.out.println("4. Sair");
@@ -769,16 +769,18 @@ public class TUI {
 		switch(resposta){
 			case 1:{
 				clearConsole();
-				//System.out.println(fachada.listaAlocacoes);
+				System.out.println(fachada.listaAlocacoes());
 			}
 			case 2:{
 				clearConsole();
 				System.out.println(fachada.listaProfessores());
+				input.nextLine();
 				break;
 			}
 			case 3:{
 				clearConsole();
 				System.out.println(fachada.listarDisciplinas());
+				input.nextLine();
 				break;
 			}
 			case 4:{
@@ -789,12 +791,13 @@ public class TUI {
 				break;
 			}
 		}
+		input.close();
 	}
 	
 	
 		
 	public void showUserInterface() {
-		System.out.println("------Entre com as InformaÁıes requeridas e crie seu Usu·rio------");
+		System.out.println("------Entre com as Informa√ß√µes requeridas e crie seu Usu√°rio------");
 		System.out.println();
 		criaServidor();
 		int tipoUsuario = login();
