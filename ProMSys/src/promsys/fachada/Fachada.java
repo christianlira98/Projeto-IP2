@@ -63,6 +63,10 @@ public class Fachada {
 	public boolean updateDisciplinaAlocacao(long id, Disciplina nova) {
 		return alocacoes.updateDisciplina(id, nova);
 	}
+	
+	public String listaAlocacao() {
+		return alocacoes.listaAlocacoes();
+	}
 
 	
 	//Disciplinas

@@ -47,17 +47,27 @@ public class AlocacaoDAO {
 		return vari;
 	}
 	
-	public Alocacao lerAlocID(long id) {
-		Alocacao vari = null;
-		if(id>=1) {
-			for (int i = 0; i  < this.aloc.size() && vari==null;i++) {
-				if(this.aloc.get(i).getId() == id) {
-					vari = this.aloc.get(i);
-				}
+public Alocacao lerAlocID(long id) {
+		
+		boolean encontrou = false;
+		int j = 0;
+		
+		for(int i = 0; i < this.aloc.size() && !encontrou; i++) {
+			if(id == this.aloc.get(i).getId() ) {
+				j = i;
+				encontrou = true;
 			}
 		}
-	return vari;
+		
+		if(encontrou == true){
+			return this.aloc.get(j);
+		}
+		else{
+			return null;
+		}
 	}
+	
+
 	
 	public Alocacao[] lerAlocPeriodo(String periodo) {
 		Alocacao[] aux = null;
@@ -141,5 +151,16 @@ public class AlocacaoDAO {
 			}
 		}
 		return vari;
+	}
+	
+public String listarAlocacoes() {
+		
+		String lista = "";
+		
+		for (int i = 0; i < this.aloc.size(); i++) {
+			lista += "**************************************\n" + this.aloc.get(i).toString() + "\n";
+		}
+		
+		return lista.toString();
 	}
 }

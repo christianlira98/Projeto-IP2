@@ -15,6 +15,7 @@ public class Alocacao {
 		this.professor = prof;
 		this.disciplina = dis;
 		this.horario = hora;
+		this.periodo = periodo;
 		this.id = nextID;
 		nextID++;
 	}
@@ -50,10 +51,10 @@ public class Alocacao {
 	
 	//EQUALS E TOSTRING
 	public String toString() {
-		return String.format("Professor: "+ getProfessor() + 
-							"\n Disciplina: "+ getDisciplina() +
-							"\n Período: " + getPeriodo() +
-							"\n Horário: " + getHorario() );
+		return String.format("Professor: "+ getProfessor().getNome() + 
+							"\nDisciplina: "+ getDisciplina().getNome() +
+							"\nPeríodo: " + getPeriodo() +"\n"+ getHorario() +
+							"\nID da Alocação: %d", this.getId());
 	}
 	public boolean equals(Object aloc) {
 		boolean vari = false;

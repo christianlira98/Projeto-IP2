@@ -7,7 +7,7 @@ public class Horario {
 	
 	private LocalTime horarioInicio;
 	private LocalTime horarioFim;
-	private ArrayList<String> diasDaSemana;
+	private ArrayList<String> diasDaSemana = new ArrayList<String>();
 	
 	public Horario(int hora_inicio, int hora_fim, String diaSemana) {
 		this.horarioInicio = LocalTime.of(hora_inicio, 0);

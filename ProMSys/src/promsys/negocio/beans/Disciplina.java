@@ -49,7 +49,7 @@ public class Disciplina {
 		}
 	}
 	public String toString() {
-		String text = String.format("Nome: %s\nID: %d\nCarga Horaria: %.0f", this.getNome(), this.getId(), this.getCargaHoraria());
+		String text = String.format("Nome: %s\nID: %d\nCarga Horaria: %.2f", this.getNome(), this.getId(), this.getCargaHoraria());
 		return text;
 	}
 	

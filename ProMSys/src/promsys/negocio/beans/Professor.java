@@ -60,9 +60,9 @@ public class Professor extends Usuario {
 		return vari;
 	}
 	public String toString() {
-		return String.format( " Nome: "+getNome()+ 
-							"\n ID: "+getId()+
-							"\n Disciplinas possíveis: "+getDisciplinasPossiveis());
+		return String.format( "Nome: "+getNome()+ 
+							"\nID: "+getId()+
+							"\nDisciplinas possíveis: \n"+getDisciplinasPossiveis());
 	}
 	
 }

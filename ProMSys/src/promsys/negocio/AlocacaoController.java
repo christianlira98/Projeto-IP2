@@ -52,4 +52,8 @@ public class AlocacaoController {
 	public boolean updateDisciplina(long id, Disciplina nova) {
 		return this.alocacaoRepository.updateDisciplina(id, nova);
 	}
+	
+	public String listaAlocacoes() {
+		return this.alocacaoRepository.listarAlocacoes();
+	}
 }
