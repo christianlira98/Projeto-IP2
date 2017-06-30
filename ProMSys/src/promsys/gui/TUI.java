@@ -96,13 +96,17 @@ public class TUI {
 		Scanner input = new Scanner(System.in);
 		int resposta = 0;
 		
+		System.out.println("1. Criar novo professor;");
+		System.out.println("2. Remover um professor;");
+		System.out.println("3. Atualizar um professor;");
+		System.out.println("4. Ver professores cadastrados;");
+		System.out.println("5. Sair.");
+		
+		
 		do{
-			System.out.println("1. Criar novo professor;");
-			System.out.println("2. Remover um professor;");
-			System.out.println("3. Atualizar um professor;");
-			System.out.println("4. Ver professores cadastrados;");
-			System.out.println("5. Sair.");
-		}while(resposta != 1 && resposta != 2 && resposta != 3 && resposta != 4);
+			resposta = input.nextInt();
+			input.nextLine();
+		}while(resposta >= 1 && resposta <= 5);
 		
 		switch(resposta){
 			case 1:{
