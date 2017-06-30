@@ -19,12 +19,12 @@ public class TUI {
 	    }
 	}
 	
-	private boolean login() {
+	private int login() {
 		
 		Scanner input = new Scanner(System.in);
-		boolean logged = false;		
+		boolean fezLogin = false;		
 		boolean falhou = false;
-		String resposta = null;
+		int tipoLogin = -1;
 			
 		do{			
 			System.out.println("Entre com seu login e senha: ");
@@ -37,12 +37,14 @@ public class TUI {
 		
 			if (this.fachada.fazLoginServidor(login, senha) == true) {
 				System.out.println("Bem-Vindo, Servidor!");
-				logged = true;
+				fezLogin = true;
+				tipoLogin = 1;
 				input.nextLine();
 			}
 			else if (this.fachada.fazLoginProfessor(login, senha) == true) {
 				System.out.println("Bem-Vindo, Professor!");
-				logged = true;
+				fezLogin = true;
+				tipoLogin = 2;
 				input.nextLine();
 			}
 			
@@ -50,13 +52,13 @@ public class TUI {
 				System.out.print("Usuário ou senha incorretos.\nDigitar novamente?");
 								
 				if (simOuNao() == false){
-					logged = false;
+					fezLogin = false;
 					falhou = true;
 				}
 			}
-		}while(logged == false && falhou == false);
+		}while(fezLogin == false && falhou == false);
 		
-		return logged;
+		return tipoLogin;
 	}
 	
 	private void criaServidor() {
@@ -84,8 +86,8 @@ public class TUI {
 		do{
 			resposta = input.nextInt();
 			input.nextLine();
-		}while(resposta >=1  && resposta <= 2);
-		System.out.print("IA");
+		}while(resposta != 1  && resposta != 2);
+
 		if (resposta == 1) {
 			ans = true;
 		}
@@ -287,14 +289,14 @@ public class TUI {
 						System.out.print("Entre com o novo nome: ");
 						String novoNome = input.nextLine();
 						
-						System.out.printf("Confirma troca de nome %s para %s? ", fachada.procurarDisciplina(id).getNome(), novoNome);
+						System.out.printf("Confirma Atualização do nome %s para %s? ", fachada.procurarDisciplina(id).getNome(), novoNome);
 						if(simOuNao() == true) {
 							fachada.atualizarDisciplina(id, novoNome);
-							System.out.print("Troca Realizada.");
+							System.out.print("Nome atualizado.");
 							input.nextLine();
 						}
 						else{
-							System.out.print("Troca não Realizada.");
+							System.out.print("Nome não atualizado.");
 							input.nextLine();
 						}
 					}
@@ -310,7 +312,7 @@ public class TUI {
 				boolean a = false;
 				do{
 					clearConsole();
-					System.out.println("Entre com o id da Disciplina:");
+					System.out.print("Entre com o id da Disciplina:");
 					int id = input.nextInt();
 					input.nextLine();
 					
@@ -318,15 +320,16 @@ public class TUI {
 						clearConsole();
 						System.out.print("Entre com a nova carga horaria: ");
 						double novaCargaHoraria = input.nextDouble();
+						input.nextLine();
 						
-						System.out.printf("Confirma troca da carga horária %.0f para %.0f? ", fachada.procurarDisciplina(id).getCargaHoraria(), novaCargaHoraria);
+						System.out.printf("Confirma atualização da carga horária %.0f para %.0f? ", fachada.procurarDisciplina(id).getCargaHoraria(), novaCargaHoraria);
 						if(simOuNao() == true) {
 							fachada.atualizarCargaHoraria(id, novaCargaHoraria);
-							System.out.print("Troca realizada.");
+							System.out.print("Carga horaria atualizada.");
 							input.nextLine();
 						}
 						else{
-							System.out.print("Troca não realizada.");
+							System.out.print("Carga horaria não atualizada.");
 							input.nextLine();
 						}
 						
@@ -355,9 +358,11 @@ public class TUI {
 							fachada.deletarDisciplina(id);
 							a = false;
 							System.out.print("Disciplina deletada");
+							input.nextLine();
 						}
 						else{
 							System.out.print("Disciplina não deletada");
+							input.nextLine();
 						}
 					}
 					else{
@@ -369,8 +374,14 @@ public class TUI {
 			}
 			case 6:{
 				clearConsole();
-				System.out.print(fachada.listarDisciplinas());
-				input.nextLine();
+				if(fachada.listarDisciplinas() == "") {
+					System.out.print("Ainda não existem disciplinas cadastradas.");
+					input.nextLine();
+				}
+				else{
+					System.out.print(fachada.listarDisciplinas());
+					input.nextLine();	
+				}
 				break;
 			}
 			case 7:{
@@ -393,8 +404,6 @@ public class TUI {
 		System.out.print("*ALOCAÇÃO DE PROFESSORES*");
 		System.out.print("*************************");
 	
-		criaServidor();
-		login();
 		clearConsole();
 		
 		do{		
@@ -653,8 +662,6 @@ public class TUI {
 		System.out.print("*ALOCAÇÃO DE PROFESSORES*");
 		System.out.print("*************************");
 		
-		login();
-		
 		do{		
 			System.out.println(" Escolha sua operação:");
 			System.out.println("1. Ver alocações;");
@@ -692,6 +699,14 @@ public class TUI {
 	
 		
 	public void showUserInterface() {
-		servidorUI();
+		criaServidor();
+		int tipoUsuario = login();
+		
+		if(tipoUsuario == 1) {
+			servidorUI();
+		}
+		else if(tipoUsuario == 2) {
+			professorUserI();
+		}
 	}
 }
