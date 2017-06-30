@@ -242,6 +242,7 @@ public class TUI {
 		do{
 			do{
 				clearConsole();
+				
 				System.out.println("1. Adcionar nova disciplina;");
 				System.out.println("2. Procurar uma disciplina;");
 				System.out.println("3. Atualizar nome de uma disciplina;");
