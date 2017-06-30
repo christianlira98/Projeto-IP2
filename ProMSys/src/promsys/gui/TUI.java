@@ -77,15 +77,15 @@ public class TUI {
 	
 	private boolean simOuNao() {
 		Scanner input = new Scanner(System.in);
-		System.out.print("s - SIM	|	n - NÃO");
-		String resposta = null;
+		System.out.print("1 - SIM	|	2 - NÃO");
+		int resposta = 0;
 		boolean ans = false;
 		
 		do{
-			resposta = input.nextLine();
-		}while(resposta != "s" && resposta != "n");
+			resposta = input.nextInt();
+		}while(resposta >=1  && resposta <= 2);
 		System.out.print("IA");
-		if (resposta == "s") {
+		if (resposta == 1) {
 			ans = true;
 		}
 		return ans;
@@ -654,8 +654,6 @@ public class TUI {
 		}
 	}
 	
-	
-		
 	public void showUserInterface() {
 		servidorUI();
 	}
