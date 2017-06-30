@@ -245,7 +245,7 @@ public class TUI {
 				System.out.println("7. Sair.");
 				opcao = input.nextInt();
 				input.nextLine();
-			}while(opcao != 1 && opcao != 2 && opcao != 3 && opcao != 4 && opcao != 5 && opcao != 6);
+			}while(opcao != 1 && opcao != 2 && opcao != 3 && opcao != 4 && opcao != 5 && opcao != 6 && opcao != 7);
 			
 			switch(opcao){
 			case 1:{
@@ -253,7 +253,7 @@ public class TUI {
 				System.out.print("Entre com o nome da discplina: ");
 				String nome = input.nextLine();
 				
-				System.out.print("Entre com a carga horária da disciplina");
+				System.out.print("Entre com a carga horária da disciplina: ");
 				double carga = input.nextDouble();
 				
 				Disciplina d = new Disciplina(nome, carga);
@@ -262,8 +262,11 @@ public class TUI {
 			}
 			case 2:{
 				clearConsole();
-				System.out.println("Entre com o id da Disciplina:");
+				System.out.print("Entre com o id da Disciplina:");
 				int id = input.nextInt();
+				input.nextLine();
+				
+				System.out.println();
 				System.out.print(fachada.procurarDisciplina(id));
 				if(fachada.procurarDisciplina(id) == null) {
 					System.out.print("Disciplina não encontrada.");
@@ -274,20 +277,33 @@ public class TUI {
 			case 3:{
 				boolean a = false;
 				do{
-					clearConsole();
-					System.out.println("Entre com o id da Disciplina:");
+					
+					System.out.print("Entre com o id da Disciplina:");
 					int id = input.nextInt();
+					input.nextLine();
+					
 					if(fachada.procurarDisciplina(id) != null){
 						clearConsole();
-						System.out.println("Entre com o novo nome");
+						System.out.print("Entre com o novo nome: ");
 						String novoNome = input.nextLine();
-						fachada.atualizarDisciplina(id, novoNome);
+						
+						System.out.printf("Confirma troca de nome %s para %s? ", fachada.procurarDisciplina(id).getNome(), novoNome);
+						if(simOuNao() == true) {
+							fachada.atualizarDisciplina(id, novoNome);
+							System.out.print("Troca Realizada.");
+							input.nextLine();
+						}
+						else{
+							System.out.print("Troca não Realizada.");
+							input.nextLine();
+						}
 					}
 					else{
-						System.out.println("Id não encontrado. Digitar novamente?");
+						System.out.print("Id não encontrado. Digitar novamente? ");
 						a = simOuNao();
 					}
 				}while(a != false);
+				
 				break;
 			}
 			case 4:{
@@ -296,11 +312,24 @@ public class TUI {
 					clearConsole();
 					System.out.println("Entre com o id da Disciplina:");
 					int id = input.nextInt();
+					input.nextLine();
+					
 					if(fachada.procurarDisciplina(id) != null){
 						clearConsole();
-						System.out.println("Entre com a nova carga horaria");
+						System.out.print("Entre com a nova carga horaria: ");
 						double novaCargaHoraria = input.nextDouble();
-						fachada.atualizarCargaHoraria(id, novaCargaHoraria);
+						
+						System.out.printf("Confirma troca da carga horária %.0f para %.0f? ", fachada.procurarDisciplina(id).getCargaHoraria(), novaCargaHoraria);
+						if(simOuNao() == true) {
+							fachada.atualizarCargaHoraria(id, novaCargaHoraria);
+							System.out.print("Troca realizada.");
+							input.nextLine();
+						}
+						else{
+							System.out.print("Troca não realizada.");
+							input.nextLine();
+						}
+						
 					}
 					else{
 						System.out.println("Id não encontrado. Digitar novamente?");
@@ -313,23 +342,26 @@ public class TUI {
 				boolean a = false;
 				do{
 					clearConsole();
-					System.out.println("Entre com o id da Disciplina:");
+					System.out.print("Entre com o id da Disciplina: ");
 					int id = input.nextInt();
+					input.nextLine();
+					
 					if(fachada.procurarDisciplina(id) != null){
 						clearConsole();
-						Disciplina d = fachada.procurarDisciplina(id);
-						System.out.println("Remover disciplina?");
+						
+						System.out.print("Remover disciplina?");
 						a = simOuNao();
 						if(a == true){
-							fachada.deletarDisciplina(d.getId());
+							fachada.deletarDisciplina(id);
 							a = false;
+							System.out.print("Disciplina deletada");
 						}
 						else{
-							System.out.println("Disciplina não deletada");
+							System.out.print("Disciplina não deletada");
 						}
 					}
 					else{
-						System.out.println("Id não encontrado. Digitar novamente?");
+						System.out.print("Id não encontrado. Digitar novamente?");
 						a = simOuNao();
 					}
 				}while(a != false);
@@ -343,9 +375,11 @@ public class TUI {
 			}
 			case 7:{
 				clearConsole();
-				System.out.println("Voltando...");
+				System.out.print("Voltando...");
+				input.nextLine();
 				break;
 			}
+			
 			}
 		}while(opcao != 7);
 		clearConsole();
@@ -655,6 +689,8 @@ public class TUI {
 		}
 	}
 	
+	
+		
 	public void showUserInterface() {
 		servidorUI();
 	}

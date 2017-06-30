@@ -105,7 +105,7 @@ public class DisciplinaDAO {
 		String lista = "";
 		
 		for (int i = 0; i < this.disciplinas.size(); i++) {
-			lista += "**************************************\n" + this.disciplinas.get(i).toString();
+			lista += "**************************************\n" + this.disciplinas.get(i).toString() + "\n";
 		}
 		
 		return lista.toString();

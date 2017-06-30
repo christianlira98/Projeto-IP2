@@ -148,7 +148,7 @@ public class ProfessorDAO{
 		String lista = "";
 		
 		for (int i = 0; i < this.prof.size(); i++) {
-			lista += "**************************************\n" + this.prof.get(i).toString();
+			lista += "**************************************\n" + this.prof.get(i).toString() + "\n";
 		}
 		
 		return lista.toString();
