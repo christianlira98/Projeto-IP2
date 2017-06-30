@@ -64,9 +64,6 @@ public class Fachada {
 		return alocacoes.updateDisciplina(id, nova);
 	}
 
-	public boolean updateCargaHoraria(long id, double nova) {
-		return alocacoes.updateCargaHoraria(id, nova);
-	}
 	
 	//Disciplinas
 	
