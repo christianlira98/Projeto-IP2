@@ -49,7 +49,8 @@ public class Disciplina {
 		}
 	}
 	public String toString() {
-		return String.format("Nome: %s\nID: %d\nCarga Horaria: %d", this.getNome(), this.getId(), this.getCargaHoraria());
+		String text = String.format("Nome: %s\nID: %d\nCarga Horaria: %.0f", this.getNome(), this.getId(), this.getCargaHoraria());
+		return text;
 	}
 	
 }

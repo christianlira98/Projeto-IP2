@@ -48,20 +48,21 @@ public class DisciplinaDAO {
 	public Disciplina procurarDisciplina(long id) {
 		
 		boolean encontrou = false;
-		int count = 0, j = 0;
+		int j = 0;
 		
 		for(int i = 0; i < this.disciplinas.size() && !encontrou; i++) {
 			if(id == this.disciplinas.get(i).getId() ) {
 				j = i;
 				encontrou = true;
 			}
-			count++;
 		}
 		
-		if(count == this.disciplinas.size() ){
+		if(encontrou == true){
+			return this.disciplinas.get(j);
+		}
+		else{
 			return null;
 		}
-		return this.disciplinas.get(j);
 	}
 	
 	public boolean atualizarNomeDisciplina(long id, String novoNome) {

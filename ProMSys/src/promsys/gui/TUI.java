@@ -6,7 +6,7 @@ import promsys.negocio.beans.*;
 import java.util.Scanner;
 
 public class TUI {
-
+//
 	private Fachada fachada;
 	
 	public TUI() {
@@ -14,22 +14,8 @@ public class TUI {
 	}
 	
 	public final static void clearConsole()	{
-	    try
-	    {
-	        final String os = System.getProperty("os.name");
-
-	        if (os.contains("Windows"))
-	        {
-	            Runtime.getRuntime().exec("cls");
-	        }
-	        else
-	        {
-	            Runtime.getRuntime().exec("clear");
-	        }
-	    }
-	    catch (final Exception e)
-	    {
-	        //  Handle any exceptions.
+	    for(int i = 0; i<100000; i++) {
+	    	System.out.println();
 	    }
 	}
 	
@@ -37,42 +23,39 @@ public class TUI {
 		
 		Scanner input = new Scanner(System.in);
 		boolean logged = false;		
-		String resposta = "";
-		
-		do{
-
+		boolean falhou = false;
+		String resposta = null;
+			
+		do{			
 			System.out.println("Entre com seu login e senha: ");
 			
 			System.out.print("Login: ");
 			String login = input.nextLine();
-			
+					
 			System.out.print("Senha: ");
 			String senha = input.nextLine();
-			
-			if (this.fachada.fazLoginProfessor(login, senha) == true) {
+		
+			if (this.fachada.fazLoginServidor(login, senha) == true) {
 				System.out.println("Bem-Vindo, Servidor!");
 				logged = true;
-				// espera enter e limpa tela
+				input.nextLine();
 			}
 			else if (this.fachada.fazLoginProfessor(login, senha) == true) {
 				System.out.println("Bem-Vindo, Professor!");
 				logged = true;
-				// espera enter e limpa tela
+				input.nextLine();
 			}
 			
 			else {
-				System.out.println("Usuário ou senha incorretos.\nDigitar novamente? s - SIM	|	n - NÃO");
-				do{
-					resposta = input.nextLine();
-				}while(resposta != "n" && resposta != "s");
-				
-				if (resposta == "n"){
-					logged = true;
+				System.out.print("Usuário ou senha incorretos.\nDigitar novamente?");
+								
+				if (simOuNao() == false){
+					logged = false;
+					falhou = true;
 				}
 			}
-		}while(logged == false);
+		}while(logged == false && falhou == false);
 		
-		input.close();
 		return logged;
 	}
 	
@@ -83,31 +66,28 @@ public class TUI {
 		System.out.print("\nNome: ");
 		String nome = input.nextLine();
 		
-		System.out.print("\nCrie seu Login: ");
+		System.out.print("Crie seu Login: ");
 		String login = input.nextLine();
 		
-		System.out.print("\nCrie sua senha: ");
+		System.out.print("Crie sua senha: ");
 		String senha = input.nextLine();
 		
 		this.fachada.cadastroServidor(nome, login, senha);
-		input.close();
 	}
 	
 	private boolean simOuNao() {
-		clearConsole();
 		Scanner input = new Scanner(System.in);
-		System.out.println("s - SIM	|	n - NÃO");
+		System.out.print("s - SIM	|	n - NÃO");
 		String resposta = null;
 		boolean ans = false;
 		
 		do{
 			resposta = input.nextLine();
 		}while(resposta != "s" && resposta != "n");
-		
+		System.out.print("IA");
 		if (resposta == "s") {
 			ans = true;
 		}
-		input.close();
 		return ans;
 	}
 	
@@ -246,7 +226,6 @@ public class TUI {
 				break;
 			}
 		}
-		input.close();
 	}
 	
 	private void disciplinasUI() {
@@ -264,10 +243,12 @@ public class TUI {
 				System.out.println("6. Ver todas as disciplinas cadastradas;");
 				System.out.println("7. Sair.");
 				opcao = input.nextInt();
+				input.nextLine();
 			}while(opcao != 1 && opcao != 2 && opcao != 3 && opcao != 4 && opcao != 5 && opcao != 6);
 			
 			switch(opcao){
 			case 1:{
+				clearConsole();
 				System.out.print("Entre com o nome da discplina: ");
 				String nome = input.nextLine();
 				
@@ -282,7 +263,10 @@ public class TUI {
 				clearConsole();
 				System.out.println("Entre com o id da Disciplina:");
 				int id = input.nextInt();
-				System.out.println(fachada.procurarDisciplina(id));
+				System.out.print(fachada.procurarDisciplina(id));
+				if(fachada.procurarDisciplina(id) == null) {
+					System.out.print("Disciplina não encontrada.");
+				}
 				input.nextLine();
 				break;
 			}
@@ -352,7 +336,7 @@ public class TUI {
 			}
 			case 6:{
 				clearConsole();
-				fachada.listarDisciplinas();
+				System.out.print(fachada.listarDisciplinas());
 				input.nextLine();
 				break;
 			}
@@ -376,6 +360,7 @@ public class TUI {
 	
 		criaServidor();
 		login();
+		clearConsole();
 		
 		do{		
 			System.out.println(" Escolha sua operação:");
@@ -663,10 +648,10 @@ public class TUI {
 			case 4:{
 				clearConsole();
 				System.out.println("Saindo...");
+				clearConsole();
 				break;
 			}
 		}
-		
 	}
 	
 	

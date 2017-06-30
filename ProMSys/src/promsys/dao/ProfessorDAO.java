@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class ProfessorDAO{
 	private static ProfessorDAO instance;
-	private ArrayList<Professor> prof = new ArrayList<>(); 
+	private ArrayList<Professor> prof;
 	private ArrayList<String> temp = null;
 	
 	private ProfessorDAO() {
-		
+		this.prof = new ArrayList<Professor>();
 	}	
 	public static ProfessorDAO getInstance() {
 		if(instance == null) {
@@ -17,24 +17,25 @@ public class ProfessorDAO{
 		return instance;
 	}
 	
-	public String[] procuraPorNome(String nome) {
-		String[] aux = null;
+	public Professor procuraPorNome(String nome) {
+		Professor aux = null; // antes era String
 		if(temp != null) {
 			temp = null;
 		}
 		if(nome != null) {
 			for(int i = 0; i < this.prof.size(); i++) {
 				if(this.prof.get(i).getNome() == nome) {
-					temp.add(this.prof.get(i).toString());
+					aux = this.prof.get(i);
+					//temp.add(this.prof.get(i).toString());
 				}
 			}
-		}
+		}/*
 		if(temp!=null) {
 			aux = new String[this.temp.size()];
 			for(int i = 0; i < this.temp.size();i++) {
 				aux[i] = this.temp.get(i);
 			}
-		}
+		}*/
 		return aux;
 	}
 	
