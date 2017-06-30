@@ -558,7 +558,7 @@ public class TUI {
 			}else {
 				System.out.println("Erro ao tentar remover");
 			}
-			
+			input.nextLine();
 			break;
 		case 3:
 			clearConsole();
@@ -622,18 +622,14 @@ public class TUI {
 					
 					System.out.println(fachada.lerAlocacoPorID(id3).toString());
 					
-					System.out.print("\nDigite a nova disciplina: ");
-					String novaDis = input.nextLine();
-					
-					System.out.print("\nDigite a nova Carga Horária: ");
-					double novaCarga = input.nextDouble();
+					System.out.print("\nDigite o ID da nova disciplina: ");
+					long novaDis = input.nextLong();
 					input.nextLine();
-					Disciplina disciplina = new Disciplina(novaDis, novaCarga);
 					System.out.println("Confirma essa operação?");
 					boolean ans5 = simOuNao();
 					if(ans5 == true ) {
-						fachada.updateDisciplinaAlocacao(id3, disciplina);
-						System.out.println(fachada.lerAlocacoPorID(id3).toString());
+						fachada.updateDisciplinaAlocacao(id3, fachada.procurarDisciplina(novaDis));
+						System.out.println("Operação realizada com sucesso");
 					}else {
 						System.out.println("Operação Cancelada...");
 					}
@@ -668,7 +664,7 @@ public class TUI {
 					boolean ans = simOuNao();
 					if(ans==true){
 						fachada.updateHorarioAlocacao(id4, hora4);
-						System.out.println(fachada.lerAlocacoPorID(id4).toString());
+						System.out.println("Operação realizada com sucesso");
 					
 					}else {
 						System.out.println("Operação Cancelada...");
