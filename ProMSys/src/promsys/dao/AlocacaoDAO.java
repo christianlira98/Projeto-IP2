@@ -74,14 +74,15 @@ public Alocacao lerAlocID(long id) {
 		if(temporario != null) {
 			temporario = null;
 		}
-		if(periodo != null) {
+		if(periodo != null && !this.aloc.isEmpty()) {
+			temporario = new ArrayList<Alocacao>();
 			for(int i = 0; i < this.aloc.size(); i++) {
 				if(this.aloc.get(i).getPeriodo() == periodo ) {
 					temporario.add(this.aloc.get(i));
 				}
 			}
 		}
-		if(temporario!=null) {
+		if(temporario != null) {
 			aux = new Alocacao[this.temporario.size()];
 			for(int i = 0; i < this.temporario.size();i++) {
 				aux[i] = this.temporario.get(i);

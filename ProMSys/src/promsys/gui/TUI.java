@@ -286,7 +286,7 @@ public class TUI {
 			switch(opcao){
 			case 1:{
 				clearConsole();
-				System.out.print("Entre com o nome da discplina: ");
+				System.out.print("Entre com o nome da disciplina: ");
 				String nome = input.nextLine();
 				
 				System.out.print("Entre com a carga horária da disciplina: ");
@@ -436,14 +436,14 @@ public class TUI {
 	private void servidorUI() {
 		Scanner input = new Scanner(System.in);
 		int resposta = 0;
-		
-		System.out.print("*************************");
-		System.out.print("*ALOCAÇAO DE PROFESSORES*");
-		System.out.print("*************************");
 	
-		clearConsole();
 		do{
-			do{		
+			do{
+				clearConsole();
+				System.out.println("*************************");
+				System.out.println("*ALOCAÇAO DE PROFESSORES*");
+				System.out.println("*************************");
+				System.out.println("\n");
 				System.out.println(" Escolha sua operação:");
 				System.out.println("1. Alocação;");
 				System.out.println("2. Professores;");
@@ -487,7 +487,7 @@ public class TUI {
 			System.out.println("3. Atualizar alocado;");
 			System.out.println("4. Ver alocado;");
 			System.out.println("5. Listar Alocados;");
-			System.out.println("6. Sair.");
+			System.out.print("6. Sair.");
 			resposta = input.nextInt();
 			input.nextLine();
 		}while(resposta != 1 && resposta != 2 && resposta != 3 && resposta != 4 && resposta!= 5 && resposta!= 6);
@@ -570,15 +570,45 @@ public class TUI {
 							}
 							
 							Alocacao nova = new Alocacao(prof, dis, periodo, hora);
+							int tam = 1;
+							if(fachada.lerAlocacaoPorPeriodo(periodo) != null) {
+								tam = fachada.lerAlocacaoPorPeriodo(periodo).length;
+							}
+							Alocacao[] existentes = new Alocacao[tam];
+							existentes = fachada.lerAlocacaoPorPeriodo(periodo);
+							boolean permiteSalvamento = true;
+							if(existentes != null) {
+								for(int j = 0; j<existentes.length; j++) {
+									int count = 0;
+									for(int k = 0; k < hora.getDiaDaSemana().size(); k++) {
+										if(hora.getDiaDaSemana().get(k) == existentes[j].getHorario().getDiaDaSemana().get(k) ) {
+											count++;
+										}
+									}
+									if(nova.getProfessor().equals(existentes[j].getProfessor()) && nova.getDisciplina().equals(existentes[j].getDisciplina()) && count > 0) {
+										permiteSalvamento = false;
+									}
+									else if(nova.getProfessor().equals(existentes[j].getProfessor()) && (nova.getDisciplina().equals(existentes[j].getDisciplina()) == false) && count > 0){
+										permiteSalvamento = false;
+									}
+								}
+							}
 							
-							boolean c = fachada.salvaAlocacao(nova);
-							if(c == true) {
-								System.out.println("Salvo com sucesso");
-								input.nextLine();
-							}else {
-								System.out.println("Erro ao tentar salvar");
+							if(permiteSalvamento == true) {
+								boolean c = fachada.salvaAlocacao(nova);
+								if(c == true) {
+									System.out.println("Salvo com sucesso");
+									input.nextLine();
+								}else {
+									System.out.println("Erro ao tentar salvar");
+									input.nextLine();
+								}
+							}
+							else{
+								System.out.print("Duas alocações não podem ter o mesmo professor, horario e disciplina.");
 								input.nextLine();
 							}
+							
 						}
 						else{
 							System.out.print("Alocação não realizada");
