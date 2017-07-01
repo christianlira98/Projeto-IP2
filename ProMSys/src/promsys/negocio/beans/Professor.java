@@ -64,7 +64,7 @@ public class Professor extends Usuario {
 							"\nID: "+getId()+
 							"\nDisciplinas possíveis: \n");
 		for(int i = 0; i < this.disciplinasPossiveis.size(); i++){
-			text += this.disciplinasPossiveis.get(i) + "\n";
+			text += this.disciplinasPossiveis.get(i).getNome() + "\n";
 		}
 		return text;
 	}

@@ -1,14 +1,12 @@
 package promsys.gui;
 
 import promsys.fachada.*;
-import promsys.negocio.*;
 import promsys.negocio.beans.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TUI {
-//
 	private Fachada fachada;
 	
 	public TUI() {
@@ -164,7 +162,7 @@ public class TUI {
 								clearConsole();
 								System.out.println(p+"\n");
 								System.out.println("1. Atualizar nome;");
-								System.out.println("2. Adcionar Disciplinas aptas;");
+								System.out.println("2. adicionar Disciplinas aptas;");
 								System.out.println("3. Sair.");						
 								ans = input.nextInt();
 								input.nextLine();
@@ -272,7 +270,7 @@ public class TUI {
 			do{
 				clearConsole();
 				
-				System.out.println("1. Adcionar nova disciplina;");
+				System.out.println("1. adicionar nova disciplina;");
 				System.out.println("2. Procurar uma disciplina;");
 				System.out.println("3. Atualizar nome de uma disciplina;");
 				System.out.println("4. Atualizar carga horaria de uma disciplina");
@@ -527,7 +525,7 @@ public class TUI {
 								}
 							}
 							if(permitido2 == false) {
-								System.out.print("Disciplina não permitida para esse professor. Tentar adcionar outra disciplina?");
+								System.out.print("Disciplina não permitida para esse professor. Tentar adicionar outra disciplina?");
 								a = simOuNao();
 							}
 						}while(permitido2 == false && a == true);
@@ -575,20 +573,35 @@ public class TUI {
 								tam = fachada.lerAlocacaoPorPeriodo(periodo).length;
 							}
 							Alocacao[] existentes = new Alocacao[tam];
-							existentes = fachada.lerAlocacaoPorPeriodo(periodo);
+							
+							if(fachada.lerAlocacaoPorPeriodo(periodo) != null) {
+								for(int z = 0; z< tam; z++) {
+									existentes[z] = fachada.lerAlocacaoPorPeriodo(periodo)[z];
+								}
+								
+							}else {
+								existentes=null;
+							}
+							
+
 							boolean permiteSalvamento = true;
 							if(existentes != null) {
 								for(int j = 0; j<existentes.length; j++) {
 									int count = 0;
 									for(int k = 0; k < hora.getDiaDaSemana().size(); k++) {
-										if(hora.getDiaDaSemana().get(k) == existentes[j].getHorario().getDiaDaSemana().get(k) ) {
-											count++;
+										for(int w = 0; w < existentes[j].getHorario().getDiaDaSemana().size();w++) {
+											if(hora.getDiaDaSemana().get(k) == existentes[j].getHorario().getDiaDaSemana().get(w)) {
+												System.out.println("1Dentro do laço !");
+												count++;
+											}
 										}
 									}
-									if(nova.getProfessor().equals(existentes[j].getProfessor()) && nova.getDisciplina().equals(existentes[j].getDisciplina()) && count > 0) {
+									if(nova.getProfessor().equals(existentes[j].getProfessor()) == true && nova.getDisciplina().equals(existentes[j].getDisciplina()) == true && count > 0) {
+										System.out.println("2Dentro do laço !");
 										permiteSalvamento = false;
 									}
-									else if(nova.getProfessor().equals(existentes[j].getProfessor()) && (nova.getDisciplina().equals(existentes[j].getDisciplina()) == false) && count > 0){
+									else if(nova.getProfessor().equals(existentes[j].getProfessor()) == true && (nova.getDisciplina().equals(existentes[j].getDisciplina()) == false) && count > 0){
+										System.out.println("3Dentro do laço !");
 										permiteSalvamento = false;
 									}
 								}

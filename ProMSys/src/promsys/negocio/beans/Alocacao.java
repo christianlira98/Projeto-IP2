@@ -60,7 +60,7 @@ public class Alocacao {
 		boolean vari = false;
 		if(aloc instanceof Alocacao) {
 			Alocacao temp = (Alocacao) aloc;
-			if(temp.getId() == this.id) {
+			if(temp.getId() == this.id || (temp.disciplina.getId() == this.disciplina.getId() && temp.horario.getHorarioInicio() == this.horario.getHorarioInicio() && temp.horario.getHorarioFim() == this.horario.getHorarioFim() && this.horario.getDiaDaSemana() == temp.horario.getDiaDaSemana() && this.getPeriodo() == temp.getPeriodo()==true)) {
 				vari = true;
 			}
 			
