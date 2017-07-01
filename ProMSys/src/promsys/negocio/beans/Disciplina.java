@@ -33,11 +33,11 @@ public class Disciplina {
 	}
 	
 	//EQUALS E TOSTRING
-	public boolean equals(Disciplina outra) {
+	public boolean equals(Object outra) {
 		
-		if(outra != null && outra instanceof Disciplina) {
-			
-			if(this.nome == outra.nome && this.id == outra.id){
+		if(outra instanceof Disciplina) {
+			Disciplina temp = (Disciplina) outra;
+			if(this.nome == temp.getNome() && this.id == temp.getId()){
 				return true;
 			}
 			else{

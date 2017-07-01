@@ -48,7 +48,7 @@ public class Horario {
 		boolean result = false;
 		
 		if (outro instanceof Horario && outro != null) {
-			if( this.horarioInicio == outro.horarioInicio && this.horarioFim == outro.horarioFim && this.diasDaSemana.equals(outro.getDiaDaSemana()) ) {
+			if( this.horarioInicio == outro.getHorarioInicio()&& this.horarioFim == outro.getHorarioFim() && this.diasDaSemana.equals(outro.getDiaDaSemana()) ) {
 				result = true;
 			}
 		}
