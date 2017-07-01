@@ -591,7 +591,7 @@ public class TUI {
 									int count = 0;
 									for(int k = 0; k < hora.getDiaDaSemana().size(); k++) {
 										for(int w = 0; w < existentes[j].getHorario().getDiaDaSemana().size();w++) {
-											if(hora.getDiaDaSemana().get(k) == existentes[j].getHorario().getDiaDaSemana().get(w)) {
+											if(hora.getDiaDaSemana().get(k).equals(existentes[j].getHorario().getDiaDaSemana().get(w)) ) {
 												System.out.println("1Dentro do laço !");
 												count++;
 											}

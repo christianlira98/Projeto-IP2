@@ -3,10 +3,10 @@ import promsys.negocio.beans.*;
 import java.util.ArrayList;
 public class AlocacaoDAO {
 	private static AlocacaoDAO instance;
-	private ArrayList<Alocacao> aloc = new ArrayList<Alocacao>();
+	private ArrayList<Alocacao> aloc;
 	private ArrayList<Alocacao> temporario = null;
 	private AlocacaoDAO() {
-		
+		this.aloc = new ArrayList<Alocacao>();
 	}
 	
 	public static AlocacaoDAO getInstance() {
@@ -77,17 +77,14 @@ public Alocacao lerAlocID(long id) {
 		if(periodo != null && !this.aloc.isEmpty()) {
 			temporario = new ArrayList<Alocacao>();
 			for(int i = 0; i < this.aloc.size(); i++) {
-				if(this.aloc.get(i).getPeriodo() == periodo ) {
-					System.out.print("faztemporario");
+				if(this.aloc.get(i).getPeriodo().equals(periodo)) {
 					temporario.add(this.aloc.get(i));
 				}
 			}
 		}
 		if(temporario != null) {
-			System.out.print(this.temporario.size());
 			aux = new Alocacao[this.temporario.size()];
 			for(int i = 0; i < this.temporario.size();i++) {
-				System.out.print("fazaux");
 				aux[i] = this.temporario.get(i);
 			}
 		}
