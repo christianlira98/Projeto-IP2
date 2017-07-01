@@ -579,6 +579,7 @@ public class TUI {
 							boolean permiteSalvamento = true;
 							if(existentes != null) {
 								for(int j = 0; j<existentes.length; j++) {
+									System.out.print("Entrou");
 									int count = 0;
 									for(int k = 0; k < hora.getDiaDaSemana().size(); k++) {
 										if(hora.getDiaDaSemana().get(k) == existentes[j].getHorario().getDiaDaSemana().get(k) ) {

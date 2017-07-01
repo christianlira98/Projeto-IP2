@@ -78,13 +78,16 @@ public Alocacao lerAlocID(long id) {
 			temporario = new ArrayList<Alocacao>();
 			for(int i = 0; i < this.aloc.size(); i++) {
 				if(this.aloc.get(i).getPeriodo() == periodo ) {
+					System.out.print("faztemporario");
 					temporario.add(this.aloc.get(i));
 				}
 			}
 		}
 		if(temporario != null) {
+			System.out.print(this.temporario.size());
 			aux = new Alocacao[this.temporario.size()];
 			for(int i = 0; i < this.temporario.size();i++) {
+				System.out.print("fazaux");
 				aux[i] = this.temporario.get(i);
 			}
 		}
