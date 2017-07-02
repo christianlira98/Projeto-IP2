@@ -169,7 +169,7 @@ public class TUI {
 				case 2:{
 					clearConsole();
 					System.out.print("Entre com o ID do professor:");
-					long id = input.nextInt();
+					long id = ehInt(input.nextLine());
 					Professor p = fachada.procurarProf(id);
 					clearConsole();
 					System.out.println("Confirma remoção de: ");
@@ -195,7 +195,7 @@ public class TUI {
 					do{
 					clearConsole();
 					System.out.println("Entre com o ID do professor:");
-					long id = input.nextInt();
+					long id = ehInt(input.nextLine());
 					int ans = 0;
 					Professor p = fachada.procurarProf(id);
 					if (p != null && p instanceof Professor) {
@@ -207,7 +207,7 @@ public class TUI {
 								System.out.println("1. Atualizar nome;");
 								System.out.println("2. adicionar Disciplinas aptas;");
 								System.out.println("3. Sair.");						
-								ans = input.nextInt();
+								ans = ehInt(input.nextLine());
 								input.nextLine();
 							}while(ans != 1 && ans != 2 && ans != 3);
 							
@@ -320,7 +320,7 @@ public class TUI {
 				System.out.println("5. Remover uma disciplina;");
 				System.out.println("6. Ver todas as disciplinas cadastradas;");
 				System.out.println("7. Sair.");
-				opcao = input.nextInt();
+				opcao = ehInt(input.nextLine());
 				input.nextLine();
 			}while(opcao != 1 && opcao != 2 && opcao != 3 && opcao != 4 && opcao != 5 && opcao != 6 && opcao != 7);
 			
@@ -331,7 +331,7 @@ public class TUI {
 				String nome = input.nextLine();
 				
 				System.out.print("Entre com a carga horária da disciplina: ");
-				double carga = input.nextDouble();
+				double carga = ehDouble(input.nextLine());
 				
 				Disciplina d = new Disciplina(nome, carga);
 				fachada.salvarDisciplina(d);
@@ -340,7 +340,7 @@ public class TUI {
 			case 2:{
 				clearConsole();
 				System.out.print("Entre com o id da Disciplina:");
-				long id = input.nextInt();
+				long id = ehInt(input.nextLine());
 				input.nextLine();
 				
 				System.out.println();
@@ -358,7 +358,7 @@ public class TUI {
 				do{
 					clearConsole();
 					System.out.print("Entre com o id da Disciplina:");
-					long id = input.nextInt();
+					long id = ehInt(input.nextLine());
 					input.nextLine();
 					
 					if(fachada.procurarDisciplina(id) != null){
@@ -390,13 +390,13 @@ public class TUI {
 				do{
 					clearConsole();
 					System.out.print("Entre com o id da Disciplina:");
-					long id = input.nextInt();
+					long id = ehInt(input.nextLine());
 					input.nextLine();
 					
 					if(fachada.procurarDisciplina(id) != null){
 						
 						System.out.print("Entre com a nova carga horaria: ");
-						double novaCargaHorariaT = input.nextDouble();
+						double novaCargaHorariaT = ehDouble(input.nextLine());
 						input.nextLine();
 						
 						System.out.printf("Confirma atualização da carga horária %.2f para %.2f? ", fachada.procurarDisciplina(id).getCargaHoraria(), novaCargaHorariaT);
@@ -423,7 +423,7 @@ public class TUI {
 				do{
 					clearConsole();
 					System.out.print("Entre com o id da Disciplina: ");
-					long id = input.nextInt();
+					long id = ehInt(input.nextLine());
 					input.nextLine();
 					
 					if(fachada.procurarDisciplina(id) != null){
@@ -491,7 +491,7 @@ public class TUI {
 				System.out.println("3. Disciplinas;");
 				System.out.println("4. Sair.");
 				System.out.println();
-				resposta = input.nextInt();
+				resposta = ehInt(input.nextLine());
 			}while(resposta != 1 && resposta != 2 && resposta != 3 && resposta != 4);
 			
 			switch(resposta){
@@ -529,7 +529,7 @@ public class TUI {
 			System.out.println("4. Ver alocado;");
 			System.out.println("5. Listar Alocados;");
 			System.out.print("6. Sair.");
-			resposta = input.nextInt();
+			resposta = ehInt(input.nextLine());
 			input.nextLine();
 		}while(resposta != 1 && resposta != 2 && resposta != 3 && resposta != 4 && resposta!= 5 && resposta!= 6);
 		
@@ -579,13 +579,13 @@ public class TUI {
 							String periodo = input.nextLine();
 							
 							System.out.print("Entre com o horario de início: ");
-							int horaIncio = input.nextInt();
+							int horaIncio = ehInt(input.nextLine());
 							System.out.print("Entre com o horario de fim: ");
-							int horaFim = input.nextInt();
+							int horaFim = ehInt(input.nextLine());
 							System.out.print("Entre com a quantidade de dias por semana(máx. 2): ");
 							int qtdDias;
 							do{
-								 qtdDias = input.nextInt();
+								 qtdDias = ehInt(input.nextLine());
 							}while(qtdDias < 0 && qtdDias > 2);
 							input.nextLine();
 							
@@ -711,7 +711,7 @@ public class TUI {
 				System.out.println("3.Atualiza Horário");
 				System.out.println("4.Atualiza Período");
 				System.out.println("5.Sair;");
-				op = input.nextInt();
+				op = ehInt(input.nextLine());
 				input.nextLine();
 			}while(op!=1 && op!= 2 && op!=3&&op!=4 && op!= 5);
 				switch(op) {
@@ -793,10 +793,10 @@ public class TUI {
 					System.out.println(fachada.lerAlocacoPorID(id4).toString());
 					
 					System.out.print("\nDigite a nova Hora de início: ");
-					int novaHora = input.nextInt();
+					int novaHora = ehInt(input.nextLine());
 					input.nextLine();
 					System.out.print("\nDigite a nova Hora de fim: ");
-					int novaHoraf = input.nextInt();
+					int novaHoraf = ehInt(input.nextLine());
 					input.nextLine();
 					System.out.print("\nDigite o novo Dia da semana: ");
 					String novoDia = input.nextLine();
@@ -857,7 +857,7 @@ public class TUI {
 		case 4:
 			clearConsole();
 			System.out.print("Entre com o id do Alocado:");
-			long id1 = input.nextInt();
+			long id1 = ehInt(input.nextLine());
 			input.nextLine();
 			
 			System.out.println();
@@ -906,7 +906,7 @@ public class TUI {
 			System.out.println("3. Ver disciplinas");
 			System.out.println("4. Sair");
 			System.out.println();
-			resposta = input.nextInt();
+			resposta = ehInt(input.nextLine());
 		}while(resposta != 1 && resposta != 2 && resposta != 3 && resposta != 4);
 		
 		switch(resposta){
