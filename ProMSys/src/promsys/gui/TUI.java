@@ -62,6 +62,50 @@ public class TUI {
 		return tipoLogin;
 	}
 	
+	private int ehNumero(String entrada) {
+		int ehNumero = -1;
+		int count = 0;
+		int countNumero = 0;
+		int countPonto = 0;
+		for(int i = 0; i < entrada.length(); i++) {
+			if(Character.isDigit(entrada.charAt(i)) == true) {
+				countNumero++;
+			}
+			else if(entrada.equals(".") ) {
+				countPonto++;
+			}
+			else{
+				count++;
+			}
+		}
+		if(countNumero > 0 && count == 0) {
+			ehNumero = 1;
+		}
+		else if(countNumero > 2 && countPonto == 1) {
+			ehNumero = 2;
+		}
+		else if(count > 0) {
+			ehNumero = 0;
+		}
+		return ehNumero;
+	}
+	
+	private int ehInt(String res) {
+		int r = 0;
+		if(ehNumero(res) == 1) {
+			r = Integer.parseInt(res);
+		}
+		return r;
+	}
+	
+	private double ehDouble(String res) {
+		double d = 0;
+		if(ehNumero(res) == 2) {
+			d = Double.parseDouble(res);
+		}
+		return d;
+	}
+	
 	private void criaServidor() {
 		
 		Scanner input = new Scanner(System.in);
@@ -82,10 +126,8 @@ public class TUI {
 		System.out.print("\n1 - SIM  |  2 - NÃO  ");
 		int resposta = 0;
 		boolean ans = false;
-		
 		do{
-			resposta = input.nextInt();
-			input.nextLine();
+			resposta = ehInt(input.nextLine());
 		}while(resposta != 1  && resposta != 2);
 
 		if (resposta == 1) {
@@ -96,6 +138,7 @@ public class TUI {
 	
 	private void professoresUI() {
 		Scanner input = new Scanner(System.in);
+		String res = null;
 		int resposta = 0;	
 		
 		do{
@@ -106,7 +149,7 @@ public class TUI {
 				System.out.println("3. Atualizar um professor;");
 				System.out.println("4. Ver professores cadastrados;");
 				System.out.print("5. Sair.");
-				resposta = input.nextInt();
+				resposta = ehInt(input.nextLine());
 				input.nextLine();
 			}while(resposta < 1 && resposta > 5);
 			
