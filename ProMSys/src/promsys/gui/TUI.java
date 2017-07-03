@@ -79,10 +79,10 @@ public class TUI {
 			}
 		}
 		if(countNumero > 0 && count == 0) {
-			ehNumero = 1;
+			ehNumero = 1; // int
 		}
 		else if(countNumero > 2 && countPonto == 1) {
-			ehNumero = 2;
+			ehNumero = 2;	//double
 		}
 		else if(count > 0) {
 			ehNumero = 0;
@@ -100,7 +100,7 @@ public class TUI {
 	
 	private double ehDouble(String res) {
 		double d = 0;
-		if(ehNumero(res) == 2) {
+		if(ehNumero(res) == 2 || ehNumero(res) == 1) {
 			d = Double.parseDouble(res);
 		}
 		return d;
@@ -321,7 +321,6 @@ public class TUI {
 				System.out.println("6. Ver todas as disciplinas cadastradas;");
 				System.out.println("7. Sair.");
 				opcao = ehInt(input.nextLine());
-				input.nextLine();
 			}while(opcao != 1 && opcao != 2 && opcao != 3 && opcao != 4 && opcao != 5 && opcao != 6 && opcao != 7);
 			
 			switch(opcao){
@@ -635,13 +634,11 @@ public class TUI {
 									for(int k = 0; k < hora.getDiaDaSemana().size(); k++) {
 										for(int w = 0; w < existentes[j].getHorario().getDiaDaSemana().size();w++) {
 											if(hora.getDiaDaSemana().get(k).equals(existentes[j].getHorario().getDiaDaSemana().get(w)) ) {
-												System.out.println("1Dentro do laço !");
 												count++;
 											}
 										}
 									}
 									if(nova.getProfessor().equals(existentes[j].getProfessor()) == true && nova.getDisciplina().equals(existentes[j].getDisciplina()) == true && count > 0) {
-										System.out.println("2Dentro do laço !");
 										permiteSalvamento = false;
 									}
 									else if(nova.getProfessor().equals(existentes[j].getProfessor()) == true && (nova.getDisciplina().equals(existentes[j].getDisciplina()) == false) && count > 0){
@@ -712,7 +709,6 @@ public class TUI {
 				System.out.println("4.Atualiza Período");
 				System.out.println("5.Sair;");
 				op = ehInt(input.nextLine());
-				input.nextLine();
 			}while(op!=1 && op!= 2 && op!=3&&op!=4 && op!= 5);
 				switch(op) {
 				case 1:
