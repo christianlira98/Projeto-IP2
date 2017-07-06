@@ -71,17 +71,17 @@ public class TUI {
 			if(Character.isDigit(entrada.charAt(i)) == true) {
 				countNumero++;
 			}
-			else if(entrada.equals(".") ) {
+			else if(entrada.charAt(i) == '.') {
 				countPonto++;
 			}
 			else{
 				count++;
 			}
 		}
-		if(countNumero > 0 && count == 0) {
+		if(countNumero > 0 && countPonto == 0 && count == 0) {
 			ehNumero = 1; // int
 		}
-		else if(countNumero > 2 && countPonto == 1) {
+		else if(countNumero > 1 && countPonto == 1) {
 			ehNumero = 2;	//double
 		}
 		else if(count > 0) {
@@ -100,6 +100,7 @@ public class TUI {
 	
 	private double ehDouble(String res) {
 		double d = 0;
+		System.out.print(ehNumero(res));
 		if(ehNumero(res) == 2 || ehNumero(res) == 1) {
 			d = Double.parseDouble(res);
 		}
