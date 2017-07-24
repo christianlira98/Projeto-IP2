@@ -1,18 +1,20 @@
 package promsys.negocio.beans;
-
+import java.util.List;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 
+import promsys.Enum.*;
 public class Horario {
 	
 	private LocalTime horarioInicio;
 	private LocalTime horarioFim;
-	private ArrayList<String> diasDaSemana = new ArrayList<String>();
+	private List<DiasEnum> diasDaSemana = new ArrayList<>();
 	
-	public Horario(int hora_inicio, int hora_fim, String diaSemana) {
+	public Horario(int hora_inicio, int hora_fim, DiasEnum[] dia) {
 		this.horarioInicio = LocalTime.of(hora_inicio, 0);
 		this.horarioFim = LocalTime.of(hora_fim, 0);
-		this.diasDaSemana.add(diaSemana);
+		this.diasDaSemana.addAll(Arrays.asList(dia));
 	}
 
 	public LocalTime getHorarioInicio() {
@@ -23,7 +25,7 @@ public class Horario {
 		return this.horarioFim;
 	}
 	
-	public ArrayList<String> getDiaDaSemana() {
+	public List<DiasEnum> getDiaDaSemana() {
 		return this.diasDaSemana;
 	}
 
@@ -35,7 +37,7 @@ public class Horario {
 		this.horarioFim = LocalTime.of(hora, minutos);
 	}
 	
-	public void addDiaDaSemana(String novoDia) {
+	public void addDiaDaSemana(DiasEnum novoDia) {
 		this.diasDaSemana.add(novoDia);
 	}
 	
@@ -56,9 +58,22 @@ public class Horario {
 	}
 	
 	public String toString() {
+		String vari = "";
+		for(int i = 0; i < diasDaSemana.size();i++) {
+			
+			if(i == 1 && diasDaSemana.size()==2) {
+				vari += diasDaSemana.get(i).getNomeDia() + ";";
+			}
+			else if(i == 0 && diasDaSemana.size()==2) {
+				vari += diasDaSemana.get(i).getNomeDia() + ", ";
+			}
+			else if(i == 0 && diasDaSemana.size()==1) {
+				vari += diasDaSemana.get(i).getNomeDia() + ";";
+			}
+		}
 		String horario = String.format("Início: %s\n"
 				+ "Fim: %s\n"
-				+ "Dias da semana: %s", this.horarioInicio.toString(), this.horarioFim.toString(), this.diasDaSemana.toString() );
+				+ "Dias da semana: %s", this.horarioInicio.toString(), this.horarioFim.toString(), vari);
 		return horario;
 	}
 }

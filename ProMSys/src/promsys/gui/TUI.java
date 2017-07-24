@@ -1,5 +1,5 @@
 package promsys.gui;
-
+import promsys.Enum.*;
 import promsys.fachada.*;
 import promsys.negocio.beans.*;
 
@@ -71,7 +71,7 @@ public class TUI {
 			if(Character.isDigit(entrada.charAt(i)) == true) {
 				countNumero++;
 			}
-			else if(entrada.charAt(i) == '.') {
+			else if(entrada.charAt(i) == '.' ) {
 				countPonto++;
 			}
 			else{
@@ -589,26 +589,55 @@ public class TUI {
 							}while(qtdDias < 0 && qtdDias > 2);
 							input.nextLine();
 							
-							String[] dias = new String[2];
-							dias[0] = null;
-							dias[1] = null;
+							DiasEnum[] dias = new DiasEnum[qtdDias];
+							for(int i = 0; i < dias.length; i++) {
+								dias[i] = null;
+							}
 							int i = 0;
 							do{
 								
-								System.out.print("Entre com o dia da semana: ");
+								System.out.print("\nEntre com o dia da semana: (1-Segunda \\ 2-Terça \\3-Quarta \\ 4-Quinta \\ 5-sexta \\ 6-sábado \\ 7-Domingo)");
+								int vari = input.nextInt();
 								if(dias[i] ==null){
-									dias[i] = input.nextLine();
-									i++;
+									switch(vari) {
+										case 1:
+											dias[i] = DiasEnum.SEGUNDA;
+											i++;
+											break;
+										case 2:
+											dias[i] = DiasEnum.TERÇA;
+											i++;
+											break;
+										case 3:
+											dias[i] = DiasEnum.QUARTA;
+											i++;
+											break;
+										case 4:
+											dias[i] = DiasEnum.QUINTA;
+											i++;
+											break;
+										case 5:
+											dias[i] = DiasEnum.SEXTA;
+											i++;
+											break;
+										case 6:
+											dias[i] = DiasEnum.SABADO;
+											i++;
+											break;
+										case 7:
+											dias[i] = DiasEnum.DOMINGO;
+											i++;
+											break;
+										default:
+											break;
+									}
 								}else {
 									break;
 								}
 							}while(i<qtdDias);
 							
-							Horario hora = new Horario(horaIncio, horaFim, dias[0]);
+							Horario hora = new Horario(horaIncio, horaFim, dias);
 							
-							if(qtdDias > 1) {
-							hora.addDiaDaSemana(dias[1]);
-							}
 							
 							Alocacao nova = new Alocacao(prof, dis, periodo, hora);
 							int tam = 1;
@@ -777,16 +806,22 @@ public class TUI {
 					clearConsole();
 					long id4;
 					boolean e4;
+					int tamanho, i = 0;
+					DiasEnum[] novoDias;
 					do {
 						System.out.print("\nDigite o ID do alocado que deseja atualizar Horario: ");
 						id4 = input.nextLong();
 						input.nextLine();
 						e4 = fachada.verificaExistenciaAlocacao(id4);
+						tamanho = fachada.lerAlocacoPorID(id4).getHorario().getDiaDaSemana().size();
 						if(!e4) {
 							System.out.println("Este ID não existe.");
 						}
 					}while(!e4);
-					
+					novoDias = new DiasEnum[tamanho];
+					for(int j = 0; j < novoDias.length; j++) {
+						novoDias[j] = null;
+					}
 					System.out.println(fachada.lerAlocacoPorID(id4).toString());
 					
 					System.out.print("\nDigite a nova Hora de início: ");
@@ -795,9 +830,45 @@ public class TUI {
 					System.out.print("\nDigite a nova Hora de fim: ");
 					int novaHoraf = ehInt(input.nextLine());
 					input.nextLine();
-					System.out.print("\nDigite o novo Dia da semana: ");
-					String novoDia = input.nextLine();
-					Horario hora4 = new Horario(novaHora, novaHoraf, novoDia);
+					do {
+						System.out.print("\nDigite o novo Dia da semana: (1-Segunda \\ 2-Terça \\ 3-Quarta \\ 4-Quinta \\ 5-sexta \\ 6-sábado \\ 7-Domingo)");
+						int variavel = input.nextInt();
+						if(novoDias[i] == null){
+							switch(variavel) {
+								case 1:
+									novoDias[i] = DiasEnum.SEGUNDA;
+									i++;
+									break;
+								case 2:
+									novoDias[i] = DiasEnum.TERÇA;
+									i++;
+									break;
+								case 3:
+									novoDias[i] = DiasEnum.QUARTA;
+									i++;
+									break;
+								case 4:
+									novoDias[i] = DiasEnum.QUINTA;
+									i++;
+									break;
+								case 5:
+									novoDias[i] = DiasEnum.SEXTA;
+									i++;
+									break;
+								case 6:
+									novoDias[i] = DiasEnum.SABADO;
+									i++;
+									break;
+								case 7:
+									novoDias[i] = DiasEnum.DOMINGO;
+									i++;
+									break;
+								default:
+									break;
+							}
+						}
+					}while(i<tamanho);
+					Horario hora4 = new Horario(novaHora, novaHoraf, novoDias);
 					System.out.println("Confirma essa operação?");
 					boolean ans = simOuNao();
 					if(ans==true){
