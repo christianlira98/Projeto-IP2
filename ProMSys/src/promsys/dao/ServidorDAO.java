@@ -1,9 +1,11 @@
 package promsys.dao;
 
 import promsys.negocio.beans.Servidor;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ServidorDAO {
+public class ServidorDAO implements IServidorDAO, Serializable {
 	
 	private static ServidorDAO instance;
 	private static ArrayList<Servidor> admins = new ArrayList<>();
@@ -18,15 +20,15 @@ public class ServidorDAO {
 		return instance;
 	}
 	
-	public void saveServidor(Servidor admin){
+	public void cadastrar(Servidor admin){
 		admins.add(admin);
 	}
 	
-	public boolean removeServidor(Servidor admin){
-		return admins.remove(admin);
+	public void remover(Servidor admin){
+		admins.remove(admin);
 	}
 	
-	public boolean updateServidor(Servidor admin){
+	public void atualizar(Servidor admin){
 		boolean result = false;
 		Servidor old = null;
 		for(int i = 0; i < admins.size(); i++){
@@ -38,10 +40,9 @@ public class ServidorDAO {
 		if(old != null){
 			result = true;
 		}
-		return result;
 	}
 	
-	public Servidor findServidor(long id){
+	public Servidor procurar(long id){
 		Servidor result = null;
 		for(int i = 0; i < admins.size() && result == null; i++){
 			if(admins.get(i).getID() == id){

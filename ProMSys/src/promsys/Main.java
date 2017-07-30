@@ -1,4 +1,4 @@
-
+package promsys;
 import promsys.gui.*;
 
 public class Main {

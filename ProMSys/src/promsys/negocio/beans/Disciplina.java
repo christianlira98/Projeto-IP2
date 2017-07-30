@@ -3,16 +3,14 @@ package promsys.negocio.beans;
 public class Disciplina {
 
 	private long id;
-	private static long nextId = 1;
 	private String nome;
 	private double cargaHoraria;
+	private String codigoTurma;
 	
 	//CONSTRUTOR
 	public Disciplina(String nome, double cargaHoraria) {
 		this.nome = nome;
 		this.cargaHoraria = cargaHoraria;
-		this.id = nextId;
-		nextId++;
 	}
 	
 	//GETTERS AND SETTERS
@@ -22,6 +20,9 @@ public class Disciplina {
 	public void setNome(String novoNome) {
 		this.nome = novoNome;
 	}
+	public void setId(long id) {
+		this.id = id;
+	}
 	public long getId() {
 		return this.id;
 	}
@@ -30,6 +31,12 @@ public class Disciplina {
 	}
 	public double getCargaHoraria(){
 		return this.cargaHoraria;
+	}
+	public void setCodigoTurma(String codTurma) {
+		this.codigoTurma = codTurma;
+	}
+	public String getCodigoTurma() {
+		return this.codigoTurma;
 	}
 	
 	//EQUALS E TOSTRING

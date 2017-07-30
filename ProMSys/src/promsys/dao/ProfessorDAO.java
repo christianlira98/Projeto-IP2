@@ -1,8 +1,10 @@
 package promsys.dao;
 import promsys.negocio.beans.*;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ProfessorDAO{
+public class ProfessorDAO implements IProfessorDAO, Serializable{
 	private static ProfessorDAO instance;
 	private ArrayList<Professor> prof;
 	private ArrayList<String> temp = null;
@@ -17,7 +19,7 @@ public class ProfessorDAO{
 		return instance;
 	}
 	
-	public Professor procuraPorNome(String nome) {
+	public Professor procurarPorNome(String nome) {
 		Professor aux = null; // antes era String
 		if(temp != null) {
 			temp = null;
@@ -39,8 +41,8 @@ public class ProfessorDAO{
 		return aux;
 	}
 	
-	public boolean cadastrarProfessor(Object obj) {
-		 boolean vari = false, variTemp = false;
+	public void cadastrar(Object obj) {
+		 boolean variTemp = false;
 		if(obj instanceof Professor ) {
 			Professor prof = (Professor) obj;
 			for(int i = 0; i < this.prof.size() && !variTemp; i++) {
@@ -50,13 +52,11 @@ public class ProfessorDAO{
 			}
 			if(variTemp == false) {
 			this.prof.add(prof);
-			vari = true;
 			}
 		}
-		return vari;
 	}
 	
-	public boolean removerProfessor(long id) {
+	public void remover(long id) {
 		boolean vari = false;
 		if(id >=1) {
 			for(int i = 0; i < this.prof.size() && !vari; i++) {
@@ -66,10 +66,9 @@ public class ProfessorDAO{
 				}
 			}
 		}
-		return vari;
 	}
 	
-	public Professor lerProfessor (long id) {
+	public Professor procurar (long id) {
 		Professor novo = null;
 		if(id>=1) {
 			for (int i = 0; i  < this.prof.size() && novo == null;i++) {
@@ -81,7 +80,7 @@ public class ProfessorDAO{
 		return novo;
 	}
 	
-	public String updateNome (String nome, long id) {
+	public void atualizarNome (String nome, long id) {
 		String vari = null;
 		if(nome !=null && id >= 1) {
 			for(int i = 0; i < this.prof.size() && vari == null; i++) {
@@ -91,10 +90,9 @@ public class ProfessorDAO{
 				}
 			}
 		}
-		return vari;
 	}
 	
-	public boolean addPossiveisDisciplinas(long idprof, Disciplina disciplina) {
+	public void addPossivelDisciplina(long idprof, Disciplina disciplina) {
 		boolean vari = false;
 		if(idprof >= 0 && disciplina != null) {
 			for( int i = 0; i < this.prof.size() && !vari; i++) {
@@ -104,11 +102,10 @@ public class ProfessorDAO{
 				}
 			}
 		}
-		return vari;
 	}
 	
 	
-	public boolean removePossiveisDisciplinas(long idProf, long idDisciplina) {
+	public void removerPossivelDisciplina(long idProf, long idDisciplina) {
 		boolean vari = false;
 		if(idProf >= 1 && idDisciplina >= 1) {
 			for(int i = 0; i < this.prof.size() && !vari; i++) {
@@ -118,7 +115,6 @@ public class ProfessorDAO{
 				}
 			}
 		}
-		return vari;
 	}
 	
 	/*
@@ -133,7 +129,7 @@ public class ProfessorDAO{
 	}
 	*/
 	
-	public boolean verificaExistencia(long id) {
+	public boolean existe(long id) {
 		boolean vari = false;
 		for(int i = 0; i < this.prof.size() && !vari; i++) {
 			if(this.prof.get(i).getId()==id) {

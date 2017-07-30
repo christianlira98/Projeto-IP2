@@ -1,10 +1,12 @@
 package promsys.dao;
 import promsys.negocio.beans.*;
-import java.util.ArrayList;
-public class AlocacaoDAO {
+
+import java.io.Serializable;
+import java.util.ArrayList; 
+public class AlocacaoDAO implements IAlocacaoDAO, Serializable {
 	private static AlocacaoDAO instance;
 	private ArrayList<Alocacao> aloc;
-	private ArrayList<Alocacao> temporario = null;
+	
 	private AlocacaoDAO() {
 		this.aloc = new ArrayList<Alocacao>();
 	}
@@ -16,9 +18,9 @@ public class AlocacaoDAO {
 		return instance;
 	}
 	
-	public boolean salvaAloc(Object obj) { //Caso alguém crie uma instancia e tente
+	public void cadastrar(Object obj) { //Caso alguém crie uma instancia e tente
 											// e tente cadastrar a msm, duas vezes. Isso impede!
-		boolean vari = false, variTemp = false;
+		boolean variTemp = false;
 		if(obj instanceof Alocacao) {
 			Alocacao temp = (Alocacao) obj;
 			for(int i = 0; i < this.aloc.size() && !variTemp; i++) {
@@ -28,13 +30,11 @@ public class AlocacaoDAO {
 			}
 			if(variTemp == false) {
 				this.aloc.add(temp);
-				vari = true;
 			}
 		}
-		return vari;
 	}
 	
-	public boolean removeAloc(long id) {
+	public void remover(long id) {
 		boolean vari = false;
 		if(id >=1) {
 			for(int i = 0; i < this.aloc.size() && !vari; i++) {
@@ -44,10 +44,9 @@ public class AlocacaoDAO {
 				}
 			}
 		}
-		return vari;
 	}
 	
-public Alocacao lerAlocID(long id) {
+public Alocacao procurar(long id) {
 		
 		boolean encontrou = false;
 		int j = 0;
@@ -69,11 +68,9 @@ public Alocacao lerAlocID(long id) {
 	
 
 	
-	public Alocacao[] lerAlocPeriodo(String periodo) {
-		Alocacao[] aux = null;
-		if(temporario != null) {
-			temporario = null;
-		}
+	public ArrayList<Alocacao> retornaAlocacoesPeriodo(String periodo) {
+		ArrayList<Alocacao> temporario = null;
+		
 		if(periodo != null && !this.aloc.isEmpty()) {
 			temporario = new ArrayList<Alocacao>();
 			for(int i = 0; i < this.aloc.size(); i++) {
@@ -82,16 +79,11 @@ public Alocacao lerAlocID(long id) {
 				}
 			}
 		}
-		if(temporario != null) {
-			aux = new Alocacao[this.temporario.size()];
-			for(int i = 0; i < this.temporario.size();i++) {
-				aux[i] = this.temporario.get(i);
-			}
-		}
-		return aux;
+
+		return temporario;
 	}
 	
-	public boolean updateDisciplina(Long id, Disciplina nova) {
+	public void atualizarDisciplina(long id, Disciplina nova) {
 		boolean vari = false;
 		if(id >=1 && nova!= null) {
 			for(int i = 0; i < this.aloc.size() && !vari; i++) {
@@ -101,11 +93,10 @@ public Alocacao lerAlocID(long id) {
 				}
 			}
 		}
-		return vari;
 	}
 	
 	
-	public boolean updateProfessor(Long id, Professor nova) {
+	public void atualizarProfessor(long id, Professor nova) {
 		boolean vari = false;
 		if(id >=1 && nova!= null) {
 			for(int i = 0; i < this.aloc.size() && !vari; i++) {
@@ -115,10 +106,9 @@ public Alocacao lerAlocID(long id) {
 				}
 			}
 		}
-		return vari;
 	}
 	
-	public boolean updateHorario(Long id, Horario nova) {
+	public void atualizarHorario(long id, Horario nova) {
 		boolean vari = false;
 		if(id >=1 && nova!= null) {
 			for(int i = 0; i < this.aloc.size() && !vari; i++) {
@@ -128,10 +118,9 @@ public Alocacao lerAlocID(long id) {
 				}
 			}
 		}
-		return vari;
 	}
 	
-	public boolean updatePeriodo(Long id, String nova) {
+	public void atualizarPeriodo(long id, String nova) {
 		boolean vari = false;
 		if(id >=1 && nova!= null) {
 			for(int i = 0; i < this.aloc.size() && !vari; i++) {
@@ -141,10 +130,10 @@ public Alocacao lerAlocID(long id) {
 				}
 			}
 		}
-		return vari;
+		
 	}	
 	
-	public boolean verificaExistencia(long id) {
+	public boolean existe(long id) {
 		boolean vari = false;
 		for(int i = 0; i < this.aloc.size() && !vari; i++) {
 			if(this.aloc.get(i).getId()==id) {
@@ -154,7 +143,7 @@ public Alocacao lerAlocID(long id) {
 		return vari;
 	}
 	
-public String listarAlocacoes() {
+public String listarTodasAlocacoes() {
 		
 		String lista = "";
 		

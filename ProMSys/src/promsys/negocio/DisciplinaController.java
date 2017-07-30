@@ -2,49 +2,60 @@ package promsys.negocio;
 
 import promsys.dao.*;
 import promsys.negocio.beans.Disciplina;
+import promsys.exceptions.*;
 
 public class DisciplinaController {
 
-	private DisciplinaDAO disciplinaRepository;
-	private static DisciplinaController instance;
+	private IDisciplinaDAO repositorioDisciplina;
 	
-	public static DisciplinaController getInstance() {
-		if(instance == null){
-			instance = new DisciplinaController();
+	public DisciplinaController(IDisciplinaDAO instancia) {
+		this.repositorioDisciplina = instancia;
+	}
+	
+	public void cadastrarDisciplina(Disciplina d) throws DisciplinaJaExisteException {
+		if(d == null) {
+			throw new IllegalArgumentException("Parâmetro Nulo");
 		}
-		return instance;
-	}
-	
-	private DisciplinaController() {
-		this.disciplinaRepository = DisciplinaDAO.getInstance(); 
-	}
-	
-	public void salvarDisciplina(Disciplina d) {
-		this.disciplinaRepository.salvarDisciplina(d);
+		else {
+			if(d.getId() == 0L) {
+				this.repositorioDisciplina.cadastrar(d);
+				this.repositorioDisciplina.salvarArquivo();
+			}
+			else {
+				throw new DisciplinaJaExisteException(d.getId());
+			}
+		}
 	}
 	
 	public Disciplina procurarDisciplina(long id) {
-		return this.disciplinaRepository.procurarDisciplina(id);
+		return this.repositorioDisciplina.procurarDisciplina(id);
 	}
 	
 	public Disciplina procurarNomeDisciplina(String nome) {
-		return this.disciplinaRepository.procurarNomeDisciplina(nome);
+		return this.repositorioDisciplina.procurarNomeDisciplina(nome);
 	}
 	
-	public boolean atualizarDisciplina(long id, String novoNome) {
-		return this.disciplinaRepository.atualizarNomeDisciplina(id, novoNome);
+	public void atualizarDisciplina(long id, String novoNome) {
+		this.repositorioDisciplina.atualizarNomeDisciplina(id, novoNome);
+		this.repositorioDisciplina.salvarArquivo();
 	}
 	
-	public boolean atualizarCargaHoraria(long id, double cargaHoraria) {
-		return this.disciplinaRepository.atualizarCargaHoraria(id, cargaHoraria);
+	public void atualizarCargaHoraria(long id, double cargaHoraria) {
+		this.repositorioDisciplina.atualizarCargaHoraria(id, cargaHoraria);
+		this.repositorioDisciplina.salvarArquivo();
 	}
 	
-	public boolean deletarDisciplina(long id) {
-		return this.disciplinaRepository.deletarDisciplina(id);
+	public void removerDisciplina(long id) throws DisciplinaNaoExisteException {
+		this.repositorioDisciplina.removerDisciplina(id);
+		this.repositorioDisciplina.salvarArquivo();
+	}
+	
+	public void existe(long id) {
+		this.repositorioDisciplina.existe(id);
 	}
 	
 	public String listarDisciplinas() {
-		return this.disciplinaRepository.listarDisciplinas();
+		return this.repositorioDisciplina.listarDisciplinas();
 	}
 
 }

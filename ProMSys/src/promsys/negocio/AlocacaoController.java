@@ -1,59 +1,53 @@
 package promsys.negocio;
 import promsys.negocio.beans.*;
-import promsys.dao.AlocacaoDAO;
+import promsys.dao.*;
 
 public class AlocacaoController {
-	private AlocacaoDAO alocacaoRepository;
-	private static AlocacaoController instance;
+	
+	private IAlocacaoDAO repositorioAlocacao;
 
-	private AlocacaoController() {
-		this.alocacaoRepository = AlocacaoDAO.getInstance();
+	private AlocacaoController(IAlocacaoDAO instancia) {
+		this.repositorioAlocacao = instancia;
+	}
+
+	
+	public void cadastrar(Object obj) {
+		this.repositorioAlocacao.cadastrar(obj);
 	}
 	
-	public static AlocacaoController getInstance() {
-		if(instance == null) {
-			instance = new AlocacaoController();
-		}
-		return instance;
-	}
-	
-	public boolean salvaAloc(Object obj) {
-		return this.alocacaoRepository.salvaAloc(obj);
-	}
-	
-	public boolean removeAloc(long id) {
-		return this.alocacaoRepository.removeAloc(id);
+	public void remover(long id) {
+		this.repositorioAlocacao.remover(id);
 	}
 	
 	public Alocacao lerPorID(long id) {
-		return this.alocacaoRepository.lerAlocID(id);
+		return this.repositorioAlocacao.lerAlocID(id);
 	}
 	
 	public Alocacao[] lerPorPeriodo(String periodo) {
-		return this.alocacaoRepository.lerAlocPeriodo(periodo);
+		return this.repositorioAlocacao.lerAlocPeriodo(periodo);
 	}
 	
 	public boolean verificaExistencia(long id) {
-		return this.alocacaoRepository.verificaExistencia(id);
+		return this.repositorioAlocacao.verificaExistencia(id);
 	}
 	
 	public boolean updateHorario( long id, Horario nova) {
-		return this.alocacaoRepository.updateHorario(id, nova);
+		return this.repositorioAlocacao.updateHorario(id, nova);
 	}
 	
 	public boolean updateProfessor(long id, Professor nova) {
-		return this.alocacaoRepository.updateProfessor(id, nova);
+		return this.repositorioAlocacao.updateProfessor(id, nova);
 	}
 	
 	public boolean updatePeriodo(long id, String nova) {
-		return this.alocacaoRepository.updatePeriodo(id, nova);
+		return this.repositorioAlocacao.updatePeriodo(id, nova);
 	}
 	
 	public boolean updateDisciplina(long id, Disciplina nova) {
-		return this.alocacaoRepository.updateDisciplina(id, nova);
+		return this.repositorioAlocacao.updateDisciplina(id, nova);
 	}
 	
 	public String listaAlocacoes() {
-		return this.alocacaoRepository.listarAlocacoes();
+		return this.repositorioAlocacao.listarAlocacoes();
 	}
 }
