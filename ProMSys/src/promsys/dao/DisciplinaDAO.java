@@ -10,11 +10,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import promsys.exceptions.DisciplinaNaoExisteException;
 import promsys.negocio.beans.*;
-
+import java.util.List;
 public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 	
 	private static DisciplinaDAO instance;
-	private ArrayList<Disciplina> disciplinas;
+	private List<Disciplina> disciplinas;
 	private static long nextId = 1;
 	
 	private DisciplinaDAO() {

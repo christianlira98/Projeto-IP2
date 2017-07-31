@@ -2,10 +2,14 @@ package promsys.dao;
 import promsys.negocio.beans.*;
 
 import java.io.Serializable;
-import java.util.ArrayList; 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 public class AlocacaoDAO implements IAlocacaoDAO, Serializable {
 	private static AlocacaoDAO instance;
-	private ArrayList<Alocacao> aloc;
+	private List<Alocacao> aloc;
 	
 	private AlocacaoDAO() {
 		this.aloc = new ArrayList<Alocacao>();
@@ -68,8 +72,8 @@ public Alocacao procurar(long id) {
 	
 
 	
-	public ArrayList<Alocacao> retornaAlocacoesPeriodo(String periodo) {
-		ArrayList<Alocacao> temporario = null;
+	public List<Alocacao> retornaAlocacoesPeriodo(String periodo) {
+		List<Alocacao> temporario = null;
 		
 		if(periodo != null && !this.aloc.isEmpty()) {
 			temporario = new ArrayList<Alocacao>();

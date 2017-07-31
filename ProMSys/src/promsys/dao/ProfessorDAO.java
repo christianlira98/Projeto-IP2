@@ -1,13 +1,15 @@
 package promsys.dao;
 import promsys.negocio.beans.*;
-
+import java.util.List;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class ProfessorDAO implements IProfessorDAO, Serializable{
 	private static ProfessorDAO instance;
-	private ArrayList<Professor> prof;
-	private ArrayList<String> temp = null;
+	private List<Professor> prof;
+	//private List<String> temp = null;
 	
 	private ProfessorDAO() {
 		this.prof = new ArrayList<Professor>();
@@ -21,9 +23,9 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 	
 	public Professor procurarPorNome(String nome) {
 		Professor aux = null; // antes era String
-		if(temp != null) {
+		/*if(temp != null) {
 			temp = null;
-		}
+		}*/
 		if(nome != null) {
 			for(int i = 0; i < this.prof.size(); i++) {
 				if(this.prof.get(i).getNome() == nome) {

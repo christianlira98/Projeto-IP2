@@ -53,7 +53,7 @@ public class Professor extends Usuario {
 		boolean vari = false;
 		if(prof instanceof Professor) {
 			Professor compara = (Professor) prof;
-			if (compara.getId() == this.id && compara.getNome() == this.getNome()) {
+			if (compara.getId() == this.id && this.getNome().equals(compara.getNome())) {
 				vari = true;
 			}
 		}

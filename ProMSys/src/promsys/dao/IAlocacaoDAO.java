@@ -1,6 +1,5 @@
 package promsys.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import promsys.negocio.beans.*;
@@ -23,7 +22,7 @@ public interface IAlocacaoDAO {
 	
 	boolean existe(long id);
 	
-	ArrayList<Alocacao> retornaAlocacoesPeriodo(String periodo);
+	List<Alocacao> retornaAlocacoesPeriodo(String periodo);
 	
 	String listarTodasAlocacoes();
 }

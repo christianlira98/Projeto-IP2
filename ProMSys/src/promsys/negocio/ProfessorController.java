@@ -18,26 +18,26 @@ public class ProfessorController {
 		}
 		return instance;
 	}
-	public String updateNomeProfessor(String nome, long id) {
-		return this.professorRepository.updateNome(nome, id);
+	public void updateNomeProfessor(String nome, long id) {
+		this.professorRepository.atualizarNome(nome, id);
 	}
-	public boolean addPossivelDisciplina(long idprof, Disciplina disciplina) {
-		return this.professorRepository.addPossiveisDisciplinas(idprof, disciplina);
+	public void addPossivelDisciplina(long idprof, Disciplina disciplina) {
+		this.professorRepository.addPossivelDisciplina(idprof, disciplina);
 	}
 	public Professor procurarProf(long id) {
-		return this.professorRepository.lerProfessor(id);
+		return this.professorRepository.procurar(id);
 	}
 	public boolean verificarExistencia(long id) {
-		return this.professorRepository.verificaExistencia(id);
+		return this.professorRepository.existe(id);
 	}
-	public boolean cadastraProf(Professor prof) {
-		return this.professorRepository.cadastrarProfessor(prof);
+	public void cadastraProf(Professor prof) {
+		this.professorRepository.cadastrar(prof);
 	}
-	public boolean removeProf(long id) {
-		return this.professorRepository.removerProfessor(id);
+	public void removeProf(long id) {
+		this.professorRepository.remover(id);
 	}
-	public boolean removeDisciplinaPossivel(long idProf, long idDisciplina) {
-		return this.professorRepository.removePossiveisDisciplinas(idProf, idDisciplina);
+	public void removeDisciplinaPossivel(long idProf, long idDisciplina) {
+		this.professorRepository.removerPossivelDisciplina(idProf, idDisciplina);
 	}
 	public boolean fazLogin(String login, String senha) {
 		boolean logged = false;

@@ -1,5 +1,9 @@
 package promsys.negocio;
 import promsys.negocio.beans.*;
+import java.util.List;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.ArrayList;
 import promsys.dao.*;
 
 public class AlocacaoController {
@@ -20,34 +24,34 @@ public class AlocacaoController {
 	}
 	
 	public Alocacao lerPorID(long id) {
-		return this.repositorioAlocacao.lerAlocID(id);
+		return this.repositorioAlocacao.procurar(id);
 	}
 	
-	public Alocacao[] lerPorPeriodo(String periodo) {
-		return this.repositorioAlocacao.lerAlocPeriodo(periodo);
+	public List<Alocacao> retornaAlocacoesPeriodo(String periodo) {
+		return this.repositorioAlocacao.retornaAlocacoesPeriodo(periodo);
 	}
 	
 	public boolean verificaExistencia(long id) {
-		return this.repositorioAlocacao.verificaExistencia(id);
+		return this.repositorioAlocacao.existe(id);
 	}
 	
-	public boolean updateHorario( long id, Horario nova) {
-		return this.repositorioAlocacao.updateHorario(id, nova);
+	public void atualizarHorario( long id, Horario nova) {
+		this.repositorioAlocacao.atualizarHorario(id, nova);
 	}
 	
-	public boolean updateProfessor(long id, Professor nova) {
-		return this.repositorioAlocacao.updateProfessor(id, nova);
+	public void atualizarProfessor(long id, Professor nova) {
+		this.repositorioAlocacao.atualizarProfessor(id, nova);
 	}
 	
-	public boolean updatePeriodo(long id, String nova) {
-		return this.repositorioAlocacao.updatePeriodo(id, nova);
+	public void atualizarPeriodo(long id, String nova) {
+		this.repositorioAlocacao.atualizarPeriodo(id, nova);
 	}
 	
-	public boolean updateDisciplina(long id, Disciplina nova) {
-		return this.repositorioAlocacao.updateDisciplina(id, nova);
+	public void atualizarDisciplina(long id, Disciplina nova) {
+		this.repositorioAlocacao.atualizarDisciplina(id, nova);
 	}
 	
-	public String listaAlocacoes() {
-		return this.repositorioAlocacao.listarAlocacoes();
+	public String listarTodasAlocacoes() {
+		return this.repositorioAlocacao.listarTodasAlocacoes();
 	}
 }
