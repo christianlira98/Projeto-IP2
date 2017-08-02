@@ -47,6 +47,8 @@ public class Periodo {
 		return vari;
 	}
 	
-	
+	public List<Alocacao> getAlocacoes() {
+		return this.alocacoes;
+	}
 	
 }
