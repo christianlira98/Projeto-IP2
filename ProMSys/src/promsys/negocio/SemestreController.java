@@ -1,9 +1,9 @@
 package promsys.negocio;
-import promsys.dao.SemestreDAO;
+import promsys.dao.PeriodoDAO;
 import promsys.negocio.beans.Periodo;
 
 public class SemestreController {
-	private SemestreDAO semestreRepositorio;
+	private PeriodoDAO semestreRepositorio;
 	private static SemestreController instance;
 	
 	

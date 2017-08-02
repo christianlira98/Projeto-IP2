@@ -1,12 +1,16 @@
 package promsys.negocio.beans;
 
+import java.util.ArrayList;
+import java.util.List;
 
 public class Periodo {
 	private String semestre;
+	private List<Alocacao> alocacoes; 
 	private long ID;
 	
 	public Periodo(String sem) {
 		this.semestre = sem;
+		this.alocacoes = new ArrayList<>();
 	}
 
 	public String getSemestre() {

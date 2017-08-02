@@ -3,18 +3,18 @@ import promsys.negocio.beans.*;
 import java.util.List;
 import java.util.ArrayList;
 
-public class SemestreDAO implements ISemestreDAO{
+public class PeriodoDAO implements IPeriodoDAO{
 	private static long nextID = 1;
-	private static SemestreDAO instance;
+	private static PeriodoDAO instance;
 	private List<Periodo> semestres;
 	
-	private SemestreDAO() {
+	private PeriodoDAO() {
 		this.semestres = new ArrayList<>();
 	}
 	
-	public static SemestreDAO getInstance(String nome) {
+	public static PeriodoDAO getInstance(String nome) {
 		if(instance == null) {
-			instance = new SemestreDAO();
+			instance = new PeriodoDAO();
 		}
 		return instance;
 	}

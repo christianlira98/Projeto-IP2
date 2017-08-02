@@ -14,6 +14,10 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class ProfessorDAO implements IProfessorDAO, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private static ProfessorDAO instance;
 	private List<Professor> prof;
 	//private List<String> temp = null;

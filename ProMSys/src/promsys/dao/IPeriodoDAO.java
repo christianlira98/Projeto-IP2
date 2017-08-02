@@ -2,7 +2,7 @@ package promsys.dao;
 
 import promsys.negocio.beans.Periodo;
 
-public interface ISemestreDAO {
+public interface IPeriodoDAO {
 	
 	void cadastrar(Object sem);
 	
