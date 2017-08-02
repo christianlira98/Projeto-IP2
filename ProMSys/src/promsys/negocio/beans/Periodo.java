@@ -1,11 +1,11 @@
 package promsys.negocio.beans;
 
 
-public class Semestre {
+public class Periodo {
 	private String semestre;
 	private long ID;
 	
-	public Semestre(String sem) {
+	public Periodo(String sem) {
 		this.semestre = sem;
 	}
 
@@ -34,8 +34,8 @@ public class Semestre {
 	
 	public boolean equals(Object sem) {
 		boolean vari = false;
-		if(sem instanceof Semestre && sem!= null) {
-			Semestre temp = (Semestre) sem;
+		if(sem instanceof Periodo && sem!= null) {
+			Periodo temp = (Periodo) sem;
 			if(temp.getID() == this.getID() && temp.getSemestre().equals(this.getSemestre())) {
 				vari = true;
 			}

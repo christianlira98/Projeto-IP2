@@ -1,7 +1,14 @@
 package promsys.dao;
 import promsys.negocio.beans.*;
-import java.util.List;
+import promsys.exceptions.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,6 +17,60 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 	private static ProfessorDAO instance;
 	private List<Professor> prof;
 	//private List<String> temp = null;
+	
+	private static ProfessorDAO lerArquivo() {
+		ProfessorDAO instance = null;
+		File in = new File("Professores.dat");
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		
+		try {
+			fis = new FileInputStream(in);
+			ois = new ObjectInputStream(fis);
+			Object o = ois.readObject();
+			instance = (ProfessorDAO) o;
+		}catch(Exception e) {
+			instance = new ProfessorDAO();
+		}finally {
+			if(ois != null) {
+				try {
+					ois.close();
+				}catch(IOException e) {
+					
+				}
+			}
+		}
+		return instance;
+	}
+	
+	public void escreveArquivo() {
+		if(instance == null) {
+			return;
+		}
+		File out = new File("Professores.dat");
+		FileOutputStream fos = null;
+		ObjectOutputStream oo = null;
+		
+		try {
+			fos = new FileOutputStream(out);
+			oo = new ObjectOutputStream(fos);
+			oo.writeObject(instance);
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally {
+			if(oo != null) {
+				try {
+					oo.close();
+				}catch(IOException e ) {
+					
+				}
+			}
+		}
+		
+	}
+	
+	
+	
 	
 	private ProfessorDAO() {
 		this.prof = new ArrayList<Professor>();
@@ -45,7 +106,7 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 	
 	public void cadastrar(Object obj) {
 		 boolean variTemp = false;
-		if(obj instanceof Professor ) {
+		if(obj instanceof Professor && obj!=null) {
 			Professor prof = (Professor) obj;
 			for(int i = 0; i < this.prof.size() && !variTemp; i++) {
 				if(prof.getId() == this.prof.get(i).getId()) {
@@ -58,7 +119,7 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 		}
 	}
 	
-	public void remover(long id) {
+	public void remover(long id) throws ProfessorNaoExisteException{
 		boolean vari = false;
 		if(id >=1) {
 			for(int i = 0; i < this.prof.size() && !vari; i++) {
@@ -66,6 +127,9 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 					prof.remove(i);
 					vari = true;
 				}
+			}
+			if(vari == false) {
+				throw new ProfessorNaoExisteException(id);
 			}
 		}
 	}
@@ -82,7 +146,7 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 		return novo;
 	}
 	
-	public void atualizarNome (String nome, long id) {
+	public void atualizarNome (String nome, long id) throws ProfessorNaoExisteException {
 		String vari = null;
 		if(nome !=null && id >= 1) {
 			for(int i = 0; i < this.prof.size() && vari == null; i++) {
@@ -91,23 +155,31 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 					vari = this.prof.get(i).toString();
 				}
 			}
+		}if(vari == null) {
+			throw new ProfessorNaoExisteException(id);
 		}
 	}
 	
-	public void addPossivelDisciplina(long idprof, Disciplina disciplina) {
+	public void addPossivelDisciplina(long idprof, Disciplina disciplina) throws ProfessorNaoExisteException, DisciplinaNaoExisteException{
 		boolean vari = false;
+		boolean variDis = false;
 		if(idprof >= 0 && disciplina != null) {
 			for( int i = 0; i < this.prof.size() && !vari; i++) {
 				if(this.prof.get(i).getId() == idprof) {
-					this.prof.get(i).addDisciplinasPossiveis(disciplina);
+					variDis = this.prof.get(i).addDisciplinasPossiveis(disciplina);
 					vari = true;
 				}
 			}
+		}if(vari == false) {
+			throw new ProfessorNaoExisteException(idprof);
+		}
+		else if(!variDis) {
+			throw new DisciplinaNaoExisteException(disciplina.getId());
 		}
 	}
 	
 	
-	public void removerPossivelDisciplina(long idProf, long idDisciplina) {
+	public void removerPossivelDisciplina(long idProf, long idDisciplina) throws NaoEstaEntreOsPossiveisException, ProfessorNaoExisteException{
 		boolean vari = false;
 		if(idProf >= 1 && idDisciplina >= 1) {
 			for(int i = 0; i < this.prof.size() && !vari; i++) {
@@ -116,6 +188,8 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 					vari = true;
 				}
 			}
+		}if(vari == false){
+			throw new ProfessorNaoExisteException(idProf);
 		}
 	}
 	

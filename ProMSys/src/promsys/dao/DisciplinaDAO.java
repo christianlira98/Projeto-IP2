@@ -129,16 +129,23 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 	
 	public void atualizarNomeDisciplina(long id, String novoNome) {
 		
+		
 		if (this.procurarDisciplina(id) != null) {
 			this.procurarDisciplina(id).setNome(novoNome);
 		}
 	}
 	
 	public void removerDisciplina(long id) throws DisciplinaNaoExisteException {
-		
+		boolean vari = false;
 		if (this.procurarDisciplina(id) != null) {
 			Disciplina d = this.procurarDisciplina(id);
-			this.disciplinas.remove(d);
+			if(d!=null) {
+				this.disciplinas.remove(d);
+				vari = true;
+			}
+		}
+		if(vari == false) {
+			throw new DisciplinaNaoExisteException(id); //Tinha esquecido, cleytao?
 		}
 	}
 	

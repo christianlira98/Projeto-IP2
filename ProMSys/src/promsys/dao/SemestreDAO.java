@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class SemestreDAO implements ISemestreDAO{
 	private static long nextID = 1;
 	private static SemestreDAO instance;
-	private List<Semestre> semestres;
+	private List<Periodo> semestres;
 	
 	private SemestreDAO() {
 		this.semestres = new ArrayList<>();
@@ -20,8 +20,8 @@ public class SemestreDAO implements ISemestreDAO{
 	}
 	
 	public void cadastrar(Object sem) {
-		if(sem instanceof Semestre) {
-			Semestre temp = (Semestre) sem;
+		if(sem instanceof Periodo) {
+			Periodo temp = (Periodo) sem;
 			semestres.add(temp);
 			semestres.get(semestres.size()-1).setID(nextID);
 			++nextID;
@@ -29,7 +29,7 @@ public class SemestreDAO implements ISemestreDAO{
 	}
 	
 	public void remover(long id) {
-		for(Semestre sem: semestres) {
+		for(Periodo sem: semestres) {
 			if(sem.getID() == id) {
 				semestres.remove(sem);
 				break;
@@ -37,9 +37,9 @@ public class SemestreDAO implements ISemestreDAO{
 		}
 	}
 	
-	public Semestre procurar(long id) {
-		Semestre vari = null;
-		for(Semestre sem: semestres) {
+	public Periodo procurar(long id) {
+		Periodo vari = null;
+		for(Periodo sem: semestres) {
 			if(sem.getID() == id) {
 				vari = sem;
 			}
@@ -48,7 +48,7 @@ public class SemestreDAO implements ISemestreDAO{
 	}
 	
 	public void atualizar(long id, String novo) {
-		for(Semestre sem: semestres) {
+		for(Periodo sem: semestres) {
 			if(sem.getID() == id) {
 				sem.setSemestre(novo);
 			}

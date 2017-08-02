@@ -1,6 +1,6 @@
 package promsys.dao;
 
-import promsys.negocio.beans.Semestre;
+import promsys.negocio.beans.Periodo;
 
 public interface ISemestreDAO {
 	
@@ -10,5 +10,5 @@ public interface ISemestreDAO {
 	
 	void atualizar(long id, String novo);
 	
-	Semestre procurar(long id);
+	Periodo procurar(long id);
 }

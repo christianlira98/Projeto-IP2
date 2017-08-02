@@ -1,6 +1,6 @@
 package promsys.negocio;
 import promsys.dao.SemestreDAO;
-import promsys.negocio.beans.Semestre;
+import promsys.negocio.beans.Periodo;
 
 public class SemestreController {
 	private SemestreDAO semestreRepositorio;
@@ -18,7 +18,7 @@ public class SemestreController {
 		return instance;
 	}
 	
-	public void cadastrarSemestre(Semestre sem) {
+	public void cadastrarSemestre(Periodo sem) {
 		this.semestreRepositorio.cadastrar(sem);
 	}
 	
@@ -30,7 +30,7 @@ public class SemestreController {
 		this.semestreRepositorio.remover(id);
 	}
 	
-	public Semestre procurar(long id) {
+	public Periodo procurar(long id) {
 		return this.semestreRepositorio.procurar(id);
 	}
 	public String listarTodosSemestres() {
