@@ -8,7 +8,12 @@ import java.util.Arrays;
 import java.util.Collections;
 
 public class AlocacaoDAO implements IAlocacaoDAO, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2409610592120285089L;
 	private static AlocacaoDAO instance;
+	private Periodo referencia;
 	private List<Alocacao> aloc;
 	
 	private AlocacaoDAO() {
@@ -36,6 +41,20 @@ public class AlocacaoDAO implements IAlocacaoDAO, Serializable {
 				this.aloc.add(temp);
 			}
 		}
+	}
+	
+	public void referenciaParaPeriodo(String peri) {
+		if(peri == null) {
+			return;
+		}
+		List<Alocacao> aux = new ArrayList<>();
+		for(int i = 0; i < this.aloc.size(); i++) {
+			if(this.aloc.get(i).getPeriodo().equals(peri)) {
+				aux.add(this.aloc.get(i));
+			}
+		}
+		referencia.getReferencia(aux);// Não sei se funciona, mas só quando
+		//testarmos dá pra saber.
 	}
 	
 	public void remover(long id) {

@@ -13,6 +13,10 @@ import promsys.negocio.beans.*;
 import java.util.List;
 public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -338246939820102312L;
 	private static DisciplinaDAO instance;
 	private List<Disciplina> disciplinas;
 	private static long nextId = 1;

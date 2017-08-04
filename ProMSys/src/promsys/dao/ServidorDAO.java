@@ -4,11 +4,14 @@ import promsys.negocio.beans.Servidor;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Arrays;
 import java.util.ArrayList;
 
 public class ServidorDAO implements IServidorDAO, Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3007858989186592561L;
 	private static ServidorDAO instance;
 	private static List<Servidor> admins = new ArrayList<Servidor>();
 	

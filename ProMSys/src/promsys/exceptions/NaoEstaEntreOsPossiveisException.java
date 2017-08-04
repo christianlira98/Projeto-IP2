@@ -1,6 +1,10 @@
 package promsys.exceptions;
 
 public class NaoEstaEntreOsPossiveisException extends Exception{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1031051602434273197L;
 	private long idDis;
 	private long idProf;
 	public NaoEstaEntreOsPossiveisException(long idProf,long idDis) {

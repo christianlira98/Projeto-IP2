@@ -16,6 +16,13 @@ public class Periodo {
 	public String getSemestre() {
 		return semestre;
 	}
+	
+	public void getReferencia(List<Alocacao> ref) {
+		for(int i = 0; i < ref.size(); i++) {
+			this.alocacoes.add(ref.get(i));
+		}
+		
+	}
 
 	public void setSemestre(String semestre) {
 		this.semestre = semestre;
