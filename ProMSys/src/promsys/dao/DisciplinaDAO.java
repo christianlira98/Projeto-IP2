@@ -25,7 +25,7 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 		this.disciplinas = new ArrayList<Disciplina>();
 	}
 	
-	public static IDisciplinaDAO getInstance() {
+	public static DisciplinaDAO getInstance() {
 		if(instance == null) {
 			instance = lerDoArquivo();
 		}

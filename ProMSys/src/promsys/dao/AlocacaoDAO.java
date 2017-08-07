@@ -4,9 +4,6 @@ import promsys.negocio.beans.*;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-
 public class AlocacaoDAO implements IAlocacaoDAO, Serializable {
 	/**
 	 * 
