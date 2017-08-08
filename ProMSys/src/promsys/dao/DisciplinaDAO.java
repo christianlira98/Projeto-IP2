@@ -25,12 +25,15 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 		this.disciplinas = new ArrayList<Disciplina>();
 	}
 	
+	
+	
 	public static DisciplinaDAO getInstance() {
 		if(instance == null) {
 			instance = lerDoArquivo();
 		}
 		return instance;
 	}
+
 	
 	private static DisciplinaDAO lerDoArquivo() { // IMPLEMENTAÇÃO INCIAL DE ARQUIVOS, DEVE SER REVISADO!
 	    DisciplinaDAO instancia = null;
@@ -171,6 +174,14 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 		}
 		
 		return valor;
+	}
+	
+	public List<Disciplina> getLista(){
+		if(this.disciplinas == null) {
+			return null;
+		}
+		return this.disciplinas;
+			
 	}
 	
 	public String listarDisciplinas() {

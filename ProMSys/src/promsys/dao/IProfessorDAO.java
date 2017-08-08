@@ -6,7 +6,7 @@ import promsys.negocio.beans.Professor;
 
 public interface IProfessorDAO {
 
-	void cadastrar(Object obj);
+	void cadastrar(Professor prof);
 	
 	Professor procurar(long id);
 	

@@ -1,27 +1,31 @@
 package promsys.negocio.beans;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Professor extends Usuario {
+public class Professor extends Usuario implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5144014909282634019L;
 	//
-	private static long nextID=1;
 	private long id;
 	private ArrayList<Disciplina> disciplinasPossiveis;
 	
 	//CONSTRUTOR
 	public Professor(String nome, String login ,String senha) {
 		super(nome, login, senha);
-		this.id = nextID;
-		nextID++;
 		disciplinasPossiveis = new ArrayList<Disciplina>();
 	}
 	
 	//GETTERS AND SETTERS
-	public static long getNextID() {
-		return nextID;
-	}
 	public long getId() {
 		return id;
-	}	
+	}
+	
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public ArrayList<Disciplina> getDisciplinasPossiveis() {
 		return this.disciplinasPossiveis;
 	}

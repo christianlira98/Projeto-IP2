@@ -1,15 +1,26 @@
 package promsys.negocio;
 
+import java.util.List;
+
 import promsys.dao.*;
 import promsys.negocio.beans.Disciplina;
 import promsys.exceptions.*;
 
 public class DisciplinaController {
 
-	private IDisciplinaDAO repositorioDisciplina;
+	private DisciplinaDAO repositorioDisciplina;
+	private static DisciplinaController instancia;
 	
-	public DisciplinaController(IDisciplinaDAO instancia) {
-		this.repositorioDisciplina = instancia;
+	private DisciplinaController() {
+		this.repositorioDisciplina = DisciplinaDAO.getInstance();
+
+	}
+	
+	public static DisciplinaController getInstance() {
+		if(instancia == null) {
+			instancia = new DisciplinaController();
+		}
+		return instancia;
 	}
 	
 	public void cadastrarDisciplina(Disciplina d) throws DisciplinaJaExisteException {
@@ -33,6 +44,11 @@ public class DisciplinaController {
 	
 	public Disciplina procurarNomeDisciplina(String nome) {
 		return this.repositorioDisciplina.procurarNomeDisciplina(nome);
+	}
+	
+	public List<Disciplina> retornaListaDisciplina() {
+		return this.repositorioDisciplina.getLista();
+		
 	}
 	
 	public void atualizarDisciplina(long id, String novoNome) {

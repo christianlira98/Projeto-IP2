@@ -12,13 +12,11 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class ProfessorDAO implements IProfessorDAO, Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+	
+	private static final long serialVersionUID = 2722612252827269882L;
 	private static ProfessorDAO instance;
 	private List<Professor> prof;
-	//private List<String> temp = null;
+	private static long nextId = 1;
 	
 	private static ProfessorDAO lerArquivo() {
 		ProfessorDAO instance = null;
@@ -74,10 +72,15 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 	
 	private ProfessorDAO() {
 		this.prof = new ArrayList<Professor>();
-	}	
+	}
+	
+	public static long getNextId() {
+		return nextId;
+	}
+	
 	public static ProfessorDAO getInstance() {
 		if(instance == null) {
-			instance = new ProfessorDAO();
+			instance = lerArquivo();
 		}
 		return instance;
 	}
@@ -104,19 +107,10 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 		return aux;
 	}
 	
-	public void cadastrar(Object obj) {
-		 boolean variTemp = false;
-		if(obj instanceof Professor && obj!=null) {
-			Professor prof = (Professor) obj;
-			for(int i = 0; i < this.prof.size() && !variTemp; i++) {
-				if(prof.getId() == this.prof.get(i).getId()) {
-					variTemp = true;
-				}
-			}
-			if(variTemp == false) {
-			this.prof.add(prof);
-			}
-		}
+	public void cadastrar(Professor prof) {
+		prof.setId(nextId);
+		nextId++;
+		this.prof.add(prof);
 	}
 	
 	public void remover(long id) throws ProfessorNaoExisteException{

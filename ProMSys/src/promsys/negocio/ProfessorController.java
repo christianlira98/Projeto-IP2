@@ -28,15 +28,29 @@ public class ProfessorController {
 	public Professor procurarProf(long id) {
 		return this.professorRepository.procurar(id);
 	}
+	
+	public Professor procurarPorNome(String nome) {
+		return this.professorRepository.procurarPorNome(nome);
+	}
 	public boolean verificarExistencia(long id) {
 		return this.professorRepository.existe(id);
 	}
+	
 	public void cadastraProf(Professor prof) throws ProfessorJaExisteException{
 		if(prof == null) {
-			throw new IllegalArgumentException("Parâmetro nulo");
+			throw new IllegalArgumentException("Parâmetro Nulo");
 		}
-		this.professorRepository.cadastrar(prof);
+		else {
+			if(prof.getId() == 0L) {
+				this.professorRepository.cadastrar(prof);
+				this.professorRepository.escreveArquivo();
+			}
+			else {
+				throw new ProfessorJaExisteException(prof.getId());
+			}
+		}
 	}
+	
 	public void removeProf(long id) throws ProfessorNaoExisteException{
 		this.professorRepository.remover(id);
 	}
@@ -45,8 +59,8 @@ public class ProfessorController {
 	}
 	public boolean fazLogin(String login, String senha) {
 		boolean logged = false;
-		if(Professor.getNextID() > 1) {
-			for(int i = 0; i<Professor.getNextID(); i++) {
+		if(ProfessorDAO.getNextId() > 1) {
+			for(int i = 0; i<ProfessorDAO.getNextId(); i++) {
 				Professor p = procurarProf(i);
 				if (login == p.getLogin() && senha == p.getSenha() ) {
 					logged = true;

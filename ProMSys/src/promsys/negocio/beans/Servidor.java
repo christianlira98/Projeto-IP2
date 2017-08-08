@@ -1,7 +1,13 @@
 package promsys.negocio.beans;
 
-public class Servidor extends Usuario {
+import java.io.Serializable;
+
+public class Servidor extends Usuario implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4670224172030542186L;
 	private static long nextID;
 	private long id;
 	

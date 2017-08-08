@@ -1,7 +1,10 @@
 package promsys.negocio.beans;
 
-public class Disciplina {
+import java.io.Serializable;
 
+public class Disciplina implements Serializable {
+
+	private static final long serialVersionUID = -2060557199150717524L;
 	private long id;
 	private String nome;
 	private double cargaHoraria;

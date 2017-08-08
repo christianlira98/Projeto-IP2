@@ -1,9 +1,14 @@
 package promsys.negocio.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Periodo {
+public class Periodo implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7763976426061414502L;
 	private String semestre;
 	private List<Alocacao> alocacoes; 
 	private long ID;

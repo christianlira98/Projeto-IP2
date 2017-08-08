@@ -1,7 +1,13 @@
 package promsys.negocio.beans;
 
-public class Alocacao {
+import java.io.Serializable;
 
+public class Alocacao implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2278026790528082645L;
 	private static long nextID=1;
 	private long id;
 	private Professor professor;
