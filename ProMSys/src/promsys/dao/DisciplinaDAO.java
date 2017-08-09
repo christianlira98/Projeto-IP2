@@ -25,8 +25,6 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 		this.disciplinas = new ArrayList<Disciplina>();
 	}
 	
-	
-	
 	public static DisciplinaDAO getInstance() {
 		if(instance == null) {
 			instance = lerDoArquivo();
@@ -135,8 +133,6 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 	}
 	
 	public void atualizarNomeDisciplina(long id, String novoNome) {
-		
-		
 		if (this.procurarDisciplina(id) != null) {
 			this.procurarDisciplina(id).setNome(novoNome);
 		}
@@ -166,13 +162,21 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 	
 	public boolean existe(long id) {
 		boolean valor = false;
-		
 		for (Disciplina disciplina : disciplinas) {
 			if(disciplina.getId() == id) {
 				valor = true;
 			}
 		}
-		
+		return valor;
+	}
+	
+	public boolean existe(String nome) {
+		boolean valor = false;
+		for (Disciplina disciplina : disciplinas) {
+			if(disciplina.getNome().equals(nome)) {
+				valor = true;
+			}
+		}
 		return valor;
 	}
 	
@@ -180,8 +184,7 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 		if(this.disciplinas == null) {
 			return null;
 		}
-		return this.disciplinas;
-			
+		return this.disciplinas;	
 	}
 	
 	public String listarDisciplinas() {

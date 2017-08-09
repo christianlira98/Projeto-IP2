@@ -13,7 +13,9 @@ public class AlocacaoController {
 
 	
 	public void cadastrar(Object obj) {
-		this.repositorioAlocacao.cadastrar(obj);
+		if(obj != null && obj instanceof Alocacao) {
+			this.repositorioAlocacao.cadastrar(obj);
+		}
 	}
 	
 	public void remover(long id) {

@@ -23,14 +23,18 @@ public class DisciplinaController {
 		return instancia;
 	}
 	
-	public void cadastrarDisciplina(Disciplina d) throws DisciplinaJaExisteException {
+	public void cadastrarDisciplina(Disciplina d) throws DisciplinaJaExisteException, DisciplinaCargaInvalidaException {
 		if(d == null) {
 			throw new IllegalArgumentException("Parâmetro Nulo");
 		}
 		else {
-			if(d.getId() == 0L) {
+			if(!existe(d.getId()) && !existe(d.getNome()) && 
+					d.getCargaHoraria() >= 15) {
 				this.repositorioDisciplina.cadastrar(d);
 				this.repositorioDisciplina.salvarArquivo();
+			}
+			else if(d.getCargaHoraria() < 15) {
+				throw new DisciplinaCargaInvalidaException(d.getCargaHoraria());
 			}
 			else {
 				throw new DisciplinaJaExisteException(d.getId());
@@ -48,17 +52,23 @@ public class DisciplinaController {
 	
 	public List<Disciplina> retornaListaDisciplina() {
 		return this.repositorioDisciplina.getLista();
-		
 	}
 	
 	public void atualizarDisciplina(long id, String novoNome) {
-		this.repositorioDisciplina.atualizarNomeDisciplina(id, novoNome);
-		this.repositorioDisciplina.salvarArquivo();
+		if(!existe(novoNome)) {
+			this.repositorioDisciplina.atualizarNomeDisciplina(id, novoNome);
+			this.repositorioDisciplina.salvarArquivo();
+		}
 	}
 	
-	public void atualizarCargaHoraria(long id, double cargaHoraria) {
-		this.repositorioDisciplina.atualizarCargaHoraria(id, cargaHoraria);
-		this.repositorioDisciplina.salvarArquivo();
+	public void atualizarCargaHoraria(long id, double cargaHoraria) throws DisciplinaCargaInvalidaException {
+		if(cargaHoraria >= 15) {
+			this.repositorioDisciplina.atualizarCargaHoraria(id, cargaHoraria);
+			this.repositorioDisciplina.salvarArquivo();
+		}
+		else {
+			throw new DisciplinaCargaInvalidaException(cargaHoraria);
+		}
 	}
 	
 	public void removerDisciplina(long id) throws DisciplinaNaoExisteException {
@@ -66,8 +76,12 @@ public class DisciplinaController {
 		this.repositorioDisciplina.salvarArquivo();
 	}
 	
-	public void existe(long id) {
-		this.repositorioDisciplina.existe(id);
+	public boolean existe(long id) {
+		return this.repositorioDisciplina.existe(id);
+	}
+	
+	public boolean existe(String nome) {
+		return this.repositorioDisciplina.existe(nome);
 	}
 	
 	public String listarDisciplinas() {
