@@ -126,6 +126,9 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 				throw new ProfessorNaoExisteException(id);
 			}
 		}
+		else {
+			throw new ProfessorNaoExisteException(id);
+		}
 	}
 	
 	public Professor procurar (long id) {
@@ -220,5 +223,7 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 		return lista.toString();
 	}
 	
-	
+	public List<Professor> lista() {
+		return this.prof;
+	}
 }

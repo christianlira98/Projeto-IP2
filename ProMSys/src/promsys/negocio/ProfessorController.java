@@ -1,5 +1,8 @@
 package promsys.negocio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import promsys.dao.ProfessorDAO;
 import promsys.exceptions.*;
 import promsys.negocio.beans.*;
@@ -19,11 +22,37 @@ public class ProfessorController {
 		}
 		return instance;
 	}
-	public void updateNomeProfessor(String nome, long id) throws ProfessorNaoExisteException{
-		this.professorRepository.atualizarNome(nome, id);
+	public void updateNomeProfessor(String nome, long id) throws ProfessorNaoExisteException, ProfessorJaExisteNomeException {
+		boolean existeNome = false;
+		List<Professor> p = this.lista();
+		
+		for(Professor o : p) {
+			if(o.getNome().equals(nome))
+				existeNome = true;
+		}
+		if(existeNome == false)
+			this.professorRepository.atualizarNome(nome, id);
+		else if(existeNome == true) {
+			throw new ProfessorJaExisteNomeException(nome);
+		}
 	}
-	public void addPossivelDisciplina(long idprof, Disciplina disciplina) throws ProfessorNaoExisteException, DisciplinaNaoExisteException{
-		this.professorRepository.addPossivelDisciplina(idprof, disciplina);
+	public void addPossivelDisciplina(long idProf, Disciplina disciplina) throws ProfessorNaoExisteException, DisciplinaNaoExisteException, ProfessorDuasMaisDisciplinasException{
+		Professor p = procurarProf(idProf);
+		if(p != null && disciplina != null) {
+			ArrayList<Disciplina> aptas = p.getDisciplinasPossiveis();
+			if(aptas.size() >= 1) {
+				boolean existe = false;
+				for(Disciplina d : aptas) {
+					if(d.equals(disciplina))
+						existe = true;
+				}
+				if(existe == false)
+					this.professorRepository.addPossivelDisciplina(idProf, disciplina);
+			}
+			else {
+				throw new ProfessorDuasMaisDisciplinasException(p, disciplina);
+			}
+		}
 	}
 	public Professor procurarProf(long id) {
 		return this.professorRepository.procurar(id);
@@ -71,5 +100,9 @@ public class ProfessorController {
 	}
 	public String listaProfessores() {
 		return this.professorRepository.listarProfessores();
+	}
+	
+	public List<Professor> lista() {
+		return this.professorRepository.lista();
 	}
 }

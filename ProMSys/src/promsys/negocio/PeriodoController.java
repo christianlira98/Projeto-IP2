@@ -1,37 +1,40 @@
 package promsys.negocio;
+import java.nio.channels.NetworkChannel;
+
+import javafx.scene.input.DataFormat;
 import promsys.dao.PeriodoDAO;
 import promsys.negocio.beans.Periodo;
 
-public class SemestreController {
-	private PeriodoDAO semestreRepositorio;
-	private static SemestreController instance;
+public class PeriodoController {
+	private PeriodoDAO repositorioPeriodo;
+	private static PeriodoController instance;
 	
 	
-	private SemestreController() {
+	private PeriodoController() {
 		
 	}
 	
-	public SemestreController getInstance() {
+	public PeriodoController getInstance() {
 		if(instance == null) {
-			instance = new SemestreController();
+			instance = new PeriodoController();
 		}
 		return instance;
 	}
 	
 	public void cadastrarSemestre(Periodo sem) {
-		this.semestreRepositorio.cadastrar(sem);
+		this.repositorioPeriodo.cadastrar(sem);
 	}
 	
 	public void atualizarSemestre(long id, String novo) {
-		this.semestreRepositorio.atualizar(id, novo);
+		this.repositorioPeriodo.atualizar(id, novo);
 	}
 	
 	public void removerSemestre(long id) {
-		this.semestreRepositorio.remover(id);
+		this.repositorioPeriodo.remover(id);
 	}
 	
 	public Periodo procurar(long id) {
-		return this.semestreRepositorio.procurar(id);
+		return this.repositorioPeriodo.procurar(id);
 	}
 	public String listarTodosSemestres() {
 		return this.listarTodosSemestres();

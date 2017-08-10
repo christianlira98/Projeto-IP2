@@ -5,12 +5,35 @@ import promsys.dao.*;
 
 public class AlocacaoController {
 	
-	private IAlocacaoDAO repositorioAlocacao;
+	/*
+	 * private DisciplinaDAO repositorioDisciplina;
+	private static DisciplinaController instancia;
+	
+	private DisciplinaController() {
+		this.repositorioDisciplina = DisciplinaDAO.getInstance();
 
-	private AlocacaoController(IAlocacaoDAO instancia) {
-		this.repositorioAlocacao = instancia;
 	}
-
+	
+	public static DisciplinaController getInstance() {
+		if(instancia == null) {
+			instancia = new DisciplinaController();
+		}
+		return instancia;
+	}
+	 */
+	
+	private AlocacaoDAO repositorioAlocacao;
+	private static AlocacaoController instancia;
+	
+	private AlocacaoController() {
+		this.repositorioAlocacao = AlocacaoDAO.getInstance();
+	}
+	
+	public static AlocacaoController getInstance() {
+		if(instancia == null)
+			instancia = new AlocacaoController();
+		return instancia;
+	}
 	
 	public void cadastrar(Object obj) {
 		if(obj != null && obj instanceof Alocacao) {
