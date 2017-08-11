@@ -1,11 +1,12 @@
 package promsys.negocio;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import promsys.dao.ProfessorDAO;
 import promsys.exceptions.*;
 import promsys.negocio.beans.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ProfessorController {
 	
@@ -46,8 +47,9 @@ public class ProfessorController {
 					if(d.equals(disciplina))
 						existe = true;
 				}
-				if(existe == false)
+				if(existe == false) {
 					this.professorRepository.addPossivelDisciplina(idProf, disciplina);
+			}
 			}
 			else {
 				throw new ProfessorDuasMaisDisciplinasException(p, disciplina);
@@ -55,14 +57,27 @@ public class ProfessorController {
 		}
 	}
 	public Professor procurarProf(long id) {
+		if(id <= 0) {
+			throw new IllegalArgumentException("Parâmentro inválido");
+		}
 		return this.professorRepository.procurar(id);
 	}
 	
 	public Professor procurarPorNome(String nome) {
-		return this.professorRepository.procurarPorNome(nome);
+		if(nome == null) {
+			throw new IllegalArgumentException("Parâmentro Nulo");
+		}
+		else {
+			return this.professorRepository.procurarPorNome(nome);
+		}
 	}
 	public boolean verificarExistencia(long id) {
-		return this.professorRepository.existe(id);
+		if(id <=0) {
+			throw new IllegalArgumentException("Parâmentro inválido");
+		}
+		else {
+			return this.professorRepository.existe(id);
+		}
 	}
 	
 	public void cadastraProf(Professor prof) throws ProfessorJaExisteException{
@@ -81,10 +96,38 @@ public class ProfessorController {
 	}
 	
 	public void removeProf(long id) throws ProfessorNaoExisteException{
-		this.professorRepository.remover(id);
+		if(id <= 0) {
+			throw new IllegalArgumentException("Parâmetro Inválido");
+		}
+		else if(!this.professorRepository.existe(id)) {
+			throw new ProfessorNaoExisteException(id);
+		}
+		else {
+			this.professorRepository.remover(id);
+		}
+	}
+	
+	public boolean estaEntreDisAptas(long idProf, long idDis) {
+		boolean aux = false;
+		if(idProf <= 0 || idDis <= 0) {
+			throw new IllegalArgumentException("Parâmetro Inválido");
+		}
+		aux = this.professorRepository.estaEntreAptasDis(idProf, idDis);
+		return aux;
 	}
 	public void removeDisciplinaPossivel(long idProf, long idDisciplina) throws ProfessorNaoExisteException, NaoEstaEntreOsPossiveisException{
-		this.professorRepository.removerPossivelDisciplina(idProf, idDisciplina);
+		if(idProf <= 0 || idDisciplina <= 0) {
+			throw new IllegalArgumentException("Parâmetro Inválido");
+		}
+		else if(!this.professorRepository.existe(idProf)) {
+			throw new ProfessorNaoExisteException(idProf);
+		}
+		else if (!this.professorRepository.estaEntreAptasDis(idProf, idDisciplina)) {
+			throw new NaoEstaEntreOsPossiveisException(idProf,idDisciplina);
+		}
+		else {
+			this.professorRepository.removerPossivelDisciplina(idProf, idDisciplina);
+		}
 	}
 	public boolean fazLogin(String login, String senha) {
 		boolean logged = false;
@@ -106,3 +149,4 @@ public class ProfessorController {
 		return this.professorRepository.lista();
 	}
 }
+

@@ -1,5 +1,4 @@
 package promsys.exceptions;
-
 import promsys.negocio.beans.Disciplina;
 import promsys.negocio.beans.Professor;
 

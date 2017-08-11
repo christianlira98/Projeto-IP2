@@ -226,4 +226,18 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 	public List<Professor> lista() {
 		return this.prof;
 	}
+	public boolean estaEntreAptasDis(long idP, long idDis) {
+		boolean vari = false;
+		for(Professor professor: prof) {
+			if(professor.getId() == idP) {
+				vari = professor.estaEntreDisAptas(idDis);
+				break;
+			}
+		}
+		return vari;
+	}
 }
+
+
+
+

@@ -11,7 +11,6 @@ public class AlocacaoController {
 	
 	private DisciplinaController() {
 		this.repositorioDisciplina = DisciplinaDAO.getInstance();
-
 	}
 	
 	public static DisciplinaController getInstance() {
