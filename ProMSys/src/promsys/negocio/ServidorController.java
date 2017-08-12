@@ -1,9 +1,12 @@
 package promsys.negocio;
+import java.util.List;
+
 import promsys.dao.ServidorDAO;
 import promsys.negocio.beans.Servidor;
 
 public class ServidorController {
 	
+	private ServidorDAO repositorioServidores;
 	private static ServidorController instance;
 	
 	private ServidorController(){
@@ -16,9 +19,13 @@ public class ServidorController {
 		return instance;
 	}
 	
-	public void cadastroServidor(String nome, String login, String senha){
-		Servidor admin = new Servidor(nome, login, senha);
-		ServidorDAO.getInstance().cadastrar(admin);
+	public void cadastroServidor(Servidor novo) {
+		if(novo == null) {
+			throw new IllegalArgumentException("Parâmetro Invalido");
+		}
+		else {
+			repositorioServidores.cadastrar(novo);
+		}
 	}
 	
 	public boolean excluiServidor(long id){
@@ -58,5 +65,9 @@ public class ServidorController {
 			}
 		}
 		return logged;
+	}
+	
+	public List<Servidor> listar() {
+		return this.repositorioServidores.listar();
 	}
 }

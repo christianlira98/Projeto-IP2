@@ -19,6 +19,10 @@ public class AlocacaoController {
 		}
 		return instancia;
 	}
+	 */ /* IMPORTANTE
+	 * Deve ser decidido a forma de se chamar um controller; se é atravéz do padrão Singleton, 
+	 * ou a criação de uma instancia na fachada. 
+	 * Apenas uma delas é a maneira correta de se fazer? Ambas maneiras estão certas?
 	 */
 	
 	private AlocacaoDAO repositorioAlocacao;

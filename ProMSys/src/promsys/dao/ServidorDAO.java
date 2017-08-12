@@ -13,9 +13,10 @@ public class ServidorDAO implements IServidorDAO, Serializable {
 	 */
 	private static final long serialVersionUID = 3007858989186592561L;
 	private static ServidorDAO instance;
-	private static List<Servidor> admins = new ArrayList<Servidor>();
+	private List<Servidor> admins;
 	
 	private ServidorDAO(){
+		admins = new ArrayList<Servidor>();
 	}
 	
 	public static ServidorDAO getInstance(){
@@ -24,6 +25,12 @@ public class ServidorDAO implements IServidorDAO, Serializable {
 		}
 		return instance;
 	}
+	
+	/*private static ServidorDAO lerDoArquivo() {
+	 * 
+	 * }
+	 */
+		
 	
 	public void cadastrar(Servidor admin){
 		admins.add(admin);
@@ -55,6 +62,10 @@ public class ServidorDAO implements IServidorDAO, Serializable {
 			}
 		}
 		return result;
+	}
+	
+	public List<Servidor> listar() {
+		return this.admins;
 	}
 
 }
