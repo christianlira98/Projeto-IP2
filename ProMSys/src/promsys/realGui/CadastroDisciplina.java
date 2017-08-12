@@ -9,16 +9,22 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class CadastroDisciplina extends Application {
+	
+	private static Pane pane;
+	
 	public void start(Stage primaryStage) throws Exception {
 
 		primaryStage.setTitle("Cadastro de Disciplinas");
 		
-		Pane pane = FXMLLoader.load(this.getClass().getResource("cadastroDisciplinaFXML.fxml"));
+		pane = FXMLLoader.load(this.getClass().getResource("cadastroDisciplinaFXML.fxml"));
 		primaryStage.sizeToScene();
 		primaryStage.setScene(new Scene(pane));
 		primaryStage.setResizable(false);
 		primaryStage.show();
-		
+	}
+	
+	public Pane getPane() throws Exception {
+		return pane = FXMLLoader.load(this.getClass().getResource("cadastroDisciplinaFXML.fxml"));
 	}
 	
 	public static void main(String[] args) {

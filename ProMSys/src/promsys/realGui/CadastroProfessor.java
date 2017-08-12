@@ -27,6 +27,7 @@ public class CadastroProfessor extends Application {
 	private DisciplinaDAO repositorioDis;
 	List<Disciplina> lista = new ArrayList<Disciplina>();
 	MenuButton menu;
+	private static Pane pane;
 	public void start(Stage primaryStage) throws Exception {
 		
 		//Essa parte foi para apenas escrever algo no arquivo de disciplinas, para testar.
@@ -35,7 +36,7 @@ public class CadastroProfessor extends Application {
 		//DisciplinaController.getInstance().cadastrarDisciplina(dis);
 		//.........................
 		primaryStage.setTitle("Cadastro de Professores");
-		Pane pane = FXMLLoader.load(this.getClass().getResource("cadastroProfessorFXML.fxml"));
+		pane = FXMLLoader.load(this.getClass().getResource("cadastroProfessorFXML.fxml"));
 		menu = (MenuButton) pane.getChildren().get(11);
 		adiciona();
 		primaryStage.setScene(new Scene(pane));
@@ -53,6 +54,10 @@ public class CadastroProfessor extends Application {
 		}
 		CheckMenuItem[] array = me.toArray(new CheckMenuItem[me.size()]);
 		menu.getItems().addAll(array);
+	}
+	
+	public Pane getPane() throws Exception {
+		return pane = FXMLLoader.load(this.getClass().getResource("cadastroProfessorFXML.fxml"));
 	}
 	
 	public static void main(String[] args) {
