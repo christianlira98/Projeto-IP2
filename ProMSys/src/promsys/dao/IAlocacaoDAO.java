@@ -2,11 +2,12 @@ package promsys.dao;
 
 import java.util.List;
 
+import promsys.exceptions.AlocacaoNaoExisteException;
 import promsys.negocio.beans.*;
 
 public interface IAlocacaoDAO {
 		
-	void cadastrar(Object obj);
+	void cadastrar(Alocacao obj);
 	
 	Alocacao procurar(long id);
 	
@@ -18,7 +19,7 @@ public interface IAlocacaoDAO {
 	
 	void atualizarPeriodo(long id, String novo);
 	
-	void remover(long id);
+	void remover(long id) throws AlocacaoNaoExisteException;
 	
 	boolean existe(long id);
 	

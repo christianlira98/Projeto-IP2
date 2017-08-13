@@ -4,12 +4,21 @@ import promsys.negocio.beans.Professor;
 
 public class ProfessorDuasMaisDisciplinasException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2987917184363238613L;
 	private Disciplina d;
 	
 	public ProfessorDuasMaisDisciplinasException(Professor p, Disciplina d) {
-		super("Um professor não pode ter mais de duas disciplinas aptas."
+		super("Um professor não pode ministrar mais de duas disciplinas."
 				+ "\nProfessor: " + p.getNome() + "Disciplina/CodTurma: " + d.getNome() + "/" + d.getCodigoTurma());
 		this.d = d;
+	}
+	
+	public ProfessorDuasMaisDisciplinasException(Professor p) {
+		super("Um professor não pode ministrar mais de duas disciplinas."
+				+ "\nProfessor: " + p.getNome());
 	}
 	
 	public Disciplina getDisciplina() {

@@ -66,10 +66,11 @@ public class Alocacao implements Serializable{
 		boolean vari = false;
 		if(aloc instanceof Alocacao) {
 			Alocacao temp = (Alocacao) aloc;
-			if(temp.getId() == this.id || (temp.disciplina.getId() == this.disciplina.getId() && temp.horario.getHorarioInicio() == this.horario.getHorarioInicio() && temp.horario.getHorarioFim() == this.horario.getHorarioFim() && this.horario.getDiaDaSemana() == temp.horario.getDiaDaSemana() && this.getPeriodo() == temp.getPeriodo()==true)) {
-				vari = true;
-			}
-			
+			if(this.professor.equals(temp.getProfessor()) 
+					&& this.horario.equals(temp.getHorario())
+					&& this.disciplina.equals(temp.getDisciplina())) {
+					vari = true;
+				}
 		}
 		return vari;
 	}

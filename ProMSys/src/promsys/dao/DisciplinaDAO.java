@@ -148,7 +148,7 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 			}
 		}
 		if(vari == false) {
-			throw new DisciplinaNaoExisteException(id); //Tinha esquecido, cleytao?
+			throw new DisciplinaNaoExisteException(id);
 		}
 	}
 	
