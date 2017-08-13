@@ -1,6 +1,14 @@
-            package promsys.dao;
+package promsys.dao;
+
+import promsys.exceptions.PeriodoNaoExisteException;
 import promsys.negocio.beans.*;
 import java.util.List;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class PeriodoDAO implements IPeriodoDAO{
@@ -12,12 +20,63 @@ public class PeriodoDAO implements IPeriodoDAO{
 		this.semestres = new ArrayList<>();
 	}
 	
-	public static PeriodoDAO getInstance(String nome) {
+	public static PeriodoDAO getInstance() {
 		if(instance == null) {
-			instance = new PeriodoDAO();
+			instance = lerDoArquivo();
 		}
 		return instance;
 	}
+	
+	private static PeriodoDAO lerDoArquivo() { // IMPLEMENTAÇÃO INCIAL DE ARQUIVOS, DEVE SER REVISADO!
+	    PeriodoDAO instancia = null;
+
+	    File in = new File("Periodos.dat");
+	    FileInputStream fis = null;
+	    ObjectInputStream ois = null;
+	    try {
+	      fis = new FileInputStream(in);
+	      ois = new ObjectInputStream(fis);
+	      Object o = ois.readObject();
+	      instancia = (PeriodoDAO) o;
+	    } 
+	    catch (Exception e) {
+	      instancia = new PeriodoDAO();
+	    } 
+	    finally {
+	      if (ois != null) {
+	        try {
+	          ois.close();
+	        } catch (IOException e) {/* Silent exception */
+	        }
+	      }
+	    }
+	    
+	    return instancia;
+	}
+	
+	public void salvarArquivo() {	// IMPLEMENTAÇÃO INICIAL DE ARQUIVOS, DEVE SER REVISADO!
+	    if (instance == null) {
+	      return;
+	    }
+	    File out = new File("Periodos.dat");
+	    FileOutputStream fos = null;
+	    ObjectOutputStream oos = null;
+
+	    try {
+	      fos = new FileOutputStream(out);
+	      oos = new ObjectOutputStream(fos);
+	      oos.writeObject(instance);
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    } finally {
+	      if (oos != null) {
+	        try {
+	          oos.close();
+	        } catch (IOException e) {
+	          /* Silent */}
+	      }
+	    }
+	  }
 	
 	public void cadastrar(Object sem) {
 		if(sem instanceof Periodo) {
@@ -28,12 +87,17 @@ public class PeriodoDAO implements IPeriodoDAO{
 		}	
 	}
 	
-	public void remover(long id) {
-		for(Periodo sem: semestres) {
-			if(sem.getID() == id) {
-				semestres.remove(sem);
-				break;
+	public void remover(Periodo periodo) throws PeriodoNaoExisteException {
+		if(this.existe(periodo)) {
+			for(Periodo sem: semestres) {
+				if(sem.getID() == periodo.getID()) {
+					semestres.remove(sem);
+					break;
+				}
 			}
+		}
+		else {
+			throw new PeriodoNaoExisteException(periodo);
 		}
 	}
 	
@@ -55,7 +119,7 @@ public class PeriodoDAO implements IPeriodoDAO{
 		}
 	}
 	
-public String listarSemestres() {
+	public String listarSemestres() {
 		
 		String lista = "";
 		
@@ -66,5 +130,18 @@ public String listarSemestres() {
 		return lista.toString();
 	}
 	
+	public List<Periodo> listar() {
+		return this.semestres;
+	}
+	
+	public Boolean existe(Periodo periodo) {
+		boolean valor = false;
+		for(Periodo o : this.semestres) {
+			if(o.equals(periodo) ) {
+				valor = true;
+			}
+		}
+		return valor;
+	}
 
 }
