@@ -1,5 +1,6 @@
 package promsys.negocio;
 import java.util.List;
+import promsys.exceptions.*;
 
 import promsys.dao.ServidorDAO;
 import promsys.negocio.beans.Servidor;
@@ -19,39 +20,48 @@ public class ServidorController {
 		return instance;
 	}
 	
-	public void cadastroServidor(Servidor novo) {
+	public void cadastroServidor(Servidor novo) throws ServidorJaExisteException {
 		if(novo == null) {
 			throw new IllegalArgumentException("Parâmetro Invalido");
 		}
 		else {
-			repositorioServidores.cadastrar(novo);
+			if(novo.getID()==0L){
+				repositorioServidores.cadastrar(novo);
+				repositorioServidores.escreveArquivo();
+			}else {
+				throw new ServidorJaExisteException(novo.getID());
+			}
 		}
 	}
 	
-	public boolean excluiServidor(long id){
+	public void excluiServidor(long id) throws ServidorNaoExisteException{
 		Servidor found = ServidorDAO.getInstance().procurar(id);
 		if(found.equals(null)){
-			return false;
+			throw new ServidorNaoExisteException(id);
 		} else {
 			ServidorDAO.getInstance().remover(found);
-			return true;
 		}
 	}
 	
-	public boolean atualizaServidor(long id, String novoLogin, String novaSenha){
+	public void atualizaServidor(long id, String novoLogin, String novaSenha) throws ServidorNaoExisteException {
 		Servidor found = ServidorDAO.getInstance().procurar(id);
 		if(found.equals(null)){
-			return false;
+			throw new ServidorNaoExisteException(id);
+		
 		} else {
 			found.setLogin(novoLogin);
 			found.setSenha(novaSenha);
 			ServidorDAO.getInstance().atualizar(found);
-			return true;
 		}
 	}
 	
-	public Servidor procuraServidor(long id){
-		return ServidorDAO.getInstance().procurar(id);
+	public Servidor procuraServidor(long id) throws ServidorNaoExisteException{
+		Servidor found = ServidorDAO.getInstance().procurar(id);
+		if(found.equals(null)!=false) {
+			return found;
+		}else {
+			throw new ServidorNaoExisteException(id);	
+		}
 	}
 	
 	public boolean fazLogin(String login, String senha){
