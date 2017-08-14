@@ -37,9 +37,11 @@ public class ProfessorController {
 			throw new ProfessorJaExisteNomeException(nome);
 		}
 	}
-	public void addPossivelDisciplina(long idProf, Disciplina disciplina) throws ProfessorNaoExisteException, DisciplinaNaoExisteException, ProfessorDuasMaisDisciplinasException{
+	public void addPossivelDisciplina(long idProf, Disciplina disciplina) throws ProfessorNaoExisteException, DisciplinaNaoExisteException {
 		Professor p = procurarProf(idProf);
 		if(p != null && disciplina != null) {
+			// Um professor pode ter várias disciplinas aptas.
+			/*
 			ArrayList<Disciplina> aptas = p.getDisciplinasPossiveis();
 			if(aptas.size() >= 1) {
 				boolean existe = false;
@@ -49,11 +51,16 @@ public class ProfessorController {
 				}
 				if(existe == false) {
 					this.professorRepository.addPossivelDisciplina(idProf, disciplina);
+				}
 			}
-			}
-			else {
-				throw new ProfessorDuasMaisDisciplinasException(p, disciplina);
-			}
+			*/
+			this.professorRepository.addPossivelDisciplina(idProf, disciplina);
+		}
+		else if(p == null) {
+			throw new ProfessorNaoExisteException(idProf);
+		}
+		else if(disciplina == null) {
+			throw new DisciplinaNaoExisteException(disciplina);
 		}
 	}
 	public Professor procurarProf(long id) {

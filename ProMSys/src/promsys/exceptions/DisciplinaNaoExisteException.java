@@ -1,5 +1,7 @@
 package promsys.exceptions;
 
+import promsys.negocio.beans.Disciplina;
+
 public class DisciplinaNaoExisteException extends Exception {
 
 	/**
@@ -9,8 +11,12 @@ public class DisciplinaNaoExisteException extends Exception {
 	private long id;
 	
 	public DisciplinaNaoExisteException(long id) {
-		super("Disciplina de id " + id + "já existe");
+		super("Disciplina de id " + id + "não existe");
 		this.id = id;
+	}
+	
+	public DisciplinaNaoExisteException(Disciplina negada) {
+		super("A Disciplina não existe");
 	}
 	
 	public long getId() {

@@ -99,7 +99,6 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 		
 	}
 	
-	
 	private ProfessorDAO() {
 		this.prof = new ArrayList<Professor>();
 	}
@@ -212,7 +211,6 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 		}
 	}
 	
-	
 	public void removerPossivelDisciplina(long idProf, long idDisciplina) throws NaoEstaEntreOsPossiveisException, ProfessorNaoExisteException{
 		boolean vari = false;
 		if(idProf >= 1 && idDisciplina >= 1) {
@@ -263,6 +261,7 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 	public List<Professor> lista() {
 		return this.prof;
 	}
+	
 	public boolean estaEntreAptasDis(long idP, long idDis) {
 		boolean vari = false;
 		for(Professor professor: prof) {
