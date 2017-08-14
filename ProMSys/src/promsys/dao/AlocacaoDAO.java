@@ -17,7 +17,6 @@ public class AlocacaoDAO implements IAlocacaoDAO, Serializable {
 	 */
 	private static final long serialVersionUID = 2409610592120285089L;
 	private static AlocacaoDAO instance;
-	private Periodo referencia;
 	private List<Alocacao> aloc;
 	
 	private AlocacaoDAO() {
@@ -98,20 +97,6 @@ public class AlocacaoDAO implements IAlocacaoDAO, Serializable {
 		this.aloc.add(obj);
 	}
 	
-	public void referenciaParaPeriodo(String peri) {
-		if(peri == null) {
-			return;
-		}
-		List<Alocacao> aux = new ArrayList<>();
-		for(int i = 0; i < this.aloc.size(); i++) {
-			if(this.aloc.get(i).getPeriodo().equals(peri)) {
-				aux.add(this.aloc.get(i));
-			}
-		}
-		referencia.getReferencia(aux);// Não sei se funciona, mas só quando
-		//testarmos dá pra saber.
-	}
-	
 	public void remover(long id) throws AlocacaoNaoExisteException {
 		boolean vari = false;
 		if(this.existe(id)) {
@@ -149,23 +134,6 @@ public Alocacao procurar(long id) {
 		}
 	}
 	
-
-	
-	public List<Alocacao> retornaAlocacoesPeriodo(String periodo) {
-		List<Alocacao> temporario = null;
-		
-		if(periodo != null && !this.aloc.isEmpty()) {
-			temporario = new ArrayList<Alocacao>();
-			for(int i = 0; i < this.aloc.size(); i++) {
-				if(this.aloc.get(i).getPeriodo().equals(periodo)) {
-					temporario.add(this.aloc.get(i));
-				}
-			}
-		}
-
-		return temporario;
-	}
-	
 	public void atualizarDisciplina(long id, Disciplina nova) {
 		boolean vari = false;
 		if(id >=1 && nova!= null) {
@@ -177,7 +145,6 @@ public Alocacao procurar(long id) {
 			}
 		}
 	}
-	
 	
 	public void atualizarProfessor(long id, Professor nova) {
 		boolean vari = false;
@@ -202,19 +169,6 @@ public Alocacao procurar(long id) {
 			}
 		}
 	}
-	
-	public void atualizarPeriodo(long id, String nova) {
-		boolean vari = false;
-		if(id >=1 && nova!= null) {
-			for(int i = 0; i < this.aloc.size() && !vari; i++) {
-				if(this.aloc.get(i).getId() == id) {
-					this.aloc.get(i).setPeriodo(nova);
-					vari = true;
-				}
-			}
-		}
-		
-	}	
 	
 	public boolean existe(long id) {
 		boolean vari = false;

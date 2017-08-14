@@ -12,16 +12,14 @@ public class Alocacao implements Serializable{
 	private long id;
 	private Professor professor;
 	private Disciplina disciplina;
-	private String periodo;
 	private Horario horario;
 	
 	//CONSTRUTOR
-	public Alocacao (Professor prof, Disciplina dis, String periodo, Horario hora) {
+	public Alocacao (Professor prof, Disciplina dis, Horario hora) {
 		
 		this.professor = prof;
 		this.disciplina = dis;
 		this.horario = hora;
-		this.periodo = periodo;
 		this.id = nextID;
 		nextID++;
 	}
@@ -39,12 +37,6 @@ public class Alocacao implements Serializable{
 	public void setDisciplina(Disciplina disciplina) {
 		this.disciplina = disciplina;
 	}
-	public String getPeriodo() {
-		return periodo;
-	}
-	public void setPeriodo(String periodo) {
-		this.periodo = periodo;
-	}
 	public Horario getHorario() {
 		return horario;
 	}
@@ -59,7 +51,6 @@ public class Alocacao implements Serializable{
 	public String toString() {
 		return String.format("Professor: "+ getProfessor().getNome() + 
 							"\nDisciplina: "+ getDisciplina().getNome() +
-							"\nPeríodo: " + getPeriodo() +"\n"+ getHorario() +
 							"\nID da Alocação: %d", this.getId());
 	}
 	public boolean equals(Object aloc) {

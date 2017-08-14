@@ -84,10 +84,6 @@ public class AlocacaoController {
 		return this.repositorioAlocacao.procurar(id);
 	}
 	
-	public List<Alocacao> retornaAlocacoesPeriodo(String periodo) {
-		return this.repositorioAlocacao.retornaAlocacoesPeriodo(periodo);
-	}
-	
 	public boolean verificaExistencia(long id) {
 		return this.repositorioAlocacao.existe(id);
 	}
@@ -154,10 +150,6 @@ public class AlocacaoController {
 			}
 		}
 		
-	}
-	
-	public void atualizarPeriodo(long id, String nova) {
-		this.repositorioAlocacao.atualizarPeriodo(id, nova);
 	}
 	
 	public void atualizarDisciplina(long id, Disciplina nova) {

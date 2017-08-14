@@ -1,5 +1,21 @@
 package promsys.fachada;
 
+import java.util.List;
+
+import promsys.exceptions.AlocacaoJaExisteException;
+import promsys.exceptions.AlocacaoNaoExisteException;
+import promsys.exceptions.DisciplinaCargaInvalidaException;
+import promsys.exceptions.DisciplinaJaExisteException;
+import promsys.exceptions.DisciplinaNaoExisteException;
+import promsys.exceptions.MesmoProfessorHorarioException;
+import promsys.exceptions.NaoEstaEntreOsPossiveisException;
+import promsys.exceptions.ProfessorDuasMaisDisciplinasException;
+import promsys.exceptions.ProfessorJaExisteException;
+import promsys.exceptions.ProfessorJaExisteNomeException;
+import promsys.exceptions.ProfessorJaPossuiHorarioException;
+import promsys.exceptions.ProfessorNaoExisteException;
+import promsys.exceptions.ServidorJaExisteException;
+import promsys.exceptions.ServidorNaoExisteException;
 import promsys.negocio.*;
 import promsys.negocio.beans.*;
 
@@ -28,51 +44,51 @@ public class Fachada {
 	
 	// Aloca��es
 	
-	public boolean salvaAlocacao(Object obj) {
-		return alocacoes.salvaAloc(obj);
+	public void cadastrarAlocacao(Object obj) throws MesmoProfessorHorarioException, AlocacaoJaExisteException {
+		alocacoes.cadastrar(obj);
 	}
 
-	public boolean removeAlocacao(long id) {
-		return alocacoes.removeAloc(id);
+	public void removerAlocacao(long id) throws AlocacaoNaoExisteException {
+		alocacoes.remover(id);
 	}
 
 	public Alocacao lerAlocacoPorID(long id) {
 		return alocacoes.lerPorID(id);
 	}
-
+/*
 	public Alocacao[] lerAlocacaoPorPeriodo(String periodo) {
 		return alocacoes.lerPorPeriodo(periodo);
 	}
-
+*/
 	public boolean verificaExistenciaAlocacao(long id) {
 		return alocacoes.verificaExistencia(id);
 	}
 
-	public boolean updateHorarioAlocacao(long id, Horario nova) {
-		return alocacoes.updateHorario(id, nova);
+	public void atualizarHorarioAlocacao(long id, Horario nova) throws MesmoProfessorHorarioException {
+		alocacoes.atualizarHorario(id, nova);
 	}
 
-	public boolean updateProfessorAlocacao(long id, Professor nova) {
-		return alocacoes.updateProfessor(id, nova);
+	public void atualizarProfessorAlocacao(long id, Professor nova) throws ProfessorDuasMaisDisciplinasException, ProfessorJaPossuiHorarioException {
+		alocacoes.atualizarProfessor(id, nova);
 	}
-
+/*
 	public boolean updatePeriodo(long id, String nova) {
 		return alocacoes.updatePeriodo(id, nova);
 	}
-
-	public boolean updateDisciplinaAlocacao(long id, Disciplina nova) {
-		return alocacoes.updateDisciplina(id, nova);
+*/
+	public void atualizarDisciplinaAlocacao(long id, Disciplina nova) {
+		alocacoes.atualizarDisciplina(id, nova);
 	}
 	
-	public String listaAlocacao() {
-		return alocacoes.listaAlocacoes();
+	public List<Alocacao> listarAlocacoes() {
+		return alocacoes.listar();
 	}
 
 	
 	//Disciplinas
 	
-	public void salvarDisciplina(Disciplina d) {
-		disciplinas.salvarDisciplina(d);
+	public void cadastrarDisciplina(Disciplina d) throws DisciplinaJaExisteException, DisciplinaCargaInvalidaException {
+		disciplinas.cadastrarDisciplina(d);
 	}
 
 	public Disciplina procurarDisciplina(long id) {
@@ -83,16 +99,16 @@ public class Fachada {
 		return disciplinas.procurarNomeDisciplina(nome);
 	}
 
-	public boolean atualizarDisciplina(long id, String novoNome) {
-		return disciplinas.atualizarDisciplina(id, novoNome);
+	public void atualizarDisciplina(long id, String novoNome) {
+		disciplinas.atualizarDisciplina(id, novoNome);
 	}
 	
-	public boolean atualizarCargaHoraria(long id, double novaCargaHoraria) {
-		return disciplinas.atualizarCargaHoraria(id, novaCargaHoraria);
+	public void atualizarCargaHoraria(long id, double novaCargaHoraria) throws DisciplinaCargaInvalidaException {
+		disciplinas.atualizarCargaHoraria(id, novaCargaHoraria);
 	}
 	
-	public boolean deletarDisciplina(long id) {
-		return disciplinas.deletarDisciplina(id);
+	public void removerDisciplina(long id) throws DisciplinaNaoExisteException {
+		disciplinas.removerDisciplina(id);
 	}
 
 	public String listarDisciplinas() {
@@ -101,12 +117,12 @@ public class Fachada {
 	
 	//Professores
 
-	public String updateNomeProfessor(String nome, long id) {
-		return professores.updateNomeProfessor(nome, id);
+	public void atualizarNomeProfessor(String nome, long id) throws ProfessorNaoExisteException, ProfessorJaExisteNomeException {
+		professores.updateNomeProfessor(nome, id);
 	}
 
-	public boolean addPossivelDisciplina(long idprof, Disciplina disciplina) {
-		return professores.addPossivelDisciplina(idprof, disciplina);
+	public void addPossivelDisciplina(long idprof, Disciplina disciplina) throws ProfessorNaoExisteException, DisciplinaNaoExisteException {
+		professores.addPossivelDisciplina(idprof, disciplina);
 	}
 
 	public Professor procurarProf(long id) {
@@ -117,16 +133,16 @@ public class Fachada {
 		return professores.verificarExistencia(id);
 	}
 
-	public boolean cadastraProf(Professor prof) {
-		return professores.cadastraProf(prof);
+	public void cadastraProf(Professor prof) throws ProfessorJaExisteException {
+		professores.cadastraProf(prof);
 	}
 
-	public boolean removeProf(long id) {
-		return professores.removeProf(id);
+	public void removeProf(long id) throws ProfessorNaoExisteException {
+		professores.removeProf(id);
 	}
 
-	public boolean removeDisciplinaPossivel(long idProf, long idDisciplina) {
-		return professores.removeDisciplinaPossivel(idProf, idDisciplina);
+	public void removeDisciplinaPossivel(long idProf, long idDisciplina) throws ProfessorNaoExisteException, NaoEstaEntreOsPossiveisException {
+		professores.removeDisciplinaPossivel(idProf, idDisciplina);
 	}
 	
 	public boolean fazLoginProfessor(String login, String senha) {
@@ -139,19 +155,19 @@ public class Fachada {
 	
 	//Servidor
 
-	public void cadastroServidor(String nome, String login, String senha) {
-		servidores.cadastroServidor(nome, login, senha);
+	public void cadastroServidor(Servidor novo) throws ServidorJaExisteException {
+		servidores.cadastroServidor(novo);
 	}
 
-	public boolean excluiServidor(long id) {
-		return servidores.excluiServidor(id);
+	public void excluiServidor(long id) throws ServidorNaoExisteException {
+		servidores.excluiServidor(id);
 	}
 
-	public boolean atualizaServidor(long id, String novoLogin, String novaSenha) {
-		return servidores.atualizaServidor(id, novoLogin, novaSenha);
+	public void atualizaServidor(long id, String novoLogin, String novaSenha) throws ServidorNaoExisteException {
+		servidores.atualizaServidor(id, novoLogin, novaSenha);
 	}
 
-	public Servidor procuraServidor(long id) {
+	public Servidor procuraServidor(long id) throws ServidorNaoExisteException {
 		return servidores.procuraServidor(id);
 	}
 
