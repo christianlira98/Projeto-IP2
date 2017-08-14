@@ -123,8 +123,8 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 		Disciplina encontrada = null;
 		int count = 0;
 		
-		for(int i = 1; i<this.disciplinas.size() && !encontrou; i++) {
-			if(nome == this.disciplinas.get(i).getNome() ) {
+		for(int i = 0; i<this.disciplinas.size() && !encontrou; i++) {
+			if(nome.equals(this.disciplinas.get(i).getNome()) ) {
 				encontrou = true;
 				encontrada = this.disciplinas.get(i);
 			}

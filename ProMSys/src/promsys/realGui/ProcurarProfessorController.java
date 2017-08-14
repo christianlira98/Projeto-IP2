@@ -3,6 +3,9 @@ package promsys.realGui;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
@@ -26,6 +29,8 @@ public class ProcurarProfessorController {
 	private Button procura;
 	@FXML
 	private TextField CaixaNome;
+	@FXML
+	private Button ListaTodos;
 	
 	public void procurando() {
 		procura.setOnAction(e -> {
@@ -51,6 +56,20 @@ public class ProcurarProfessorController {
 		confirmaBotao.setOnAction(e -> {
 			Stage stage = (Stage) confirmaBotao.getScene().getWindow();
 			stage.close();
+		});
+	}
+	public void listaTodos() {
+		ListaTodos.setOnAction(e -> {
+			caixaID.setText("");
+			CaixaNome.setText("");
+			caixaEncontrado.setText("");
+			List<Professor> temp = new ArrayList<>();
+			temp = ProfessorController.getInstance().lista();
+			for(Professor o: temp) {
+				System.out.println(o);
+				caixaEncontrado.insertText(0,o.toString()+"*********************\n");
+				
+			}
 		});
 	}
 	
