@@ -3,8 +3,6 @@ package promsys.realGui;
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 
 public class EventosMenuController {
 	@FXML

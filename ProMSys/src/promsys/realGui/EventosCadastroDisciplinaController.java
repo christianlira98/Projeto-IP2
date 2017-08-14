@@ -1,16 +1,11 @@
 package promsys.realGui;
 import promsys.negocio.DisciplinaController;
 import promsys.negocio.beans.*;
-import promsys.dao.*;
 import promsys.exceptions.DisciplinaCargaInvalidaException;
 import promsys.exceptions.DisciplinaJaExisteException;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 
 public class EventosCadastroDisciplinaController {

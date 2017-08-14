@@ -1,7 +1,12 @@
 package promsys.negocio.beans;
 
+import java.io.Serializable;
 
-public class Usuario {
+public class Usuario implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7136042784309587047L;
 	private String login;
 	private String senha;
 	private String nome;

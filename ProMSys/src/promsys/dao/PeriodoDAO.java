@@ -3,15 +3,23 @@ package promsys.dao;
 import promsys.exceptions.PeriodoNaoExisteException;
 import promsys.negocio.beans.*;
 import java.util.List;
+
+import java.io.Serializable;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+
 import java.util.ArrayList;
 
-public class PeriodoDAO implements IPeriodoDAO{
+public class PeriodoDAO implements IPeriodoDAO, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6376263980076175022L;
 	private static long nextID = 1;
 	private static PeriodoDAO instance;
 	private List<Periodo> semestres;

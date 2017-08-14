@@ -1,8 +1,12 @@
 package promsys.dao;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -31,6 +35,28 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 		}
 		return instance;
 	}
+	
+	public static void leituraNextId () throws IOException {
+		String linha = null;
+		File arquivo = new File("IdDisciplina.dat");
+		FileReader fr = new FileReader(arquivo);
+		BufferedReader br = new BufferedReader(fr);
+		while( br.ready() ){
+			linha = br.readLine();
+		}
+		nextId = Long.parseLong(linha);
+		br.close();
+		fr.close();
+	}
+	
+	public void escreveNextId () throws IOException {
+		File arquivo = new File("IdDisciplina.dat");
+		FileWriter fw = new FileWriter(arquivo);
+		BufferedWriter bw = new BufferedWriter(fw);
+		bw.write(String.valueOf(nextId));
+		bw.close();
+		fw.close();
+	}
 
 	
 	private static DisciplinaDAO lerDoArquivo() { // IMPLEMENTAÇÃO INCIAL DE ARQUIVOS, DEVE SER REVISADO!
@@ -44,6 +70,7 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 	      ois = new ObjectInputStream(fis);
 	      Object o = ois.readObject();
 	      instancia = (DisciplinaDAO) o;
+	      leituraNextId();
 	    } 
 	    catch (Exception e) {
 	      instancia = new DisciplinaDAO();
@@ -72,6 +99,7 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 	      fos = new FileOutputStream(out);
 	      oos = new ObjectOutputStream(fos);
 	      oos.writeObject(instance);
+	      escreveNextId();
 	    } catch (Exception e) {
 	      e.printStackTrace();
 	    } finally {
