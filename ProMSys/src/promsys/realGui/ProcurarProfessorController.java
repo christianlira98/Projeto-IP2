@@ -13,7 +13,7 @@ import promsys.exceptions.ProfessorNaoExisteException;
 import promsys.negocio.ProfessorController;
 import promsys.negocio.beans.Professor;
 
-public class RemoverProfessorController {
+public class ProcurarProfessorController {
 	@FXML
 	private Button cancelaBotao;
 	@FXML
@@ -24,8 +24,6 @@ public class RemoverProfessorController {
 	private TextArea caixaEncontrado;
 	@FXML
 	private Button procura;
-	@FXML
-	private Button remove;
 	@FXML
 	private TextField CaixaNome;
 	
@@ -48,40 +46,9 @@ public class RemoverProfessorController {
 		});
 	}
 	
-	public void remover() {
-		remove.setOnAction(e -> {
-			String tempo = caixaID.getText();
-			String vari = "";
-			String tempo2 = CaixaNome.getText();
-			if(!tempo.equals(vari) && ProfessorController.getInstance().verificarExistencia(
-					Long.parseLong(tempo))) {
-			long temp = Long.valueOf(caixaID.getText());
-			Professor p = ProfessorController.getInstance().procurarProf(temp);
-			try {
-				ProfessorController.getInstance().removeProf(p.getId());
-			} catch (ProfessorNaoExisteException e1) {
-				
-				caixaEncontrado.insertText(0, "Erro: Não foi possível remover...!");
-			}
-		}
-			else if(!tempo2.equals(vari)) {
-				Professor p = ProfessorController.getInstance().procurarPorNome(tempo2);
-				try {
-					ProfessorController.getInstance().removeProf(p.getId());
-				}catch(ProfessorNaoExisteException e2) {
-					caixaEncontrado.insertText(0, "Erro: Não foi possível remover...!");
-				}
-				caixaEncontrado.insertText(0, p.toString());
-			}
-				caixaEncontrado.setText("");
-				caixaEncontrado.insertText(0, "Professor foi removido!");
-			
-		});
-	}
 	
 	public void confirma() {
 		confirmaBotao.setOnAction(e -> {
-			ProfessorDAO.getInstance().escreveArquivo();
 			Stage stage = (Stage) confirmaBotao.getScene().getWindow();
 			stage.close();
 		});

@@ -121,7 +121,7 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 		}*/
 		if(nome != null) {
 			for(int i = 0; i < this.prof.size(); i++) {
-				if(this.prof.get(i).getNome() == nome) {
+				if(this.prof.get(i).getNome().equals(nome)) {
 					aux = this.prof.get(i);
 					//temp.add(this.prof.get(i).toString());
 				}

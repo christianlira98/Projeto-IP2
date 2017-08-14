@@ -3,8 +3,6 @@ package promsys.negocio;
 import promsys.dao.ProfessorDAO;
 import promsys.exceptions.*;
 import promsys.negocio.beans.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
