@@ -1,9 +1,14 @@
             package promsys.dao;
 import promsys.negocio.beans.*;
 import java.util.List;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PeriodoDAO implements IPeriodoDAO{
+public class PeriodoDAO implements IPeriodoDAO, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6376263980076175022L;
 	private static long nextID = 1;
 	private static PeriodoDAO instance;
 	private List<Periodo> semestres;

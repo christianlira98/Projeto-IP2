@@ -1,9 +1,14 @@
 package promsys.dao;
 import promsys.negocio.beans.*;
 import promsys.exceptions.*;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -18,8 +23,30 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 	private List<Professor> prof;
 	private static long nextId = 1;
 	
+	public static void leituraNextId () throws IOException {
+		String linha = null;
+		File arquivo = new File("IdProfessor.dat");
+		FileReader fr = new FileReader(arquivo);
+		BufferedReader br = new BufferedReader(fr);
+		while( br.ready() ){
+			linha = br.readLine();
+		}
+		nextId = Long.parseLong(linha);
+		br.close();
+		fr.close();
+	}
+	
+	public void escreveNextId () throws IOException {
+		File arquivo = new File("IdProfessor.dat");
+		FileWriter fw = new FileWriter(arquivo);
+		BufferedWriter bw = new BufferedWriter(fw);
+		bw.write(String.valueOf(getNextId()));
+		bw.close();
+		fw.close();
+	}
+	
 	private static ProfessorDAO lerArquivo() {
-		ProfessorDAO instance = null;
+		ProfessorDAO instancia = null;
 		File in = new File("Professores.dat");
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
@@ -28,19 +55,21 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 			fis = new FileInputStream(in);
 			ois = new ObjectInputStream(fis);
 			Object o = ois.readObject();
-			instance = (ProfessorDAO) o;
+			instancia = (ProfessorDAO) o;
+			leituraNextId();
 		}catch(Exception e) {
-			instance = new ProfessorDAO();
+			instancia = new ProfessorDAO();
 		}finally {
 			if(ois != null) {
 				try {
 					ois.close();
-				}catch(IOException e) {
+				}catch(IOException e) {/* Silent exception */
 					
 				}
 			}
 		}
-		return instance;
+	
+		return instancia;
 	}
 	
 	public void escreveArquivo() {
@@ -49,19 +78,20 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 		}
 		File out = new File("Professores.dat");
 		FileOutputStream fos = null;
-		ObjectOutputStream oo = null;
+		ObjectOutputStream oos = null;
 		
 		try {
 			fos = new FileOutputStream(out);
-			oo = new ObjectOutputStream(fos);
-			oo.writeObject(instance);
+			oos = new ObjectOutputStream(fos);
+			oos.writeObject(instance);
+			escreveNextId();
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally {
-			if(oo != null) {
+			if(oos != null) {
 				try {
-					oo.close();
-				}catch(IOException e ) {
+					oos.close();
+				}catch(IOException e ) {/* Silent exception */
 					
 				}
 			}
@@ -107,10 +137,10 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 		return aux;
 	}
 	
-	public void cadastrar(Professor prof) {
-		prof.setId(nextId);
-		nextId++;
-		this.prof.add(prof);
+	public void cadastrar(Professor professor) {
+		professor.setId(nextId);
+		++nextId;
+		this.prof.add(professor);
 	}
 	
 	public void remover(long id) throws ProfessorNaoExisteException{
@@ -132,15 +162,22 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 	}
 	
 	public Professor procurar (long id) {
-		Professor novo = null;
-		if(id>=1) {
-			for (int i = 0; i  < this.prof.size() && novo == null;i++) {
-				if(this.prof.get(i).getId() == id) {
-					novo = this.prof.get(i);
-				}
+		boolean encontrou = false;
+		int j = 0;
+		
+		for(int i = 0; i < this.prof.size() && !encontrou; i++) {
+			if(id == this.prof.get(i).getId() ) {
+				j = i;
+				encontrou = true;
 			}
 		}
-		return novo;
+		
+		if(encontrou == true){
+			return this.prof.get(j);
+		}
+		else{
+			return null;
+		}
 	}
 	
 	public void atualizarNome (String nome, long id) throws ProfessorNaoExisteException {

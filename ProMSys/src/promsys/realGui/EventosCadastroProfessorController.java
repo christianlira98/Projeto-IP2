@@ -2,21 +2,15 @@ package promsys.realGui;
 import promsys.exceptions.*;
 import promsys.negocio.*;
 import promsys.negocio.beans.*;
-import promsys.dao.*;
 
 import java.util.List;
 import java.util.ArrayList;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.CheckMenuItem;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.stage.Stage;
 
 public class EventosCadastroProfessorController {
@@ -43,7 +37,7 @@ public class EventosCadastroProfessorController {
 			Professor prof = new Professor(nomeP.getText(), login.getText(), senha.getText());
 			for(int i = 0; i < disponiveis.getItems().size(); i++ ) {
 				temp = (CheckMenuItem) disponiveis.getItems().get(i);
-				if(temp.isVisible() == true) {
+				if(temp.isSelected()==true) {
 					prof.addDisciplinasPossiveis(DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()));			
 				}
 			}

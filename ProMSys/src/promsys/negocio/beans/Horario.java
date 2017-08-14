@@ -1,12 +1,17 @@
 package promsys.negocio.beans;
 import java.util.List;
+import java.io.Serializable;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import promsys.Enum.*;
-public class Horario {
+public class Horario implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8254761103621270774L;
 	private LocalTime horarioInicio;
 	private LocalTime horarioFim;
 	private List<DiasEnum> diasDaSemana = new ArrayList<>();

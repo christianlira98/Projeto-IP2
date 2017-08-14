@@ -11,17 +11,17 @@ import java.util.List;
 public class ProfessorController {
 	
 	private ProfessorDAO professorRepository;
-	private static ProfessorController instance;
+	private static ProfessorController instancia;
 	
 	private ProfessorController () {
 		this.professorRepository = ProfessorDAO.getInstance();
 	}
 	
 	public static ProfessorController getInstance() {
-		if(instance == null) {
-			instance = new ProfessorController();
+		if(instancia == null) {
+			instancia = new ProfessorController();
 		}
-		return instance;
+		return instancia;
 	}
 	public void updateNomeProfessor(String nome, long id) throws ProfessorNaoExisteException, ProfessorJaExisteNomeException {
 		boolean existeNome = false;

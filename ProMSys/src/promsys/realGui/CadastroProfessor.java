@@ -1,30 +1,20 @@
 package promsys.realGui;
 
-import javafx.scene.control.MenuItem;
 
-import java.awt.Menu;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckMenuItem;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import promsys.dao.DisciplinaDAO;
 import promsys.negocio.DisciplinaController;
 import promsys.negocio.beans.Disciplina;
 
 public class CadastroProfessor extends Application {
-	private DisciplinaDAO repositorioDis;
 	List<Disciplina> lista = new ArrayList<Disciplina>();
 	MenuButton menu;
 	private static Pane pane;
