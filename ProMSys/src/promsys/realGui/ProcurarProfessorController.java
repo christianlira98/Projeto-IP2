@@ -66,7 +66,6 @@ public class ProcurarProfessorController {
 			List<Professor> temp = new ArrayList<>();
 			temp = ProfessorController.getInstance().lista();
 			for(Professor o: temp) {
-				System.out.println(o);
 				caixaEncontrado.insertText(0,o.toString()+"*********************\n");
 				
 			}

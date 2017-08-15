@@ -69,7 +69,7 @@
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
-      <MenuButton fx:id="Excluir" alignment="CENTER" contentDisplay="CENTER" layoutX="120.0" layoutY="192.0" mnemonicParsing="false" onAction="#excluir" prefHeight="25.0" prefWidth="166.0" text="Excluir" textAlignment="CENTER">
+      <MenuButton fx:id="Excluir" alignment="CENTER" contentDisplay="CENTER" layoutX="120.0" layoutY="192.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="166.0" text="Excluir" textAlignment="CENTER">
          <effect>
             <ColorAdjust brightness="0.26" contrast="0.12" saturation="-0.02" />
          </effect>

@@ -45,7 +45,6 @@ public class Professor extends Usuario implements Serializable {
 		if(idDis >=0) {
 			for(int i = 0; i < this.disciplinasPossiveis.size() && !vari; i++) {
 				if(this.disciplinasPossiveis.get(i).getId() == idDis) {
-					this.disciplinasPossiveis.remove(i);
 					vari = true;
 				}
 			}
