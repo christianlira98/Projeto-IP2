@@ -1,5 +1,7 @@
 package promsys.realGui;
 
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,7 +19,9 @@ public class Menu extends Application {
 		
 		menu.setTitle("Menu");
 		
-		pane = (BorderPane) FXMLLoader.load(this.getClass().getResource("menu.fxml"));
+		FXMLLoader loader = new FXMLLoader(this.getClass().getResource("menu.fxml"));
+		
+		pane = (BorderPane) loader.load();
 		
 		CadastroDisciplina c = new CadastroDisciplina();
 		Pane telaCadastroDisciplinas = c.getPane();
@@ -35,7 +39,7 @@ public class Menu extends Application {
 		menu.show();
 	}
 	
-	public static void trocarCena(Pane novaCena) {
+	public static void trocarCena(Pane novaCena) throws IOException {
 		novaCena.setPrefHeight(540);
 		novaCena.setPrefWidth(600);
 		pane.setCenter(novaCena);
