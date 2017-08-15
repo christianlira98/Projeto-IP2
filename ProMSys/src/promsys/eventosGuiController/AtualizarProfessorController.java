@@ -1,4 +1,4 @@
-package promsys.realGui;
+package promsys.eventosGuiController;
 
 
 
@@ -20,6 +20,7 @@ import promsys.exceptions.ProfessorNaoExisteException;
 import promsys.negocio.DisciplinaController;
 import promsys.negocio.ProfessorController;
 import promsys.negocio.beans.Professor;
+import promsys.realGui.AtualizarProfessor;
 
 public class AtualizarProfessorController {
 	@FXML
@@ -73,7 +74,6 @@ public class AtualizarProfessorController {
 			else if(!tempo2.equals(vari) && ProfessorController.getInstance().procurarPorNome(tempo2)!= null) {
 				Professor p = ProfessorController.getInstance().procurarPorNome(tempo2);
 				caixaEncontrado.insertText(0, p.toString());
-				
 				List<Professor> prof = new ArrayList<>();
 				prof = ProfessorController.getInstance().lista();
 				List<Disciplina> d = new ArrayList<>();

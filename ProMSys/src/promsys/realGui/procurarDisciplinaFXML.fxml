@@ -2,17 +2,19 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="DisiciplinaCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #e6e6fa;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.ProcurarProfessorController">
+<Pane fx:id="DisiciplinaCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #e6e6fa;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.ProcurarDisciplinaController">
    <children>
-      <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="2.0" prefHeight="50.0" prefWidth="640.0" style="-fx-background-color: #f0f8ff;" text="Procurar professor">
+      <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="2.0" prefHeight="50.0" prefWidth="640.0" style="-fx-background-color: #f0f8ff;" text="Procurar disciplina">
          <font>
             <Font name="Baskerville Old Face" size="25.0" />
          </font>
@@ -42,7 +44,7 @@
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TextArea fx:id="caixaEncontrado" layoutX="68.0" layoutY="161.0" prefHeight="203.0" prefWidth="469.0" promptText="Resultado da busca" wrapText="true">
+      <TextArea fx:id="caixaEncontrado" layoutX="68.0" layoutY="180.0" prefHeight="203.0" prefWidth="469.0" promptText="Resultado da busca" wrapText="true">
          <font>
             <Font name="Calibri Bold Italic" size="14.0" />
          </font>
@@ -61,5 +63,15 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
+      <Label layoutX="29.0" layoutY="145.0" style="-fx-background-color: #e6e6fa;" text="Disciplinas">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+      </Label>
+      <MenuButton fx:id="adicionar" alignment="CENTER" contentDisplay="CENTER" layoutX="120.0" layoutY="144.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="166.0" text="disponíveis" textAlignment="CENTER">
+         <effect>
+            <ColorAdjust brightness="0.26" contrast="0.12" saturation="-0.02" />
+         </effect>
+      </MenuButton>
    </children>
 </Pane>

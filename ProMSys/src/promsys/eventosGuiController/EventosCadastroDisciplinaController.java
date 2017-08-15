@@ -1,4 +1,4 @@
-package promsys.realGui;
+package promsys.eventosGuiController;
 import promsys.negocio.DisciplinaController;
 import promsys.negocio.beans.*;
 import promsys.exceptions.DisciplinaCargaInvalidaException;

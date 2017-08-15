@@ -1,10 +1,7 @@
-package promsys.realGui;
+package promsys.eventosGuiController;
 
 
 
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,7 +13,7 @@ import promsys.exceptions.ProfessorNaoExisteException;
 import promsys.negocio.ProfessorController;
 import promsys.negocio.beans.Professor;
 
-public class ProcurarProfessorController {
+public class RemoverProfessorController {
 	@FXML
 	private Button cancelaBotao;
 	@FXML
@@ -28,9 +25,9 @@ public class ProcurarProfessorController {
 	@FXML
 	private Button procura;
 	@FXML
-	private TextField CaixaNome;
+	private Button remove;
 	@FXML
-	private Button ListaTodos;
+	private TextField CaixaNome;
 	
 	public void procurando() {
 		procura.setOnAction(e -> {
@@ -51,24 +48,42 @@ public class ProcurarProfessorController {
 		});
 	}
 	
+	public void remover() {
+		remove.setOnAction(e -> {
+			String tempo = caixaID.getText();
+			String vari = "";
+			String tempo2 = CaixaNome.getText();
+			if(!tempo.equals(vari) && ProfessorController.getInstance().verificarExistencia(
+					Long.parseLong(tempo))) {
+			long temp = Long.valueOf(caixaID.getText());
+			Professor p = ProfessorController.getInstance().procurarProf(temp);
+			try {
+				ProfessorController.getInstance().removeProf(p.getId());
+			} catch (ProfessorNaoExisteException e1) {
+				
+				caixaEncontrado.insertText(0, "Erro: Não foi possível remover...!");
+			}
+		}
+			else if(!tempo2.equals(vari)) {
+				Professor p = ProfessorController.getInstance().procurarPorNome(tempo2);
+				try {
+					ProfessorController.getInstance().removeProf(p.getId());
+				}catch(ProfessorNaoExisteException e2) {
+					caixaEncontrado.insertText(0, "Erro: Não foi possível remover...!");
+				}
+				caixaEncontrado.insertText(0, p.toString());
+			}
+				caixaEncontrado.setText("");
+				caixaEncontrado.insertText(0, "Professor foi removido!");
+			
+		});
+	}
 	
 	public void confirma() {
 		confirmaBotao.setOnAction(e -> {
+			ProfessorDAO.getInstance().escreveArquivo();
 			Stage stage = (Stage) confirmaBotao.getScene().getWindow();
 			stage.close();
-		});
-	}
-	public void listaTodos() {
-		ListaTodos.setOnAction(e -> {
-			caixaID.setText("");
-			CaixaNome.setText("");
-			caixaEncontrado.setText("");
-			List<Professor> temp = new ArrayList<>();
-			temp = ProfessorController.getInstance().lista();
-			for(Professor o: temp) {
-				caixaEncontrado.insertText(0,o.toString()+"*********************\n");
-				
-			}
 		});
 	}
 	

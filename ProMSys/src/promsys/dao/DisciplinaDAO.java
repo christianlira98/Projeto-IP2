@@ -166,6 +166,13 @@ public class DisciplinaDAO implements IDisciplinaDAO, Serializable{
 		}
 	}
 	
+	public void atualizarCodigo(long id, String cod) {
+		if(this.procurarDisciplina(id)!= null) {
+			this.procurarDisciplina(id).setCodigoTurma(cod);
+		}
+	}
+	
+	
 	public void removerDisciplina(long id) throws DisciplinaNaoExisteException {
 		boolean vari = false;
 		if (this.procurarDisciplina(id) != null) {

@@ -1,8 +1,11 @@
-package promsys.realGui;
+package promsys.eventosGuiController;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
+import promsys.realGui.CadastroDisciplina;
+import promsys.realGui.CadastroProfessor;
+import promsys.realGui.Menu;
 
 public class EventosMenuController {
 	@FXML
