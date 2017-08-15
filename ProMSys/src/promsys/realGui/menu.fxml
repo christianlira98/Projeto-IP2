@@ -28,7 +28,7 @@
             </Label>
             <TextField layoutX="55.0" layoutY="307.0" prefHeight="25.0" prefWidth="80.0" />
             <TextField layoutX="55.0" layoutY="346.0" prefHeight="25.0" prefWidth="80.0" />
-            <Rectangle fx:id="botaoPeriodo" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#43439a" height="50.0" layoutX="23.0" layoutY="81.0" nodeOrientation="LEFT_TO_RIGHT" onMouseEntered="#escureceP" onMouseExited="#clareaP" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="150.0">
+            <Rectangle fx:id="botaoPeriodo" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="23.0" layoutY="81.0" nodeOrientation="LEFT_TO_RIGHT" onMouseEntered="#escureceP" onMouseExited="#clareaP" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="150.0">
                <effect>
                   <InnerShadow height="44.72" radius="21.119999999999997" width="41.76" />
                </effect></Rectangle>
@@ -37,7 +37,7 @@
                   <Font name="Britannic Bold" size="24.0" />
                </font>
             </Label>
-            <Rectangle fx:id="botaoDisciplinas" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#43439a" height="50.0" layoutX="23.0" layoutY="131.0" onMouseClicked="#abreTelaDisciplinas" onMouseEntered="#escureceD" onMouseExited="#clareaD" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="150.0">
+            <Rectangle fx:id="botaoDisciplinas" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="23.0" layoutY="131.0" onMouseClicked="#abreTelaDisciplinas" onMouseEntered="#escureceD" onMouseExited="#clareaD" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="150.0">
                <effect>
                   <InnerShadow height="43.24" radius="20.75" width="41.76" />
                </effect></Rectangle>
@@ -46,11 +46,11 @@
                   <Font name="Britannic Bold" size="24.0" />
                </font>
             </Label>
-            <Rectangle fx:id="botaoProfessores" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#43439a" height="50.0" layoutX="23.0" layoutY="181.0" onMouseClicked="#abreTelaProfessores" onMouseEntered="#escurecePf" onMouseExited="#clareaPf" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="150.0">
+            <Rectangle fx:id="botaoProfessores" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="23.0" layoutY="181.0" onMouseClicked="#abreTelaProfessores" onMouseEntered="#escurecePf" onMouseExited="#clareaPf" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="150.0">
                <effect>
                   <InnerShadow height="43.24" radius="20.75" width="41.76" />
                </effect></Rectangle>
-            <Rectangle fx:id="botaoAjustes" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#43439a" height="50.0" layoutX="24.0" layoutY="231.0" onMouseEntered="#escureceA" onMouseExited="#clareaA" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="149.0">
+            <Rectangle fx:id="botaoAjustes" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="24.0" layoutY="231.0" onMouseEntered="#escureceA" onMouseExited="#clareaA" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="149.0">
                <effect>
                   <InnerShadow height="43.24" radius="20.75" width="41.76" />
                </effect></Rectangle>
