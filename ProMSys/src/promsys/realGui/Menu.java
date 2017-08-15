@@ -46,8 +46,7 @@ public class Menu extends Application {
 		menu.setScene(new Scene(pane));
 		menu.setResizable(false);		 
 	}
-	
-	public static void main(String[] args) {
+		public static void main(String[] args) {
 		launch(args);
 	}
 }

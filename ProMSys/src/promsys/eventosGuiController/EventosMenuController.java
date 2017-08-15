@@ -3,14 +3,11 @@ package promsys.eventosGuiController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-<<<<<<< HEAD:ProMSys/src/promsys/realGui/EventosMenuController.java
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-=======
 import promsys.realGui.CadastroDisciplina;
 import promsys.realGui.CadastroProfessor;
 import promsys.realGui.Menu;
->>>>>>> master:ProMSys/src/promsys/eventosGuiController/EventosMenuController.java
 
 public class EventosMenuController {
 	@FXML
