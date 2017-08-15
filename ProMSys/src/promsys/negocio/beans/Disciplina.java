@@ -59,7 +59,7 @@ public class Disciplina implements Serializable {
 		}
 	}
 	public String toString() {
-		String text = String.format("Nome: %s\nID: %d\nCarga Horaria: %.2f", this.getNome(), this.getId(), this.getCargaHoraria());
+		String text = String.format("Nome: %s\nCódigo da turma: %s\nID: %d\nCarga Horaria: %.2f", this.getNome(), this.getCodigoTurma(), this.getId(), this.getCargaHoraria());
 		return text;
 	}
 	

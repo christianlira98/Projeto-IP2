@@ -42,6 +42,7 @@ public class DisciplinaController {
 		}
 	}
 	
+
 	public Disciplina procurarDisciplina(long id) {
 		return this.repositorioDisciplina.procurarDisciplina(id);
 	}
@@ -78,6 +79,11 @@ public class DisciplinaController {
 	
 	public boolean existe(long id) {
 		return this.repositorioDisciplina.existe(id);
+	}
+	
+	public void atualizarCodigo(long id,String cod) {
+		this.repositorioDisciplina.atualizarCodigo(id, cod);
+
 	}
 	
 	public boolean existe(String nome) {

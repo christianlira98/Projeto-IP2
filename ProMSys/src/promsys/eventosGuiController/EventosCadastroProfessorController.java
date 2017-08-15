@@ -1,4 +1,4 @@
-package promsys.realGui;
+package promsys.eventosGuiController;
 import promsys.exceptions.*;
 import promsys.negocio.*;
 import promsys.negocio.beans.*;

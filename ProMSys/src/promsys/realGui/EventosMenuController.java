@@ -1,40 +1,16 @@
 package promsys.realGui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 
 public class EventosMenuController {
 	@FXML
-	private Rectangle botaoPeriodo;
+	private ToggleButton botaoPeriodo;
 	@FXML
-	private Label labelPeriodo;
+	private ToggleButton botaoDisciplinas;
 	@FXML
-	private Rectangle botaoDisciplinas;
-	@FXML
-	private Label labelDisciplinas;
-	@FXML
-	private Rectangle botaoProfessores;
-	@FXML
-	private Label labelProfessores;
-	@FXML
-	private Rectangle botaoAjustes;
-	
-	public void escureceP() {
-		botaoPeriodo.setOnMouseEntered(e -> {
-			Color c = (Color) botaoPeriodo.getFill();
-			botaoPeriodo.setFill(c.darker());
-		});
-	}
-	
-	public void clareaP() {
-		botaoPeriodo.setOnMouseExited(e -> {
-			Color c = (Color) botaoPeriodo.getFill();
-			botaoPeriodo.setFill(c.brighter());
-		});
-	}
+	private ToggleButton botaoProfessores;
 	
 	public void abreTelaDisciplinas() {
 		botaoDisciplinas.setOnMouseClicked(e -> {
@@ -47,20 +23,6 @@ public class EventosMenuController {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		});
-	}
-
-	public void escureceD() {
-		botaoDisciplinas.setOnMouseEntered(e -> {
-			Color c = (Color) botaoDisciplinas.getFill();
-			botaoDisciplinas.setFill(c.darker());
-		});
-	}
-
-	public void clareaD() {
-		botaoDisciplinas.setOnMouseExited(e -> {
-			Color c = (Color) botaoDisciplinas.getFill();
-			botaoDisciplinas.setFill(c.brighter());
 		});
 	}
 	
@@ -77,33 +39,4 @@ public class EventosMenuController {
 			}
 		});
 	}
-	
-	public void escurecePf() {
-		botaoProfessores.setOnMouseEntered(e -> {
-			Color c = (Color) botaoProfessores.getFill();
-			botaoProfessores.setFill(c.darker());
-		});
-	}
-	
-	public void clareaPf() {
-		botaoProfessores.setOnMouseExited(e -> {
-			Color c = (Color) botaoProfessores.getFill();
-			botaoProfessores.setFill(c.brighter());
-		});
-	}
-	
-	public void escureceA() {
-		botaoAjustes.setOnMouseEntered(e -> {
-			Color c = (Color) botaoAjustes.getFill();
-			botaoAjustes.setFill(c.darker());
-		});
-	}
-	
-	public void clareaA() {
-		botaoAjustes.setOnMouseExited(e -> {
-			Color c = (Color) botaoAjustes.getFill();
-			botaoAjustes.setFill(c.brighter());
-		});
-	}
-	
 }

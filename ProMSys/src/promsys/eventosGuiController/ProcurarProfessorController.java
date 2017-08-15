@@ -1,4 +1,4 @@
-package promsys.realGui;
+package promsys.eventosGuiController;
 
 
 
@@ -11,8 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import promsys.dao.ProfessorDAO;
-import promsys.exceptions.ProfessorNaoExisteException;
 import promsys.negocio.ProfessorController;
 import promsys.negocio.beans.Professor;
 
@@ -44,7 +42,8 @@ public class ProcurarProfessorController {
 				Professor p = ProfessorController.getInstance().procurarProf(temp);
 				caixaEncontrado.insertText(0, p.toString());
 			}
-			else if(!tempo2.equals(vari)) {
+			else if(!tempo2.equals(vari) && ProfessorController.getInstance().procurarPorNome(tempo2)!= null) {
+				caixaEncontrado.setText("");
 				Professor p = ProfessorController.getInstance().procurarPorNome(tempo2);
 				caixaEncontrado.insertText(0, p.toString());
 			}
@@ -66,7 +65,6 @@ public class ProcurarProfessorController {
 			List<Professor> temp = new ArrayList<>();
 			temp = ProfessorController.getInstance().lista();
 			for(Professor o: temp) {
-				System.out.println(o);
 				caixaEncontrado.insertText(0,o.toString()+"*********************\n");
 				
 			}

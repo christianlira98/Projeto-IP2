@@ -1,4 +1,4 @@
-package promsys.realGui;
+package promsys.eventosGuiController;
 
 
 
@@ -15,12 +15,12 @@ import javafx.stage.Stage;
 import promsys.dao.ProfessorDAO;
 import promsys.exceptions.DisciplinaNaoExisteException;
 import promsys.exceptions.NaoEstaEntreOsPossiveisException;
-import promsys.exceptions.ProfessorJaExisteException;
 import promsys.exceptions.ProfessorJaExisteNomeException;
 import promsys.exceptions.ProfessorNaoExisteException;
 import promsys.negocio.DisciplinaController;
 import promsys.negocio.ProfessorController;
 import promsys.negocio.beans.Professor;
+import promsys.realGui.AtualizarProfessor;
 
 public class AtualizarProfessorController {
 	@FXML
@@ -36,7 +36,7 @@ public class AtualizarProfessorController {
 	@FXML
 	private TextField CaixaNome;
 	@FXML
-	private TextField CaixaNovoNome;
+	private TextField caixaNovoNome;
 	@FXML
 	private MenuButton Excluir;
 	@FXML
@@ -71,10 +71,9 @@ public class AtualizarProfessorController {
 				}
 				AtualizarProfessor.add(me);
 			}
-			else if(!tempo2.equals(vari)) {
+			else if(!tempo2.equals(vari) && ProfessorController.getInstance().procurarPorNome(tempo2)!= null) {
 				Professor p = ProfessorController.getInstance().procurarPorNome(tempo2);
 				caixaEncontrado.insertText(0, p.toString());
-				
 				List<Professor> prof = new ArrayList<>();
 				prof = ProfessorController.getInstance().lista();
 				List<Disciplina> d = new ArrayList<>();
@@ -94,15 +93,6 @@ public class AtualizarProfessorController {
 		});
 	}
 	
-	public void excluir () {
-		Excluir.setOnAction(e -> {
-			String tempo = caixaID.getText();
-			String vari = "";
-			String tempo2 = CaixaNome.getText();
-			
-			
-		});
-	}
 	
 	
 	public void confirma() {
@@ -110,15 +100,15 @@ public class AtualizarProfessorController {
 			String tempo = caixaID.getText();
 			String vari = "";
 			String tempo2 = CaixaNome.getText();
-			String novoN = CaixaNovoNome.getText();
+			String novoN = caixaNovoNome.getText();
 			CheckMenuItem temp;
-			if(!tempo.equals(vari)) {
-				if(!novoN.equals(vari) && ProfessorController.getInstance().verificarExistencia(
-						Long.parseLong(tempo))) {
+			if(!tempo.equals(vari) && ProfessorController.getInstance().verificarExistencia(
+					Long.parseLong(tempo))) {
+				if(!novoN.equals(vari)) {
 					try {
 						ProfessorController.getInstance().updateNomeProfessor(novoN, Long.parseLong(tempo));
+						CaixaNome.setText(novoN);
 					} catch (NumberFormatException e1) {
-						// TODO Auto-generated catch block
 						caixaEncontrado.setText("Não foi possível atualizar o nome do professor");
 					} catch (ProfessorNaoExisteException e1) {
 						// TODO Auto-generated catch block
@@ -130,7 +120,8 @@ public class AtualizarProfessorController {
 				
 				for(int i = 0; i < Excluir.getItems().size(); i++) {
 					temp = (CheckMenuItem) Excluir.getItems().get(i);
-					if(temp.isSelected()==true) {
+					if(temp.isSelected()==true && ProfessorController.getInstance().estaEntreDisAptas(Long.parseLong(tempo),
+							DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()).getId())) {
 					
 					try {
 						ProfessorController.getInstance().removeDisciplinaPossivel(Long.parseLong(tempo)
@@ -150,7 +141,8 @@ public class AtualizarProfessorController {
 				
 				for(int i = 0; i < adicionar.getItems().size(); i++ ) {
 					temp = (CheckMenuItem) adicionar.getItems().get(i);
-					if(temp.isSelected()==true) {
+					if(temp.isSelected()==true && !ProfessorController.getInstance().estaEntreDisAptas(Long.parseLong(tempo),
+							DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()).getId())) {
 						try {
 							ProfessorController.getInstance().addPossivelDisciplina(Long.parseLong(tempo),
 									DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()));
@@ -168,10 +160,14 @@ public class AtualizarProfessorController {
 				}
 				ProfessorDAO.getInstance().escreveArquivo();
 				
-			}else if(!tempo2.equals(vari)) {
+			}else if(!tempo2.equals(vari)&& ProfessorController.getInstance().verificarExistencia(
+					ProfessorController.getInstance().procurarPorNome(tempo2).getId())) {
 				Professor p = ProfessorController.getInstance().procurarPorNome(tempo2);
+				if(!novoN.equals(vari)) {
 					try {
 						ProfessorController.getInstance().updateNomeProfessor(novoN, p.getId());
+						CaixaNome.setText(novoN);
+						
 					} catch (NumberFormatException e1) {
 						// TODO Auto-generated catch block
 						caixaEncontrado.setText("Não foi possível atualizar o nome do professor");
@@ -182,13 +178,16 @@ public class AtualizarProfessorController {
 						caixaEncontrado.setText("Professor já existe");
 					}
 					
-					
+				}
 					for(int i = 0; i < Excluir.getItems().size(); i++) {
 						temp = (CheckMenuItem) Excluir.getItems().get(i);
-						if(temp.isSelected()==true) {
+						if(temp.isSelected()==true && ProfessorController.getInstance().estaEntreDisAptas(ProfessorController.getInstance().procurarPorNome(CaixaNome.getText()).getId(),
+								DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()).getId()))
+								{
 						
 						try {
-							ProfessorController.getInstance().removeDisciplinaPossivel(Long.parseLong(tempo)
+							
+							ProfessorController.getInstance().removeDisciplinaPossivel(ProfessorController.getInstance().procurarPorNome(CaixaNome.getText()).getId()
 								, DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()).getId());
 						} catch (NumberFormatException e1) {
 							// TODO Auto-generated catch block
@@ -205,9 +204,10 @@ public class AtualizarProfessorController {
 					
 					for(int i = 0; i < adicionar.getItems().size(); i++ ) {
 						temp = (CheckMenuItem) adicionar.getItems().get(i);
-						if(temp.isSelected()==true) {
+						if(temp.isSelected()==true && !ProfessorController.getInstance().estaEntreDisAptas(ProfessorController.getInstance().procurarPorNome(CaixaNome.getText()).getId(),
+								DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()).getId())) {
 							try {
-								ProfessorController.getInstance().addPossivelDisciplina(Long.parseLong(tempo),
+								ProfessorController.getInstance().addPossivelDisciplina(ProfessorController.getInstance().procurarPorNome(CaixaNome.getText()).getId(),
 										DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()));
 							} catch (NumberFormatException e1) {
 								// TODO Auto-generated catch block
