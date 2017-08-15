@@ -8,7 +8,6 @@ public class Alocacao implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 2278026790528082645L;
-	private static long nextID=1;
 	private long id;
 	private Professor professor;
 	private Disciplina disciplina;
@@ -20,8 +19,6 @@ public class Alocacao implements Serializable{
 		this.professor = prof;
 		this.disciplina = dis;
 		this.horario = hora;
-		this.id = nextID;
-		nextID++;
 	}
 
 	//GETTERS AND SETTERS
@@ -42,6 +39,9 @@ public class Alocacao implements Serializable{
 	}
 	public void setHorario(Horario horario) {
 		this.horario = horario;
+	}
+	public void setId(long id) {
+		this.id = id;
 	}
 	public long getId() {
 		return id;

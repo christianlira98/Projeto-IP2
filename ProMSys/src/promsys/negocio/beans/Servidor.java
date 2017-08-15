@@ -8,22 +8,20 @@ public class Servidor extends Usuario implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 4670224172030542186L;
-	private static long nextID;
 	private long id;
 	
 	//CONSTRUTOR
 	public Servidor(String n, String l, String s){
 		super(n, l, s);
-		this.id = nextID;
-		nextID++;
+
 	}
 	
 	//GETTERS AND SETTERS
 	public long getID(){
 		return this.id;
 	}
-	public static long getNextID(){
-		return nextID;
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	//EQUALS E TOSTRING

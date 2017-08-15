@@ -5,10 +5,13 @@ import promsys.negocio.beans.*;
 import java.util.List;
 
 import java.io.Serializable;
-
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -35,6 +38,32 @@ public class PeriodoDAO implements IPeriodoDAO, Serializable{
 		return instance;
 	}
 	
+	public static void leituraNextId () throws IOException {
+		String linha = null;
+		File arquivo = new File("IdPeriodo.dat");
+		FileReader fr = new FileReader(arquivo);
+		BufferedReader br = new BufferedReader(fr);
+		while( br.ready() ){
+			linha = br.readLine();
+		}
+		nextID = Long.parseLong(linha);
+		br.close();
+		fr.close();
+	}
+	
+	public void escreveNextId () throws IOException {
+		File arquivo = new File("IdPeriodo.dat");
+		FileWriter fw = new FileWriter(arquivo);
+		BufferedWriter bw = new BufferedWriter(fw);
+		bw.write(String.valueOf(getNextID()));
+		bw.close();
+		fw.close();
+	}
+	
+	public long getNextID() {
+		return nextID;
+	}
+	
 	private static PeriodoDAO lerDoArquivo() { // IMPLEMENTAÇÃO INCIAL DE ARQUIVOS, DEVE SER REVISADO!
 	    PeriodoDAO instancia = null;
 
@@ -46,6 +75,7 @@ public class PeriodoDAO implements IPeriodoDAO, Serializable{
 	      ois = new ObjectInputStream(fis);
 	      Object o = ois.readObject();
 	      instancia = (PeriodoDAO) o;
+	      leituraNextId();
 	    } 
 	    catch (Exception e) {
 	      instancia = new PeriodoDAO();
@@ -74,6 +104,7 @@ public class PeriodoDAO implements IPeriodoDAO, Serializable{
 	      fos = new FileOutputStream(out);
 	      oos = new ObjectOutputStream(fos);
 	      oos.writeObject(instance);
+	      escreveNextId();
 	    } catch (Exception e) {
 	      e.printStackTrace();
 	    } finally {
@@ -89,8 +120,8 @@ public class PeriodoDAO implements IPeriodoDAO, Serializable{
 	public void cadastrar(Object sem) {
 		if(sem instanceof Periodo) {
 			Periodo temp = (Periodo) sem;
+			temp.setID(getNextID());
 			semestres.add(temp);
-			semestres.get(semestres.size()-1).setID(nextID);
 			++nextID;
 		}	
 	}

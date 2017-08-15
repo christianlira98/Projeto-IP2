@@ -4,9 +4,13 @@ import promsys.exceptions.ServidorJaExisteException;
 import promsys.exceptions.ServidorNaoExisteException;
 import promsys.negocio.beans.Servidor;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -21,6 +25,7 @@ public class ServidorDAO implements IServidorDAO, Serializable {
 	 */
 	private static final long serialVersionUID = 3007858989186592561L;
 	private static ServidorDAO instance;
+	private static long nextID = 1;
 	private List<Servidor> admins;
 	
 	private ServidorDAO(){
@@ -34,6 +39,32 @@ public class ServidorDAO implements IServidorDAO, Serializable {
 		return instance;
 	}
 	
+	public static void leituraNextId () throws IOException {
+		String linha = null;
+		File arquivo = new File("IdServidor.dat");
+		FileReader fr = new FileReader(arquivo);
+		BufferedReader br = new BufferedReader(fr);
+		while( br.ready() ){
+			linha = br.readLine();
+		}
+		nextID = Long.parseLong(linha);
+		br.close();
+		fr.close();
+	}
+	
+	public void escreveNextId () throws IOException {
+		File arquivo = new File("IdServidor.dat");
+		FileWriter fw = new FileWriter(arquivo);
+		BufferedWriter bw = new BufferedWriter(fw);
+		bw.write(String.valueOf(getNextId()));
+		bw.close();
+		fw.close();
+	}
+	
+	public long getNextId() {
+		return nextID;
+	}
+	
 	public ServidorDAO lerArquivo() {
 		ServidorDAO instance = null;
 		File in = new File("Servidor.dat");
@@ -45,6 +76,7 @@ public class ServidorDAO implements IServidorDAO, Serializable {
 			ois = new ObjectInputStream(fis);
 			Object o = ois.readObject();
 			instance = (ServidorDAO) o;
+			leituraNextId();
 		}catch(Exception e) {
 			instance = new ServidorDAO();
 		}finally {
@@ -71,6 +103,7 @@ public class ServidorDAO implements IServidorDAO, Serializable {
 			fos = new FileOutputStream(out);
 			oo = new ObjectOutputStream(fos);
 			oo.writeObject(instance);
+			escreveNextId();
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally {
@@ -86,7 +119,10 @@ public class ServidorDAO implements IServidorDAO, Serializable {
 	}
 	
 	public void cadastrar(Servidor admin){
+		admin.setId(getNextId());
+		nextID++;
 		admins.add(admin);
+		
 	}
 	
 	public void remover(Servidor admin) throws ServidorNaoExisteException{
