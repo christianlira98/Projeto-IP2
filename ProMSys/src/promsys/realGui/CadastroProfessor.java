@@ -27,7 +27,7 @@ public class CadastroProfessor extends Application {
 		//.........................
 		primaryStage.setTitle("Cadastro de Professores");
 		pane = FXMLLoader.load(this.getClass().getResource("cadastroProfessorFXML.fxml"));
-		menu = (MenuButton) pane.getChildren().get(11);
+		menu = (MenuButton) pane.getChildren().get(8);
 		adiciona();
 		primaryStage.setScene(new Scene(pane));
 		primaryStage.setResizable(false);

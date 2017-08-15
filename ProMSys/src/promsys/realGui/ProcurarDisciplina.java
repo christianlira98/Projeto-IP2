@@ -27,10 +27,10 @@ public class ProcurarDisciplina extends Application{
 		window = primaryStage;
 		window.setTitle("Procurar Professor");
 		pane = FXMLLoader.load(this.getClass().getResource("procurarDisciplinaFXML.fxml"));
-		TextArea texto = (TextArea) pane.getChildren().get(7);
-		menu2 = (MenuButton) pane.getChildren().get(12);
+		TextArea texto = (TextArea) pane.getChildren().get(4);
+		menu2 = (MenuButton) pane.getChildren().get(9);
 		um = (TextField) pane.getChildren().get(2);
-		dois = (TextField) pane.getChildren().get(9);
+		dois = (TextField) pane.getChildren().get(6);
 		adiciona();
 		texto.setEditable(false);
 		window.setScene(new Scene(pane));

@@ -10,39 +10,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="DisiciplinaCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #e6e6fa;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.ProcurarProfessorController">
+<Pane fx:id="DisiciplinaCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="600.0" style="-fx-background-color: #e6e6fa;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.ProcurarProfessorController">
    <children>
-      <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="2.0" prefHeight="50.0" prefWidth="640.0" style="-fx-background-color: #f0f8ff;" text="Procurar professor">
+      <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="2.0" prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #f0f8ff;" text="Procurar professor">
          <font>
             <Font name="Baskerville Old Face" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="68.0" layoutY="110.0" style="-fx-background-color: #e6e6fa;" text="ID">
+      <Label layoutX="71.0" layoutY="140.0" style="-fx-background-color: #e6e6fa;" text="ID">
          <font>
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="caixaID" layoutX="120.0" layoutY="109.0" prefHeight="25.0" prefWidth="95.0" />
-      <ImageView fitHeight="84.0" fitWidth="60.0" layoutX="2.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../Desktop/brasao.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="cancelaBotao" layoutX="394.0" layoutY="436.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: red;" text="Cancela">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="confirmaBotao" layoutX="471.0" layoutY="436.0" mnemonicParsing="false" onAction="#confirma" style="-fx-background-color: green;" text="Confirma">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="procura" layoutX="471.0" layoutY="394.0" mnemonicParsing="false" onAction="#procurando" prefHeight="25.0" prefWidth="68.0" text="Procurar">
+      <TextField fx:id="caixaID" layoutX="120.0" layoutY="139.0" prefHeight="25.0" prefWidth="95.0" />
+      <Button fx:id="procura" layoutX="463.0" layoutY="407.0" mnemonicParsing="false" onAction="#procurando" prefHeight="25.0" prefWidth="68.0" text="Procurar">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TextArea fx:id="caixaEncontrado" layoutX="68.0" layoutY="161.0" prefHeight="203.0" prefWidth="469.0" promptText="Resultado da busca" wrapText="true">
+      <TextArea fx:id="caixaEncontrado" layoutX="68.0" layoutY="198.0" prefHeight="203.0" prefWidth="469.0" promptText="Resultado da busca" wrapText="true">
          <font>
             <Font name="Calibri Bold Italic" size="14.0" />
          </font>
@@ -50,13 +35,28 @@
             <DropShadow height="9.15" radius="1.7875" width="0.0" />
          </effect>
       </TextArea>
-      <Label layoutX="68.0" layoutY="74.0" style="-fx-background-color: #e6e6fa;" text="Nome">
+      <Label layoutX="68.0" layoutY="98.0" style="-fx-background-color: #e6e6fa;" text="Nome">
          <font>
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="CaixaNome" layoutX="120.0" layoutY="73.0" prefHeight="25.0" prefWidth="407.0" />
-      <Button fx:id="ListaTodos" layoutX="394.0" layoutY="394.0" mnemonicParsing="false" onAction="#listaTodos" prefHeight="25.0" prefWidth="68.0" text="Todos">
+      <TextField fx:id="CaixaNome" layoutX="120.0" layoutY="97.0" prefHeight="25.0" prefWidth="407.0" />
+      <Button fx:id="ListaTodos" layoutX="356.0" layoutY="407.0" mnemonicParsing="false" onAction="#listaTodos" prefHeight="25.0" prefWidth="68.0" text="Todos">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="126.0" fitWidth="119.0" layoutX="2.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Desktop/brasao.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="CancelaBotao" layoutX="346.0" layoutY="446.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Cancela" textFill="#fcf5f5">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="ConfirmaBotao" layoutX="453.0" layoutY="446.0" mnemonicParsing="false" onAction="#confirma" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: green;" text="Confirma" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

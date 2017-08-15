@@ -25,9 +25,9 @@ public class AtualizarDisciplina extends Application{
 		window.setTitle("Atualização de Professor");
 		window.setResizable(false);
 		Pane pane = FXMLLoader.load(this.getClass().getResource("atualizarDisciplinaFXML.fxml"));
-		menu2 = (MenuButton)pane.getChildren().get(13);
+		menu2 = (MenuButton)pane.getChildren().get(10);
 		id = (TextField)pane.getChildren().get(2);
-		nome = (TextField)pane.getChildren().get(9);
+		nome = (TextField)pane.getChildren().get(6);
 		adiciona();
 		window.setScene(new Scene(pane));
 		window.show();

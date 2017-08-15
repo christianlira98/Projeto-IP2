@@ -40,9 +40,10 @@ public class Menu extends Application {
 	}
 	
 	public static void trocarCena(Pane novaCena) throws IOException {
-		novaCena.setPrefHeight(540);
+		novaCena.setPrefHeight(560);
 		novaCena.setPrefWidth(600);
 		pane.setCenter(novaCena);
+		pane.setCenterShape(false);
 		menu.setScene(new Scene(pane));
 		menu.setResizable(false);		 
 	}

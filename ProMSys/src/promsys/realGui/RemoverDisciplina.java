@@ -29,10 +29,10 @@ public class RemoverDisciplina extends Application{
 		window = primaryStage;
 		window.setTitle("Remover Disciplina");
 		pane = FXMLLoader.load(this.getClass().getResource("removerDisciplinaFXML.fxml"));
-		TextArea texto = (TextArea) pane.getChildren().get(7);
-		menu2 = (MenuButton) pane.getChildren().get(12);
+		TextArea texto = (TextArea) pane.getChildren().get(4);
+		menu2 = (MenuButton) pane.getChildren().get(9);
 		nome = (TextField) pane.getChildren().get(2);
-		id = (TextField) pane.getChildren().get(10);
+		id = (TextField) pane.getChildren().get(7);
 		adiciona();
 		texto.setEditable(false);
 		window.setScene(new Scene(pane));

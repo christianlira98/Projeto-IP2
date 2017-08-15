@@ -17,7 +17,7 @@ public class RemoverProfessor extends Application{
 		window = primaryStage;
 		window.setTitle("Remover Professor");
 		pane = FXMLLoader.load(this.getClass().getResource("removerProfessorFXML.fxml"));
-		TextArea texto = (TextArea) pane.getChildren().get(7);
+		TextArea texto = (TextArea) pane.getChildren().get(4);
 		texto.setEditable(false);
 		window.setScene(new Scene(pane));
 		window.setResizable(false);

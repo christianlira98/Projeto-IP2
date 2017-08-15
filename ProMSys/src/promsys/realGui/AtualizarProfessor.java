@@ -24,8 +24,8 @@ public class AtualizarProfessor extends Application{
 		window.setTitle("Atualização de Professor");
 		window.setResizable(false);
 		Pane pane = FXMLLoader.load(this.getClass().getResource("AtualizarProfessorFXML.fxml"));
-		menu1 = (MenuButton)pane.getChildren().get(13);
-		menu2 = (MenuButton)pane.getChildren().get(14);
+		menu1 = (MenuButton)pane.getChildren().get(10);
+		menu2 = (MenuButton)pane.getChildren().get(11);
 		adiciona();
 		window.setScene(new Scene(pane));
 		window.show();

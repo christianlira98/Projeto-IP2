@@ -16,7 +16,7 @@ public class ProcurarProfessor extends Application{
 		window = primaryStage;
 		window.setTitle("Procurar Professor");
 		pane = FXMLLoader.load(this.getClass().getResource("procurarProfessorFXML.fxml"));
-		TextArea texto = (TextArea) pane.getChildren().get(7);
+		TextArea texto = (TextArea) pane.getChildren().get(4);
 		texto.setEditable(false);
 		window.setScene(new Scene(pane));
 		window.setResizable(false);
