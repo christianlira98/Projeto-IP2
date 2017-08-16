@@ -20,6 +20,7 @@ import promsys.negocio.beans.Disciplina;
 
 public class RemoverDisciplina extends Application{
 	Stage window;
+	Pane layout;
 	List<Disciplina> lista = new ArrayList<Disciplina>();
 	MenuButton menu2;
 	TextField nome;
@@ -64,7 +65,9 @@ public class RemoverDisciplina extends Application{
 		CheckMenuItem[] array = me.toArray(new CheckMenuItem[me.size()]);
 		menu2.getItems().addAll(array);
 	}
-	
+	public Pane getPane() throws Exception {
+		return layout = FXMLLoader.load(this.getClass().getResource("removerDisciplinaFXML.fxml"));
+	}
 	public static void main(String[] args) {
 		launch(args);
 	}

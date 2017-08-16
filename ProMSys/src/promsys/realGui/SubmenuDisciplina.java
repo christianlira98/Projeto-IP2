@@ -4,24 +4,27 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class Menu extends Application {
+public class SubmenuDisciplina extends Application {
 
 	private static Stage menu;
-	private static BorderPane pane;
+	Pane layout;
+	public static BorderPane pane, borderpane;
 	
 	public void start(Stage primaryStage) throws Exception {
 		menu = primaryStage;
 		
-		menu.setTitle("Menu");
+		menu.setTitle("Menu Disciplina");
 		
-		pane = FXMLLoader.load(this.getClass().getResource("menu.fxml"));
+		pane = FXMLLoader.load(this.getClass().getResource("submenuDisciplinaFXML.fxml"));
 		
-		
+		//pane = (BorderPane) loader.load();
 		CadastroDisciplina c = new CadastroDisciplina();
 		//Pane telaCadastroDisciplinas = c.getPane();
 		/*
@@ -35,7 +38,7 @@ public class Menu extends Application {
 		menu.setResizable(false);
 		*/
 		//trocarCena(telaCadastroDisciplinas);
-		menu.setScene(new Scene(pane));
+		menu.setScene(new Scene(borderpane));
 		menu.setResizable(false);
 		menu.show();
 	}
@@ -47,6 +50,14 @@ public class Menu extends Application {
 		pane.setCenterShape(false);
 		menu.setScene(new Scene(pane));
 		menu.setResizable(false);		 
+	}
+	public static void saiCena(Pane pane) {
+		Scene p = menu.getScene();
+		Parent z = p.getRoot();
+		p = new Scene(pane);
+	}
+	public Pane getPane() throws Exception {
+		return pane = FXMLLoader.load(this.getClass().getResource("submenuDisciplinaFXML.fxml"));
 	}
 		public static void main(String[] args) {
 		launch(args);

@@ -1,13 +1,19 @@
 package promsys.eventosGuiController;
 
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import promsys.realGui.CadastroDisciplina;
 import promsys.realGui.CadastroProfessor;
 import promsys.realGui.Menu;
+import promsys.realGui.SubmenuDisciplina;
+import promsys.realGui.SubmenuProfessor;
 
 public class EventosMenuController {
 	@FXML
@@ -41,15 +47,18 @@ public class EventosMenuController {
 	
 	public void abreTelaDisciplinas() {
 		botaoDisciplinas.setOnMouseClicked(e -> {
-			CadastroDisciplina c = new CadastroDisciplina();
-			Pane telaCadastroDisciplinas;
+			//CadastroDisciplina c = new CadastroDisciplina();
+			//Pane telaCadastroDisciplinas;
+			Stage stage = (Stage) botaoDisciplinas.getScene().getWindow();
+			SubmenuDisciplina var = new SubmenuDisciplina();
+			
 			try {
-				telaCadastroDisciplinas = c.getPane();
-				Menu.trocarCena(telaCadastroDisciplinas);
+				stage.setScene(new Scene(var.getPane()));
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			
 		});
 	}
 
@@ -69,11 +78,11 @@ public class EventosMenuController {
 	
 	public void abreTelaProfessores() {
 		botaoProfessores.setOnMouseClicked(e -> {
-			CadastroProfessor c = new CadastroProfessor();
-			Pane telaCadastroProfessores;
+			Stage stage = (Stage) botaoProfessores.getScene().getWindow();
+			SubmenuProfessor var = new SubmenuProfessor();
+			
 			try {
-				telaCadastroProfessores = c.getPane();
-				Menu.trocarCena(telaCadastroProfessores);
+				stage.setScene(new Scene(var.getPane()));
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

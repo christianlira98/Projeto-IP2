@@ -19,6 +19,7 @@ import promsys.negocio.beans.Disciplina;
 
 public class ProcurarDisciplina extends Application{
 	Stage window;
+	Pane layout;
 	TextField um, dois;
 	List<Disciplina> lista = new ArrayList<Disciplina>();
 	MenuButton menu2;
@@ -60,6 +61,10 @@ public class ProcurarDisciplina extends Application{
 		}
 		CheckMenuItem[] array = me.toArray(new CheckMenuItem[me.size()]);
 		menu2.getItems().addAll(array);
+	}
+	
+	public Pane getPane() throws Exception {
+		return layout = FXMLLoader.load(this.getClass().getResource("procurarDisciplinaFXML.fxml"));
 	}
 	public static void main(String[] args) {
 		launch(args);

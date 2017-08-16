@@ -9,19 +9,20 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class Menu extends Application {
+public class SubmenuProfessor extends Application {
 
 	private static Stage menu;
+	Pane layout;
 	private static BorderPane pane;
 	
 	public void start(Stage primaryStage) throws Exception {
 		menu = primaryStage;
 		
-		menu.setTitle("Menu");
+		menu.setTitle("Menu Disciplina");
 		
-		pane = FXMLLoader.load(this.getClass().getResource("menu.fxml"));
+		BorderPane borderpane = FXMLLoader.load(this.getClass().getResource("submenuProfessorFXML.fxml"));
 		
-		
+		//pane = (BorderPane) loader.load();
 		CadastroDisciplina c = new CadastroDisciplina();
 		//Pane telaCadastroDisciplinas = c.getPane();
 		/*
@@ -35,7 +36,7 @@ public class Menu extends Application {
 		menu.setResizable(false);
 		*/
 		//trocarCena(telaCadastroDisciplinas);
-		menu.setScene(new Scene(pane));
+		menu.setScene(new Scene(borderpane));
 		menu.setResizable(false);
 		menu.show();
 	}
@@ -47,6 +48,9 @@ public class Menu extends Application {
 		pane.setCenterShape(false);
 		menu.setScene(new Scene(pane));
 		menu.setResizable(false);		 
+	}
+	public Pane getPane() throws Exception {
+		return pane = FXMLLoader.load(this.getClass().getResource("submenuProfessorFXML.fxml"));
 	}
 		public static void main(String[] args) {
 		launch(args);

@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 public class RemoverProfessor extends Application{
 	Stage window;
+	Pane layout;
 	private static Pane pane;
 	public void start (Stage primaryStage) throws Exception{
 		window = primaryStage;
@@ -23,6 +24,9 @@ public class RemoverProfessor extends Application{
 		window.setResizable(false);
 		window.show();
 	
+	}
+	public Pane getPane() throws Exception {
+		return layout = FXMLLoader.load(this.getClass().getResource("removerProfessorFXML.fxml"));
 	}
 	
 	public static void main(String[] args) {
