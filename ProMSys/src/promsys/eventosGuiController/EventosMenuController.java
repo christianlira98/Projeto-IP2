@@ -51,9 +51,6 @@ public class EventosMenuController {
 
 			//CadastroDisciplina c = new CadastroDisciplina();
 			//Pane telaCadastroDisciplinas;
-			Stage stage = (Stage) botaoDisciplinas.getScene().getWindow();
-			SubmenuDisciplina var = new SubmenuDisciplina();
-			
 
 			try {
 				Menu.pane = FXMLLoader.load(Menu.class.getResource("SubmenuDisciplinaFXML.fxml"));
@@ -83,11 +80,6 @@ public class EventosMenuController {
 	
 	public void abreTelaProfessores() {
 		botaoProfessores.setOnMouseClicked(e -> {
-
-			Stage stage = (Stage) botaoProfessores.getScene().getWindow();
-			SubmenuProfessor var = new SubmenuProfessor();
-			
-
 
 			try {
 

@@ -43,7 +43,9 @@ public class AtualizarProfessor extends Application{
 		menu2.getItems().addAll(array);
 	}
 	public static void add(List<CheckMenuItem> me) {
-		menu1.getItems().removeAll(menu1.getItems());
+		if(me.size()>0) {
+			menu1.getItems().removeAll(menu1.getItems());
+		}
 		CheckMenuItem[] array = me.toArray(new CheckMenuItem[me.size()]);
 		menu1.getItems().addAll(array);
 	}
