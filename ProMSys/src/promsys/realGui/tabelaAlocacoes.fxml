@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.TabelaAlocacoesController">
+   <children>
+      <TableView fx:id="tabelaAlocacoes" prefHeight="400.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="horaColumn" prefWidth="75.0" text="Hora" />
+          <TableColumn fx:id="diaColumn" prefWidth="84.0" text="Dia" />
+            <TableColumn fx:id="disciplinaColumn" prefWidth="157.0" text="Disciplina" />
+            <TableColumn fx:id="professorColumn" prefWidth="174.0" text="Professor" />
+            <TableColumn fx:id="codTurmaColumn" prefWidth="109.0" text="Cod. da Turma" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

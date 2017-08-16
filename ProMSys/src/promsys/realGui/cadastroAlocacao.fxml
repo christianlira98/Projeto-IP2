@@ -56,7 +56,7 @@
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="nomeProfessor" layoutX="173.0" layoutY="74.0" onAction="#procuraProfessor" prefHeight="25.0" prefWidth="193.0" />
+      <TextField fx:id="nomeProfessor" layoutX="173.0" layoutY="74.0" onAction="#procurarProfessor" prefHeight="25.0" prefWidth="193.0" />
       <TextArea fx:id="espacoDisciplina" layoutX="293.0" layoutY="216.0" prefHeight="203.0" prefWidth="171.0" promptText="Disciplina" wrapText="true">
          <font>
             <Font name="Calibri Bold Italic" size="14.0" />

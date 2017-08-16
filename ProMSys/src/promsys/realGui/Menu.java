@@ -13,16 +13,15 @@ public class Menu extends Application {
 
 	private static Stage menu;
 	private static BorderPane pane;
+	private static Scene cena;
+	private static FXMLLoader loader;
 	
 	public void start(Stage primaryStage) throws Exception {
 		menu = primaryStage;
 		
 		menu.setTitle("Menu");
-		
-		FXMLLoader loader = new FXMLLoader(this.getClass().getResource("menu.fxml"));
-		
+		loader = new FXMLLoader(this.getClass().getResource("menu.fxml"));
 		pane = (BorderPane) loader.load();
-		
 		CadastroDisciplina c = new CadastroDisciplina();
 		Pane telaCadastroDisciplinas = c.getPane();
 		/*
@@ -35,17 +34,17 @@ public class Menu extends Application {
 		menu.setScene(new Scene(pane));
 		menu.setResizable(false);
 		*/
-		trocarCena(telaCadastroDisciplinas);
+		trocarCena(pane, telaCadastroDisciplinas);
 		menu.show();
 	}
 	
-	public static void trocarCena(Pane novaCena) throws IOException {
+	public static void trocarCena(BorderPane novoPane, Pane novaCena) throws IOException {
+		pane = novoPane;
 		novaCena.setPrefHeight(560);
 		novaCena.setPrefWidth(600);
 		pane.setCenter(novaCena);
-		pane.setCenterShape(false);
 		menu.setScene(new Scene(pane));
-		menu.setResizable(false);		 
+		menu.setResizable(false);		
 	}
 		public static void main(String[] args) {
 		launch(args);
