@@ -18,7 +18,7 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
-public class ServidorDAO implements IServidorDAO, Serializable {
+public class ServidorDAO implements Serializable {
 	
 	/**
 	 * 
@@ -34,7 +34,7 @@ public class ServidorDAO implements IServidorDAO, Serializable {
 	
 	public static ServidorDAO getInstance(){
 		if(instance == null){
-			instance = new ServidorDAO();
+			instance = lerArquivo();
 		}
 		return instance;
 	}
@@ -65,7 +65,7 @@ public class ServidorDAO implements IServidorDAO, Serializable {
 		return nextID;
 	}
 	
-	public ServidorDAO lerArquivo() {
+	private static ServidorDAO lerArquivo() {
 		ServidorDAO instance = null;
 		File in = new File("Servidor.dat");
 		FileInputStream fis = null;
@@ -166,6 +166,16 @@ public class ServidorDAO implements IServidorDAO, Serializable {
 			}
 		}
 		return result;
+	}
+	
+	public Servidor procurarNome(String n) {
+		Servidor resultado = null;
+		for(int i = 0; i < admins.size() && resultado == null; i++) {
+			if(admins.get(i).getNome().equals(n)) {
+				resultado = admins.get(i);
+			}
+		}
+		return resultado;
 	}
 	
 	public List<Servidor> listar() {

@@ -51,9 +51,6 @@ public class Servidor extends Usuario implements Serializable{
 		this.resposta = resposta;
 	}
 
-	public long getId() {
-		return id;
-	}
 
 	public String toString(){
 		String str = this.getNome() + " - " + this.getLogin();

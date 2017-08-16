@@ -1,7 +1,7 @@
 package promsys.negocio;
 import java.util.List;
 import promsys.exceptions.*;
-
+import promsys.dao.ProfessorDAO;
 import promsys.dao.ServidorDAO;
 import promsys.negocio.beans.Servidor;
 
@@ -11,6 +11,7 @@ public class ServidorController {
 	private static ServidorController instance;
 	
 	private ServidorController(){
+		this.repositorioServidores = ServidorDAO.getInstance();
 	}
 	
 	public static ServidorController getInstance(){
@@ -25,6 +26,9 @@ public class ServidorController {
 			throw new IllegalArgumentException("Parâmetro Invalido");
 		}
 		else {
+			if(ServidorController.getInstance().procuraNome(novo.getNome())!= null) {
+				throw new ServidorJaExisteException(novo.getID());
+			}
 			if(novo.getID()==0L){
 				repositorioServidores.cadastrar(novo);
 				repositorioServidores.escreveArquivo();
@@ -61,6 +65,15 @@ public class ServidorController {
 			return found;
 		}else {
 			throw new ServidorNaoExisteException(id);	
+		}
+	}
+	
+	public Servidor procuraNome(String n)  {
+		Servidor procura = ServidorDAO.getInstance().procurarNome(n);
+		if(procura.equals(null)!=false) {
+			return procura;
+		}else {
+			return null;
 		}
 	}
 	

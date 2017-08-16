@@ -35,20 +35,26 @@ public class CadastroUserController {
 		ConfirmaBotao.setOnMouseClicked(e->{
 		Servidor novo;
 		boolean auxVari = false;
+		String nome = CaixaNome.getText();
+		String senha = caixaSenha.getText();
+		String pergunt = pergunta.getText();
+		String respost = resposta.getText();
+		String confirma = caixaSenha1.getText();
+		String log = login.getText();
 		String vari = "";
-		if(CaixaNome.getText().equals(vari) || caixaSenha.getText().equals(vari) || pergunta.getText().equals(vari) ||
-				resposta.getText().equals(vari) || caixaSenha1.getText().equals(vari)|| login.getText().equals(vari)) {
-			do {
+		
+		if(!senha.equals(confirma) ) {
+			labelException.setText("Senhas não Correspondem");
+			labelException.setTextFill(Color.RED);
+			
 				labelException.setText("Informações obrigatórias não foram preenchidas");
 			labelException.setTextFill(Color.RED);
 			auxVari = true;
-			}while(auxVari == true);
+		
 		}
-		labelException.setTextFill(Color.LAVENDER);
-	
-			
-		if(!auxVari && caixaSenha.getText().equals(caixaSenha1.getText())) {
-			
+
+		if(!auxVari ) {
+			labelException.setTextFill(Color.LAVENDER);
 			novo = new Servidor(CaixaNome.getText(), login.getText(), 
 					caixaSenha.getText(), pergunta.getText(), resposta.getText());
 			try {
@@ -59,7 +65,7 @@ public class CadastroUserController {
 				labelException.setTextFill(Color.RED);
 			}
 		}else {
-			labelException.setText("Senhas não Correspondem");
+			labelException.setText("Informações obrigatórias não foram preenchidas");
 			labelException.setTextFill(Color.RED);
 		}
 		});
