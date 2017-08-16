@@ -11,8 +11,8 @@ import javafx.stage.Stage;
 
 public class Menu extends Application {
 
-	private static Stage menu;
-	private static BorderPane pane;
+	public static Stage menu;
+	public static BorderPane borderpane, pane;
 	private static Scene cena;
 	private static FXMLLoader loader;
 	
@@ -20,15 +20,10 @@ public class Menu extends Application {
 		menu = primaryStage;
 		
 		menu.setTitle("Menu");
-<<<<<<< HEAD
+		
+		
 		
 		pane = FXMLLoader.load(this.getClass().getResource("menu.fxml"));
-		
-		
-=======
-		loader = new FXMLLoader(this.getClass().getResource("menu.fxml"));
-		pane = (BorderPane) loader.load();
->>>>>>> branch 'master' of https://github.com/omniplatypus/Projeto-IP2.git
 		CadastroDisciplina c = new CadastroDisciplina();
 		//Pane telaCadastroDisciplinas = c.getPane();
 		/*
@@ -41,23 +36,24 @@ public class Menu extends Application {
 		menu.setScene(new Scene(pane));
 		menu.setResizable(false);
 		*/
-<<<<<<< HEAD
+
 		//trocarCena(telaCadastroDisciplinas);
 		menu.setScene(new Scene(pane));
 		menu.setResizable(false);
-=======
-		trocarCena(pane, telaCadastroDisciplinas);
->>>>>>> branch 'master' of https://github.com/omniplatypus/Projeto-IP2.git
+		menu.show();
+
+		//trocarCena(pane, telaCadastroDisciplinas);
 		menu.show();
 	}
 	
-	public static void trocarCena(BorderPane novoPane, Pane novaCena) throws IOException {
-		pane = novoPane;
+	public static void trocarCena(Pane novaCena) throws IOException {
+		
 		novaCena.setPrefHeight(560);
 		novaCena.setPrefWidth(600);
 		pane.setCenter(novaCena);
+		pane.setCenterShape(false);
 		menu.setScene(new Scene(pane));
-		menu.setResizable(false);		
+		menu.setResizable(false);		 
 	}
 		public static void main(String[] args) {
 		launch(args);
