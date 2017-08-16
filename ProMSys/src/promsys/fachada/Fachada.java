@@ -115,6 +115,9 @@ public class Fachada {
 		return disciplinas.listarDisciplinas();
 	}
 	
+	public List<Disciplina> listaDisciplinas() {
+		return disciplinas.retornaListaDisciplina();
+	}
 	//Professores
 
 	public void atualizarNomeProfessor(String nome, long id) throws ProfessorNaoExisteException, ProfessorJaExisteNomeException {
@@ -128,6 +131,11 @@ public class Fachada {
 	public Professor procurarProf(long id) {
 		return professores.procurarProf(id);
 	}
+	
+	public Professor procurarProf(String nome) {
+		return professores.procurarPorNome(nome);
+	}
+
 
 	public boolean verificarExistencia(long id) {
 		return professores.verificarExistencia(id);
@@ -151,6 +159,10 @@ public class Fachada {
 	
 	public String listaProfessores() {
 		return professores.listaProfessores();
+	}
+	
+	public List<Professor> listarProfessores() {
+		return professores.lista();
 	}
 	
 	//Servidor

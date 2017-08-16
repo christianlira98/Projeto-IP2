@@ -66,7 +66,7 @@ public class ServidorController {
 	
 	public boolean fazLogin(String login, String senha){
 		boolean logged = false;
-		for(int i = 0; i<Servidor.getNextID() && logged == false; i++){
+		for(int i = 0; i<repositorioServidores.getNextId() && logged == false; i++){
 			Servidor foundTemp = ServidorDAO.getInstance().procurar(i);
 			if(foundTemp.getLogin().equals(login)){
 				if(foundTemp.getSenha().equals(senha)){
