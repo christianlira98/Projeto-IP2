@@ -30,7 +30,7 @@ public class Menu extends Application {
 		telaCadastroDisciplinas.setPrefHeight(540);
 		telaCadastroDisciplinas.setPrefWidth(600);
 		
-		// primeira tela do menu até agora é a do cadastro de Disciplinas. Irá ser mudado.
+		// primeira tela do menu atï¿½ agora ï¿½ a do cadastro de Disciplinas. Irï¿½ ser mudado.
 		pane.setCenter(telaCadastroDisciplinas);			
 		menu.sizeToScene();
 		menu.setScene(new Scene(pane));
