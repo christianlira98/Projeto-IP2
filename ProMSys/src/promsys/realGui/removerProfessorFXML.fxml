@@ -46,9 +46,9 @@
          </font>
       </Label>
       <TextField fx:id="CaixaNome" layoutX="119.0" layoutY="106.0" prefHeight="25.0" prefWidth="406.0" />
-      <ImageView fitHeight="126.0" fitWidth="119.0" layoutY="428.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="88.0" fitWidth="234.0" layoutX="-7.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Desktop/brasao.png" />
+            <Image url="@../../../../../../Desktop/customLogo.png" />
          </image>
       </ImageView>
       <Button fx:id="CancelaBotao" layoutX="344.0" layoutY="440.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Cancela" textFill="#fcf5f5">
