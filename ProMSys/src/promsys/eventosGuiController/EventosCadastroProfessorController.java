@@ -2,6 +2,7 @@ package promsys.eventosGuiController;
 import promsys.exceptions.*;
 import promsys.negocio.*;
 import promsys.negocio.beans.*;
+import promsys.realGui.DisciplinasDisponiveis;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -30,7 +31,13 @@ public class EventosCadastroProfessorController {
 	CheckMenuItem temp = new CheckMenuItem();
 	
 	List<Disciplina> lista = new ArrayList<Disciplina>();
-	
+	public void add () {
+		disponiveis.setOnMouseClicked(e ->{
+			if(disponiveis.getItems().isEmpty()) {
+				disponiveis.getItems().addAll(DisciplinasDisponiveis.adiciona());
+			}
+		});
+	}
 	
 	public void confirma() {
 		ConfirmaBotao.setOnMouseClicked(e -> {

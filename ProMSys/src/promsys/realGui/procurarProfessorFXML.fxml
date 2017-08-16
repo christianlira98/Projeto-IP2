@@ -51,12 +51,12 @@
             <Image url="@../../../../../../Desktop/customLogo.png" />
          </image>
       </ImageView>
-      <Button fx:id="CancelaBotao" layoutX="346.0" layoutY="446.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Cancela" textFill="#fcf5f5">
+      <Button fx:id="cancelaBotao" layoutX="346.0" layoutY="446.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Cancela" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="ConfirmaBotao" layoutX="453.0" layoutY="446.0" mnemonicParsing="false" onAction="#confirma" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: green;" text="Confirma" textFill="WHITE">
+      <Button fx:id="confirmaBotao" layoutX="453.0" layoutY="446.0" mnemonicParsing="false" onAction="#confirma" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: green;" text="Confirma" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

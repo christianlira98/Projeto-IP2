@@ -21,6 +21,8 @@ import promsys.negocio.DisciplinaController;
 import promsys.negocio.ProfessorController;
 import promsys.negocio.beans.Professor;
 import promsys.realGui.AtualizarProfessor;
+import promsys.realGui.DisciplinaExcluir;
+import promsys.realGui.DisciplinasDisponiveis;
 
 public class AtualizarProfessorController {
 	@FXML
@@ -42,7 +44,21 @@ public class AtualizarProfessorController {
 	@FXML
 	private MenuButton adicionar;
 	
+	public void add () {
+		adicionar.setOnMouseClicked(e ->{
+			if(adicionar.getItems().isEmpty()) {
+				adicionar.getItems().addAll(DisciplinasDisponiveis.adiciona());
+			}
+		});
+	}
 	
+	public void addExcluir(List<CheckMenuItem> me) {
+		Excluir.setOnMouseClicked(e ->{
+			if(Excluir.getItems().isEmpty()) {
+				Excluir.getItems().addAll(DisciplinaExcluir.add(me));
+			}
+		});
+	}
 	public void procurando() {
 		procura.setOnAction(e -> {
 			String tempo = caixaID.getText();
@@ -69,7 +85,7 @@ public class AtualizarProfessorController {
 				for(Disciplina v: d) {
 					me.add(new CheckMenuItem (v.getNome()));
 				}
-				AtualizarProfessor.add(me);
+				this.addExcluir(me);
 			}
 			else if(!tempo2.equals(vari) && ProfessorController.getInstance().procurarPorNome(tempo2)!= null) {
 				Professor p = ProfessorController.getInstance().procurarPorNome(tempo2);
@@ -88,7 +104,7 @@ public class AtualizarProfessorController {
 				for(Disciplina v: d) {
 					me.add(new CheckMenuItem (v.getNome()));
 				}
-				AtualizarProfessor.add(me);
+				this.addExcluir(me);
 			}
 		});
 	}

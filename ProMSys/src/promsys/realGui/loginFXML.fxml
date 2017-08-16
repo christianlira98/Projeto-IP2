@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="DisiciplinaCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="600.0" style="-fx-background-color: #e6e6fa;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.ProcurarDisciplinaController">
+   <children>
+      <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="2.0" prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #f0f8ff;" text="Login">
+         <font>
+            <Font name="Baskerville Old Face" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="110.0" layoutY="294.0" style="-fx-background-color: #e6e6fa;" text="Senha">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="109.0" layoutY="243.0" style="-fx-background-color: #e6e6fa;" text="Nome">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="CaixaNome" layoutX="192.0" layoutY="242.0" prefHeight="25.0" prefWidth="234.0" />
+      <ImageView fitHeight="37.0" fitWidth="160.0" layoutX="276.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Desktop/customLogo.png" />
+         </image>
+      </ImageView>
+      <PasswordField fx:id="caixaSenha" layoutX="192.0" layoutY="292.0" prefHeight="25.0" prefWidth="234.0" />
+      <Button fx:id="ConfirmaBotao" layoutX="417.0" layoutY="376.0" mnemonicParsing="false" onAction="#confirma" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: green;" text="Confirma" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="CancelaBotao" layoutX="309.0" layoutY="376.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Sair" textFill="#fcf5f5">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="130.0" fitWidth="88.0" layoutX="202.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../Desktop/brasao.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>

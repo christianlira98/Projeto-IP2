@@ -5,13 +5,17 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.SubScene;
+import javafx.scene.control.MenuButton;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import promsys.realGui.AtualizarProfessor;
 import promsys.realGui.CadastroProfessor;
+import promsys.realGui.DisciplinasDisponiveis;
 import promsys.realGui.Menu;
 import promsys.realGui.ProcurarProfessor;
 import promsys.realGui.RemoverProfessor;
@@ -108,14 +112,23 @@ public class submenuProfessorController {
 			//CadastroDisciplina c = new CadastroDisciplina();
 			//Pane telaCadastroDisciplinas;
 			Stage stage = (Stage) botaoAtualizar.getScene().getWindow();
-			AtualizarProfessor var = new AtualizarProfessor();
+			
 			
 			try {
 				SubmenuProfessor.pane = FXMLLoader.load(SubmenuProfessor.class.getResource("submenuProfessorFXML.fxml"));
+				Pane p = FXMLLoader.load(AtualizarProfessor.class.getResource("AtualizarProfessorFXML.fxml"));
+				AtualizarProfessor var = new AtualizarProfessor();
 				var.getPane().setPrefHeight(560);
 				var.getPane().setPrefWidth(600);
+				
+				AtualizarProfessor.menu2 = (MenuButton) var.getPane().getChildren().get(11);
+				AtualizarProfessor.menu1 = (MenuButton) var.getPane().getChildren().get(10);
+				//AtualizarProfessor.menu2.getItems().addAll(DisciplinasDisponiveis.adiciona());
 				SubmenuProfessor.pane.setCenter(var.getPane());
 				SubmenuProfessor.pane.setCenterShape(false);
+				//AtualizarProfessor.pane = FXMLLoader.load(AtualizarProfessor.class.getResource("AtualizarProfessorFXML.fxml"));
+				//AtualizarProfessor.menu2 = (MenuButton) AtualizarProfessor.pane.getChildren().get(11);
+				//AtualizarProfessor.adiciona();
 				stage.setScene(new Scene(SubmenuProfessor.pane));
 				stage.setTitle("Menu Professor");
 				stage.setResizable(false);

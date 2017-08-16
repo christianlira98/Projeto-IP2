@@ -3,8 +3,14 @@ package promsys.eventosGuiController;
 
 
 import promsys.negocio.beans.*;
+import promsys.realGui.DisciplinaExcluir;
+import promsys.realGui.DisciplinasDisponiveis;
+
+import java.util.List;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -38,6 +44,15 @@ public class AtualizarDisciplinaController {
 	@FXML
 	private MenuButton adicionar;
 	
+	public void add () {
+		adicionar.setOnMouseClicked(e ->{
+			if(adicionar.getItems().isEmpty()) {
+				adicionar.getItems().addAll(DisciplinasDisponiveis.adiciona());
+			}
+		});
+	}
+	
+	
 	
 	public void procurando() {
 		procura.setOnAction(e -> {
@@ -56,6 +71,20 @@ public class AtualizarDisciplinaController {
 				Disciplina p = DisciplinaController.getInstance().procurarNomeDisciplina(tempo2);
 				caixaEncontrado.insertText(0, p.toString());
 				
+			}else {
+			
+				for(int i = 0; i < adicionar.getItems().size();i++) {
+					caixaEncontrado.setText("");
+					CheckMenuItem temp;
+					temp = (CheckMenuItem) adicionar.getItems().get(i);
+					if(temp.isSelected()) {
+						Disciplina p = DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText());
+						caixaEncontrado.insertText(0,p.toString()+"\n*********************\n");
+						caixaID.setText(String.valueOf(p.getId()));
+						CaixaNome.setText(p.getNome());
+						break;
+					}
+				}
 			}
 		});
 	}

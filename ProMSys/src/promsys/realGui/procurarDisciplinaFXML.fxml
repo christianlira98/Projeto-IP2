@@ -53,7 +53,7 @@
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
-      <MenuButton fx:id="adicionar" alignment="CENTER" contentDisplay="CENTER" layoutX="120.0" layoutY="157.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="166.0" text="disponíveis" textAlignment="CENTER">
+      <MenuButton fx:id="adicionar" alignment="CENTER" contentDisplay="CENTER" layoutX="120.0" layoutY="157.0" mnemonicParsing="false" onMouseEntered="#add" prefHeight="25.0" prefWidth="166.0" text="disponíveis" textAlignment="CENTER">
          <effect>
             <ColorAdjust brightness="0.26" contrast="0.12" saturation="-0.02" />
          </effect>
@@ -63,12 +63,12 @@
             <Image url="@../../../../../../Desktop/customLogo.png" />
          </image>
       </ImageView>
-      <Button fx:id="CancelaBotao" layoutX="356.0" layoutY="446.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Cancela" textFill="#fcf5f5">
+      <Button fx:id="cancelaBotao" layoutX="356.0" layoutY="446.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Cancela" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="ConfirmaBotao" layoutX="463.0" layoutY="446.0" mnemonicParsing="false" onAction="#confirma" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: green;" text="Confirma" textFill="WHITE">
+      <Button fx:id="confirmaBotao" layoutX="463.0" layoutY="446.0" mnemonicParsing="false" onAction="#confirma" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: green;" text="Confirma" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
