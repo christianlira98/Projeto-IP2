@@ -56,12 +56,8 @@ public class EventosMenuController {
 			
 
 			try {
-
-				stage.setScene(new Scene(var.getPane()));
-
-				Pane telaCadastroDisciplinas = FXMLLoader.load(this.getClass().getResource("/promsys/realGui/cadastroDisciplinaFXML.fxml"));
-				BorderPane novoPane = (BorderPane) FXMLLoader.load(this.getClass().getResource("/promsys/realGui/menu.fxml"));
-				Menu.trocarCena(novoPane, telaCadastroDisciplinas);
+				Menu.pane = FXMLLoader.load(Menu.class.getResource("SubmenuDisciplinaFXML.fxml"));
+				Menu.menu.setScene(new Scene(Menu.pane));
 
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
@@ -95,11 +91,8 @@ public class EventosMenuController {
 
 			try {
 
-				stage.setScene(new Scene(var.getPane()));
-
-				Pane telaCadastroProfessores = FXMLLoader.load(this.getClass().getResource("/promsys/realGui/cadastroProfessorFXML.fxml"));
-				BorderPane novoPane = (BorderPane) FXMLLoader.load(this.getClass().getResource("/promsys/realGui/menu.fxml"));
-				Menu.trocarCena(novoPane, telaCadastroProfessores);
+				Menu.pane = FXMLLoader.load(Menu.class.getResource("SubmenuProfessorFXML.fxml"));
+				Menu.menu.setScene(new Scene(Menu.pane));
 
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block

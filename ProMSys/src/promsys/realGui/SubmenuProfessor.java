@@ -13,14 +13,14 @@ public class SubmenuProfessor extends Application {
 
 	private static Stage menu;
 	Pane layout;
-	private static BorderPane pane;
+	public static BorderPane pane;
 	
 	public void start(Stage primaryStage) throws Exception {
 		menu = primaryStage;
 		
 		menu.setTitle("Menu Disciplina");
 		
-		BorderPane borderpane = FXMLLoader.load(this.getClass().getResource("submenuProfessorFXML.fxml"));
+		pane = FXMLLoader.load(this.getClass().getResource("submenuProfessorFXML.fxml"));
 		
 		//pane = (BorderPane) loader.load();
 		CadastroDisciplina c = new CadastroDisciplina();
@@ -36,7 +36,7 @@ public class SubmenuProfessor extends Application {
 		menu.setResizable(false);
 		*/
 		//trocarCena(telaCadastroDisciplinas);
-		menu.setScene(new Scene(borderpane));
+		menu.setScene(new Scene(pane));
 		menu.setResizable(false);
 		menu.show();
 	}

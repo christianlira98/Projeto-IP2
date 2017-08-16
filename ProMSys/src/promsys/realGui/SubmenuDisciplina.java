@@ -51,11 +51,7 @@ public class SubmenuDisciplina extends Application {
 		menu.setScene(new Scene(pane));
 		menu.setResizable(false);		 
 	}
-	public static void saiCena(Pane pane) {
-		Scene p = menu.getScene();
-		Parent z = p.getRoot();
-		p = new Scene(pane);
-	}
+
 	public Pane getPane() throws Exception {
 		return pane = FXMLLoader.load(this.getClass().getResource("submenuDisciplinaFXML.fxml"));
 	}
