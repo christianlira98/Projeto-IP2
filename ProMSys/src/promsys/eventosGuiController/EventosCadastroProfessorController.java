@@ -3,6 +3,7 @@ import promsys.exceptions.*;
 import promsys.negocio.*;
 import promsys.negocio.beans.*;
 import promsys.realGui.DisciplinasDisponiveis;
+import promsys.realGui.ScreenManager;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -55,8 +56,9 @@ public class EventosCadastroProfessorController {
 				e1.printStackTrace();
 			}
 			
-			Stage stage = (Stage) ConfirmaBotao.getScene().getWindow();
-			stage.close();
+			//Stage stage = (Stage) ConfirmaBotao.getScene().getWindow();
+			//stage.close();
+			ScreenManager.getInstance().setaProfessorCenterNull();
 		});
 	}
 		public void cancela() {
@@ -64,8 +66,9 @@ public class EventosCadastroProfessorController {
 				/*
 				 * 
 				 */
-				Stage stage = (Stage) CancelaBotao.getScene().getWindow();
-				stage.close();
+				ScreenManager.getInstance().setaProfessorCenterNull();
+				//Stage stage = (Stage) CancelaBotao.getScene().getWindow();
+				//stage.close();
 				
 			});
 		}

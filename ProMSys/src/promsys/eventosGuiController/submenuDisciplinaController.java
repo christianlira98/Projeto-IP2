@@ -21,6 +21,7 @@ import promsys.realGui.CadastroProfessor;
 import promsys.realGui.Menu;
 import promsys.realGui.ProcurarDisciplina;
 import promsys.realGui.RemoverDisciplina;
+import promsys.realGui.ScreenManager;
 import promsys.realGui.SubmenuDisciplina;
 import promsys.realGui.SubmenuProfessor;
 
@@ -56,14 +57,16 @@ public class submenuDisciplinaController {
 			//RemoverDisciplina var = new RemoverDisciplina();
 			
 			try {
-				SubmenuDisciplina.pane = FXMLLoader.load(Menu.class.getResource("menu.fxml"));
+				///SubmenuDisciplina.pane = FXMLLoader.load(Menu.class.getResource("menu.fxml"));
 				//var.getPane().setPrefHeight(560);
 				//var.getPane().setPrefWidth(600);
 				//SubmenuDisciplina.pane.setCenter(var.getPane());
 				//SubmenuDisciplina.pane.setCenterShape(false);
-				stage.setScene(new Scene(SubmenuDisciplina.pane));
-				stage.setTitle("Menu");
-				stage.setResizable(false);
+				///stage.setScene(new Scene(SubmenuDisciplina.pane));
+				///stage.setTitle("Menu");
+				///stage.setResizable(false);
+				ScreenManager.getInstance().showTestScreen();
+				ScreenManager.getInstance().getMainStage().setTitle("Menu Principal");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -93,14 +96,15 @@ public class submenuDisciplinaController {
 			RemoverDisciplina var = new RemoverDisciplina();
 			
 			try {
-				SubmenuDisciplina.pane = FXMLLoader.load(SubmenuDisciplina.class.getResource("submenuDisciplinaFXML.fxml"));
-				var.getPane().setPrefHeight(560);
-				var.getPane().setPrefWidth(600);
-				SubmenuDisciplina.pane.setCenter(var.getPane());
-				SubmenuDisciplina.pane.setCenterShape(false);
-				stage.setScene(new Scene(SubmenuDisciplina.pane));
-				stage.setTitle("Menu Disciplina");
-				stage.setResizable(false);
+				//SubmenuDisciplina.pane = FXMLLoader.load(SubmenuDisciplina.class.getResource("submenuDisciplinaFXML.fxml"));
+				//var.getPane().setPrefHeight(560);
+				//var.getPane().setPrefWidth(600);
+				//SubmenuDisciplina.pane.setCenter(var.getPane());
+				//SubmenuDisciplina.pane.setCenterShape(false);
+				//stage.setScene(new Scene(SubmenuDisciplina.pane));
+				//stage.setTitle("Menu Disciplina");
+				//stage.setResizable(false);
+				ScreenManager.getInstance().showRemoveDis();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -117,14 +121,15 @@ public class submenuDisciplinaController {
 			AtualizarDisciplina var = new AtualizarDisciplina();
 			
 			try {
-				SubmenuDisciplina.pane = FXMLLoader.load(SubmenuDisciplina.class.getResource("submenuDisciplinaFXML.fxml"));
-				var.getPane().setPrefHeight(560);
-				var.getPane().setPrefWidth(600);
-				SubmenuDisciplina.pane.setCenter(var.getPane());
-				SubmenuDisciplina.pane.setCenterShape(false);
-				stage.setScene(new Scene(SubmenuDisciplina.pane));
-				stage.setTitle("Menu Disciplina");
-				stage.setResizable(false);
+				//SubmenuDisciplina.pane = FXMLLoader.load(SubmenuDisciplina.class.getResource("submenuDisciplinaFXML.fxml"));
+				//var.getPane().setPrefHeight(560);
+				//var.getPane().setPrefWidth(600);
+				//SubmenuDisciplina.pane.setCenter(var.getPane());
+				//SubmenuDisciplina.pane.setCenterShape(false);
+				//stage.setScene(new Scene(SubmenuDisciplina.pane));
+				//stage.setTitle("Menu Disciplina");
+				//stage.setResizable(false);
+				ScreenManager.getInstance().showAtualizaDis();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -140,14 +145,15 @@ public class submenuDisciplinaController {
 			ProcurarDisciplina var = new ProcurarDisciplina();
 			
 			try {
-				SubmenuDisciplina.pane = FXMLLoader.load(SubmenuDisciplina.class.getResource("submenuDisciplinaFXML.fxml"));
-				var.getPane().setPrefHeight(560);
-				var.getPane().setPrefWidth(600);
-				SubmenuDisciplina.pane.setCenter(var.getPane());
-				SubmenuDisciplina.pane.setCenterShape(false);
-				stage.setScene(new Scene(SubmenuDisciplina.pane));
-				stage.setTitle("Menu Disciplina");
-				stage.setResizable(false);
+				//SubmenuDisciplina.pane = FXMLLoader.load(SubmenuDisciplina.class.getResource("submenuDisciplinaFXML.fxml"));
+				//var.getPane().setPrefHeight(560);
+				//var.getPane().setPrefWidth(600);
+				//SubmenuDisciplina.pane.setCenter(var.getPane());
+				//SubmenuDisciplina.pane.setCenterShape(false);
+				//stage.setScene(new Scene(SubmenuDisciplina.pane));
+				//stage.setTitle("Menu Disciplina");
+				//stage.setResizable(false);
+				ScreenManager.getInstance().showProcuraDis();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -169,22 +175,20 @@ public class submenuDisciplinaController {
 		});
 	}
 	
-	public void cadastrar() {
+	public void cadastrar() throws IOException {
 		botaoCadastrar.setOnMouseClicked(e -> {
 			Stage stage = (Stage) botaoCadastrar.getScene().getWindow();
 			CadastroDisciplina var = new CadastroDisciplina();
 			try {
-				SubmenuDisciplina.pane = FXMLLoader.load(SubmenuDisciplina.class.getResource("submenuDisciplinaFXML.fxml"));
-				var.getPane().setPrefHeight(560);
-				var.getPane().setPrefWidth(600);
-				SubmenuDisciplina.pane.setCenter(var.getPane());
-				SubmenuDisciplina.pane.setCenterShape(false);
-				stage.setScene(new Scene(SubmenuDisciplina.pane));
-				stage.setTitle("Menu Disciplina");
-				stage.setResizable(false);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				//SubmenuDisciplina.pane = FXMLLoader.load(SubmenuDisciplina.class.getResource("submenuDisciplinaFXML.fxml"));
+				//var.getPane().setPrefHeight(560);
+				//var.getPane().setPrefWidth(600);
+				//SubmenuDisciplina.pane.setCenter(var.getPane());
+				//SubmenuDisciplina.pane.setCenterShape(false);
+				//stage.setScene(new Scene(SubmenuDisciplina.pane));
+				//stage.setTitle("Menu Disciplina");
+				//stage.setResizable(false);
+				ScreenManager.getInstance().showCadastroDis();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

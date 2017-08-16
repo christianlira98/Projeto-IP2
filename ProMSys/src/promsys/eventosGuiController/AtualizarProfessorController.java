@@ -23,6 +23,7 @@ import promsys.negocio.beans.Professor;
 import promsys.realGui.AtualizarProfessor;
 import promsys.realGui.DisciplinaExcluir;
 import promsys.realGui.DisciplinasDisponiveis;
+import promsys.realGui.ScreenManager;
 
 public class AtualizarProfessorController {
 	@FXML
@@ -239,17 +240,18 @@ public class AtualizarProfessorController {
 			}
 				ProfessorDAO.getInstance().escreveArquivo();
 			}
-			Stage stage = (Stage) confirmaBotao.getScene().getWindow();
-			stage.close();
+			ScreenManager.getInstance().setaProfessorCenterNull();
+			//Stage stage = (Stage) confirmaBotao.getScene().getWindow();
+			//stage.close();
 		});
 	}
 
 	
 	public void cancela() {
 		cancelaBotao.setOnAction(e -> {
-			
-			Stage stage = (Stage) cancelaBotao.getScene().getWindow();
-			stage.close();
+			ScreenManager.getInstance().setaProfessorCenterNull();
+			//Stage stage = (Stage) cancelaBotao.getScene().getWindow();
+			//stage.close();
 		});
 	}
 	

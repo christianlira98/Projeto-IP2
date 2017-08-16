@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import promsys.realGui.Menu;
+import promsys.realGui.ScreenManager;
 import promsys.realGui.SubmenuDisciplina;
 import promsys.realGui.SubmenuProfessor;
 
@@ -53,8 +54,9 @@ public class EventosMenuController {
 			//Pane telaCadastroDisciplinas;
 
 			try {
-				Menu.pane = FXMLLoader.load(Menu.class.getResource("SubmenuDisciplinaFXML.fxml"));
-				Menu.menu.setScene(new Scene(Menu.pane));
+				ScreenManager.getInstance().showFormScreen();
+				//Menu.pane = FXMLLoader.load(Menu.class.getResource("SubmenuDisciplinaFXML.fxml"));
+				//Menu.menu.setScene(new Scene(Menu.pane));
 
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
@@ -83,8 +85,9 @@ public class EventosMenuController {
 
 			try {
 
-				Menu.pane = FXMLLoader.load(Menu.class.getResource("SubmenuProfessorFXML.fxml"));
-				Menu.menu.setScene(new Scene(Menu.pane));
+				//Menu.pane = FXMLLoader.load(Menu.class.getResource("SubmenuProfessorFXML.fxml"));
+				//Menu.menu.setScene(new Scene(Menu.pane));
+				ScreenManager.getInstance().showProfessorMenu();
 
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block

@@ -19,6 +19,7 @@ import promsys.realGui.DisciplinasDisponiveis;
 import promsys.realGui.Menu;
 import promsys.realGui.ProcurarProfessor;
 import promsys.realGui.RemoverProfessor;
+import promsys.realGui.ScreenManager;
 import promsys.realGui.SubmenuDisciplina;
 import promsys.realGui.SubmenuProfessor;
 
@@ -50,18 +51,20 @@ public class submenuProfessorController {
 	}
 	public void bola() {
 		bola2.setOnMouseClicked(e -> {
-			Stage stage = (Stage) bola2.getScene().getWindow();
+			//Stage stage = (Stage) bola2.getScene().getWindow();
 			//RemoverDisciplina var = new RemoverDisciplina();
 			
 			try {
-				SubmenuDisciplina.pane = FXMLLoader.load(Menu.class.getResource("menu.fxml"));
+				///SubmenuDisciplina.pane = FXMLLoader.load(Menu.class.getResource("menu.fxml"));
 				//var.getPane().setPrefHeight(560);
 				//var.getPane().setPrefWidth(600);
 				//SubmenuDisciplina.pane.setCenter(var.getPane());
 				//SubmenuDisciplina.pane.setCenterShape(false);
-				stage.setScene(new Scene(SubmenuDisciplina.pane));
-				stage.setTitle("Menu");
-				stage.setResizable(false);
+				//stage.setScene(new Scene(SubmenuDisciplina.pane));
+				//stage.setTitle("Menu");
+				//stage.setResizable(false);
+				ScreenManager.getInstance().showTestScreen();
+				ScreenManager.getInstance().getMainStage().setTitle("Menu Principal");
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -91,14 +94,16 @@ public class submenuProfessorController {
 			RemoverProfessor var = new RemoverProfessor();
 			
 			try {
-				SubmenuProfessor.pane = FXMLLoader.load(SubmenuProfessor.class.getResource("submenuProfessorFXML.fxml"));
-				var.getPane().setPrefHeight(560);
-				var.getPane().setPrefWidth(600);
-				SubmenuProfessor.pane.setCenter(var.getPane());
-				SubmenuProfessor.pane.setCenterShape(false);
-				stage.setScene(new Scene(SubmenuProfessor.pane));
-				stage.setTitle("Menu Professor");
-				stage.setResizable(false);
+				//SubmenuProfessor.pane = FXMLLoader.load(SubmenuProfessor.class.getResource("submenuProfessorFXML.fxml"));
+				//var.getPane().setPrefHeight(560);
+				//var.getPane().setPrefWidth(600);
+				//SubmenuProfessor.pane.setCenter(var.getPane());
+				//SubmenuProfessor.pane.setCenterShape(false);
+				//stage.setScene(new Scene(SubmenuProfessor.pane));
+				//stage.setTitle("Menu Professor");
+				//stage.setResizable(false);
+				ScreenManager.getInstance().showRemoveProf();
+				
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -115,23 +120,24 @@ public class submenuProfessorController {
 			
 			
 			try {
-				SubmenuProfessor.pane = FXMLLoader.load(SubmenuProfessor.class.getResource("submenuProfessorFXML.fxml"));
-				Pane p = FXMLLoader.load(AtualizarProfessor.class.getResource("AtualizarProfessorFXML.fxml"));
-				AtualizarProfessor var = new AtualizarProfessor();
-				var.getPane().setPrefHeight(560);
-				var.getPane().setPrefWidth(600);
+				//SubmenuProfessor.pane = FXMLLoader.load(SubmenuProfessor.class.getResource("submenuProfessorFXML.fxml"));
+				//Pane p = FXMLLoader.load(AtualizarProfessor.class.getResource("AtualizarProfessorFXML.fxml"));
+				//AtualizarProfessor var = new AtualizarProfessor();
+				//var.getPane().setPrefHeight(560);
+				//var.getPane().setPrefWidth(600);
 				
-				AtualizarProfessor.menu2 = (MenuButton) var.getPane().getChildren().get(11);
-				AtualizarProfessor.menu1 = (MenuButton) var.getPane().getChildren().get(10);
+				//AtualizarProfessor.menu2 = (MenuButton) var.getPane().getChildren().get(11);
+				//AtualizarProfessor.menu1 = (MenuButton) var.getPane().getChildren().get(10);
 				//AtualizarProfessor.menu2.getItems().addAll(DisciplinasDisponiveis.adiciona());
-				SubmenuProfessor.pane.setCenter(var.getPane());
-				SubmenuProfessor.pane.setCenterShape(false);
+				//SubmenuProfessor.pane.setCenter(var.getPane());
+				//SubmenuProfessor.pane.setCenterShape(false);
 				//AtualizarProfessor.pane = FXMLLoader.load(AtualizarProfessor.class.getResource("AtualizarProfessorFXML.fxml"));
 				//AtualizarProfessor.menu2 = (MenuButton) AtualizarProfessor.pane.getChildren().get(11);
 				//AtualizarProfessor.adiciona();
-				stage.setScene(new Scene(SubmenuProfessor.pane));
-				stage.setTitle("Menu Professor");
-				stage.setResizable(false);
+				//stage.setScene(new Scene(SubmenuProfessor.pane));
+				//stage.setTitle("Menu Professor");
+				//stage.setResizable(false);
+				ScreenManager.getInstance().showAtualizaProf();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -147,14 +153,15 @@ public class submenuProfessorController {
 			ProcurarProfessor var = new ProcurarProfessor();
 			
 			try {
-				SubmenuProfessor.pane = FXMLLoader.load(SubmenuProfessor.class.getResource("submenuProfessorFXML.fxml"));
-				var.getPane().setPrefHeight(560);
-				var.getPane().setPrefWidth(600);
-				SubmenuProfessor.pane.setCenter(var.getPane());
-				SubmenuProfessor.pane.setCenterShape(false);
-				stage.setScene(new Scene(SubmenuProfessor.pane));
-				stage.setTitle("Menu Professor");
-				stage.setResizable(false);
+				//SubmenuProfessor.pane = FXMLLoader.load(SubmenuProfessor.class.getResource("submenuProfessorFXML.fxml"));
+				//var.getPane().setPrefHeight(560);
+				//var.getPane().setPrefWidth(600);
+				//SubmenuProfessor.pane.setCenter(var.getPane());
+				//SubmenuProfessor.pane.setCenterShape(false);
+				//stage.setScene(new Scene(SubmenuProfessor.pane));
+				//stage.setTitle("Menu Professor");
+				//stage.setResizable(false);
+				ScreenManager.getInstance().showProcuraProf();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -176,22 +183,20 @@ public class submenuProfessorController {
 		});
 	}
 	
-	public void cadastrar() {
+	public void cadastrar() throws IOException {
 		botaoCadastrar.setOnMouseClicked(e -> {
 			Stage stage = (Stage) botaoCadastrar.getScene().getWindow();
 			CadastroProfessor var = new CadastroProfessor();
 			try {
-				SubmenuProfessor.pane = FXMLLoader.load(SubmenuProfessor.class.getResource("submenuProfessorFXML.fxml"));
-				var.getPane().setPrefHeight(560);
-				var.getPane().setPrefWidth(600);
-				SubmenuProfessor.pane.setCenter(var.getPane());
-				SubmenuProfessor.pane.setCenterShape(false);
-				stage.setScene(new Scene(SubmenuProfessor.pane));
-				stage.setTitle("Menu Professor");
-				stage.setResizable(false);
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				//SubmenuProfessor.pane = FXMLLoader.load(SubmenuProfessor.class.getResource("submenuProfessorFXML.fxml"));
+				//var.getPane().setPrefHeight(560);
+				//var.getPane().setPrefWidth(600);
+				//SubmenuProfessor.pane.setCenter(var.getPane());
+				//SubmenuProfessor.pane.setCenterShape(false);
+				//stage.setScene(new Scene(SubmenuProfessor.pane));
+				//stage.setTitle("Menu Professor");
+				//stage.setResizable(false);
+				ScreenManager.getInstance().showCadastroProf();
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

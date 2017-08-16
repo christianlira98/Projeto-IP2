@@ -21,6 +21,7 @@ import promsys.negocio.beans.Disciplina;
 import promsys.negocio.beans.Professor;
 import promsys.realGui.DisciplinaExcluir;
 import promsys.realGui.DisciplinasDisponiveis;
+import promsys.realGui.ScreenManager;
 
 public class RemoverDisciplinaController {
 	@FXML
@@ -134,16 +135,17 @@ public class RemoverDisciplinaController {
 	public void confirma() {
 		confirmaBotao.setOnAction(e -> {
 			ProfessorDAO.getInstance().escreveArquivo();
-			Stage stage = (Stage) confirmaBotao.getScene().getWindow();
-			stage.close();
+			ScreenManager.getInstance().setaDisciplinaCenterNull();
+			//Stage stage = (Stage) confirmaBotao.getScene().getWindow();
+			//stage.close();
 		});
 	}
 	
 	public void cancela() {
 		cancelaBotao.setOnAction(e -> {
-			
-			Stage stage = (Stage) cancelaBotao.getScene().getWindow();
-			stage.close();
+			ScreenManager.getInstance().setaDisciplinaCenterNull();
+			//Stage stage = (Stage) cancelaBotao.getScene().getWindow();
+			//stage.close();
 		});
 	}
 	

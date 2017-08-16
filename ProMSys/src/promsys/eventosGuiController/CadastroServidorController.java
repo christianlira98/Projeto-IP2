@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import promsys.exceptions.ServidorJaExisteException;
 import promsys.fachada.Fachada;
 import promsys.negocio.beans.Servidor;
+import promsys.realGui.ScreenManager;
 
 public class CadastroServidorController {
 	@FXML
@@ -58,6 +59,9 @@ public class CadastroServidorController {
 	}
 	
 	public void cancela() {
-		
+		cancelaBotao.setOnMouseClicked(e->{
+			//ScreenManager.getInstance().showProfessorMenu();	
+		});
+
 	}
 }

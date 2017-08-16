@@ -5,6 +5,7 @@ package promsys.eventosGuiController;
 import promsys.negocio.beans.*;
 import promsys.realGui.DisciplinaExcluir;
 import promsys.realGui.DisciplinasDisponiveis;
+import promsys.realGui.ScreenManager;
 
 import java.util.List;
 
@@ -154,8 +155,9 @@ public class AtualizarDisciplinaController {
 					
 				DisciplinaDAO.getInstance().salvarArquivo();
 			}
-			Stage stage = (Stage) confirmaBotao.getScene().getWindow();
-			stage.close();
+			//Stage stage = (Stage) confirmaBotao.getScene().getWindow();
+			//stage.close();
+			ScreenManager.getInstance().setaDisciplinaCenterNull();
 		});
 	}
 
@@ -163,8 +165,10 @@ public class AtualizarDisciplinaController {
 	public void cancela() {
 		cancelaBotao.setOnAction(e -> {
 			
-			Stage stage = (Stage) cancelaBotao.getScene().getWindow();
-			stage.close();
+			//ScreenManager.getInstance().showFormScreen();
+			ScreenManager.getInstance().setaDisciplinaCenterNull();
+			//Stage stage = (Stage) cancelaBotao.getScene().getWindow();
+			//stage.close();
 		});
 	}
 	

@@ -12,6 +12,7 @@ import promsys.dao.ProfessorDAO;
 import promsys.exceptions.ProfessorNaoExisteException;
 import promsys.negocio.ProfessorController;
 import promsys.negocio.beans.Professor;
+import promsys.realGui.ScreenManager;
 
 public class RemoverProfessorController {
 	@FXML
@@ -82,16 +83,17 @@ public class RemoverProfessorController {
 	public void confirma() {
 		confirmaBotao.setOnAction(e -> {
 			ProfessorDAO.getInstance().escreveArquivo();
-			Stage stage = (Stage) confirmaBotao.getScene().getWindow();
-			stage.close();
+			ScreenManager.getInstance().setaProfessorCenterNull();
+			//Stage stage = (Stage) confirmaBotao.getScene().getWindow();
+			//stage.close();
 		});
 	}
 	
 	public void cancela() {
 		cancelaBotao.setOnAction(e -> {
-			
-			Stage stage = (Stage) cancelaBotao.getScene().getWindow();
-			stage.close();
+			ScreenManager.getInstance().setaProfessorCenterNull();
+			//Stage stage = (Stage) cancelaBotao.getScene().getWindow();
+			//stage.close();
 		});
 	}
 	

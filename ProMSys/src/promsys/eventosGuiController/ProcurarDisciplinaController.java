@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import promsys.negocio.DisciplinaController;
 import promsys.negocio.beans.Disciplina;
 import promsys.realGui.DisciplinasDisponiveis;
+import promsys.realGui.ScreenManager;
 
 public class ProcurarDisciplinaController {
 	@FXML
@@ -79,8 +80,9 @@ public class ProcurarDisciplinaController {
 	
 	public void confirma() {
 		confirmaBotao.setOnAction(e -> {
-			Stage stage = (Stage) confirmaBotao.getScene().getWindow();
-			stage.close();
+			ScreenManager.getInstance().setaDisciplinaCenterNull();
+			//Stage stage = (Stage) confirmaBotao.getScene().getWindow();
+			//stage.close();
 		});
 	}
 	public void listaTodos() {
@@ -99,9 +101,9 @@ public class ProcurarDisciplinaController {
 	
 	public void cancela() {
 		cancelaBotao.setOnAction(e -> {
-			
-			Stage stage = (Stage) cancelaBotao.getScene().getWindow();
-			stage.close();
+			ScreenManager.getInstance().setaDisciplinaCenterNull();
+			//Stage stage = (Stage) cancelaBotao.getScene().getWindow();
+			//stage.close();
 		});
 	}
 	
