@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="DisiciplinaCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #e6e6fa;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.ProcurarProfessorController">
+<Pane fx:id="DisiciplinaCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #e6e6fa;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.CadastroAlocacao">
    <children>
-      <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="2.0" prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #f0f8ff;" text="Procurar professor">
+      <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="2.0" prefHeight="50.0" prefWidth="640.0" style="-fx-background-color: #f0f8ff;" text="Nova Turma">
          <font>
             <Font name="Baskerville Old Face" size="25.0" />
          </font>
@@ -23,7 +23,7 @@
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="caixaID" layoutX="173.0" layoutY="122.0" prefHeight="25.0" prefWidth="120.0" />
+      <TextField fx:id="caixaDisciplina" layoutX="173.0" layoutY="122.0" onAction="#procuraDisciplina" prefHeight="25.0" prefWidth="120.0" />
       <ImageView fitHeight="84.0" fitWidth="60.0" layoutX="2.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../Desktop/brasao.png" />
@@ -32,8 +32,18 @@
       <Button fx:id="cancelaBotao" layoutX="394.0" layoutY="436.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: red;" text="Cancela">
          <font>
             <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="confirmaBotao" layoutX="471.0" layoutY="436.0" mnemonicParsing="false" onAction="#confirma" style="-fx-background-color: green;" text="Confirma">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button fx:id="procura" layoutX="471.0" layoutY="394.0" mnemonicParsing="false" onAction="#procurando" prefHeight="25.0" prefWidth="68.0" text="Procurar">
+         <font>
+            <Font name="System Bold" size="12.0" />
          </font></Button>
-      <TextArea fx:id="caixaEncontrado" layoutX="99.0" layoutY="216.0" prefHeight="203.0" prefWidth="171.0" promptText="Professor" wrapText="true">
+      <TextArea fx:id="espacoProfessor" layoutX="99.0" layoutY="216.0" prefHeight="203.0" prefWidth="171.0" promptText="Professor" wrapText="true">
          <font>
             <Font name="Calibri Bold Italic" size="14.0" />
          </font>
@@ -46,13 +56,8 @@
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="CaixaNome" layoutX="173.0" layoutY="74.0" prefHeight="25.0" prefWidth="193.0" />
-      <Button fx:id="ListaTodos" layoutX="394.0" layoutY="394.0" mnemonicParsing="false" onAction="#listaTodos" prefHeight="25.0" prefWidth="68.0" text="Todos">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Button>
-      <TextArea fx:id="caixaEncontrado1" layoutX="293.0" layoutY="216.0" prefHeight="203.0" prefWidth="171.0" promptText="Disciplina" wrapText="true">
+      <TextField fx:id="nomeProfessor" layoutX="173.0" layoutY="74.0" onAction="#procuraProfessor" prefHeight="25.0" prefWidth="193.0" />
+      <TextArea fx:id="espacoDisciplina" layoutX="293.0" layoutY="216.0" prefHeight="203.0" prefWidth="171.0" promptText="Disciplina" wrapText="true">
          <font>
             <Font name="Calibri Bold Italic" size="14.0" />
          </font>
@@ -60,11 +65,12 @@
             <DropShadow height="9.15" radius="1.7875" width="0.0" />
          </effect>
       </TextArea>
-      <ChoiceBox layoutX="173.0" layoutY="172.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="escolhaHora" layoutX="173.0" layoutY="172.0" prefWidth="150.0" />
       <Label layoutX="20.0" layoutY="173.0" style="-fx-background-color: #e6e6fa;" text="Escolha o horário">
          <font>
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
+      <ChoiceBox fx:id="escolhaDia" layoutX="353.0" layoutY="172.0" prefWidth="150.0" />
    </children>
 </Pane>

@@ -128,6 +128,11 @@ public class Fachada {
 	public Professor procurarProf(long id) {
 		return professores.procurarProf(id);
 	}
+	
+	public Professor procurarProf(String nome) {
+		return professores.procurarPorNome(nome);
+	}
+
 
 	public boolean verificarExistencia(long id) {
 		return professores.verificarExistencia(id);
