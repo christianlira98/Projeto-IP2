@@ -66,9 +66,9 @@
          </effect>
       </MenuButton>
       <Line endX="100.0" layoutX="309.0" layoutY="163.0" scaleX="2.1" startX="-100.0" />
-      <ImageView fitHeight="126.0" fitWidth="119.0" layoutX="2.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="88.0" fitWidth="234.0" layoutX="-7.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Desktop/brasao.png" />
+            <Image url="@../../../../../../Desktop/customLogo.png" />
          </image>
       </ImageView>
       <Button fx:id="CancelaBotao" layoutX="366.0" layoutY="456.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Cancela" textFill="#fcf5f5">

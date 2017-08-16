@@ -4,6 +4,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Rectangle?>
@@ -64,6 +66,11 @@
                   <Font name="Britannic Bold" size="24.0" />
                </font>
             </Label>
+            <ImageView fitHeight="139.0" fitWidth="155.0" layoutX="3.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Desktop/brasao.png" />
+               </image>
+            </ImageView>
          </children>
          <effect>
             <DropShadow height="65.23" radius="54.355000000000004" width="154.19" />

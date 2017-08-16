@@ -39,9 +39,9 @@
       <TextField fx:id="hora" layoutX="180.0" layoutY="221.0" prefHeight="25.0" prefWidth="88.0" />
       <TextField fx:id="turma" layoutX="180.0" layoutY="285.0" prefHeight="25.0" prefWidth="88.0" />
       <TextField fx:id="codigo" layoutX="224.0" layoutY="350.0" prefHeight="25.0" prefWidth="95.0" />
-      <ImageView fitHeight="126.0" fitWidth="119.0" layoutX="2.0" layoutY="424.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="88.0" fitWidth="234.0" layoutX="-7.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Desktop/brasao.png" />
+            <Image url="@../../../../../../Desktop/customLogo.png" />
          </image>
       </ImageView>
       <Button fx:id="CancelaBotao" layoutX="346.0" layoutY="436.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Cancela" textFill="#fcf5f5">

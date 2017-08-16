@@ -58,9 +58,9 @@
             <ColorAdjust brightness="0.26" contrast="0.12" saturation="-0.02" />
          </effect>
       </MenuButton>
-      <ImageView fitHeight="126.0" fitWidth="119.0" layoutY="434.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="88.0" fitWidth="234.0" layoutX="-7.0" layoutY="504.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../Desktop/brasao.png" />
+            <Image url="@../../../../../../Desktop/customLogo.png" />
          </image>
       </ImageView>
       <Button fx:id="CancelaBotao" layoutX="356.0" layoutY="446.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Cancela" textFill="#fcf5f5">
