@@ -20,17 +20,17 @@ public class Menu extends Application {
 		menu = primaryStage;
 		
 		menu.setTitle("Menu");
-<<<<<<< HEAD
+
 		
 		pane = FXMLLoader.load(this.getClass().getResource("menu.fxml"));
 		
 		
-=======
+
 		loader = new FXMLLoader(this.getClass().getResource("menu.fxml"));
 		pane = (BorderPane) loader.load();
->>>>>>> branch 'master' of https://github.com/omniplatypus/Projeto-IP2.git
+
 		CadastroDisciplina c = new CadastroDisciplina();
-		//Pane telaCadastroDisciplinas = c.getPane();
+		Pane telaCadastroDisciplinas = c.getPane();
 		/*
 		telaCadastroDisciplinas.setPrefHeight(540);
 		telaCadastroDisciplinas.setPrefWidth(600);
@@ -41,13 +41,8 @@ public class Menu extends Application {
 		menu.setScene(new Scene(pane));
 		menu.setResizable(false);
 		*/
-<<<<<<< HEAD
-		//trocarCena(telaCadastroDisciplinas);
-		menu.setScene(new Scene(pane));
-		menu.setResizable(false);
-=======
+
 		trocarCena(pane, telaCadastroDisciplinas);
->>>>>>> branch 'master' of https://github.com/omniplatypus/Projeto-IP2.git
 		menu.show();
 	}
 	

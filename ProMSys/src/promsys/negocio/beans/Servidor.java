@@ -9,11 +9,14 @@ public class Servidor extends Usuario implements Serializable{
 	 */
 	private static final long serialVersionUID = 4670224172030542186L;
 	private long id;
+	private String pergunta;
+	private String resposta;
 	
 	//CONSTRUTOR
-	public Servidor(String n, String l, String s){
+	public Servidor(String n, String l, String s, String pergunta, String resposta){
 		super(n, l, s);
-
+		this.pergunta = pergunta;
+		this.resposta = resposta;
 	}
 	
 	//GETTERS AND SETTERS
@@ -32,6 +35,26 @@ public class Servidor extends Usuario implements Serializable{
 		}
 		return equal;
 	}
+	public String getPergunta() {
+		return pergunta;
+	}
+
+	public void setPergunta(String pergunta) {
+		this.pergunta = pergunta;
+	}
+
+	public String getResposta() {
+		return resposta;
+	}
+
+	public void setResposta(String resposta) {
+		this.resposta = resposta;
+	}
+
+	public long getId() {
+		return id;
+	}
+
 	public String toString(){
 		String str = this.getNome() + " - " + this.getLogin();
 		return str;
