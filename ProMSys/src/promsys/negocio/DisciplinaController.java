@@ -83,7 +83,7 @@ public class DisciplinaController {
 	
 	public void atualizarCodigo(long id,String cod) {
 		this.repositorioDisciplina.atualizarCodigo(id, cod);
-
+		this.repositorioDisciplina.salvarArquivo();
 	}
 	
 	public boolean existe(String nome) {

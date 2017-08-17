@@ -8,7 +8,7 @@ import promsys.exceptions.ServidorJaExisteException;
 import promsys.fachada.Fachada;
 import promsys.negocio.beans.Servidor;
 import promsys.realGui.ScreenManager;
-
+import promsys.realGui.AlertBox;
 public class CadastroServidorController {
 	@FXML
 	private Pane servidorCadastro;
@@ -47,19 +47,19 @@ public class CadastroServidorController {
 			}
 		}
 		else if(n.length() <= 1) {
-			 nome.insertText(0, "Nome Invï¿½lido!");
+			 nome.insertText(0, "Nome Inválido!");
 		}
 		else if(log.length() < 6) {
 			login.insertText(0, "Login Invalido!");
 		}
 		else if(pass.length() < 6) {
-			senha.insertText(0, "Senha Invï¿½lida");
+			senha.insertText(0, "Senha Inválida");
 		}
 		else if(ques.length() <= 1) {
-			pergunta.insertText(0, "Pergunta Invï¿½lida");
+			pergunta.insertText(0, "Pergunta Inválida");
 		}
 		else if(ans.length() < 6) {
-			resposta.insertText(0, "Resposta Invï¿½lida");
+			resposta.insertText(0, "Resposta Inválida");
 		}
 	}
 	
