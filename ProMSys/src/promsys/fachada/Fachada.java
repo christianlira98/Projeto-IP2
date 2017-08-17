@@ -118,6 +118,15 @@ public class Fachada {
 	public List<Disciplina> listaDisciplinas() {
 		return disciplinas.retornaListaDisciplina();
 	}
+	public boolean existeDisciplina(long id) {
+		return disciplinas.existe(id);
+	}
+	public boolean existeDisciplina(String nome) {
+		return disciplinas.existe(nome);
+	}
+	public void atualizarCodigo(long id, String cod) {
+		disciplinas.atualizarCodigo(id, cod);
+	}
 	//Professores
 
 	public void atualizarNomeProfessor(String nome, long id) throws ProfessorNaoExisteException, ProfessorJaExisteNomeException {
