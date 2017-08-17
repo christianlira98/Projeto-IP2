@@ -28,6 +28,14 @@ public class LoginController {
 	private PasswordField caixaSenha;
 	@FXML
 	private Label alerta;
+	@FXML
+	private Button esquece;
+	
+	public void esqueceu() {
+		esquece.setOnMouseClicked(e -> {
+			
+		});
+	}
 	
 	
 	public void confirma() {
