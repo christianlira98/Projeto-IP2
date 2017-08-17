@@ -63,7 +63,7 @@ public class ServidorController {
 	
 	public Servidor procuraServidor(long id) throws ServidorNaoExisteException{
 		Servidor found = ServidorDAO.getInstance().procurar(id);
-		if(found.equals(null)!=false) {
+		if(found!=null) {
 			return found;
 		}else {
 			throw new ServidorNaoExisteException(id);	
@@ -72,7 +72,7 @@ public class ServidorController {
 	
 	public Servidor procuraNome(String n)  {
 		Servidor procura = ServidorDAO.getInstance().procurarNome(n);
-		if(procura.equals(null)!=false) {
+		if(procura != null) {
 			return procura;
 		}else {
 			return null;
@@ -81,13 +81,18 @@ public class ServidorController {
 	
 	public boolean fazLogin(String login, String senha){
 		boolean logged = false;
+		String senhaF, loginF;
 		for(int i = 0; i<repositorioServidores.getNextId() && logged == false; i++){
 			Servidor foundTemp = ServidorDAO.getInstance().procurar(i);
-			if(foundTemp.getLogin().equals(login)){
-				if(foundTemp.getSenha().equals(senha)){
+			if(foundTemp != null) {
+				senhaF = foundTemp.getSenha();
+				loginF = foundTemp.getLogin();
+			if(loginF.equals(login)){
+				if(senhaF.equals(senha)){
 					logged = true;
 				}
 			}
+		}
 		}
 		return logged;
 	}

@@ -38,7 +38,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="CancelaBotao" layoutX="373.0" layoutY="430.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Sair" textFill="#fcf5f5">
+      <Button fx:id="CancelaBotao" layoutX="373.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Sair" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -53,6 +53,6 @@
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="esquece" layoutX="493.0" layoutY="466.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="Esqueceu?" />
+      <Button fx:id="esquece" layoutX="493.0" layoutY="466.0" mnemonicParsing="false" onMouseClicked="#esqueceu" prefHeight="25.0" prefWidth="88.0" text="Esqueceu?" />
    </children>
 </Pane>

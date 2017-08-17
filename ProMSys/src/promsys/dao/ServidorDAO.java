@@ -127,7 +127,7 @@ public class ServidorDAO implements Serializable {
 	}
 	
 	public void cadastrar(Servidor admin){
-		admin.setId(getNextId());
+		admin.setId(nextID);
 		nextID++;
 		admins.add(admin);
 		

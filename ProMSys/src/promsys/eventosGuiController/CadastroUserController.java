@@ -43,12 +43,10 @@ public class CadastroUserController {
 		String log = login.getText();
 		String vari = "";
 		
-		if(!senha.equals(confirma) ) {
+		if(!senha.equals(confirma) && senha.equals(null) ) {
 			labelException.setText("Senhas não Correspondem");
 			labelException.setTextFill(Color.RED);
-			
-				labelException.setText("Informações obrigatórias não foram preenchidas");
-			labelException.setTextFill(Color.RED);
+		
 			auxVari = true;
 		
 		}

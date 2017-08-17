@@ -25,14 +25,15 @@ public class AbrirPeriodoController {
 			//ScreenManager.getInstance().setaProfessorCenterNull();
 		});
 		
+	
+	}
 	public void cancela() {
-		CancelaBotao.setOnMouseClicked(e->{
-			//faz algo;
+		CancelaBotao.setOnMouseClicked(e -> {
+			System.out.print("teste");
 		});
-		// alguma ação. 
 	}
 	}
 	
 	
 	
-}
+

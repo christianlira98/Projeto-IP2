@@ -68,6 +68,7 @@ public class RedefineSenhaController {
 		ConfirmaBotao.setOnMouseClicked(e -> {
 			ServidorController.getInstance().alteraSenha(p.getID(), redefine.getText());
 			ServidorDAO.getInstance().escreveArquivo();
+			ScreenManager.getInstance().showLogin();
 			
 		});
 	}

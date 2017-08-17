@@ -17,23 +17,13 @@ public class ScreenManager {
     private BorderPane testPane, formPane, professor, alocacao;
     private Pane cadastroProf, removeProf, atualizaProf, procuraProf,
     cadastroDis, removeDis, atualizaDis, procuraDis,
-<<<<<<< HEAD
-    loginC;
-    private Pane cadastroAlocacao, atualizaAlocacao, procuraAlocacao, removeAlocacao;
-=======
-    loginC, abrirPeriodo;
->>>>>>> master
+    loginC, abrirPeriodo, redefineSenha;
     private Scene testScene;
     private Scene formScene;
     private Scene professorScene;
     private Scene cadastroProfessor, removeProfessor, atualizaProfessor, procuraProfessor,
     cadastroDisciplina, removeDisciplina, atualizaDisciplina, procuraDisciplina,
-<<<<<<< HEAD
-    loginCena;
-    private Scene cadastrarAlocacao, procurarAlocacao, removerAlocacao, alocacaoScene;
-=======
-    loginCena, abrirPeriodoCena;
->>>>>>> master
+    loginCena, abrirPeriodoCena, redefineSenhaCena;
     public static ScreenManager getInstance() {
         if (instance == null) {
             instance = new ScreenManager();
@@ -43,12 +33,16 @@ public class ScreenManager {
     }
     
     private ScreenManager() {
-        // Construtor privado para evitar instanciação
+        // Construtor privado para evitar instanciaï¿½ï¿½o
         /*/
          * 
          */
     	//comentario
         try {
+        	redefineSenha = FXMLLoader.load(this.getClass().getResource("RedefineSenhaFXML.fxml"));
+        	//inicia cena
+        	this.redefineSenhaCena = new Scene(redefineSenha);
+        	
         	abrirPeriodo = FXMLLoader.load(this.getClass().getResource("abrirPeriodoFXML.fxml"));
         	//inicia cena
         	this.abrirPeriodoCena = new Scene(abrirPeriodo);
@@ -124,16 +118,16 @@ public class ScreenManager {
         mainStage.setWidth(800);
         mainStage.setHeight(620);
 
-        // configurando título da app
+        // configurando tï¿½tulo da app
         /**/
-        mainStage.setTitle("Transições entre telas");
+        mainStage.setTitle("Transiï¿½ï¿½es entre telas");
     }
     public void showAbrirPeriodo() {
     	abrirPeriodo.setPrefHeight(560);
     	abrirPeriodo.setPrefWidth(600);
     	/*
     	 * 
-    	 * Essa parte tu tem que trocar para this.MenuPeriodo q tu fez aí.
+    	 * Essa parte tu tem que trocar para this.MenuPeriodo q tu fez aï¿½.
     	this.professor.setCenter(abrirPeriodo);
     	this.professor.setCenterShape(false);
     	*/
@@ -144,6 +138,13 @@ public class ScreenManager {
     	loginC.setPrefHeight(620);
     	loginC.setPrefWidth(800);
     	this.mainStage.setScene(this.loginCena);
+    	this.mainStage.setResizable(false);
+        this.mainStage.show();
+    }
+    public void showRedefine() {
+    	loginC.setPrefHeight(620);
+    	loginC.setPrefWidth(800);
+    	this.mainStage.setScene(this.redefineSenhaCena);
     	this.mainStage.setResizable(false);
         this.mainStage.show();
     }
