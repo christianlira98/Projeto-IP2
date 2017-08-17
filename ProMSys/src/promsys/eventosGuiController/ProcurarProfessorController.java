@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import promsys.negocio.ProfessorController;
 import promsys.negocio.beans.Professor;
+import promsys.realGui.ScreenManager;
 
 public class ProcurarProfessorController {
 	@FXML
@@ -53,8 +54,9 @@ public class ProcurarProfessorController {
 	
 	public void confirma() {
 		confirmaBotao.setOnAction(e -> {
-			Stage stage = (Stage) confirmaBotao.getScene().getWindow();
-			stage.close();
+			ScreenManager.getInstance().setaProfessorCenterNull();
+			//Stage stage = (Stage) confirmaBotao.getScene().getWindow();
+			//stage.close();
 		});
 	}
 	public void listaTodos() {
@@ -73,9 +75,9 @@ public class ProcurarProfessorController {
 	
 	public void cancela() {
 		cancelaBotao.setOnAction(e -> {
-			
-			Stage stage = (Stage) cancelaBotao.getScene().getWindow();
-			stage.close();
+			ScreenManager.getInstance().setaProfessorCenterNull();
+			//Stage stage = (Stage) cancelaBotao.getScene().getWindow();
+			//stage.close();
 		});
 	}
 	

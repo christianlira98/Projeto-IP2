@@ -1,6 +1,7 @@
 package promsys.eventosGuiController;
 import promsys.negocio.DisciplinaController;
 import promsys.negocio.beans.*;
+import promsys.realGui.ScreenManager;
 import promsys.exceptions.DisciplinaCargaInvalidaException;
 import promsys.exceptions.DisciplinaJaExisteException;
 import javafx.fxml.FXML;
@@ -36,8 +37,7 @@ public class EventosCadastroDisciplinaController {
 			} catch (DisciplinaCargaInvalidaException e1) {
 				e1.printStackTrace();
 			}
-			Stage stage = (Stage) ConfirmaBotao.getScene().getWindow();
-			stage.close();
+			ScreenManager.getInstance().setaDisciplinaCenterNull();
 		});
 	}
 		public void cancela() {
@@ -45,8 +45,9 @@ public class EventosCadastroDisciplinaController {
 				/*
 				 * 
 				 */
-				Stage stage = (Stage) CancelaBotao.getScene().getWindow();
-				stage.close();
+				ScreenManager.getInstance().setaDisciplinaCenterNull();
+				//Stage stage = (Stage) CancelaBotao.getScene().getWindow();
+				//stage.close();
 				
 			});
 		}

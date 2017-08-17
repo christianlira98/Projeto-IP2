@@ -17,14 +17,15 @@ import promsys.negocio.beans.Disciplina;
 public class AtualizarProfessor extends Application{
 	Stage window;
 	Pane layout;
-	List<Disciplina> lista = new ArrayList<Disciplina>();
-	private static MenuButton menu1;
-	MenuButton menu2;
+	public static Pane pane;
+	private List<Disciplina> lista = new ArrayList<Disciplina>();
+	public static MenuButton menu1;
+	public static MenuButton menu2;
 	public void start(Stage primaryStage) throws IOException {
 		window = primaryStage;
 		window.setTitle("Atualização de Professor");
 		window.setResizable(false);
-		Pane pane = FXMLLoader.load(this.getClass().getResource("AtualizarProfessorFXML.fxml"));
+		pane = FXMLLoader.load(this.getClass().getResource("AtualizarProfessorFXML.fxml"));
 		menu1 = (MenuButton)pane.getChildren().get(10);
 		menu2 = (MenuButton)pane.getChildren().get(11);
 		adiciona();
@@ -40,12 +41,18 @@ public class AtualizarProfessor extends Application{
 			}
 		}
 		CheckMenuItem[] array = me.toArray(new CheckMenuItem[me.size()]);
-		menu2.getItems().addAll(array);
+		if(array.length>0) {
+			menu2.getItems().addAll(array);
+		}
 	}
 	public static void add(List<CheckMenuItem> me) {
-		menu1.getItems().removeAll(menu1.getItems());
-		CheckMenuItem[] array = me.toArray(new CheckMenuItem[me.size()]);
-		menu1.getItems().addAll(array);
+		if(menu1.getItems().isEmpty()==true) {
+			menu1.getItems().clear();
+		}
+			CheckMenuItem[] array = me.toArray(new CheckMenuItem[me.size()]);
+			menu1.getItems().addAll(array);
+		
+		
 	}
 	public Pane getPane() throws Exception {
 		return layout = FXMLLoader.load(this.getClass().getResource("AtualizarProfessorFXML.fxml"));
