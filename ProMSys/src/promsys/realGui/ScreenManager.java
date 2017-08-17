@@ -34,7 +34,10 @@ public class ScreenManager {
     
     private ScreenManager() {
         // Construtor privado para evitar instanciação
-        
+        /*/
+         * 
+         */
+    	//comentario
         try {
         	abrirPeriodo = FXMLLoader.load(this.getClass().getResource("abrirPeriodoFXML.fxml"));
         	//inicia cena
