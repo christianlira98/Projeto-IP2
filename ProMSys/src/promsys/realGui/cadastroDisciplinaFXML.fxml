@@ -10,12 +10,12 @@
 
 <Pane fx:id="DisiciplinaCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="600.0" style="-fx-background-color: #e6e6fa;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.EventosCadastroDisciplinaController">
    <children>
-      <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="2.0" prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #f0f8ff;" text="Cadastro de Disciplinas">
+      <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="2.0" prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #f0f8ff;" text="Abrir Período">
          <font>
             <Font name="Baskerville Old Face" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="66.0" layoutY="165.0" style="-fx-background-color: #e6e6fa;" text="Nome">
+      <Label layoutX="66.0" layoutY="165.0" style="-fx-background-color: #e6e6fa;" text="Semestre">
          <font>
             <Font name="Baskerville Old Face" size="18.0" />
          </font>

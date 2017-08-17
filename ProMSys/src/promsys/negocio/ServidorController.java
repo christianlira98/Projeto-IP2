@@ -20,7 +20,9 @@ public class ServidorController {
 		}
 		return instance;
 	}
-	
+	public void alteraSenha(long id, String senha) {
+		this.repositorioServidores.alteraSenha(id, senha);
+	}
 	public void cadastroServidor(Servidor novo) throws ServidorJaExisteException {
 		if(novo == null) {
 			throw new IllegalArgumentException("Parâmetro Invalido");

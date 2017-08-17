@@ -39,6 +39,14 @@ public class ServidorDAO implements Serializable {
 		return instance;
 	}
 	
+	public void alteraSenha(long id, String senha) {
+		for( int i = 0; i < admins.size(); i++) {
+			if(admins.get(i).getID() == id) {
+				admins.get(i).setSenha(senha);
+			}
+		}
+	}
+	
 	public static void leituraNextId () throws IOException {
 		String linha = null;
 		File arquivo = new File("IdServidor.dat");

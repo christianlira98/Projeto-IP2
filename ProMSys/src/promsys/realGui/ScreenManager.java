@@ -17,15 +17,23 @@ public class ScreenManager {
     private BorderPane testPane, formPane, professor, alocacao;
     private Pane cadastroProf, removeProf, atualizaProf, procuraProf,
     cadastroDis, removeDis, atualizaDis, procuraDis,
+<<<<<<< HEAD
     loginC;
     private Pane cadastroAlocacao, atualizaAlocacao, procuraAlocacao, removeAlocacao;
+=======
+    loginC, abrirPeriodo;
+>>>>>>> master
     private Scene testScene;
     private Scene formScene;
     private Scene professorScene;
     private Scene cadastroProfessor, removeProfessor, atualizaProfessor, procuraProfessor,
     cadastroDisciplina, removeDisciplina, atualizaDisciplina, procuraDisciplina,
+<<<<<<< HEAD
     loginCena;
     private Scene cadastrarAlocacao, procurarAlocacao, removerAlocacao, alocacaoScene;
+=======
+    loginCena, abrirPeriodoCena;
+>>>>>>> master
     public static ScreenManager getInstance() {
         if (instance == null) {
             instance = new ScreenManager();
@@ -36,8 +44,15 @@ public class ScreenManager {
     
     private ScreenManager() {
         // Construtor privado para evitar instanciação
-        
+        /*/
+         * 
+         */
+    	//comentario
         try {
+        	abrirPeriodo = FXMLLoader.load(this.getClass().getResource("abrirPeriodoFXML.fxml"));
+        	//inicia cena
+        	this.abrirPeriodoCena = new Scene(abrirPeriodo);
+        	
         	loginC = FXMLLoader.load(this.getClass().getResource("loginFXML.fxml"));
         	//inicia cena
         	this.loginCena = new Scene(loginC);
@@ -113,6 +128,18 @@ public class ScreenManager {
         /**/
         mainStage.setTitle("Transições entre telas");
     }
+    public void showAbrirPeriodo() {
+    	abrirPeriodo.setPrefHeight(560);
+    	abrirPeriodo.setPrefWidth(600);
+    	/*
+    	 * 
+    	 * Essa parte tu tem que trocar para this.MenuPeriodo q tu fez aí.
+    	this.professor.setCenter(abrirPeriodo);
+    	this.professor.setCenterShape(false);
+    	*/
+    	this.getMainStage().setResizable(false);
+    }
+    
     public void showLogin() {
     	loginC.setPrefHeight(620);
     	loginC.setPrefWidth(800);

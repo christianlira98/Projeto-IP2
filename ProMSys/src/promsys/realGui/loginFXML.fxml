@@ -53,5 +53,6 @@
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
+      <Button fx:id="esquece" layoutX="493.0" layoutY="466.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="88.0" text="Esqueceu?" />
    </children>
 </Pane>
