@@ -14,16 +14,18 @@ public class ScreenManager {
     
     private static ScreenManager instance;
     private Stage mainStage;
-    private BorderPane testPane, formPane, professor;
+    private BorderPane testPane, formPane, professor, alocacao;
     private Pane cadastroProf, removeProf, atualizaProf, procuraProf,
     cadastroDis, removeDis, atualizaDis, procuraDis,
     loginC;
+    private Pane cadastroAlocacao, atualizaAlocacao, procuraAlocacao, removeAlocacao;
     private Scene testScene;
     private Scene formScene;
     private Scene professorScene;
     private Scene cadastroProfessor, removeProfessor, atualizaProfessor, procuraProfessor,
     cadastroDisciplina, removeDisciplina, atualizaDisciplina, procuraDisciplina,
     loginCena;
+    private Scene cadastrarAlocacao, procurarAlocacao, removerAlocacao, alocacaoScene;
     public static ScreenManager getInstance() {
         if (instance == null) {
             instance = new ScreenManager();
@@ -84,7 +86,12 @@ public class ScreenManager {
             
             professor = FXMLLoader.load(this.getClass().getResource("submenuProfessorFXML.fxml"));
             this.professorScene = new Scene(professor);
-        
+            
+            alocacao = FXMLLoader.load(this.getClass().getResource("subMenuAlocacao.fxml"));
+            this.alocacaoScene = new Scene(alocacao);
+            
+            cadastroAlocacao = FXMLLoader.load(this.getClass().getResource("cadastroAlocacao.fxml"));
+            this.cadastrarAlocacao = new Scene(cadastroAlocacao);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -120,6 +127,18 @@ public class ScreenManager {
     
     public void setaProfessorCenterNull() {
     	this.professor.setCenter(null);
+    }
+    
+    public void setaAlocacaoCenterNull() {
+    	this.alocacao.setCenter(null);
+    }
+    
+    public void showCadastroAlocacao() {
+    	cadastroAlocacao.setPrefHeight(560);
+    	cadastroAlocacao.setPrefWidth(600);
+    	this.alocacao.setCenter(cadastroAlocacao);
+    	this.alocacao.setCenterShape(false);
+    	this.getMainStage().setResizable(false);
     }
     
     public void showCadastroProf() {
@@ -204,6 +223,12 @@ public class ScreenManager {
         this.mainStage.setScene(this.formScene);
         this.mainStage.setTitle("Menu Disciplinas");
         this.mainStage.show();
+    }
+    
+    public void showAlocacaoMenu() {
+    	this.mainStage.setScene(this.alocacaoScene);
+    	this.mainStage.setTitle("Menu Periodo");
+    	this.mainStage.show();
     }
 }
 

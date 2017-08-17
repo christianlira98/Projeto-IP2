@@ -33,6 +33,10 @@ public class EventosMenuController {
 	@FXML
 	private Rectangle botaoAjustes;
 	
+	public void abreTelaPeriodo() {
+		ScreenManager.getInstance().showAlocacaoMenu();
+	}
+	
 	public void escureceP() {
 		botaoPeriodo.setOnMouseEntered(e -> {
 			Color c = (Color) botaoPeriodo.getFill();
