@@ -7,7 +7,7 @@ public class LauncherTest extends Application{
 	
 	public void start (Stage primaryStage) {   
 		ScreenManager.getInstance().setMainStage(primaryStage);
-        ScreenManager.getInstance().showTestScreen();
+        ScreenManager.getInstance().showLogin();
     }
 
     public static void main(String[] args) {

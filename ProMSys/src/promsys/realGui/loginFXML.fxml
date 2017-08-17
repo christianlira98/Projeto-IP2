@@ -9,44 +9,49 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="DisiciplinaCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="600.0" style="-fx-background-color: #e6e6fa;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.ProcurarDisciplinaController">
+<Pane fx:id="DisiciplinaCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="800.0" style="-fx-background-color: #e6e6fa;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.LoginController">
    <children>
-      <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="2.0" prefHeight="50.0" prefWidth="600.0" style="-fx-background-color: #f0f8ff;" text="Login">
+      <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="2.0" prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #f0f8ff;" text="Login">
          <font>
             <Font name="Baskerville Old Face" size="25.0" />
          </font>
       </Label>
-      <Label layoutX="110.0" layoutY="294.0" style="-fx-background-color: #e6e6fa;" text="Senha">
+      <Label layoutX="210.0" layoutY="334.0" style="-fx-background-color: #e6e6fa;" text="Senha">
          <font>
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="109.0" layoutY="243.0" style="-fx-background-color: #e6e6fa;" text="Nome">
+      <Label layoutX="211.0" layoutY="269.0" style="-fx-background-color: #e6e6fa;" text="Login">
          <font>
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="CaixaNome" layoutX="192.0" layoutY="242.0" prefHeight="25.0" prefWidth="234.0" />
-      <ImageView fitHeight="37.0" fitWidth="160.0" layoutX="276.0" layoutY="197.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="CaixaNome" layoutX="285.0" layoutY="267.0" prefHeight="25.0" prefWidth="234.0" />
+      <ImageView fitHeight="37.0" fitWidth="160.0" layoutX="356.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../Desktop/customLogo.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="caixaSenha" layoutX="192.0" layoutY="292.0" prefHeight="25.0" prefWidth="234.0" />
-      <Button fx:id="ConfirmaBotao" layoutX="417.0" layoutY="376.0" mnemonicParsing="false" onAction="#confirma" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: green;" text="Confirma" textFill="WHITE">
+      <PasswordField fx:id="caixaSenha" layoutX="285.0" layoutY="332.0" prefHeight="25.0" prefWidth="234.0" />
+      <Button fx:id="ConfirmaBotao" layoutX="491.0" layoutY="430.0" mnemonicParsing="false" onAction="#confirma" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: green;" text="Confirma" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="CancelaBotao" layoutX="309.0" layoutY="376.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Sair" textFill="#fcf5f5">
+      <Button fx:id="CancelaBotao" layoutX="373.0" layoutY="430.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: red;" text="Sair" textFill="#fcf5f5">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <ImageView fitHeight="130.0" fitWidth="88.0" layoutX="202.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="130.0" fitWidth="88.0" layoutX="274.0" layoutY="112.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../Desktop/brasao.png" />
          </image>
       </ImageView>
+      <Label fx:id="alerta" layoutX="225.0" layoutY="382.0" prefHeight="22.0" prefWidth="302.0" style="-fx-background-color: #e6e6fa;" text="Login ou senha inválido." textAlignment="CENTER" textFill="LAVENDER">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

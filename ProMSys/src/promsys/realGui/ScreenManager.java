@@ -14,12 +14,14 @@ public class ScreenManager {
     private Stage mainStage;
     private BorderPane testPane, formPane, professor;
     private Pane cadastroProf, removeProf, atualizaProf, procuraProf,
-    cadastroDis, removeDis, atualizaDis, procuraDis;
+    cadastroDis, removeDis, atualizaDis, procuraDis,
+    loginC;
     private Scene testScene;
     private Scene formScene;
     private Scene professorScene;
     private Scene cadastroProfessor, removeProfessor, atualizaProfessor, procuraProfessor,
-    cadastroDisciplina, removeDisciplina, atualizaDisciplina, procuraDisciplina;
+    cadastroDisciplina, removeDisciplina, atualizaDisciplina, procuraDisciplina,
+    loginCena;
     public static ScreenManager getInstance() {
         if (instance == null) {
             instance = new ScreenManager();
@@ -32,6 +34,10 @@ public class ScreenManager {
         // Construtor privado para evitar instanciação
         
         try {
+        	loginC = FXMLLoader.load(this.getClass().getResource("loginFXML.fxml"));
+        	//inicia cena
+        	this.loginCena = new Scene(loginC);
+        	
         	cadastroProf = FXMLLoader.load(this.getClass().getResource("cadastroProfessorFXML.fxml"));
         	//inicia cena
         	this.cadastroProfessor = new Scene(cadastroProf);
@@ -97,6 +103,14 @@ public class ScreenManager {
         // configurando título da app
         mainStage.setTitle("Transições entre telas");
     }
+    public void showLogin() {
+    	loginC.setPrefHeight(620);
+    	loginC.setPrefWidth(800);
+    	this.mainStage.setScene(this.loginCena);
+    	this.mainStage.setResizable(false);
+        this.mainStage.show();
+    }
+    
     public void setaDisciplinaCenterNull() {
     	this.formPane.setCenter(null);
     }
