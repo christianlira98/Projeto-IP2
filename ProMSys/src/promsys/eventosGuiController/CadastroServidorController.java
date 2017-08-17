@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import promsys.exceptions.ServidorJaExisteException;
 import promsys.fachada.Fachada;
 import promsys.negocio.beans.Servidor;
+import promsys.realGui.AlertBox;
 import promsys.realGui.ScreenManager;
 
 public class CadastroServidorController {
