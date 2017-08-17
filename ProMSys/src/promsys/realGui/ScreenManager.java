@@ -101,6 +101,7 @@ public class ScreenManager {
         mainStage.setHeight(620);
 
         // configurando título da app
+        /**/
         mainStage.setTitle("Transições entre telas");
     }
     public void showLogin() {
