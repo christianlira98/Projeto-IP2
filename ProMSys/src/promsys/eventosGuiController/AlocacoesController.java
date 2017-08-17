@@ -11,14 +11,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import promsys.Enum.DiasEnum;
 import promsys.fachada.Fachada;
 import promsys.negocio.beans.Alocacao;
 import promsys.negocio.beans.Disciplina;
 import promsys.negocio.beans.Horario;
 import promsys.negocio.beans.Professor;
+import promsys.realGui.ScreenManager;
 
-public class TabelaAlocacoesController {
+public class AlocacoesController {
 	@FXML
 	private TableView<Alocacao> tabelaAlocacoes;
 	@FXML
@@ -31,11 +33,18 @@ public class TabelaAlocacoesController {
 	private TableColumn<Alocacao, String> professorColumn;
 	@FXML
 	private TableColumn<Alocacao, String> codTurmaColumn;
+	@FXML
+	private Rectangle botaoCadastrar;
+	@FXML
+	private Rectangle botaoProcurar;
+	@FXML
+	private Rectangle botaoDeletar;
+	
 	
 	private ObservableList<Alocacao> tab = FXCollections.observableArrayList();
 	private Fachada acesso = Fachada.getInstance();
 	
-	public TabelaAlocacoesController() {
+	public AlocacoesController() {
 		for(Alocacao a : acesso.listarAlocacoes()) {
 			tab.add(a);
 		}
@@ -78,6 +87,15 @@ public class TabelaAlocacoesController {
 		tabelaAlocacoes.getColumns().addAll(horaColumn, diaColumn, disciplinaColumn, professorColumn);
 	}
 	
-	
-	
+	public void abreCadastro() {
+		botaoCadastrar.setOnMouseClicked(e -> {
+			try {
+				ScreenManager.getInstance().showCadastroAlocacao();
+			}
+			catch(Exception e1) {
+				e1.printStackTrace();
+			}
+		});
+	}
+
 }
