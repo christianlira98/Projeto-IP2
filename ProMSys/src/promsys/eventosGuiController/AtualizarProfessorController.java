@@ -55,9 +55,8 @@ public class AtualizarProfessorController {
 	
 	public void addExcluir(List<CheckMenuItem> me) {
 		Excluir.setOnMouseClicked(e ->{
-			if(Excluir.getItems().isEmpty()) {
 				Excluir.getItems().addAll(DisciplinaExcluir.add(me));
-			}
+			
 		});
 	}
 	public void procurando() {

@@ -17,13 +17,13 @@ public class ScreenManager {
     private BorderPane testPane, formPane, professor;
     private Pane cadastroProf, removeProf, atualizaProf, procuraProf,
     cadastroDis, removeDis, atualizaDis, procuraDis,
-    loginC, abrirPeriodo;
+    loginC, abrirPeriodo, redefineSenha;
     private Scene testScene;
     private Scene formScene;
     private Scene professorScene;
     private Scene cadastroProfessor, removeProfessor, atualizaProfessor, procuraProfessor,
     cadastroDisciplina, removeDisciplina, atualizaDisciplina, procuraDisciplina,
-    loginCena, abrirPeriodoCena;
+    loginCena, abrirPeriodoCena, redefineSenhaCena;
     public static ScreenManager getInstance() {
         if (instance == null) {
             instance = new ScreenManager();
@@ -39,6 +39,10 @@ public class ScreenManager {
          */
     	//comentario
         try {
+        	redefineSenha = FXMLLoader.load(this.getClass().getResource("RedefineSenhaFXML.fxml"));
+        	//inicia cena
+        	this.redefineSenhaCena = new Scene(redefineSenha);
+        	
         	abrirPeriodo = FXMLLoader.load(this.getClass().getResource("abrirPeriodoFXML.fxml"));
         	//inicia cena
         	this.abrirPeriodoCena = new Scene(abrirPeriodo);
@@ -129,6 +133,13 @@ public class ScreenManager {
     	loginC.setPrefHeight(620);
     	loginC.setPrefWidth(800);
     	this.mainStage.setScene(this.loginCena);
+    	this.mainStage.setResizable(false);
+        this.mainStage.show();
+    }
+    public void showRedefine() {
+    	loginC.setPrefHeight(620);
+    	loginC.setPrefWidth(800);
+    	this.mainStage.setScene(this.redefineSenhaCena);
     	this.mainStage.setResizable(false);
         this.mainStage.show();
     }

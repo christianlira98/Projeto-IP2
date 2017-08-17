@@ -32,7 +32,6 @@
             <Image url="@../../../../../../Desktop/customLogo.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="caixaLogin" layoutX="285.0" layoutY="244.0" prefHeight="25.0" prefWidth="234.0" />
       <Button fx:id="ConfirmaBotao" layoutX="551.0" layoutY="519.0" mnemonicParsing="false" onMouseClicked="#confirma" prefHeight="25.0" prefWidth="88.0" style="-fx-background-color: green;" text="Confirma" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -59,14 +58,15 @@
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
-      <PasswordField fx:id="pergunta" layoutX="307.0" layoutY="324.0" prefHeight="25.0" prefWidth="234.0" />
       <Label layoutX="174.0" layoutY="441.0" style="-fx-background-color: #e6e6fa;" text="Redefinir Senha">
          <font>
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
       <Button fx:id="confirmaResposta" layoutX="418.0" layoutY="394.0" mnemonicParsing="false" onMouseClicked="#confirmaResp" prefHeight="25.0" prefWidth="126.0" text="Confirmar Resposta" />
-      <PasswordField fx:id="resposta" layoutX="307.0" layoutY="360.0" prefHeight="25.0" prefWidth="234.0" />
       <PasswordField fx:id="redefine" layoutX="307.0" layoutY="440.0" prefHeight="25.0" prefWidth="234.0" />
+      <TextField fx:id="caixaLogin" layoutX="285.0" layoutY="244.0" prefHeight="25.0" prefWidth="234.0" />
+      <TextField fx:id="pergunta" layoutX="307.0" layoutY="324.0" prefHeight="25.0" prefWidth="234.0" />
+      <TextField fx:id="resposta" layoutX="307.0" layoutY="360.0" prefHeight="25.0" prefWidth="234.0" />
    </children>
 </Pane>

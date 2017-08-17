@@ -33,7 +33,7 @@ public class LoginController {
 	
 	public void esqueceu() {
 		esquece.setOnMouseClicked(e -> {
-			
+			ScreenManager.getInstance().showRedefine();
 		});
 	}
 	
