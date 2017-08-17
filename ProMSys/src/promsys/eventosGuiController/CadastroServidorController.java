@@ -39,22 +39,27 @@ public class CadastroServidorController {
 	
 		if(n.length() > 1 && log.length() > 6 && pass.length() > 6 && ques.length() > 1 && ans.length() > 1) {
 			Servidor novo = new Servidor(n, log, pass, ques, ans);
-			acesso.cadastroServidor(novo);
+			try {
+				acesso.cadastroServidor(novo);
+			}
+			catch(ServidorJaExisteException e) {
+				AlertBox.display("Erro no Cadastro", e.getMessage());
+			}
 		}
 		else if(n.length() <= 1) {
-			 nome.insertText(0, "Nome Inválido!");
+			 nome.insertText(0, "Nome Invï¿½lido!");
 		}
 		else if(log.length() < 6) {
 			login.insertText(0, "Login Invalido!");
 		}
 		else if(pass.length() < 6) {
-			senha.insertText(0, "Senha Inválida");
+			senha.insertText(0, "Senha Invï¿½lida");
 		}
 		else if(ques.length() <= 1) {
-			pergunta.insertText(0, "Pergunta Inválida");
+			pergunta.insertText(0, "Pergunta Invï¿½lida");
 		}
 		else if(ans.length() < 6) {
-			resposta.insertText(0, "Resposta Inválida");
+			resposta.insertText(0, "Resposta Invï¿½lida");
 		}
 	}
 	
