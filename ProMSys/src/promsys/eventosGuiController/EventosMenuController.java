@@ -87,8 +87,6 @@ public class EventosMenuController {
 			Stage stage = (Stage) botaoProfessores.getScene().getWindow();
 			SubmenuProfessor var = new SubmenuProfessor();
 			
-
-
 			try {
 
 				Menu.pane = FXMLLoader.load(Menu.class.getResource("SubmenuProfessorFXML.fxml"));

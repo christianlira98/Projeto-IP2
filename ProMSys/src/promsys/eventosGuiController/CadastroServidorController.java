@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import promsys.exceptions.ServidorJaExisteException;
 import promsys.fachada.Fachada;
 import promsys.negocio.beans.Servidor;
+import promsys.realGui.AlertBox;
 
 public class CadastroServidorController {
 	@FXML
@@ -38,7 +39,12 @@ public class CadastroServidorController {
 	
 		if(n.length() > 1 && log.length() > 6 && pass.length() > 6 && ques.length() > 1 && ans.length() > 1) {
 			Servidor novo = new Servidor(n, log, pass, ques, ans);
-			acesso.cadastroServidor(novo);
+			try {
+				acesso.cadastroServidor(novo);
+			}
+			catch(ServidorJaExisteException e) {
+				AlertBox.display("Erro no Cadastro", e.getMessage());
+			}
 		}
 		else if(n.length() <= 1) {
 			 nome.insertText(0, "Nome Inválido!");

@@ -16,10 +16,10 @@ public class Horario implements Serializable{
 	private LocalTime horarioFim;
 	private List<DiasEnum> diasDaSemana = new ArrayList<>();
 	
-	public Horario(int hora_inicio, int hora_fim, DiasEnum[] dia) {
+	public Horario(int hora_inicio, int hora_fim, List<DiasEnum> dia) {
 		this.horarioInicio = LocalTime.of(hora_inicio, 0);
 		this.horarioFim = LocalTime.of(hora_fim, 0);
-		this.diasDaSemana.addAll(Arrays.asList(dia));
+		this.diasDaSemana = dia;
 	}
 
 	public LocalTime getHorarioInicio() {
