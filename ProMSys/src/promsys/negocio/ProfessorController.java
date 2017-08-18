@@ -137,10 +137,12 @@ public class ProfessorController {
 	
 	public void alteraSenhaProf(long id, String senha) {
 		this.professorRepository.alteraSenhaProf(id, senha);
+		this.professorRepository.escreveArquivo();
 	}
 	
 	public void alteraLoginProf(long id, String login) {
 		this.professorRepository.alteraLoginProf(id, login);
+		this.professorRepository.escreveArquivo();
 	}
 	
 	public boolean fazLogin(String login, String senha) {
