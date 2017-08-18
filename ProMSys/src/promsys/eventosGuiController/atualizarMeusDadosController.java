@@ -81,7 +81,6 @@ public class atualizarMeusDadosController {
 			vari = false;
 		}
 		if(vari) {
-			ServidorDAO.getInstance().escreveArquivo();
 			ScreenManager.getInstance().setaMenuAjustesCenterNull();
 		}
 		

@@ -22,22 +22,28 @@ public class ServidorController {
 	}
 	public void alteraSenha(long id, String senha) {
 		this.repositorioServidores.alteraSenha(id, senha);
+		repositorioServidores.escreveArquivo();
 	}
 	
 	public void atualizaNome(long id, String nome) {
 		this.repositorioServidores.atualizaNome(id, nome);
+		repositorioServidores.escreveArquivo();
 	}
 	public void atualizaSenha(long id, String senha) {
 		this.repositorioServidores.atualizaSenha(id, senha);
+		repositorioServidores.escreveArquivo();
 	}
 	public void atualizaLogin(long id, String login) {
 		this.repositorioServidores.atualizaLogin(id, login);
+		repositorioServidores.escreveArquivo();
 	}
 	public void atualizaPergunta(long id, String pergunta) {
 		this.repositorioServidores.atualizaPergunta(id, pergunta);
+		repositorioServidores.escreveArquivo();
 	}
 	public void atualizaResposta(long id, String resposta) {
 		this.repositorioServidores.atualizaResposta(id, resposta);
+		repositorioServidores.escreveArquivo();
 	}
 	public void cadastroServidor(Servidor novo) throws ServidorJaExisteException {
 		if(novo == null) {
