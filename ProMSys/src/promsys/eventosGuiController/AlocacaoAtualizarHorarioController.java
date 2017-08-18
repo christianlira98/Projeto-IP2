@@ -11,12 +11,14 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import promsys.Enum.DiasEnum;
+import promsys.dao.AlocacaoDAO;
 import promsys.exceptions.AlocacaoJaExisteException;
 import promsys.exceptions.MesmoProfessorHorarioException;
 import promsys.fachada.Fachada;
 import promsys.negocio.beans.Alocacao;
 import promsys.negocio.beans.Horario;
 import promsys.realGui.AlertBox;
+import promsys.realGui.ScreenManager;
 
 public class AlocacaoAtualizarHorarioController {
 	@FXML
@@ -46,7 +48,9 @@ public class AlocacaoAtualizarHorarioController {
 				horarios.add(i);
 			}
 		Alocacao a = fachada.lerAlocacoPorID(idAlocacao);
-		espacoTurma.insertText(0, a.toString());
+		if(a!= null) {
+			espacoTurma.insertText(0, a.toString());
+		}
 		}
 		ObservableList<String> dias = FXCollections.observableArrayList();
 		dias.add("Segunda e Quarta");
@@ -77,6 +81,8 @@ public class AlocacaoAtualizarHorarioController {
 		}
 		try{
 			fachada.atualizarHorarioAlocacao(idAlocacao, novoHorario);
+			AlocacaoDAO.getInstance().salvarArquivo();
+			ScreenManager.getInstance().showAtualizarAlocacao();
 		}
 		catch(MesmoProfessorHorarioException m) {
 			AlertBox.display("Erro durante nova turma", m.getMessage());
@@ -85,7 +91,7 @@ public class AlocacaoAtualizarHorarioController {
 	
 	public void cancela() {
 		cancelaBotao.setOnMouseClicked(e -> {
-			//volta
+			ScreenManager.getInstance().setaSubMenuAtualizarAlocCenterNull();
 		});
 	}
 }

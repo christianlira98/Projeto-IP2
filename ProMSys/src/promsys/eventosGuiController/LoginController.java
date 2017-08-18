@@ -48,10 +48,13 @@ public class LoginController {
 				if(o.getLogin().equals(login) && o.getSenha().equals(senha)) {
 					ServidorController.getInstance().fazLogin(login, senha);
 					ScreenManager.getInstance().showTestScreen();
-					return;
+					caixaSenha.setText(null);
 				}
 			}
 			alerta.setTextFill(Color.RED);
+			if(CaixaNome.getText().length()>0 && caixaSenha.getText()==null) {
+				alerta.setTextFill(Color.LAVENDER);
+			}
 			
 			
 		});

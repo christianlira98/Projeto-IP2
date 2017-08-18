@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import promsys.fachada.Fachada;
 import promsys.negocio.beans.Professor;
 import promsys.realGui.AlertBox;
+import promsys.realGui.ScreenManager;
+import promsys.dao.AlocacaoDAO;
 import promsys.exceptions.*;
 
 public class AlocacaoAtualizarProfessorController {
@@ -46,7 +48,9 @@ public class AlocacaoAtualizarProfessorController {
 		}
 		try {
 			acesso.atualizarProfessorAlocacao(idAlocacao, novo);
+			AlocacaoDAO.getInstance().salvarArquivo();
 			AlertBox.display("Mensagem", "Professor da turma atualizada!");
+			
 		}
 		catch(ProfessorJaPossuiHorarioException e) {
 			campoNomeProfessor.insertText(0, "");
@@ -86,7 +90,7 @@ public class AlocacaoAtualizarProfessorController {
 		cancelaBotao.setOnMouseClicked(e -> {
 			campoNomeProfessor.clear();
 			escolhaProfessor.getSelectionModel().clearSelection();
-			//Volta pra tela anterior
+			ScreenManager.getInstance().setaSubMenuAtualizarAlocCenterNull();
 		});
 	}
 }

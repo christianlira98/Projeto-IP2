@@ -8,60 +8,55 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="600.0" style="-fx-background-color: #e6e6fa;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.AlocacoesController">
-   <children>
-      <TableView fx:id="tabelaAlocacoes" prefHeight="322.0" prefWidth="600.0" style="-fx-background-color: #FFFFF0;">
-        <columns>
-          <TableColumn fx:id="horaColumn" prefWidth="75.0" text="Hora" />
-          <TableColumn fx:id="diaColumn" prefWidth="84.0" text="Dia" />
-            <TableColumn fx:id="disciplinaColumn" prefWidth="157.0" text="Disciplina" />
-            <TableColumn fx:id="professorColumn" prefWidth="174.0" text="Professor" />
-            <TableColumn fx:id="codTurmaColumn" prefWidth="109.0" text="Cod. da Turma" />
-        </columns>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.AlocacoesController">
+   <top>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="600.0" style="-fx-background-color: #e6e6fa;" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tabelaAlocacoes" prefHeight="322.0" prefWidth="600.0" style="-fx-background-color: #FFFFF0;">
+              <columns>
+                <TableColumn fx:id="horaColumn" prefWidth="75.0" text="Hora" />
+                <TableColumn fx:id="diaColumn" prefWidth="84.0" text="Dia" />
+                  <TableColumn fx:id="disciplinaColumn" prefWidth="157.0" text="Disciplina" />
+                  <TableColumn fx:id="professorColumn" prefWidth="174.0" text="Professor" />
+                  <TableColumn fx:id="codTurmaColumn" prefWidth="109.0" text="Cod. da Turma" />
+              </columns>
+               <effect>
+                  <InnerShadow height="38.79" radius="19.6375" width="41.76" />
+               </effect>
+            </TableView>
+            <ImageView fitHeight="60.0" fitWidth="246.0" layoutX="-15.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Desktop/customLogo.png" />
+               </image>
+            </ImageView>
+            <Rectangle fx:id="botaoCadastrar" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="1.0" layoutY="322.0" onMouseClicked="#abreCadastro" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="150.0">
+               <effect>
+                  <InnerShadow height="43.24" radius="20.75" width="41.76" />
+               </effect>
+            </Rectangle>
+            <Label fx:id="LabelDisciplinas" alignment="CENTER" layoutX="1.0" layoutY="335.0" prefHeight="25.0" prefWidth="149.0" text="Nova Turma" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Britannic Bold" size="19.0" />
+               </font>
+            </Label>
+            <Rectangle fx:id="botaoAtualizar" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="1.0" layoutY="372.0" onMouseClicked="#abreTelaAtualizar" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="150.0">
+               <effect>
+                  <InnerShadow height="43.24" radius="20.75" width="41.76" />
+               </effect>
+            </Rectangle>
+            <Label fx:id="labelAtualizar" alignment="CENTER" layoutX="1.0" layoutY="385.0" onMouseClicked="#abreTelaAtualizar" prefHeight="25.0" prefWidth="149.0" text="Atualizar Turma" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Britannic Bold" size="19.0" />
+               </font>
+            </Label>
+         </children>
          <effect>
-            <InnerShadow height="38.79" radius="19.6375" width="41.76" />
+            <Reflection bottomOpacity="0.1" fraction="0.05" topOpacity="0.13" />
          </effect>
-      </TableView>
-      <ImageView fitHeight="60.0" fitWidth="246.0" layoutX="-15.0" layoutY="481.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../../Desktop/customLogo.png" />
-         </image>
-      </ImageView>
-      <Rectangle fx:id="botaoCadastrar" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="1.0" layoutY="322.0" onMouseClicked="#abreCadastro" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="150.0">
-         <effect>
-            <InnerShadow height="43.24" radius="20.75" width="41.76" />
-         </effect>
-      </Rectangle>
-      <Label fx:id="LabelDisciplinas" alignment="CENTER" layoutX="1.0" layoutY="335.0" prefHeight="25.0" prefWidth="149.0" text="Nova Turma" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="Britannic Bold" size="19.0" />
-         </font>
-      </Label>
-      <Rectangle fx:id="botaoDeletar" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="1.0" layoutY="422.0" onMouseClicked="#abreRemocao" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="150.0">
-         <effect>
-            <InnerShadow height="43.24" radius="20.75" width="41.76" />
-         </effect>
-      </Rectangle>
-      <Label fx:id="LabelDisciplinas11" alignment="CENTER" layoutX="1.0" layoutY="435.0" prefHeight="25.0" prefWidth="149.0" text="Remover Turma" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="Britannic Bold" size="19.0" />
-         </font>
-      </Label>
-      <Rectangle fx:id="botaoAtualizar" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="1.0" layoutY="372.0" onMouseClicked="#abreTelaAtualizar" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="150.0">
-         <effect>
-            <InnerShadow height="43.24" radius="20.75" width="41.76" />
-         </effect>
-      </Rectangle>
-      <Label fx:id="labelAtualizar" alignment="CENTER" layoutX="1.0" layoutY="385.0" onMouseClicked="#abreTelaAtualizar" prefHeight="25.0" prefWidth="149.0" text="Atualizar Turma" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="Britannic Bold" size="19.0" />
-         </font>
-      </Label>
-   </children>
-   <effect>
-      <Reflection bottomOpacity="0.1" fraction="0.05" topOpacity="0.13" />
-   </effect>
-</AnchorPane>
+      </AnchorPane>
+   </top>
+</BorderPane>

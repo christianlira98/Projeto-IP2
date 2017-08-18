@@ -6,9 +6,11 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import promsys.dao.AlocacaoDAO;
 import promsys.fachada.Fachada;
 import promsys.negocio.beans.Disciplina;
 import promsys.realGui.AlertBox;
+import promsys.realGui.ScreenManager;
 
 public class AlocacaoAtualizarDisciplinaController {
 	@FXML
@@ -47,6 +49,7 @@ public class AlocacaoAtualizarDisciplinaController {
 			nova = escolhaDisciplinas.getSelectionModel().getSelectedItem(); 
 		}
 		acesso.atualizarDisciplinaAlocacao(idAlocacao, nova);
+		AlocacaoDAO.getInstance().salvarArquivo();
 		AlertBox.display("Mensagem", "Disciplina da turma atualizada");
 	}
 	
@@ -76,7 +79,7 @@ public class AlocacaoAtualizarDisciplinaController {
 		cancelaBotao.setOnMouseClicked(e -> {
 			campoDisciplina.clear();
 			escolhaDisciplinas.getSelectionModel().clearSelection();
-			//Volta pra tela anterior
+			ScreenManager.getInstance().setaSubMenuAtualizarAlocCenterNull();
 		});
 	}
 }

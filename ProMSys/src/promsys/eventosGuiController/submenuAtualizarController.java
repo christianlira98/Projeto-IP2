@@ -11,11 +11,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import promsys.Enum.DiasEnum;
 import promsys.fachada.Fachada;
 import promsys.negocio.beans.Alocacao;
 import promsys.realGui.AlertBox;
+import promsys.realGui.ScreenManager;
 
 public class submenuAtualizarController {
 	@FXML
@@ -36,6 +40,8 @@ public class submenuAtualizarController {
 	private Rectangle botaoDisciplina;
 	@FXML
 	private Rectangle botaoProfessor;
+	@FXML
+	private Circle bola2;
 	
 	private ObservableList<Alocacao> tab = FXCollections.observableArrayList();
 	private Fachada acesso = Fachada.getInstance();
@@ -83,33 +89,60 @@ public class submenuAtualizarController {
 		tabelaAlocacoes.getColumns().addAll(horaColumn, diaColumn, disciplinaColumn, professorColumn);
 	}
 	
-	public void abreTelaDisciplina() {
-		Alocacao a = tabelaAlocacoes.getSelectionModel().getSelectedItem();
-		if(a != null) {
-			AlocacaoAtualizarDisciplinaController.setId(a.getId());
-		}else {
-			AlertBox.display("Aviso", "Você deve escolher uma das turmas na tabela");
-		}
-		//transição
-	}
 	
 	public void abreTelaHorario() {
 		Alocacao a = tabelaAlocacoes.getSelectionModel().getSelectedItem();
 		if(a != null) {
 			AlocacaoAtualizarHorarioController.setId(a.getId());
+			ScreenManager.getInstance().showAtualizaHora();
 		}else {
 			AlertBox.display("Aviso", "Você deve escolher uma das turmas na tabela");
 		}
-		//transição
+		
+	}
+	public void escureceBola() {
+		bola2.setOnMouseEntered(e -> {
+			Color c = (Color) bola2.getFill();
+			bola2.setFill(c.darker());
+		});
+	}
+	public void clareiaBola() {
+		bola2.setOnMouseExited(e -> {
+			Color c = (Color) bola2.getFill();
+			bola2.setFill(c.brighter());
+		});
+	}
+	public void bola() {
+		bola2.setOnMouseClicked(e -> {
+			try {
+				
+				ScreenManager.getInstance().showTestScreen();
+				ScreenManager.getInstance().getMainStage().setTitle("Menu Principal");
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		});
 	}
 	
 	public void abreTelaProfessor() {
 		Alocacao a = tabelaAlocacoes.getSelectionModel().getSelectedItem();
 		if(a != null) {
 			AlocacaoAtualizarProfessorController.setId(a.getId());
+			ScreenManager.getInstance().showAtualizaAlocProf();
 		}else {
 			AlertBox.display("Aviso", "Você deve escolher uma das turmas na tabela");
 		}
-		//transição
+		
+	}
+	public void abreTelaDisciplina() {
+		Alocacao a = tabelaAlocacoes.getSelectionModel().getSelectedItem();
+		if(a != null) {
+			AlocacaoAtualizarDisciplinaController.setId(a.getId());
+			ScreenManager.getInstance().showAtualizaAlocDis();
+		}else {
+			AlertBox.display("Aviso", "Você deve escolher uma das turmas na tabela");
+		}
+		
 	}
 }

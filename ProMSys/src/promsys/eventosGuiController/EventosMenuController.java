@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import promsys.realGui.Menu;
@@ -32,14 +33,15 @@ public class EventosMenuController {
 	private Label labelProfessores;
 	@FXML
 	private Rectangle botaoAjustes;
+	@FXML
+	private Circle botaoX;
 	
 	public void abreTelaPeriodo() {
+		AlocacoesController p = new AlocacoesController();
+		p.initialize();
 		ScreenManager.getInstance().showAlocacaoMenu();
 	}
-<<<<<<< HEAD
-=======
-	
->>>>>>> refs/remotes/origin/master
+
 	public void escureceP() {
 		botaoPeriodo.setOnMouseEntered(e -> {
 			Color c = (Color) botaoPeriodo.getFill();
@@ -72,7 +74,23 @@ public class EventosMenuController {
 			
 		});
 	}
-	
+	public void escureceBola() {
+		botaoX.setOnMouseEntered(e -> {
+			Color c = (Color) botaoX.getFill();
+			botaoX.setFill(c.darker());
+		});
+	}
+	public void clareiaBola() {
+		botaoX.setOnMouseExited(e -> {
+			Color c = (Color) botaoX.getFill();
+			botaoX.setFill(c.brighter());
+		});
+	}
+	public void sair() {
+		botaoX.setOnMouseClicked(e -> {
+			ScreenManager.getInstance().showLogin();
+		});
+	}
 	public void abreMenuAjustes() {
 		botaoAjustes.setOnMouseClicked(e -> {
 

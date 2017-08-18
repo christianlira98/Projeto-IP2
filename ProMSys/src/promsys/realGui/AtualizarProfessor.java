@@ -16,7 +16,7 @@ import promsys.negocio.beans.Disciplina;
 
 public class AtualizarProfessor extends Application{
 	Stage window;
-	Pane layout;
+	static Pane layout;
 	public static Pane pane;
 	private List<Disciplina> lista = new ArrayList<Disciplina>();
 	public static MenuButton menu1;
@@ -54,8 +54,8 @@ public class AtualizarProfessor extends Application{
 		
 		
 	}
-	public Pane getPane() throws Exception {
-		return layout = FXMLLoader.load(this.getClass().getResource("AtualizarProfessorFXML.fxml"));
+	public static Pane getPane() throws Exception {
+		return layout = FXMLLoader.load(AtualizarProfessor.class.getResource("AtualizarProfessorFXML.fxml"));
 	}
 	
 	public static void main(String[] args) {

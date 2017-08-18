@@ -56,7 +56,8 @@ public class AtualizarProfessorController {
 	
 	public void addExcluir(List<CheckMenuItem> me) {
 		Excluir.setOnMouseClicked(e ->{
-				Excluir.getItems().addAll(DisciplinaExcluir.add(me));
+				System.out.println("teste");
+				//Excluir.getItems().addAll(DisciplinaExcluir.add(me));
 			
 		});
 	}
@@ -76,7 +77,7 @@ public class AtualizarProfessorController {
 				prof = Fachada.getInstance().listarProfessores();
 				List<Disciplina> d = new ArrayList<>();
 				for(int i = 0; i < prof.size(); i++) {
-					if(prof.get(i).getId() == Long.parseLong(tempo)) {
+					if(prof.get(i).getId() == p.getId()) {
 						d = prof.get(i).getDisciplinasPossiveis();
 					}
 				}
@@ -86,7 +87,8 @@ public class AtualizarProfessorController {
 				for(Disciplina v: d) {
 					me.add(new CheckMenuItem (v.getNome()));
 				}
-				this.addExcluir(me);
+				DisciplinaExcluir.add(me, Excluir);
+				//this.addExcluir(me);
 			}
 			else if(!tempo2.equals(vari) && ProfessorController.getInstance().procurarPorNome(tempo2)!= null) {
 				Professor p = Fachada.getInstance().procurarProf(tempo2);
@@ -105,7 +107,8 @@ public class AtualizarProfessorController {
 				for(Disciplina v: d) {
 					me.add(new CheckMenuItem (v.getNome()));
 				}
-				this.addExcluir(me);
+				DisciplinaExcluir.add(me, Excluir);
+				//this.addExcluir(me);
 			}
 		});
 	}

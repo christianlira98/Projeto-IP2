@@ -93,7 +93,8 @@ public class AlocacoesController {
 	public void abreCadastro() {
 		botaoCadastrar.setOnMouseClicked(e -> {
 			try {
-				ScreenManager.getInstance().showCadastroAlocacao();
+				ScreenManager.getInstance().shownovaAlocacao();
+				//ScreenManager.getInstance().showCadastroAlocacao();
 			}
 			catch(Exception e1) {
 				e1.printStackTrace();
@@ -102,7 +103,11 @@ public class AlocacoesController {
 	}
 	
 	public void abreTelaAtualizar() {
-		//transição
+		try {
+			ScreenManager.getInstance().showAtualizarAlocacao();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

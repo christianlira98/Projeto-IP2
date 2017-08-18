@@ -4,40 +4,37 @@ import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
+
 import javafx.stage.Stage;
-import promsys.negocio.beans.Alocacao;
+import promsys.dao.AlocacaoDAO;
+
 
 public class ScreenManager {
     
     private static ScreenManager instance;
     private Stage mainStage;
-<<<<<<< HEAD
-    private BorderPane testPane, formPane, professor, submenuAjustes;
+
+    private BorderPane testPane, formPane, professor, submenuAjustes, subMenuAtualizarAlocacao, alocacao;
+    private AnchorPane submenuAlocacao;
     private Pane cadastroProf, removeProf, atualizaProf, procuraProf, alteraDadosProf, alteraMeusDados,
-=======
-    private BorderPane testPane, formPane, professor, alocacao;
-    private Pane cadastroProf, removeProf, atualizaProf, procuraProf,
->>>>>>> refs/remotes/origin/master
     cadastroDis, removeDis, atualizaDis, procuraDis,
-    loginC, abrirPeriodo, redefineSenha, cadastroSer;
+    loginC, abrirPeriodo, redefineSenha, cadastroSer, cadastroAlocacaoOP, cadastroAlocacao, 
+    atualizarHora, atualizarProfAloc, atualizarDisAloc;
+    
     private Scene testScene;
     private Scene formScene;
     private Scene submenuAjustesCena;
     private Scene professorScene;
+    
     private Scene cadastroProfessor, removeProfessor, atualizaProfessor, procuraProfessor, alteraDadosProfCena,
-    cadastroDisciplina, removeDisciplina, atualizaDisciplina, procuraDisciplina,
-<<<<<<< HEAD
-    loginCena, abrirPeriodoCena, redefineSenhaCena, cadastroServidor, alteraMeusDadosCena;
-=======
-    loginCena, abrirPeriodoCena, redefineSenhaCena;
-	private Scene alocacaoScene;
-	private Pane cadastroAlocacao;
-	private Scene cadastrarAlocacao;
->>>>>>> refs/remotes/origin/master
+    cadastroDisciplina, removeDisciplina, atualizaDisciplina, procuraDisciplina, loginCena, abrirPeriodoCena, redefineSenhaCena, 
+    cadastroServidor,alteraMeusDadosCena, cadastroAlocacaoOPCena, alocacaoScene, submenuAlocacaoCena,
+    subMenuAtualizarAlocCena, cadastrarAlocacao, atualizarHoraAlocCena, atualizarProfAlocCena
+    , atualizarDisAlocCena;
+
     public static ScreenManager getInstance() {
         if (instance == null) {
             instance = new ScreenManager();
@@ -53,6 +50,15 @@ public class ScreenManager {
          */
     	//comentario
         try {
+        	atualizarProfAloc = FXMLLoader.load(this.getClass().getResource("telaAtualizarProfessor.fxml"));
+        	this.atualizarProfAlocCena = new Scene(atualizarProfAloc);
+        	
+        	atualizarDisAloc = FXMLLoader.load(this.getClass().getResource("telaAtualizarDisciplina.fxml"));
+        	this.atualizarDisAlocCena = new Scene(atualizarDisAloc);
+        	
+        	atualizarHora = FXMLLoader.load(this.getClass().getResource("telaAtualizarHorario.fxml"));
+        	this.atualizarHoraAlocCena = new Scene(atualizarHora);
+        	
         	alteraMeusDados = FXMLLoader.load(this.getClass().getResource("atualizarMeusDadosFXML.fxml"));
         	//inicia cena
         	this.alteraMeusDadosCena = new Scene(alteraMeusDados);
@@ -129,6 +135,13 @@ public class ScreenManager {
             alocacao = FXMLLoader.load(this.getClass().getResource("subMenuAlocacao.fxml"));
             this.alocacaoScene = new Scene(alocacao);
             
+            cadastroAlocacaoOP = FXMLLoader.load(this.getClass().getResource("cadastroAlocacao.fxml"));
+            cadastroAlocacaoOPCena = new Scene(cadastroAlocacaoOP);
+            subMenuAtualizarAlocacao = FXMLLoader.load(this.getClass().getResource("subMenuAtualizarAlocacao.fxml"));
+            this.subMenuAtualizarAlocCena = new Scene(subMenuAtualizarAlocacao);
+            
+            
+            
             cadastroAlocacao = FXMLLoader.load(this.getClass().getResource("cadastroAlocacao.fxml"));
             this.cadastrarAlocacao = new Scene(cadastroAlocacao);
         } catch (IOException e) {
@@ -150,11 +163,11 @@ public class ScreenManager {
 
         // configurando tï¿½tulo da app
         /**/
-<<<<<<< HEAD
+
         mainStage.setTitle("Alocação Deinfo");
-=======
-        mainStage.setTitle("Transiï¿½ï¿½es entre telas");
->>>>>>> refs/remotes/origin/master
+
+
+
     }
     public void showCadastroServidor() {
     	cadastroSer.setPrefHeight(620);
@@ -164,21 +177,6 @@ public class ScreenManager {
         this.mainStage.show();
     }
     
-    
-    
-    
-    
-    public void showAbrirPeriodo() {
-    	abrirPeriodo.setPrefHeight(560);
-    	abrirPeriodo.setPrefWidth(600);
-    	/*
-    	 * 
-    	 * Essa parte tu tem que trocar para this.MenuPeriodo q tu fez aï¿½.
-    	this.professor.setCenter(abrirPeriodo);
-    	this.professor.setCenterShape(false);
-    	*/
-    	this.getMainStage().setResizable(false);
-    }
     
     public void showLogin() {
     	loginC.setPrefHeight(620);
@@ -223,16 +221,12 @@ public class ScreenManager {
     }
     
     public void setaAlocacaoCenterNull() {
-    	this.alocacao.setCenter(null);
+    	this.subMenuAtualizarAlocacao.setCenter(null);
+    }
+    public void setaSubMenuAtualizarAlocCenterNull() {
+    	this.subMenuAtualizarAlocacao.setCenter(null);
     }
     
-    public void showCadastroAlocacao() {
-    	cadastroAlocacao.setPrefHeight(560);
-    	cadastroAlocacao.setPrefWidth(600);
-    	this.alocacao.setCenter(cadastroAlocacao);
-    	this.alocacao.setCenterShape(false);
-    	this.getMainStage().setResizable(false);
-    }
     
     public void showCadastroProf() {
     	cadastroProf.setPrefHeight(560);
@@ -291,6 +285,12 @@ public class ScreenManager {
     	this.getMainStage().setResizable(false);
     }
     
+    public void showAtualizarAlocacao() {
+        this.mainStage.setScene(this.subMenuAtualizarAlocCena);
+        this.mainStage.setTitle("Menu Atualizar alocação");
+        this.mainStage.show();
+    }
+    
     public void showProcuraDis() {
     	procuraDis.setPrefHeight(560);
     	procuraDis.setPrefWidth(600);
@@ -321,11 +321,45 @@ public class ScreenManager {
         this.mainStage.setTitle("Menu Disciplinas");
         this.mainStage.show();
     }
-    
+    public void shownovaAlocacao() {
+    	cadastroAlocacaoOP.setPrefHeight(560);
+    	cadastroAlocacaoOP.setPrefWidth(600);
+    	this.testPane.setCenter(null);
+    	this.testPane.setCenter(cadastroAlocacaoOP);
+    	this.testPane.setCenterShape(false);
+    	this.getMainStage().setResizable(false);
+    }
+    public void showAtualizaAlocDis() {
+    	atualizarDisAloc.setPrefHeight(560);
+    	atualizarDisAloc.setPrefWidth(600);
+    	this.subMenuAtualizarAlocacao.setCenter(null);
+    	this.subMenuAtualizarAlocacao.setCenter(atualizarDisAloc);
+    	this.subMenuAtualizarAlocacao.setCenterShape(false);
+    	this.getMainStage().setResizable(false);
+    }
+    public void showAtualizaAlocProf() {
+    	atualizarProfAloc.setPrefHeight(560);
+    	atualizarProfAloc.setPrefWidth(600);
+    	this.subMenuAtualizarAlocacao.setCenter(null);
+    	this.subMenuAtualizarAlocacao.setCenter(atualizarProfAloc);
+    	this.subMenuAtualizarAlocacao.setCenterShape(false);
+    	this.getMainStage().setResizable(false);
+    }
+    public void showAtualizaHora() {
+    	this.atualizarHora.setPrefHeight(560);
+    	this.atualizarHora.setPrefWidth(600);
+    	this.subMenuAtualizarAlocacao.setCenter(null);
+    	this.subMenuAtualizarAlocacao.setCenter(this.atualizarHora);
+    	this.subMenuAtualizarAlocacao.setCenterShape(false);
+    	this.getMainStage().setResizable(false);
+    }
     public void showAlocacaoMenu() {
-    	this.mainStage.setScene(this.alocacaoScene);
-    	this.mainStage.setTitle("Menu Periodo");
-    	this.mainStage.show();
+    	alocacao.setPrefHeight(560);
+    	alocacao.setPrefWidth(600);
+    	this.testPane.setCenter(null);
+    	this.testPane.setCenter(alocacao);
+    	this.testPane.setCenterShape(false);
+    	this.getMainStage().setResizable(false);
     }
 }
 

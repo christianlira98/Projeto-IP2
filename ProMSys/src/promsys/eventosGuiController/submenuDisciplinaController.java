@@ -53,7 +53,6 @@ public class submenuDisciplinaController {
 	}
 	public void bola() {
 		bola2.setOnMouseClicked(e -> {
-			Stage stage = (Stage) bola2.getScene().getWindow();
 			//RemoverDisciplina var = new RemoverDisciplina();
 			
 			try {

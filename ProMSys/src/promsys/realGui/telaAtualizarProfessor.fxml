@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="DisiciplinaCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #e6e6fa;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.alocacaoAtualizarProfessor">
+<Pane fx:id="DisiciplinaCadastro" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" style="-fx-background-color: #e6e6fa;" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.AlocacaoAtualizarProfessorController">
    <children>
       <Label alignment="BOTTOM_CENTER" layoutX="2.0" layoutY="2.0" prefHeight="50.0" prefWidth="640.0" style="-fx-background-color: #f0f8ff;" text="Atualizar Professor">
          <font>
@@ -28,12 +28,12 @@
             <Image url="@../../../../../../Desktop/brasao.png" />
          </image>
       </ImageView>
-      <Button fx:id="cancelaBotao" layoutX="394.0" layoutY="436.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: red;" text="Cancela">
+      <Button fx:id="cancelaBotao" layoutX="394.0" layoutY="436.0" mnemonicParsing="false" onAction="#cancela" prefHeight="25.0" prefWidth="68.0" style="-fx-background-color: red;" text="Cancela" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="confirmaBotao" layoutX="471.0" layoutY="436.0" mnemonicParsing="false" onAction="#confirma" style="-fx-background-color: green;" text="Confirma">
+      <Button fx:id="confirmaBotao" layoutX="471.0" layoutY="436.0" mnemonicParsing="false" onAction="#confirma" style="-fx-background-color: green;" text="Confirma" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -48,7 +48,7 @@
             <Font name="Baskerville Old Face" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="campoNomeProfessor" layoutX="226.0" layoutY="126.0" onAction="#procurarProfessor" prefHeight="25.0" prefWidth="193.0" />
+      <TextField fx:id="campoNomeProfessor" layoutX="226.0" layoutY="126.0" prefHeight="25.0" prefWidth="193.0" />
       <TextArea fx:id="espacoProfessor" layoutX="77.0" layoutY="223.0" prefHeight="171.0" prefWidth="385.0" promptText="Professor" wrapText="true">
          <font>
             <Font name="Calibri Bold Italic" size="14.0" />
