@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
@@ -11,27 +13,41 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.submenuProfessorController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.submenuAtualizarController">
    <center>
-      <AnchorPane prefHeight="540.0" prefWidth="530.0" style="-fx-background-color: #e6e6fa;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="540.0" prefWidth="530.0" style="-fx-background-color: #e6e6fa;" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="tabelaAlocacoes" layoutX="8.0" layoutY="7.0" prefHeight="562.0" prefWidth="592.0" style="-fx-background-color: #FFFFF0;">
+               <columns>
+                  <TableColumn fx:id="horaColumn" prefWidth="75.0" text="Hora" />
+                  <TableColumn fx:id="diaColumn" prefWidth="84.0" text="Dia" />
+                  <TableColumn fx:id="disciplinaColumn" prefWidth="157.0" text="Disciplina" />
+                  <TableColumn fx:id="professorColumn" prefWidth="174.0" text="Professor" />
+                  <TableColumn fx:id="codTurmaColumn" prefWidth="109.0" text="Cod. da Turma" />
+               </columns>
+               <effect>
+                  <InnerShadow height="38.79" radius="19.6375" width="41.76" />
+               </effect>
+            </TableView>
+         </children></AnchorPane>
    </center>
    <left>
       <AnchorPane minWidth="-Infinity" prefHeight="540.0" prefWidth="192.0" style="-fx-background-color: #e6e6fa;" BorderPane.alignment="CENTER">
          <children>
-            <Rectangle fx:id="botaoCadastrar" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="8.0" layoutY="81.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#cadastrar" onMouseEntered="#escureceCadastro" onMouseExited="#clareaCadastro" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="165.0">
+            <Rectangle fx:id="botaoHorario" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="8.0" layoutY="81.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#abreTelaHorario" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="165.0">
                <effect>
                   <InnerShadow height="44.72" radius="21.119999999999997" width="41.76" />
                </effect></Rectangle>
-            <Label fx:id="atualizarHorario" alignment="CENTER" layoutX="9.0" layoutY="94.0" onMouseClicked="#abreTelaAtualizarHorario" onMouseEntered="#escureceCadastro" onMouseExited="#clareaCadastro" prefHeight="25.0" prefWidth="165.0" text="Atualizar Horario" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="atualizarHorario" alignment="CENTER" layoutX="9.0" layoutY="94.0" onMouseClicked="#abreTelaHorario" prefHeight="25.0" prefWidth="165.0" text="Atualizar Horario" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="18.0" />
                </font>
             </Label>
-            <Rectangle fx:id="botaoRemover" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="8.0" layoutY="131.0" onMouseClicked="#remover" onMouseEntered="#escureceRemover" onMouseExited="#clareaRemover" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="165.0">
+            <Rectangle fx:id="botaoDisciplina" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="8.0" layoutY="131.0" onMouseClicked="#abreTelaDisciplina" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="165.0">
                <effect>
                   <InnerShadow height="43.24" radius="20.75" width="41.76" />
                </effect></Rectangle>
-            <Rectangle fx:id="botaoAtualizar" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="8.0" layoutY="181.0" onMouseClicked="#atualizar" onMouseEntered="#escureceAtualizar" onMouseExited="#clareaAtualizar" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="165.0">
+            <Rectangle fx:id="botaoProfessor" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="8.0" layoutY="181.0" onMouseClicked="#abreTelaProfessor" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="165.0">
                <effect>
                   <InnerShadow height="43.24" radius="20.75" width="41.76" />
                </effect></Rectangle>
@@ -50,12 +66,12 @@
                   <Image url="@../../../../../../Desktop/Undo_37102.png" />
                </image>
             </ImageView>
-            <Label fx:id="LabelPeriodo1" alignment="CENTER" layoutX="8.0" layoutY="144.0" onMouseClicked="#cadastrar" onMouseEntered="#escureceCadastro" onMouseExited="#clareaCadastro" prefHeight="25.0" prefWidth="165.0" text="Atualizar Disciplina" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="labelDisciplina" alignment="CENTER" layoutX="8.0" layoutY="144.0" onMouseClicked="#abreTelaDisciplina" prefHeight="25.0" prefWidth="165.0" text="Atualizar Disciplina" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="LabelPeriodo3" alignment="CENTER" layoutX="9.0" layoutY="194.0" onMouseClicked="#cadastrar" onMouseEntered="#escureceCadastro" onMouseExited="#clareaCadastro" prefHeight="25.0" prefWidth="165.0" text="Atualizar Professor" textAlignment="CENTER" textFill="WHITE">
+            <Label fx:id="LabelProfessor" alignment="CENTER" layoutX="9.0" layoutY="194.0" onMouseClicked="#abreTelaProfessor" prefHeight="25.0" prefWidth="165.0" text="Atualizar Professor" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Britannic Bold" size="18.0" />
                </font>
