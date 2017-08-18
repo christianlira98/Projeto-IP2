@@ -1,24 +1,23 @@
 package promsys.eventosGuiController;
 
-import java.time.LocalDate;
 import java.util.List;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener.Change;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 import promsys.Enum.DiasEnum;
 import promsys.fachada.Fachada;
 import promsys.negocio.beans.Alocacao;
-import promsys.negocio.beans.Disciplina;
-import promsys.negocio.beans.Horario;
-import promsys.negocio.beans.Professor;
+import promsys.realGui.AlertBox;
 
-public class TabelaAlocacoesController {
+public class submenuAtualizarController {
 	@FXML
 	private TableView<Alocacao> tabelaAlocacoes;
 	@FXML
@@ -31,11 +30,17 @@ public class TabelaAlocacoesController {
 	private TableColumn<Alocacao, String> professorColumn;
 	@FXML
 	private TableColumn<Alocacao, String> codTurmaColumn;
+	@FXML
+	private Rectangle botaoHorario;
+	@FXML
+	private Rectangle botaoDisciplina;
+	@FXML
+	private Rectangle botaoProfessor;
 	
 	private ObservableList<Alocacao> tab = FXCollections.observableArrayList();
 	private Fachada acesso = Fachada.getInstance();
 	
-	public TabelaAlocacoesController() {
+	public submenuAtualizarController() {
 		for(Alocacao a : acesso.listarAlocacoes()) {
 			tab.add(a);
 		}
@@ -78,6 +83,33 @@ public class TabelaAlocacoesController {
 		tabelaAlocacoes.getColumns().addAll(horaColumn, diaColumn, disciplinaColumn, professorColumn);
 	}
 	
+	public void abreTelaDisciplina() {
+		Alocacao a = tabelaAlocacoes.getSelectionModel().getSelectedItem();
+		if(a != null) {
+			AlocacaoAtualizarDisciplinaController.setId(a.getId());
+		}else {
+			AlertBox.display("Aviso", "Você deve escolher uma das turmas na tabela");
+		}
+		//transição
+	}
 	
+	public void abreTelaHorario() {
+		Alocacao a = tabelaAlocacoes.getSelectionModel().getSelectedItem();
+		if(a != null) {
+			AlocacaoAtualizarHorarioController.setId(a.getId());
+		}else {
+			AlertBox.display("Aviso", "Você deve escolher uma das turmas na tabela");
+		}
+		//transição
+	}
 	
+	public void abreTelaProfessor() {
+		Alocacao a = tabelaAlocacoes.getSelectionModel().getSelectedItem();
+		if(a != null) {
+			AlocacaoAtualizarProfessorController.setId(a.getId());
+		}else {
+			AlertBox.display("Aviso", "Você deve escolher uma das turmas na tabela");
+		}
+		//transição
+	}
 }

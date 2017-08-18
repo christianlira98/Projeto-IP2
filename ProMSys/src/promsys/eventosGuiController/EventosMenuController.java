@@ -36,6 +36,10 @@ public class EventosMenuController {
 	public void abreTelaPeriodo() {
 		ScreenManager.getInstance().showAlocacaoMenu();
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> refs/remotes/origin/master
 	public void escureceP() {
 		botaoPeriodo.setOnMouseEntered(e -> {
 			Color c = (Color) botaoPeriodo.getFill();

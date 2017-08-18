@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import promsys.negocio.beans.Alocacao;
 
@@ -14,8 +15,13 @@ public class ScreenManager {
     
     private static ScreenManager instance;
     private Stage mainStage;
+<<<<<<< HEAD
     private BorderPane testPane, formPane, professor, submenuAjustes;
     private Pane cadastroProf, removeProf, atualizaProf, procuraProf, alteraDadosProf, alteraMeusDados,
+=======
+    private BorderPane testPane, formPane, professor, alocacao;
+    private Pane cadastroProf, removeProf, atualizaProf, procuraProf,
+>>>>>>> refs/remotes/origin/master
     cadastroDis, removeDis, atualizaDis, procuraDis,
     loginC, abrirPeriodo, redefineSenha, cadastroSer;
     private Scene testScene;
@@ -24,7 +30,14 @@ public class ScreenManager {
     private Scene professorScene;
     private Scene cadastroProfessor, removeProfessor, atualizaProfessor, procuraProfessor, alteraDadosProfCena,
     cadastroDisciplina, removeDisciplina, atualizaDisciplina, procuraDisciplina,
+<<<<<<< HEAD
     loginCena, abrirPeriodoCena, redefineSenhaCena, cadastroServidor, alteraMeusDadosCena;
+=======
+    loginCena, abrirPeriodoCena, redefineSenhaCena;
+	private Scene alocacaoScene;
+	private Pane cadastroAlocacao;
+	private Scene cadastrarAlocacao;
+>>>>>>> refs/remotes/origin/master
     public static ScreenManager getInstance() {
         if (instance == null) {
             instance = new ScreenManager();
@@ -34,7 +47,7 @@ public class ScreenManager {
     }
     
     private ScreenManager() {
-        // Construtor privado para evitar instanciação
+        // Construtor privado para evitar instanciaï¿½ï¿½o
         /*/
          * 
          */
@@ -112,7 +125,12 @@ public class ScreenManager {
             
             professor = FXMLLoader.load(this.getClass().getResource("submenuProfessorFXML.fxml"));
             this.professorScene = new Scene(professor);
-        
+            
+            alocacao = FXMLLoader.load(this.getClass().getResource("subMenuAlocacao.fxml"));
+            this.alocacaoScene = new Scene(alocacao);
+            
+            cadastroAlocacao = FXMLLoader.load(this.getClass().getResource("cadastroAlocacao.fxml"));
+            this.cadastrarAlocacao = new Scene(cadastroAlocacao);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -130,9 +148,13 @@ public class ScreenManager {
         mainStage.setWidth(800);
         mainStage.setHeight(620);
 
-        // configurando título da app
+        // configurando tï¿½tulo da app
         /**/
+<<<<<<< HEAD
         mainStage.setTitle("Alocação Deinfo");
+=======
+        mainStage.setTitle("Transiï¿½ï¿½es entre telas");
+>>>>>>> refs/remotes/origin/master
     }
     public void showCadastroServidor() {
     	cadastroSer.setPrefHeight(620);
@@ -151,7 +173,7 @@ public class ScreenManager {
     	abrirPeriodo.setPrefWidth(600);
     	/*
     	 * 
-    	 * Essa parte tu tem que trocar para this.MenuPeriodo q tu fez aí.
+    	 * Essa parte tu tem que trocar para this.MenuPeriodo q tu fez aï¿½.
     	this.professor.setCenter(abrirPeriodo);
     	this.professor.setCenterShape(false);
     	*/
@@ -198,6 +220,18 @@ public class ScreenManager {
     }
     public void setaMenuAjustesCenterNull() {
     	this.submenuAjustes.setCenter(null);
+    }
+    
+    public void setaAlocacaoCenterNull() {
+    	this.alocacao.setCenter(null);
+    }
+    
+    public void showCadastroAlocacao() {
+    	cadastroAlocacao.setPrefHeight(560);
+    	cadastroAlocacao.setPrefWidth(600);
+    	this.alocacao.setCenter(cadastroAlocacao);
+    	this.alocacao.setCenterShape(false);
+    	this.getMainStage().setResizable(false);
     }
     
     public void showCadastroProf() {
@@ -266,7 +300,6 @@ public class ScreenManager {
     
     }
 
-    
     public void showTestScreen() {
         this.mainStage.setScene(this.testScene);
         this.mainStage.show();
@@ -287,6 +320,12 @@ public class ScreenManager {
         this.mainStage.setScene(this.formScene);
         this.mainStage.setTitle("Menu Disciplinas");
         this.mainStage.show();
+    }
+    
+    public void showAlocacaoMenu() {
+    	this.mainStage.setScene(this.alocacaoScene);
+    	this.mainStage.setTitle("Menu Periodo");
+    	this.mainStage.show();
     }
 }
 

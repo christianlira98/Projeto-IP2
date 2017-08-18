@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
@@ -11,26 +10,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.EventosMenuController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.EventosMenuController">
    <center>
       <AnchorPane prefHeight="540.0" prefWidth="530.0" style="-fx-background-color: #e6e6fa;" BorderPane.alignment="CENTER" />
    </center>
    <left>
       <AnchorPane minWidth="-Infinity" prefHeight="540.0" prefWidth="192.0" style="-fx-background-color: #e6e6fa;" BorderPane.alignment="CENTER">
          <children>
-            <Label blendMode="DARKEN" cache="true" cacheHint="QUALITY" depthTest="ENABLE" layoutX="15.0" layoutY="307.0" mnemonicParsing="true" prefHeight="17.0" prefWidth="81.0" text="Data:">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="9.0" layoutY="346.0" text="Hora:">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <TextField layoutX="55.0" layoutY="307.0" prefHeight="25.0" prefWidth="80.0" />
-            <TextField layoutX="55.0" layoutY="346.0" prefHeight="25.0" prefWidth="80.0" />
-            <Rectangle fx:id="botaoPeriodo" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="23.0" layoutY="81.0" nodeOrientation="LEFT_TO_RIGHT" onMouseEntered="#escureceP" onMouseExited="#clareaP" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="150.0">
+            <Rectangle fx:id="botaoPeriodo" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="23.0" layoutY="81.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#abreTelaPeriodo" onMouseEntered="#escureceP" onMouseExited="#clareaP" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="150.0">
                <effect>
                   <InnerShadow height="44.72" radius="21.119999999999997" width="41.76" />
                </effect></Rectangle>
