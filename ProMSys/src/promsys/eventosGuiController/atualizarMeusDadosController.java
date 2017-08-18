@@ -8,13 +8,14 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import promsys.dao.ServidorDAO;
 import promsys.exceptions.ServidorJaExisteException;
 import promsys.fachada.Fachada;
 import promsys.negocio.ServidorController;
 import promsys.negocio.beans.Servidor;
 import promsys.realGui.ScreenManager;
 
-public class CadastroUserController {
+public class atualizarMeusDadosController {
 	@FXML
 	private Button CancelaBotao;
 	@FXML
@@ -37,6 +38,7 @@ public class CadastroUserController {
 	public void confirma() {
 		ConfirmaBotao.setOnMouseClicked(e->{
 		Servidor novo;
+		boolean vari = true;
 		String nome = CaixaNome.getText();
 		String senha = caixaSenha.getText();
 		String pergunt = pergunta.getText();
@@ -48,29 +50,46 @@ public class CadastroUserController {
 			labelException.setText("Senhas não Correspondem");
 			labelException.setTextFill(Color.RED);
 		}
-		else if(nome.length()>0 && senha.length()>0 && pergunt.length()>0 && respost.length()>0
-				&&confirma.length()>0 && log.length()>0) {
-			labelException.setTextFill(Color.LAVENDER);
-			novo = new Servidor(CaixaNome.getText(), login.getText(), 
-					caixaSenha.getText(), pergunta.getText(), resposta.getText());
-			try {
-				Fachada.getInstance().cadastroServidor(novo);
-			} catch (ServidorJaExisteException e1) {
-				// TODO Auto-generated catch block
-				labelException.setText("Servidor já existe");
-				labelException.setTextFill(Color.RED);
-			}
-			ScreenManager.getInstance().showLogin();
-		}else {
-			labelException.setText("Informações obrigatórias não foram preenchidas");
-			labelException.setTextFill(Color.RED);
+		if(nome.length()>0) {
+			Fachada.getInstance().atualizaNome(1, nome);
 		}
+		if(senha.length()>0 && senha.equals(confirma)) {
+			Fachada.getInstance().atualizaSenha(1, senha);
+		}
+		if(log.length()>0 ) {
+			Fachada.getInstance().atualizaLogin(1, log);;
+		}
+		if(respost.length()>0 && pergunt.length()>0) {
+			Fachada.getInstance().atualizaPergunta(1, pergunt);
+			Fachada.getInstance().atualizaResposta(1, respost);
+		}
+		if((respost.length()>0 && pergunt.length()<=0) || 
+				(respost.length()<=0 && pergunt.length()>0)) {
+			labelException.setText("Ambos, pergunta e resposta devem estar preenchidos");
+			labelException.setTextFill(Color.RED);
+			vari = false;
+		}
+		if((senha.length()>0 && confirma.length()<=0 && senha.equals(confirma)) || 
+				(senha.length()<=0 && confirma.length()>0 && senha.equals(confirma))) {
+			labelException.setText("A senha deve ser confirmada!");
+			labelException.setTextFill(Color.RED);
+			vari = false;
+		}
+		if(!senha.equals(confirma)) {
+			labelException.setText("As senhas não correspondem");
+			labelException.setTextFill(Color.RED);
+			vari = false;
+		}
+		if(vari) {
+			ServidorDAO.getInstance().escreveArquivo();
+			ScreenManager.getInstance().setaMenuAjustesCenterNull();
+		}
+		
 		});
 	}
 	public void cancela () {
 		CancelaBotao.setOnMouseClicked(e -> {
-			Stage stage = (Stage) CancelaBotao.getScene().getWindow();
-			stage.close();
+			ScreenManager.getInstance().setaMenuAjustesCenterNull();
 		});
 	}
 	

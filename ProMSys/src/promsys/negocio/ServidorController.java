@@ -23,6 +23,22 @@ public class ServidorController {
 	public void alteraSenha(long id, String senha) {
 		this.repositorioServidores.alteraSenha(id, senha);
 	}
+	
+	public void atualizaNome(long id, String nome) {
+		this.repositorioServidores.atualizaNome(id, nome);
+	}
+	public void atualizaSenha(long id, String senha) {
+		this.repositorioServidores.atualizaSenha(id, senha);
+	}
+	public void atualizaLogin(long id, String login) {
+		this.repositorioServidores.atualizaLogin(id, login);
+	}
+	public void atualizaPergunta(long id, String pergunta) {
+		this.repositorioServidores.atualizaPergunta(id, pergunta);
+	}
+	public void atualizaResposta(long id, String resposta) {
+		this.repositorioServidores.atualizaResposta(id, resposta);
+	}
 	public void cadastroServidor(Servidor novo) throws ServidorJaExisteException {
 		if(novo == null) {
 			throw new IllegalArgumentException("Parâmetro Invalido");

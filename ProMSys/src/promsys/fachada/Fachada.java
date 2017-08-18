@@ -83,6 +83,8 @@ public class Fachada {
 	public List<Alocacao> listarAlocacoes() {
 		return alocacoes.listar();
 	}
+	
+	
 
 	
 	//Disciplinas
@@ -136,6 +138,14 @@ public class Fachada {
 	public void addPossivelDisciplina(long idprof, Disciplina disciplina) throws ProfessorNaoExisteException, DisciplinaNaoExisteException {
 		professores.addPossivelDisciplina(idprof, disciplina);
 	}
+	
+	public void alteraLoginProf(long id, String login) {
+		professores.alteraLoginProf(id, login);
+	}
+	
+	public void alteraSenhaProf(long id, String senha) {
+		professores.alteraSenhaProf(id, senha);
+	}
 
 	public Professor procurarProf(long id) {
 		return professores.procurarProf(id);
@@ -170,6 +180,11 @@ public class Fachada {
 		return professores.listaProfessores();
 	}
 	
+	public boolean estaEntreDisciplinasAptas(long idP, long idD) {
+		return professores.estaEntreDisAptas(idP, idD);
+	}
+	
+	
 	public List<Professor> listarProfessores() {
 		return professores.lista();
 	}
@@ -179,7 +194,22 @@ public class Fachada {
 	public void cadastroServidor(Servidor novo) throws ServidorJaExisteException {
 		servidores.cadastroServidor(novo);
 	}
-
+	public void atualizaNome(long id, String nome) {
+		servidores.atualizaNome(id, nome);
+	}
+	public void atualizaSenha(long id, String senha) {
+		servidores.atualizaSenha(id, senha);
+	}
+	public void atualizaLogin(long id, String login) {
+		servidores.atualizaLogin(id, login);
+	}
+	public void atualizaPergunta(long id, String pergunta) {
+		servidores.atualizaNome(id, pergunta);
+	}
+	public void atualizaResposta(long id, String resposta) {
+		servidores.atualizaNome(id, resposta);
+	}
+	
 	public void excluiServidor(long id) throws ServidorNaoExisteException {
 		servidores.excluiServidor(id);
 	}

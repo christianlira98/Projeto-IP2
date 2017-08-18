@@ -68,5 +68,10 @@
       <TextField fx:id="caixaLogin" layoutX="285.0" layoutY="244.0" prefHeight="25.0" prefWidth="234.0" />
       <TextField fx:id="pergunta" layoutX="307.0" layoutY="324.0" prefHeight="25.0" prefWidth="234.0" />
       <TextField fx:id="resposta" layoutX="307.0" layoutY="360.0" prefHeight="25.0" prefWidth="234.0" />
+      <Label fx:id="mensagem" alignment="CENTER" contentDisplay="CENTER" layoutX="172.0" layoutY="480.0" prefHeight="17.0" prefWidth="399.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

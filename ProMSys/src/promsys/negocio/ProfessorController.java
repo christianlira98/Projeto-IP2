@@ -134,6 +134,15 @@ public class ProfessorController {
 			this.professorRepository.removerPossivelDisciplina(idProf, idDisciplina);
 		}
 	}
+	
+	public void alteraSenhaProf(long id, String senha) {
+		this.professorRepository.alteraSenhaProf(id, senha);
+	}
+	
+	public void alteraLoginProf(long id, String login) {
+		this.professorRepository.alteraLoginProf(id, login);
+	}
+	
 	public boolean fazLogin(String login, String senha) {
 		boolean logged = false;
 		if(ProfessorDAO.getNextId() > 1) {

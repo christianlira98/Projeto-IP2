@@ -114,6 +114,22 @@ public class ProfessorDAO implements IProfessorDAO, Serializable{
 		return instance;
 	}
 	
+	public void alteraSenhaProf(long id,String senha) {
+		for( int i = 0; i < prof.size(); i++) {
+			if(prof.get(i).getId() == id) {
+				prof.get(i).setSenha(senha);
+			}
+		}
+	}
+	
+	public void alteraLoginProf(long id,String login) {
+		for( int i = 0; i < prof.size(); i++) {
+			if(prof.get(i).getId() == id) {
+				prof.get(i).setLogin(login);
+			}
+		}
+	}
+	
 	public Professor procurarPorNome(String nome) {
 		Professor aux = null; // antes era String
 		/*if(temp != null) {

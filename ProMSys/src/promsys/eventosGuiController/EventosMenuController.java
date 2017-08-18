@@ -33,6 +33,9 @@ public class EventosMenuController {
 	@FXML
 	private Rectangle botaoAjustes;
 	
+	public void abreTelaPeriodo() {
+		ScreenManager.getInstance().showAlocacaoMenu();
+	}
 	public void escureceP() {
 		botaoPeriodo.setOnMouseEntered(e -> {
 			Color c = (Color) botaoPeriodo.getFill();
@@ -55,6 +58,25 @@ public class EventosMenuController {
 
 			try {
 				ScreenManager.getInstance().showFormScreen();
+				//Menu.pane = FXMLLoader.load(Menu.class.getResource("SubmenuDisciplinaFXML.fxml"));
+				//Menu.menu.setScene(new Scene(Menu.pane));
+
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			
+		});
+	}
+	
+	public void abreMenuAjustes() {
+		botaoAjustes.setOnMouseClicked(e -> {
+
+			//CadastroDisciplina c = new CadastroDisciplina();
+			//Pane telaCadastroDisciplinas;
+
+			try {
+				ScreenManager.getInstance().showAjustesMenu();
 				//Menu.pane = FXMLLoader.load(Menu.class.getResource("SubmenuDisciplinaFXML.fxml"));
 				//Menu.menu.setScene(new Scene(Menu.pane));
 

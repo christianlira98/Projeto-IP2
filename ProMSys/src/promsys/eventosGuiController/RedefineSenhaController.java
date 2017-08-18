@@ -5,9 +5,12 @@ import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.paint.Color;
 import promsys.dao.ServidorDAO;
 import promsys.exceptions.ServidorNaoExisteException;
+import promsys.fachada.Fachada;
 import promsys.negocio.ServidorController;
 import promsys.negocio.beans.Servidor;
 import promsys.realGui.ScreenManager;
@@ -31,7 +34,8 @@ public class RedefineSenhaController {
 	private Button ConfirmaBotao;
 	@FXML
 	private TextField redefine;
-	
+	@FXML
+	private Label mensagem;
 	
 	private Servidor p;
 	public void procurar() {
@@ -45,11 +49,15 @@ public class RedefineSenhaController {
 				pergunta.setText(s.get(i).getPergunta());
 				redefine.setEditable(false);
 				try {
-					p = ServidorController.getInstance().procuraServidor(s.get(i).getID());
+					p = Fachada.getInstance().procuraServidor(s.get(i).getID());
 				} catch (ServidorNaoExisteException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					mensagem.setText("Servidor não existe");
+					mensagem.setTextFill(Color.RED);
 				}
+			}else {
+				mensagem.setText("Nenhum servidor com esses dados encontrado");
+				mensagem.setTextFill(Color.RED);
 			}
 		}
 		});
@@ -59,6 +67,10 @@ public class RedefineSenhaController {
 		confirmaResposta.setOnMouseClicked(e -> {
 			if(resposta.getText().equals(p.getResposta())) {
 				redefine.setEditable(true);
+			}else {
+				mensagem.setText("Resposta incorreta");
+				mensagem.setTextFill(Color.RED);
+				
 			}
 		});
 	}

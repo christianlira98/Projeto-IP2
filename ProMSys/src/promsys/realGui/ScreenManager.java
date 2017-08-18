@@ -14,16 +14,17 @@ public class ScreenManager {
     
     private static ScreenManager instance;
     private Stage mainStage;
-    private BorderPane testPane, formPane, professor;
-    private Pane cadastroProf, removeProf, atualizaProf, procuraProf,
+    private BorderPane testPane, formPane, professor, submenuAjustes;
+    private Pane cadastroProf, removeProf, atualizaProf, procuraProf, alteraDadosProf, alteraMeusDados,
     cadastroDis, removeDis, atualizaDis, procuraDis,
-    loginC, abrirPeriodo, redefineSenha;
+    loginC, abrirPeriodo, redefineSenha, cadastroSer;
     private Scene testScene;
     private Scene formScene;
+    private Scene submenuAjustesCena;
     private Scene professorScene;
-    private Scene cadastroProfessor, removeProfessor, atualizaProfessor, procuraProfessor,
+    private Scene cadastroProfessor, removeProfessor, atualizaProfessor, procuraProfessor, alteraDadosProfCena,
     cadastroDisciplina, removeDisciplina, atualizaDisciplina, procuraDisciplina,
-    loginCena, abrirPeriodoCena, redefineSenhaCena;
+    loginCena, abrirPeriodoCena, redefineSenhaCena, cadastroServidor, alteraMeusDadosCena;
     public static ScreenManager getInstance() {
         if (instance == null) {
             instance = new ScreenManager();
@@ -39,6 +40,22 @@ public class ScreenManager {
          */
     	//comentario
         try {
+        	alteraMeusDados = FXMLLoader.load(this.getClass().getResource("atualizarMeusDadosFXML.fxml"));
+        	//inicia cena
+        	this.alteraMeusDadosCena = new Scene(alteraMeusDados);
+        	
+        	alteraDadosProf = FXMLLoader.load(this.getClass().getResource("atualizarDadosProfessorFXML.fxml"));
+        	//inicia cena
+        	this.alteraDadosProfCena = new Scene(alteraDadosProf);
+        	
+        	submenuAjustes = FXMLLoader.load(this.getClass().getResource("menuAjustesFXML.fxml"));
+        	//inicia cena
+        	this.submenuAjustesCena = new Scene(submenuAjustes);
+        	
+        	cadastroSer = FXMLLoader.load(this.getClass().getResource("cadastroUsersFXML.fxml"));
+        	//inicia cena
+        	this.cadastroServidor = new Scene(cadastroSer);
+        	
         	redefineSenha = FXMLLoader.load(this.getClass().getResource("RedefineSenhaFXML.fxml"));
         	//inicia cena
         	this.redefineSenhaCena = new Scene(redefineSenha);
@@ -115,8 +132,20 @@ public class ScreenManager {
 
         // configurando título da app
         /**/
-        mainStage.setTitle("Transições entre telas");
+        mainStage.setTitle("Alocação Deinfo");
     }
+    public void showCadastroServidor() {
+    	cadastroSer.setPrefHeight(620);
+    	cadastroSer.setPrefWidth(800);
+    	this.mainStage.setScene(this.cadastroServidor);
+    	this.mainStage.setResizable(false);
+        this.mainStage.show();
+    }
+    
+    
+    
+    
+    
     public void showAbrirPeriodo() {
     	abrirPeriodo.setPrefHeight(560);
     	abrirPeriodo.setPrefWidth(600);
@@ -144,12 +173,31 @@ public class ScreenManager {
         this.mainStage.show();
     }
     
+    public void showAlteraMeusDados() {
+    	alteraMeusDados.setPrefHeight(560);
+    	alteraMeusDados.setPrefWidth(600);
+    	this.submenuAjustes.setCenter(alteraMeusDados);
+    	this.submenuAjustes.setCenterShape(false);
+    	this.getMainStage().setResizable(false);
+    }
+    
+    public void showAlteraDadosProf() {
+    	alteraDadosProf.setPrefHeight(560);
+    	alteraDadosProf.setPrefWidth(600);
+    	this.submenuAjustes.setCenter(alteraDadosProf);
+    	this.submenuAjustes.setCenterShape(false);
+    	this.getMainStage().setResizable(false);
+    }
+    
     public void setaDisciplinaCenterNull() {
     	this.formPane.setCenter(null);
     }
     
     public void setaProfessorCenterNull() {
     	this.professor.setCenter(null);
+    }
+    public void setaMenuAjustesCenterNull() {
+    	this.submenuAjustes.setCenter(null);
     }
     
     public void showCadastroProf() {
@@ -227,6 +275,11 @@ public class ScreenManager {
     public void showProfessorMenu() {
     	this.mainStage.setScene(this.professorScene);
     	this.mainStage.setTitle("Menu Professor");
+    	this.mainStage.show();
+    }
+    public void showAjustesMenu() {
+    	this.mainStage.setScene(this.submenuAjustesCena);
+    	this.mainStage.setTitle("Menu Ajustes");
     	this.mainStage.show();
     }
     

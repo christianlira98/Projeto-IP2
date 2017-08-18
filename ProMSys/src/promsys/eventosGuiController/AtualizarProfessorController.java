@@ -17,6 +17,7 @@ import promsys.exceptions.DisciplinaNaoExisteException;
 import promsys.exceptions.NaoEstaEntreOsPossiveisException;
 import promsys.exceptions.ProfessorJaExisteNomeException;
 import promsys.exceptions.ProfessorNaoExisteException;
+import promsys.fachada.Fachada;
 import promsys.negocio.DisciplinaController;
 import promsys.negocio.ProfessorController;
 import promsys.negocio.beans.Professor;
@@ -68,11 +69,11 @@ public class AtualizarProfessorController {
 					Long.parseLong(tempo))) {
 				caixaEncontrado.setText("");
 				long temp = Long.valueOf(caixaID.getText());
-				Professor p = ProfessorController.getInstance().procurarProf(temp);
+				Professor p = Fachada.getInstance().procurarProf(temp);
 				caixaEncontrado.insertText(0, p.toString());
 				
 				List<Professor> prof = new ArrayList<>();
-				prof = ProfessorController.getInstance().lista();
+				prof = Fachada.getInstance().listarProfessores();
 				List<Disciplina> d = new ArrayList<>();
 				for(int i = 0; i < prof.size(); i++) {
 					if(prof.get(i).getId() == Long.parseLong(tempo)) {
@@ -88,10 +89,10 @@ public class AtualizarProfessorController {
 				this.addExcluir(me);
 			}
 			else if(!tempo2.equals(vari) && ProfessorController.getInstance().procurarPorNome(tempo2)!= null) {
-				Professor p = ProfessorController.getInstance().procurarPorNome(tempo2);
+				Professor p = Fachada.getInstance().procurarProf(tempo2);
 				caixaEncontrado.insertText(0, p.toString());
 				List<Professor> prof = new ArrayList<>();
-				prof = ProfessorController.getInstance().lista();
+				prof = Fachada.getInstance().listarProfessores();
 				List<Disciplina> d = new ArrayList<>();
 				for(int i = 0; i < prof.size(); i++) {
 					if(prof.get(i).getId() == p.getId()) {
@@ -122,7 +123,7 @@ public class AtualizarProfessorController {
 					Long.parseLong(tempo))) {
 				if(!novoN.equals(vari)) {
 					try {
-						ProfessorController.getInstance().updateNomeProfessor(novoN, Long.parseLong(tempo));
+						Fachada.getInstance().atualizarNomeProfessor(novoN, Long.parseLong(tempo));
 						CaixaNome.setText(novoN);
 					} catch (NumberFormatException e1) {
 						caixaEncontrado.setText("Não foi possível atualizar o nome do professor");
@@ -137,11 +138,12 @@ public class AtualizarProfessorController {
 				for(int i = 0; i < Excluir.getItems().size(); i++) {
 					temp = (CheckMenuItem) Excluir.getItems().get(i);
 					if(temp.isSelected()==true && ProfessorController.getInstance().estaEntreDisAptas(Long.parseLong(tempo),
-							DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()).getId())) {
+							Fachada.getInstance().procurarNomeDisciplina(temp.getText()).getId())) {
+							
 					
 					try {
-						ProfessorController.getInstance().removeDisciplinaPossivel(Long.parseLong(tempo)
-							, DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()).getId());
+						Fachada.getInstance().removeDisciplinaPossivel(Long.parseLong(tempo),
+							Fachada.getInstance().procurarNomeDisciplina(temp.getText()).getId());
 					} catch (NumberFormatException e1) {
 						// TODO Auto-generated catch block
 						caixaEncontrado.setText("Não foi possível atualizar o nome do professor");
@@ -157,10 +159,10 @@ public class AtualizarProfessorController {
 				
 				for(int i = 0; i < adicionar.getItems().size(); i++ ) {
 					temp = (CheckMenuItem) adicionar.getItems().get(i);
-					if(temp.isSelected()==true && !ProfessorController.getInstance().estaEntreDisAptas(Long.parseLong(tempo),
-							DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()).getId())) {
+					if(temp.isSelected()==true && !Fachada.getInstance().estaEntreDisciplinasAptas(Long.parseLong(tempo),
+							Fachada.getInstance().procurarNomeDisciplina(temp.getText()).getId())) {
 						try {
-							ProfessorController.getInstance().addPossivelDisciplina(Long.parseLong(tempo),
+							Fachada.getInstance().addPossivelDisciplina(Long.parseLong(tempo),
 									DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()));
 						} catch (NumberFormatException e1) {
 							// TODO Auto-generated catch block
@@ -176,12 +178,12 @@ public class AtualizarProfessorController {
 				}
 				ProfessorDAO.getInstance().escreveArquivo();
 				
-			}else if(!tempo2.equals(vari)&& ProfessorController.getInstance().verificarExistencia(
-					ProfessorController.getInstance().procurarPorNome(tempo2).getId())) {
-				Professor p = ProfessorController.getInstance().procurarPorNome(tempo2);
+			}else if(!tempo2.equals(vari)&& Fachada.getInstance().verificarExistencia(Fachada.getInstance()
+					.procurarProf(tempo2).getId())) {
+				Professor p = Fachada.getInstance().procurarProf(tempo2);
 				if(!novoN.equals(vari)) {
 					try {
-						ProfessorController.getInstance().updateNomeProfessor(novoN, p.getId());
+						Fachada.getInstance().atualizarNomeProfessor(novoN, p.getId());
 						CaixaNome.setText(novoN);
 						
 					} catch (NumberFormatException e1) {
@@ -197,14 +199,13 @@ public class AtualizarProfessorController {
 				}
 					for(int i = 0; i < Excluir.getItems().size(); i++) {
 						temp = (CheckMenuItem) Excluir.getItems().get(i);
-						if(temp.isSelected()==true && ProfessorController.getInstance().estaEntreDisAptas(ProfessorController.getInstance().procurarPorNome(CaixaNome.getText()).getId(),
-								DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()).getId()))
+						if(temp.isSelected()==true && Fachada.getInstance().estaEntreDisciplinasAptas(Fachada.getInstance().procurarProf(CaixaNome.getText()).getId(),
+								Fachada.getInstance().procurarNomeDisciplina(temp.getText()).getId()))			
 								{
 						
 						try {
-							
-							ProfessorController.getInstance().removeDisciplinaPossivel(ProfessorController.getInstance().procurarPorNome(CaixaNome.getText()).getId()
-								, DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()).getId());
+							Fachada.getInstance().removeDisciplinaPossivel(Fachada.getInstance().procurarProf(CaixaNome.getText()).getId(), 
+									Fachada.getInstance().procurarNomeDisciplina(temp.getText()).getId());
 						} catch (NumberFormatException e1) {
 							// TODO Auto-generated catch block
 							caixaEncontrado.setText("Não foi possível atualizar o nome do professor");
@@ -220,11 +221,12 @@ public class AtualizarProfessorController {
 					
 					for(int i = 0; i < adicionar.getItems().size(); i++ ) {
 						temp = (CheckMenuItem) adicionar.getItems().get(i);
-						if(temp.isSelected()==true && !ProfessorController.getInstance().estaEntreDisAptas(ProfessorController.getInstance().procurarPorNome(CaixaNome.getText()).getId(),
-								DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()).getId())) {
+						if(temp.isSelected()==true && !Fachada.getInstance().estaEntreDisciplinasAptas(Fachada.getInstance().procurarProf(CaixaNome.getText()).getId(), 
+								Fachada.getInstance().procurarNomeDisciplina(temp.getText()).getId())) {
 							try {
-								ProfessorController.getInstance().addPossivelDisciplina(ProfessorController.getInstance().procurarPorNome(CaixaNome.getText()).getId(),
-										DisciplinaController.getInstance().procurarNomeDisciplina(temp.getText()));
+								Fachada.getInstance().addPossivelDisciplina(Fachada.getInstance().procurarProf(CaixaNome.getText()).getId(),
+										Fachada.getInstance().procurarNomeDisciplina(temp.getText()));
+								
 							} catch (NumberFormatException e1) {
 								// TODO Auto-generated catch block
 								caixaEncontrado.setText("Erro Desconhecido");

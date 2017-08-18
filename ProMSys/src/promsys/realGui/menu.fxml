@@ -52,7 +52,7 @@
                <effect>
                   <InnerShadow height="43.24" radius="20.75" width="41.76" />
                </effect></Rectangle>
-            <Rectangle fx:id="botaoAjustes" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="24.0" layoutY="231.0" onMouseEntered="#escureceA" onMouseExited="#clareaA" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="149.0">
+            <Rectangle fx:id="botaoAjustes" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="24.0" layoutY="231.0" onMouseClicked="#abreMenuAjustes" onMouseEntered="#escureceA" onMouseExited="#clareaA" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="149.0">
                <effect>
                   <InnerShadow height="43.24" radius="20.75" width="41.76" />
                </effect></Rectangle>

@@ -39,6 +39,45 @@ public class ServidorDAO implements Serializable {
 		return instance;
 	}
 	
+	public void atualizaNome(long id, String nome) {
+		for( int i = 0; i < admins.size(); i++) {
+			if(admins.get(i).getID() == id) {
+				admins.get(i).setNome(nome);
+			}
+		}
+	}
+	
+	public void atualizaLogin(long id, String login) {
+		for( int i = 0; i < admins.size(); i++) {
+			if(admins.get(i).getID() == id) {
+				admins.get(i).setLogin(login);
+			}
+		}
+	}
+	public void atualizaSenha(long id, String senha) {
+		for( int i = 0; i < admins.size(); i++) {
+			if(admins.get(i).getID() == id) {
+				admins.get(i).setSenha(senha);
+			}
+		}
+	}
+	
+	public void atualizaPergunta(long id, String pergunta) {
+			for( int i = 0; i < admins.size(); i++) {
+				if(admins.get(i).getID() == id) {
+					admins.get(i).setPergunta(pergunta);
+				}
+			}
+		}
+	public void atualizaResposta(long id, String resposta) {
+		for( int i = 0; i < admins.size(); i++) {
+			if(admins.get(i).getID() == id) {
+				admins.get(i).setResposta(resposta);
+			}
+		}
+	}
+	
+	
 	public void alteraSenha(long id, String senha) {
 		for( int i = 0; i < admins.size(); i++) {
 			if(admins.get(i).getID() == id) {
