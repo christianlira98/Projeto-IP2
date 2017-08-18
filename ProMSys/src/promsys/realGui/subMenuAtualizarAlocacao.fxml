@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="promsys.eventosGuiController.submenuProfessorController">
+   <center>
+      <AnchorPane prefHeight="540.0" prefWidth="530.0" style="-fx-background-color: #e6e6fa;" BorderPane.alignment="CENTER" />
+   </center>
+   <left>
+      <AnchorPane minWidth="-Infinity" prefHeight="540.0" prefWidth="192.0" style="-fx-background-color: #e6e6fa;" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle fx:id="botaoCadastrar" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="8.0" layoutY="81.0" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#cadastrar" onMouseEntered="#escureceCadastro" onMouseExited="#clareaCadastro" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="165.0">
+               <effect>
+                  <InnerShadow height="44.72" radius="21.119999999999997" width="41.76" />
+               </effect></Rectangle>
+            <Label fx:id="atualizarHorario" alignment="CENTER" layoutX="9.0" layoutY="94.0" onMouseClicked="#abreTelaAtualizarHorario" onMouseEntered="#escureceCadastro" onMouseExited="#clareaCadastro" prefHeight="25.0" prefWidth="165.0" text="Atualizar Horario" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Britannic Bold" size="18.0" />
+               </font>
+            </Label>
+            <Rectangle fx:id="botaoRemover" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="8.0" layoutY="131.0" onMouseClicked="#remover" onMouseEntered="#escureceRemover" onMouseExited="#clareaRemover" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="165.0">
+               <effect>
+                  <InnerShadow height="43.24" radius="20.75" width="41.76" />
+               </effect></Rectangle>
+            <Rectangle fx:id="botaoAtualizar" arcHeight="5.0" arcWidth="5.0" blendMode="DARKEN" fill="#7171c5" height="50.0" layoutX="8.0" layoutY="181.0" onMouseClicked="#atualizar" onMouseEntered="#escureceAtualizar" onMouseExited="#clareaAtualizar" opacity="0.9" stroke="BLACK" strokeType="INSIDE" width="165.0">
+               <effect>
+                  <InnerShadow height="43.24" radius="20.75" width="41.76" />
+               </effect></Rectangle>
+            <ImageView fitHeight="139.0" fitWidth="155.0" layoutX="3.0" layoutY="442.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Desktop/brasao.png" />
+               </image>
+            </ImageView>
+            <Circle fx:id="bola2" fill="LAVENDER" layoutX="29.0" layoutY="40.0" onMouseClicked="#bola" onMouseEntered="#escureceBola" onMouseExited="#clareiaBola" radius="26.0" stroke="LAVENDER" strokeType="INSIDE">
+               <effect>
+                  <InnerShadow />
+               </effect>
+            </Circle>
+            <ImageView fx:id="imagem" fitHeight="29.0" fitWidth="22.0" layoutX="17.0" layoutY="29.0" onMouseClicked="#bola" onMouseEntered="#escureceBola" onMouseExited="#clareiaBola" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../Desktop/Undo_37102.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="LabelPeriodo1" alignment="CENTER" layoutX="8.0" layoutY="144.0" onMouseClicked="#cadastrar" onMouseEntered="#escureceCadastro" onMouseExited="#clareaCadastro" prefHeight="25.0" prefWidth="165.0" text="Atualizar Disciplina" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Britannic Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="LabelPeriodo3" alignment="CENTER" layoutX="9.0" layoutY="194.0" onMouseClicked="#cadastrar" onMouseEntered="#escureceCadastro" onMouseExited="#clareaCadastro" prefHeight="25.0" prefWidth="165.0" text="Atualizar Professor" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Britannic Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow height="65.23" radius="54.355000000000004" width="154.19" />
+         </effect>
+      </AnchorPane>
+   </left>
+</BorderPane>

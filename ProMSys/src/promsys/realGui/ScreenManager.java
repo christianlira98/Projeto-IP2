@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import promsys.negocio.beans.Alocacao;
 
@@ -24,6 +25,9 @@ public class ScreenManager {
     private Scene cadastroProfessor, removeProfessor, atualizaProfessor, procuraProfessor,
     cadastroDisciplina, removeDisciplina, atualizaDisciplina, procuraDisciplina,
     loginCena, abrirPeriodoCena, redefineSenhaCena;
+	private Scene alocacaoScene;
+	private Pane cadastroAlocacao;
+	private Scene cadastrarAlocacao;
     public static ScreenManager getInstance() {
         if (instance == null) {
             instance = new ScreenManager();
@@ -235,7 +239,6 @@ public class ScreenManager {
     
     }
 
-    
     public void showTestScreen() {
         this.mainStage.setScene(this.testScene);
         this.mainStage.show();
