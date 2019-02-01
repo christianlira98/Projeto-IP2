@@ -3,9 +3,7 @@ package promsys.eventosGuiController;
 
 
 import promsys.negocio.beans.*;
-import promsys.realGui.DisciplinaExcluir;
-import promsys.realGui.DisciplinasDisponiveis;
-import promsys.realGui.ScreenManager;
+
 import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,11 +12,14 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import promsys.controller.DisciplinaController;
+import promsys.controller.ProfessorController;
 import promsys.dao.DisciplinaDAO;
 import promsys.exceptions.DisciplinaCargaInvalidaException;
 import promsys.fachada.Fachada;
-import promsys.negocio.DisciplinaController;
-import promsys.negocio.ProfessorController;
+import promsys.gui.DisciplinaExcluir;
+import promsys.gui.DisciplinasDisponiveis;
+import promsys.gui.ScreenManager;
 
 public class AtualizarDisciplinaController {
 	@FXML

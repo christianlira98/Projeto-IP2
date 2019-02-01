@@ -15,15 +15,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import promsys.realGui.AtualizarDisciplina;
-import promsys.realGui.CadastroDisciplina;
-import promsys.realGui.CadastroProfessor;
-import promsys.realGui.Menu;
-import promsys.realGui.ProcurarDisciplina;
-import promsys.realGui.RemoverDisciplina;
-import promsys.realGui.ScreenManager;
-import promsys.realGui.SubmenuDisciplina;
-import promsys.realGui.SubmenuProfessor;
+import promsys.gui.AtualizarDisciplina;
+import promsys.gui.CadastroDisciplina;
+import promsys.gui.CadastroProfessor;
+import promsys.gui.Menu;
+import promsys.gui.ProcurarDisciplina;
+import promsys.gui.RemoverDisciplina;
+import promsys.gui.ScreenManager;
+import promsys.gui.SubmenuDisciplina;
+import promsys.gui.SubmenuProfessor;
 
 public class submenuDisciplinaController {
 	@FXML

@@ -1,4 +1,4 @@
-package promsys.realGui;
+package promsys.gui;
 
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuButton;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import promsys.negocio.DisciplinaController;
+import promsys.controller.DisciplinaController;
 import promsys.negocio.beans.Disciplina;
 
 public class CadastroProfessor extends Application {

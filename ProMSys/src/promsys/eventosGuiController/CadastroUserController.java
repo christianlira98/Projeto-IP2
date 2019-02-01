@@ -8,11 +8,11 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import promsys.controller.ServidorController;
 import promsys.exceptions.ServidorJaExisteException;
 import promsys.fachada.Fachada;
-import promsys.negocio.ServidorController;
+import promsys.gui.ScreenManager;
 import promsys.negocio.beans.Servidor;
-import promsys.realGui.ScreenManager;
 
 public class CadastroUserController {
 	@FXML

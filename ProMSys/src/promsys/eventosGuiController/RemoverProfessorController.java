@@ -8,11 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import promsys.controller.ProfessorController;
 import promsys.dao.ProfessorDAO;
 import promsys.exceptions.ProfessorNaoExisteException;
-import promsys.negocio.ProfessorController;
+import promsys.gui.ScreenManager;
 import promsys.negocio.beans.Professor;
-import promsys.realGui.ScreenManager;
 
 public class RemoverProfessorController {
 	@FXML

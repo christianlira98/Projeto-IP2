@@ -1,4 +1,4 @@
-package promsys.realGui;
+package promsys.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

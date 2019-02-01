@@ -8,10 +8,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import promsys.realGui.CadastroProfessor;
-import promsys.realGui.ProcurarProfessor;
-import promsys.realGui.RemoverProfessor;
-import promsys.realGui.ScreenManager;
+import promsys.gui.CadastroProfessor;
+import promsys.gui.ProcurarProfessor;
+import promsys.gui.RemoverProfessor;
+import promsys.gui.ScreenManager;
 
 public class menuAjustesController {
 	@FXML

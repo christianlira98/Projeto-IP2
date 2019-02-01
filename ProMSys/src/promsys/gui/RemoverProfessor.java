@@ -1,4 +1,5 @@
-package promsys.realGui;
+package promsys.gui;
+
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,14 +10,14 @@ import javafx.stage.Stage;
 
 
 
-public class ProcurarProfessor extends Application{
+public class RemoverProfessor extends Application{
 	Stage window;
 	Pane layout;
 	private static Pane pane;
 	public void start (Stage primaryStage) throws Exception{
 		window = primaryStage;
-		window.setTitle("Procurar Professor");
-		pane = FXMLLoader.load(this.getClass().getResource("procurarProfessorFXML.fxml"));
+		window.setTitle("Remover Professor");
+		pane = FXMLLoader.load(this.getClass().getResource("removerProfessorFXML.fxml"));
 		TextArea texto = (TextArea) pane.getChildren().get(4);
 		texto.setEditable(false);
 		window.setScene(new Scene(pane));
@@ -24,9 +25,8 @@ public class ProcurarProfessor extends Application{
 		window.show();
 	
 	}
-	
 	public Pane getPane() throws Exception {
-		return layout = FXMLLoader.load(this.getClass().getResource("procurarProfessorFXML.fxml"));
+		return layout = FXMLLoader.load(this.getClass().getResource("removerProfessorFXML.fxml"));
 	}
 	
 	public static void main(String[] args) {

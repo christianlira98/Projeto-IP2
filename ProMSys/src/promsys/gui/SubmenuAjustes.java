@@ -1,18 +1,15 @@
-package promsys.realGui;
+package promsys.gui;
 
 import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class SubmenuDisciplina extends Application {
-
+public class SubmenuAjustes extends Application{
 	private static Stage menu;
 	Pane layout;
 	public static BorderPane pane, borderpane;
@@ -22,10 +19,9 @@ public class SubmenuDisciplina extends Application {
 		
 		menu.setTitle("Menu Disciplina");
 		
-		pane = FXMLLoader.load(this.getClass().getResource("submenuDisciplinaFXML.fxml"));
+		pane = FXMLLoader.load(this.getClass().getResource("menuAjustesFXML.fxml"));
 		
 		//pane = (BorderPane) loader.load();
-		CadastroDisciplina c = new CadastroDisciplina();
 		//Pane telaCadastroDisciplinas = c.getPane();
 		/*
 		telaCadastroDisciplinas.setPrefHeight(540);
@@ -43,19 +39,21 @@ public class SubmenuDisciplina extends Application {
 		menu.show();
 	}
 	
-	public static void trocarCena(Pane novaCena) throws IOException {
+	/*public static void trocarCena(Pane novaCena) throws IOException {
 		novaCena.setPrefHeight(560);
 		novaCena.setPrefWidth(600);
 		pane.setCenter(novaCena);
 		pane.setCenterShape(false);
 		menu.setScene(new Scene(pane));
 		menu.setResizable(false);		 
-	}
+	}*/
 
 	public Pane getPane() throws Exception {
-		return pane = FXMLLoader.load(this.getClass().getResource("submenuDisciplinaFXML.fxml"));
+		return pane = FXMLLoader.load(this.getClass().getResource("menuAjustesFXML.fxml"));
 	}
 		public static void main(String[] args) {
 		launch(args);
 	}
 }
+
+

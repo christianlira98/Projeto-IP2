@@ -8,12 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import promsys.controller.ServidorController;
 import promsys.dao.ServidorDAO;
 import promsys.exceptions.ServidorNaoExisteException;
 import promsys.fachada.Fachada;
-import promsys.negocio.ServidorController;
+import promsys.gui.ScreenManager;
 import promsys.negocio.beans.Servidor;
-import promsys.realGui.ScreenManager;
 
 public class RedefineSenhaController {
 	@FXML

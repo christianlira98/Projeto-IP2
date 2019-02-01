@@ -1,4 +1,4 @@
-package promsys.realGui;
+package promsys.gui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import promsys.negocio.DisciplinaController;
+import promsys.controller.DisciplinaController;
 import promsys.negocio.beans.Disciplina;
 
 

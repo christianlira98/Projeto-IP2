@@ -1,4 +1,4 @@
-package promsys.negocio;
+package promsys.controller;
 
 import java.util.List;
 import promsys.dao.PeriodoDAO;

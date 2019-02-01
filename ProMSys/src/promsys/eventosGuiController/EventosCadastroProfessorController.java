@@ -1,9 +1,11 @@
 package promsys.eventosGuiController;
+import promsys.controller.DisciplinaController;
+import promsys.controller.ProfessorController;
 import promsys.exceptions.*;
+import promsys.gui.DisciplinasDisponiveis;
+import promsys.gui.ScreenManager;
 import promsys.negocio.*;
 import promsys.negocio.beans.*;
-import promsys.realGui.DisciplinasDisponiveis;
-import promsys.realGui.ScreenManager;
 
 import java.util.List;
 import java.util.ArrayList;

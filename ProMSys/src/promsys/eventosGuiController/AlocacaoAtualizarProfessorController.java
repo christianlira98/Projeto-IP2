@@ -6,9 +6,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import promsys.fachada.Fachada;
+import promsys.gui.AlertBox;
+import promsys.gui.ScreenManager;
 import promsys.negocio.beans.Professor;
-import promsys.realGui.AlertBox;
-import promsys.realGui.ScreenManager;
 import promsys.dao.AlocacaoDAO;
 import promsys.exceptions.*;
 

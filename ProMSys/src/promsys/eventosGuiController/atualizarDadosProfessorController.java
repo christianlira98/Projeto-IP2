@@ -14,18 +14,18 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import promsys.controller.DisciplinaController;
+import promsys.controller.ProfessorController;
 import promsys.dao.ProfessorDAO;
 import promsys.exceptions.DisciplinaNaoExisteException;
 import promsys.exceptions.NaoEstaEntreOsPossiveisException;
 import promsys.exceptions.ProfessorJaExisteNomeException;
 import promsys.exceptions.ProfessorNaoExisteException;
 import promsys.fachada.Fachada;
-import promsys.negocio.DisciplinaController;
-import promsys.negocio.ProfessorController;
+import promsys.gui.DisciplinaExcluir;
+import promsys.gui.DisciplinasDisponiveis;
+import promsys.gui.ScreenManager;
 import promsys.negocio.beans.Professor;
-import promsys.realGui.DisciplinaExcluir;
-import promsys.realGui.DisciplinasDisponiveis;
-import promsys.realGui.ScreenManager;
 
 public class atualizarDadosProfessorController {
 	@FXML

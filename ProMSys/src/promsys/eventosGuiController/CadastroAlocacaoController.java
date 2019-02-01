@@ -15,12 +15,12 @@ import promsys.dao.AlocacaoDAO;
 import promsys.exceptions.AlocacaoJaExisteException;
 import promsys.exceptions.MesmoProfessorHorarioException;
 import promsys.fachada.Fachada;
+import promsys.gui.AlertBox;
+import promsys.gui.ScreenManager;
 import promsys.negocio.beans.Alocacao;
 import promsys.negocio.beans.Disciplina;
 import promsys.negocio.beans.Horario;
 import promsys.negocio.beans.Professor;
-import promsys.realGui.AlertBox;
-import promsys.realGui.ScreenManager;
 
 public class CadastroAlocacaoController {
 	@FXML

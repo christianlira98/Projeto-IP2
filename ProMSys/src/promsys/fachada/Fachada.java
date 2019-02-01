@@ -2,6 +2,10 @@ package promsys.fachada;
 
 import java.util.List;
 
+import promsys.controller.AlocacaoController;
+import promsys.controller.DisciplinaController;
+import promsys.controller.ProfessorController;
+import promsys.controller.ServidorController;
 import promsys.exceptions.AlocacaoJaExisteException;
 import promsys.exceptions.AlocacaoNaoExisteException;
 import promsys.exceptions.DisciplinaCargaInvalidaException;

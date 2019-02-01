@@ -1,9 +1,9 @@
 package promsys.eventosGuiController;
-import promsys.negocio.DisciplinaController;
 import promsys.negocio.beans.*;
-import promsys.realGui.ScreenManager;
+import promsys.controller.DisciplinaController;
 import promsys.exceptions.DisciplinaCargaInvalidaException;
 import promsys.exceptions.DisciplinaJaExisteException;
+import promsys.gui.ScreenManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;

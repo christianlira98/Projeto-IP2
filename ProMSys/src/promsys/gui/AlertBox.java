@@ -1,5 +1,5 @@
 //Follows Tutorial video 05.
-package promsys.realGui;
+package promsys.gui;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

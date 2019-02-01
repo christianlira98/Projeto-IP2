@@ -15,11 +15,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import promsys.Enum.DiasEnum;
 import promsys.fachada.Fachada;
+import promsys.gui.ScreenManager;
 import promsys.negocio.beans.Alocacao;
 import promsys.negocio.beans.Disciplina;
 import promsys.negocio.beans.Horario;
 import promsys.negocio.beans.Professor;
-import promsys.realGui.ScreenManager;
 
 public class AlocacoesController {
 	@FXML

@@ -8,9 +8,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import promsys.dao.AlocacaoDAO;
 import promsys.fachada.Fachada;
+import promsys.gui.AlertBox;
+import promsys.gui.ScreenManager;
 import promsys.negocio.beans.Disciplina;
-import promsys.realGui.AlertBox;
-import promsys.realGui.ScreenManager;
 
 public class AlocacaoAtualizarDisciplinaController {
 	@FXML

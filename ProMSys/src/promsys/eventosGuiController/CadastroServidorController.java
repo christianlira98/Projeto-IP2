@@ -6,10 +6,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import promsys.exceptions.ServidorJaExisteException;
 import promsys.fachada.Fachada;
+import promsys.gui.AlertBox;
+import promsys.gui.ScreenManager;
 import promsys.negocio.beans.Servidor;
-import promsys.realGui.AlertBox;
-import promsys.realGui.ScreenManager;
-import promsys.realGui.AlertBox;
 public class CadastroServidorController {
 	@FXML
 	private Pane servidorCadastro;

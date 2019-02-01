@@ -17,9 +17,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import promsys.Enum.DiasEnum;
 import promsys.fachada.Fachada;
+import promsys.gui.AlertBox;
+import promsys.gui.ScreenManager;
 import promsys.negocio.beans.Alocacao;
-import promsys.realGui.AlertBox;
-import promsys.realGui.ScreenManager;
 
 public class submenuAtualizarController {
 	@FXML

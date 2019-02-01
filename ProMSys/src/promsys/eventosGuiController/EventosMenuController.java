@@ -13,10 +13,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import promsys.realGui.Menu;
-import promsys.realGui.ScreenManager;
-import promsys.realGui.SubmenuDisciplina;
-import promsys.realGui.SubmenuProfessor;
+import promsys.gui.Menu;
+import promsys.gui.ScreenManager;
+import promsys.gui.SubmenuDisciplina;
+import promsys.gui.SubmenuProfessor;
 
 public class EventosMenuController {
 	@FXML

@@ -1,4 +1,4 @@
-package promsys.realGui;
+package promsys.gui;
 
 import java.io.IOException;
 

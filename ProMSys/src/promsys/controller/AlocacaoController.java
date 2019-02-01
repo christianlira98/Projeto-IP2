@@ -1,4 +1,4 @@
-package promsys.negocio;
+package promsys.controller;
 import promsys.negocio.beans.*;
 
 import java.time.LocalTime;

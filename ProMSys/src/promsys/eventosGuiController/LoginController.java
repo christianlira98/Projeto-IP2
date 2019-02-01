@@ -1,10 +1,10 @@
 package promsys.eventosGuiController;
 
 
+import promsys.controller.ServidorController;
 import promsys.dao.ServidorDAO;
-import promsys.negocio.ServidorController;
+import promsys.gui.ScreenManager;
 import promsys.negocio.beans.*;
-import promsys.realGui.ScreenManager;
 
 import java.util.ArrayList;
 import java.util.List;

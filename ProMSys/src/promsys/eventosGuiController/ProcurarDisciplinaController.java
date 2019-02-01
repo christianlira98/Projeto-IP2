@@ -13,10 +13,10 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import promsys.negocio.DisciplinaController;
+import promsys.controller.DisciplinaController;
+import promsys.gui.DisciplinasDisponiveis;
+import promsys.gui.ScreenManager;
 import promsys.negocio.beans.Disciplina;
-import promsys.realGui.DisciplinasDisponiveis;
-import promsys.realGui.ScreenManager;
 
 public class ProcurarDisciplinaController {
 	@FXML

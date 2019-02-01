@@ -4,8 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import promsys.dao.PeriodoDAO;
+import promsys.gui.ScreenManager;
 import promsys.negocio.beans.Periodo;
-import promsys.realGui.ScreenManager;
 
 public class AbrirPeriodoController {
 	@FXML

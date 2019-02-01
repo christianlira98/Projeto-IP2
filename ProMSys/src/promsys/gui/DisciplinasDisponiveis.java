@@ -1,10 +1,10 @@
-package promsys.realGui;
+package promsys.gui;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javafx.scene.control.CheckMenuItem;
-import promsys.negocio.DisciplinaController;
+import promsys.controller.DisciplinaController;
 import promsys.negocio.beans.Disciplina;
 
 public class DisciplinasDisponiveis {

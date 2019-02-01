@@ -1,4 +1,4 @@
-package promsys.negocio;
+package promsys.controller;
 
 import promsys.dao.ProfessorDAO;
 import promsys.exceptions.*;

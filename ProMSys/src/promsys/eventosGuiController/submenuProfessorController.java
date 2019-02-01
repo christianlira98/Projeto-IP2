@@ -13,15 +13,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import promsys.realGui.AtualizarProfessor;
-import promsys.realGui.CadastroProfessor;
-import promsys.realGui.DisciplinasDisponiveis;
-import promsys.realGui.Menu;
-import promsys.realGui.ProcurarProfessor;
-import promsys.realGui.RemoverProfessor;
-import promsys.realGui.ScreenManager;
-import promsys.realGui.SubmenuDisciplina;
-import promsys.realGui.SubmenuProfessor;
+import promsys.gui.AtualizarProfessor;
+import promsys.gui.CadastroProfessor;
+import promsys.gui.DisciplinasDisponiveis;
+import promsys.gui.Menu;
+import promsys.gui.ProcurarProfessor;
+import promsys.gui.RemoverProfessor;
+import promsys.gui.ScreenManager;
+import promsys.gui.SubmenuDisciplina;
+import promsys.gui.SubmenuProfessor;
 
 public class submenuProfessorController {
 	@FXML

@@ -1,11 +1,11 @@
-package promsys.realGui;
+package promsys.gui;
 
 import java.io.File;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class LauncherTest extends Application{
+public class Launcher extends Application{
 	
 	public void start (Stage primaryStage) {   
 		ScreenManager.getInstance().setMainStage(primaryStage);
